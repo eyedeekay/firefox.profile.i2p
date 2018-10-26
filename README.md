@@ -1,10 +1,14 @@
 # firefox.profile.i2p
 
+**THIS IS NOT EVEN CLOSE TO A FINISHED PRODUCT AT THIS TIME. USE IT AT YOUR**
+**PERIL. IT WILL NOT TAKE LONG TO IMPROVE. I JUST WANTED TO TRY OUT THE LOOK**
+**WHILE I PLANNED THE REST OF THE GUIDE.**
+
 ## Importable firefox profile for use with i2p
 
 ### Contents
 
-This repository contains two things:
+This guide contains two things:
 
   * A Firefox Profile for use with i2p
   * A launcher to ensure that it is used properly with i2p
@@ -14,6 +18,7 @@ This repository contains two things:
   0. Install Firefox on your platform.
   1. Download the profile release bundle from here. It is a zip file, which
   contains the profile we will be using with Firefox for our i2p-based browsing.
+  2.
 
 #### Footnotes
 
