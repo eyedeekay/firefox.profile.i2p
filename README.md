@@ -15,12 +15,35 @@ This guide contains two things:
 
 ### Manual Setup
 
-  0. Install Firefox on your platform.
+  0. Install Firefox ESR on your platform. [It can be obtained here](https://www.mozilla.org/en-US/firefox/organizations/)
+  ESR stands for Extended Support Release, and it's the most "stable" branch of
+  Firefox. If you already have Firefox ESR, you can safely skip this step.
   1. Download the profile release bundle from here. It is a zip file, which
   contains the profile we will be using with Firefox for our i2p-based browsing.
-  2.
+  2. Right-click the i2pbrowser-profile.zip and unzip the the profile into your
+  Documents/Downloads folder.
+  3. Go to your desktop, right click, and select "Create Shortcut." Where it
+  says "...," Copy and paste the following line
+
+        firefox.exe -no-remote --profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
+
+  4. Click "Done" and double-click your new shortcut. Type i2p-projekt.i2p into
+  the address bar to test your i2p connectivity.
 
 #### Footnotes
+
+##### Differences from Tor Browser
+
+TL:DR There is no security slider, and to compensate for this issue, the Browser
+is configured to enable fewer features by default.
+
+This browser takes cues from the Tor Browser, which is also a reasonable choice
+for an i2p browser, but it has some absolutely critical differences from the Tor
+Browser which will probably not come into play, but which you should be aware
+of. First, there is no Torbutton, which means that this browser lacks the coarse
+global controls of sensitive browser features that the Torbutton provides to the
+Tor Browser Bundle. In order to deal with this issue the default NoScript
+configuration is more restrictive by default.
 
 ##### Debian/Ubuntu users
 
@@ -29,8 +52,6 @@ Linux distribution, there's another option which may you may prefer. In order to
 do this, one must add the Whonix apt package repository to your package sources,
 and install their tb-starter package from their stretch-testing repository.
 Don't worry, I'll take you through it step-by-step.
-
-
 
 Or, you can just run these commands, now that you know what they do:
 
