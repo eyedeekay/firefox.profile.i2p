@@ -23,7 +23,7 @@ This guide contains two things:
   2. Right-click the i2pbrowser-profile.zip and unzip the the profile into your
   Documents/Downloads folder.
   3. Go to your desktop, right click, and select "Create Shortcut." Where it
-  says "...," Copy and paste the following line
+  says "[fill this in when you are sitting at the box later...]," Copy and paste the following line
 
         firefox.exe -no-remote --profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
 
@@ -43,7 +43,7 @@ Browser which will probably not come into play, but which you should be aware
 of. First, there is no Torbutton, which means that this browser lacks the coarse
 global controls of sensitive browser features that the Torbutton provides to the
 Tor Browser Bundle. In order to deal with this issue the default NoScript
-configuration is more restrictive by default.
+configuration is more restrictive.
 
 ##### Debian/Ubuntu users
 
