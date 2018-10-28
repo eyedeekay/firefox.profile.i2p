@@ -6,7 +6,7 @@ foolproof way to automate the Windows installation process, but I can't test it
 until like, Wednesday.
 
 **DEFINITELY DON'T USE ANYTHING PRODUCED BY THE MAKEFILE YET. I WILL BE**
-**TRYING OUT THE MSI TRICK TONIGHT.**
+**TRYING OUT THE MSI TRICK ON WEDNESDAY.**
 
 ## Importable firefox profile for use with i2p
 
