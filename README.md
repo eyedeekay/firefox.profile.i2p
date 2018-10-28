@@ -1,8 +1,9 @@
 # firefox.profile.i2p
 
-**THIS IS NOT EVEN CLOSE TO A FINISHED PRODUCT AT THIS TIME. USE IT AT YOUR**
-**PERIL. IT WILL NOT TAKE LONG TO IMPROVE. I JUST WANTED TO TRY OUT THE LOOK**
-**WHILE I PLANNED THE REST OF THE GUIDE.**
+The profile should be safe to use, and the Windows guide works if exectuted
+correctly on Windows 10. There is an easy, straightforward, and relatively
+foolproof way to automate the Windows installation process, but I can't test it
+until like, Wednesday.
 
 **DEFINITELY DON'T USE ANYTHING PRODUCED BY THE MAKEFILE YET. I WILL BE**
 **TRYING OUT THE MSI TRICK TONIGHT.**
@@ -27,10 +28,15 @@ This guide contains two things:
   Documents/Downloads folder by selecting "Extract All." You should be
   extracting this directly into your "Downloads" Folder, where the zipped file
   will create it's own subfolder automatically.
+
+![Figure A: Extract All](images/extractall.png)
+
   3. Go to your desktop, right click, and select "Create Shortcut." Where it
   says "Type the location of the item:," Copy and paste the following line
 
         "C:\Program Files (x86)/Mozilla Firefox/firefox.exe" -no-remote -profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
+
+![Figure B: Create Shortcut](images/shortcut.png)
 
   4. Click "Done" and double-click your new shortcut. Type i2p-projekt.i2p into
   the address bar to test your i2p connectivity.
