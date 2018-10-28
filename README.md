@@ -36,7 +36,11 @@ This guide contains two things:
 
         "C:\Program Files (x86)/Mozilla Firefox/firefox.exe" -no-remote -profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
 
+Before:
 ![Figure B: Create Shortcut](images/shortcut.png)
+
+After:
+![Figure C: Create Shortcut](images/shortcut.png)
 
   4. Click "Done" and double-click your new shortcut. Type i2p-projekt.i2p into
   the address bar to test your i2p connectivity.
