@@ -16,7 +16,7 @@ This guide contains two things:
   * A Firefox Profile for use with i2p
   * A launcher to ensure that it is used properly with i2p
 
-### Manual Setup
+### Manual Setup (Windows)
 
   0. Install Firefox ESR on your platform. [It can be obtained here](https://www.mozilla.org/en-US/firefox/organizations/)
   ESR stands for Extended Support Release, and it's the most "stable" branch of
@@ -24,14 +24,30 @@ This guide contains two things:
   1. Download the profile release bundle from here. It is a zip file, which
   contains the profile we will be using with Firefox for our i2p-based browsing.
   2. Right-click the i2pbrowser-profile.zip and unzip the the profile into your
-  Documents/Downloads folder.
+  Documents/Downloads folder by selecting "Extract All." You should be
+  extracting this directly into your "Downloads" Folder, where the zipped file
+  will create it's own subfolder automatically.
   3. Go to your desktop, right click, and select "Create Shortcut." Where it
-  says "[fill this in when you are sitting at the box later...]," Copy and paste the following line
+  says "Type the location of the item:," Copy and paste the following line
 
-        firefox.exe -no-remote --profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
+        "C:\Program Files (x86)/Mozilla Firefox/firefox.exe" -no-remote -profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
 
   4. Click "Done" and double-click your new shortcut. Type i2p-projekt.i2p into
   the address bar to test your i2p connectivity.
+
+### Manual Setup (OSX)
+
+  0.
+  1.
+  2.
+  3.
+
+### Manual Setup (Various Linuxes)
+
+  0.
+  1.
+  2.
+  3.
 
 #### Footnotes
 

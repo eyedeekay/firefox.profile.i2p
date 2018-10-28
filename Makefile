@@ -51,7 +51,7 @@ recopy-windows:
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
 
-windows: recopy-windows win64 win32
+windows: recopy-windows mslinks win64 win32
 
 win64:
 	$(CREATE_MSI) \
@@ -85,3 +85,8 @@ win32:
 		-i ${PWD}/firefox.launchers/ui2pbrowser_icon.ico \
 		-l
 
+zip:
+	zip i2pbrowser-profile.zip -r firefox.profile.i2p
+	zip i2pbrowser-windows.zip -r firefox.launchers/windows
+	zip i2pbrowser-osx.zip -r firefox.launchers/osx
+	zip i2pbrowser-gnulinux.zip -r firefox.launchers/gnulinux
