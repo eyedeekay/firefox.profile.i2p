@@ -8,16 +8,7 @@ until like, Wednesday.
 **DEFINITELY DON'T USE ANYTHING PRODUCED BY THE MAKEFILE YET. I WILL BE**
 **TRYING OUT THE MSI TRICK ON WEDNESDAY.**
 
-## Importable firefox profile for use with i2p
-
-### Contents
-
-This guide contains two things:
-
-  * A Firefox Profile for use with i2p
-  * A launcher to ensure that it is used properly with i2p
-
-### Manual Setup (Windows)
+### Manual Setup (Windows) [Standalone guide](WINDOWS.md)
 
   0. Install Firefox ESR on your platform. [It can be obtained here](https://www.mozilla.org/en-US/firefox/organizations/)
   ESR stands for Extended Support Release, and it's the most "stable" branch of
@@ -45,14 +36,14 @@ After:
   4. Click "Done" and double-click your new shortcut. Type i2p-projekt.i2p into
   the address bar to test your i2p connectivity.
 
-### Manual Setup (OSX)
+### Manual Setup (OSX) [Standalone guide](MACOSX.md)
 
   0.
   1.
   2.
   3.
 
-### Manual Setup (Various Linuxes)
+### Manual Setup (Various Linuxes) [Standalone guide](LINUX.md) (Debian-Derived distros see Footnote #2)
 
   0.
   1.

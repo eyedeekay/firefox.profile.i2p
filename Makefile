@@ -90,3 +90,6 @@ zip:
 	zip i2pbrowser-windows.zip -r firefox.launchers/windows
 	zip i2pbrowser-osx.zip -r firefox.launchers/osx
 	zip i2pbrowser-gnulinux.zip -r firefox.launchers/gnulinux
+
+guide:
+	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md > README.md
