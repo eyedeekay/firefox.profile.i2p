@@ -8,6 +8,8 @@ CREATE_MSI=nodejs ${HOME}/node_modules/.bin/msi-packager
 echo:
 	@echo "USAGE for this makefile here."
 
+all: guide windows linux zip
+
 help:
 	$(CREATE_DMG) --help
 
@@ -47,9 +49,18 @@ mslinks:
 	./mslink.sh --lnk-target 'firefox.exe -no-remote -profile %APPDATA%\Mozilla\Firefox\Profiles\firefox.profile.i2p' -o firefox.launchers/windows/i2pbrowser.lnk
 	./mslink.sh --lnk-target 'firefox.exe -no-remote -profile %APPDATA%\Mozilla\Firefox\Profiles\firefox.profile.i2p -private-window about:blank' -o firefox.launchers/windows/i2pbrowser-private.lnk
 
+recopy-linux:
+	rm -rf firefox.launchers/gnulinux/firefox.profile.i2p/
+	cp -rv firefox.profile.i2p firefox.launchers/gnulinux/firefox.profile.i2p/
+	cp LINUX.md firefox.launchers/gnulinux/firefox.profile.i2p/README.md
+
+linux: recopy-linux
+	cd firefox.launchers/gnulinux/ && tar cvzf ../../i2pbrowser-gnulinux.tar.gz .
+
 recopy-windows:
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
+	cp WINDOWS.md firefox.launchers/windows/firefox.profile.i2p/README.md
 
 windows: recopy-windows mslinks win64 win32
 
@@ -64,7 +75,7 @@ win64:
 		-u ${MS_UUID} \
 		-e ${PWD}/firefox.launchers/windows/i2pbrowser.lnk \
 		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.lnk \
-		-i ${PWD}/firefox.launchers/ui2pbrowser_icon.ico \
+		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
 		-l
 
 win64-check:
@@ -82,7 +93,7 @@ win32:
 		-u ${MS_UUID} \
 		-e ${PWD}/firefox.launchers/windows/i2pbrowser.lnk \
 		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.lnk \
-		-i ${PWD}/firefox.launchers/ui2pbrowser_icon.ico \
+		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
 		-l
 
 zip:
@@ -92,4 +103,4 @@ zip:
 	zip i2pbrowser-gnulinux.zip -r firefox.launchers/gnulinux
 
 guide:
-	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md > README.md
+	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md | tee README.md
