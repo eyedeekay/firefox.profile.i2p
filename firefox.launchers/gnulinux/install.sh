@@ -43,6 +43,14 @@ usage(){
     echo "$USAGE"
 }
 
+update(){
+    mv "$DIR/firefox.profile.i2p/" "$DIR/.firefox.profile.i2p.bak/"
+    curl -L https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip --output i2pbrowser-profile-update.zip
+    sleep 1
+    unzip i2pbrowser-profile-update.zip
+    rm -rf "$DIR/.firefox.profile.i2p.bak/" i2pbrowser-profile-update.zip
+}
+
 install(){
     mkdir -pv "$USER_HOME/.mozilla/firefox/"
     cp -rv "$DIR/firefox.profile.i2p" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"

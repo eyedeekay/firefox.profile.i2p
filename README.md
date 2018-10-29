@@ -58,7 +58,7 @@ After:
 If you want to just copy-paste some commands into your terminal, you could:
 
 ```sh
-curl --output i2pbrowser-gnulinux-0.01.tar.gz
+curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.01.tar.gz --output i2pbrowser-gnulinux-0.01.tar.gz
 tar xvzf i2pbrowser-gnulinux-0.01.tar.gz
 cd i2pbrowser-gnulinux
 ./install.sh install
