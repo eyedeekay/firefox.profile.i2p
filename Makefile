@@ -14,7 +14,7 @@ help:
 	$(CREATE_DMG) --help
 
 clean:
-	rm -f *.zip *.msi *.tar.gz *.dmg
+	rm -frv *.zip *.msi *.tar.gz *.dmg firefox.launchers/build
 
 install: setup profile
 	install -m755 firefox.launchers/i2pbrowser-firefox.desktop \
@@ -55,7 +55,10 @@ recopy-linux:
 	cp LINUX.md firefox.launchers/gnulinux/firefox.profile.i2p/README.md
 
 linux: recopy-linux
-	cd firefox.launchers/gnulinux/ && tar cvzf ../../i2pbrowser-gnulinux.tar.gz .
+	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
+	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
+	cd firefox.launchers/build/i2pbrowser-gnulinux/ && tar cvzf ../../../i2pbrowser-gnulinux.tar.gz .
+	rm -rfv firefox.launchers/build
 
 recopy-windows:
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/

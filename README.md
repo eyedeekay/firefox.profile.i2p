@@ -55,6 +55,15 @@ After:
   3. Run ./install.sh install from within the extracted folder. Alternatively,
   run ./install.sh run to run entirely from within the current directory.
 
+If you want to just copy-paste some commands into your terminal, you could:
+
+```sh
+curl --output i2pbrowser-gnulinux.tar.gz
+tar xvzf i2pbrowser-gnulinux.tar.gz
+cd i2pbrowser-gnulinux
+./install.sh install
+```
+
 #### Footnotes
 
 ##### Differences from Tor Browser
