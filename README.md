@@ -15,7 +15,7 @@ until like, Wednesday.
   Firefox. If you already have Firefox ESR, you can safely skip this step.
   1. Download the profile release bundle from here. It is a zip file, which
   contains the profile we will be using with Firefox for our i2p-based browsing.
-  2. Right-click the i2pbrowser-profile.zip and unzip the the profile into your
+  2. Right-click the i2pbrowser-profile-0.01.zip and unzip the the profile into your
   Documents/Downloads folder by selecting "Extract All." You should be
   extracting this directly into your "Downloads" Folder, where the zipped file
   will create it's own subfolder automatically.
@@ -49,8 +49,8 @@ After:
 *installation.*
 
   0. Install Firefox-ESR via the method preferred by your Linux distribution.
-  1. Download the i2pbrowser-gnulinux.zip from here. If you prefer, an identical
-  i2pbrowser-gnulinux.tar.gz is also available.
+  1. Download the i2pbrowser-gnulinux-0.01.zip from here. If you prefer, an identical
+  i2pbrowser-gnulinux-0.01.tar.gz is also available.
   2. Extract it.
   3. Run ./install.sh install from within the extracted folder. Alternatively,
   run ./install.sh run to run entirely from within the current directory.
@@ -58,11 +58,17 @@ After:
 If you want to just copy-paste some commands into your terminal, you could:
 
 ```sh
-curl --output i2pbrowser-gnulinux.tar.gz
-tar xvzf i2pbrowser-gnulinux.tar.gz
+curl --output i2pbrowser-gnulinux-0.01.tar.gz
+tar xvzf i2pbrowser-gnulinux-0.01.tar.gz
 cd i2pbrowser-gnulinux
 ./install.sh install
 ```
+
+Once you've run "./install.sh install" you can safely delete the profile folder
+if you wish. Alternatively, you could choose to run from the downloaded profile
+directory by running "./install.sh run" instead. This will always start in
+Private Browsing mode, and if you delete the download folder, you will need to
+re-download it to run the browser from the directory again.
 
 #### Footnotes
 

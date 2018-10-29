@@ -5,8 +5,16 @@ CREATE_DMG=$(shell pwd)/create-dmg/create-dmg
 
 CREATE_MSI=nodejs ${HOME}/node_modules/.bin/msi-packager
 
+GOPATH=$(shell pwd)/.go
+
+GOTHUB_BIN=$(GOPATH)/bin/gothub
+
+VERSION=0.01
+
 echo:
 	@echo "USAGE for this makefile here."
+
+include config.mk
 
 all: guide windows linux zip
 
@@ -15,6 +23,9 @@ help:
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg firefox.launchers/build
+
+clean-build:
+	rm -rfv firefox.launchers/build
 
 install: setup profile
 	install -m755 firefox.launchers/i2pbrowser-firefox.desktop \
@@ -57,7 +68,7 @@ recopy-linux:
 linux: recopy-linux
 	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
 	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
-	cd firefox.launchers/build/i2pbrowser-gnulinux/ && tar cvzf ../../../i2pbrowser-gnulinux.tar.gz .
+	cd firefox.launchers/build/i2pbrowser-gnulinux/ && tar cvzf ../../../i2pbrowser-gnulinux-$(VERSION).tar.gz .
 	rm -rfv firefox.launchers/build
 
 recopy-windows:
@@ -70,9 +81,9 @@ windows: recopy-windows mslinks win64 win32
 win64:
 	$(CREATE_MSI) \
 		${PWD}/firefox.launchers/windows \
-		${PWD}/i2pbrowser-firefox_x64.msi \
+		${PWD}/i2pbrowser-firefox-$(VERSION)_x64.msi \
 		-n 'I2PBrowser-Profile' \
-		-v .1 \
+		-v $(VERSION) \
 		-m eyedeekay \
 		-a x64 \
 		-u ${MS_UUID} \
@@ -88,9 +99,9 @@ win64-check:
 win32:
 	$(CREATE_MSI) \
 		${PWD}/firefox.launchers/windows \
-		${PWD}/i2pbrowser-firefox_x86.msi \
+		${PWD}/i2pbrowser-firefox-$(VERSION)_x86.msi \
 		-n 'I2PBrowser-Profile' \
-		-v .1 \
+		-v $(VERSION) \
 		-m eyedeekay \
 		-a x86 \
 		-u ${MS_UUID} \
@@ -99,11 +110,166 @@ win32:
 		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
 		-l
 
-zip:
-	zip i2pbrowser-profile.zip -r firefox.profile.i2p
-	zip i2pbrowser-windows.zip -r firefox.launchers/windows
-	zip i2pbrowser-osx.zip -r firefox.launchers/osx
-	zip i2pbrowser-gnulinux.zip -r firefox.launchers/gnulinux
+zip-bareprofile: clean-build
+	zip i2pbrowser-profile-$(VERSION).zip -r firefox.profile.i2p
+
+zip-windows: clean-build
+	mkdir -p firefox.launchers/build/i2pbrowser-windows
+	cp -rfv firefox.launchers/windows/  firefox.launchers/build/i2pbrowser-windows/i2pbrowser-windows/
+	cd firefox.launchers/build/ && \
+		zip i2pbrowser-windows-$(VERSION).zip -r i2pbrowser-windows && \
+		mv i2pbrowser-windows-$(VERSION).zip $(PWD)/i2pbrowser-windows-$(VERSION).zip
+	cp i2pbrowser-windows-$(VERSION).zip $(PWD)/i2pbrowser-windows.zip
+	rm -rfv firefox.launcher/build
+
+zip-osx: clean-build
+	mkdir -p firefox.launchers/build/i2pbrowser-osx
+	cp -rfv firefox.launchers/osx/  firefox.launchers/build/i2pbrowser-osx/i2pbrowser-osx/
+	cd firefox.launchers/build/ && \
+		zip i2pbrowser-osx-$(VERSION).zip -r i2pbrowser-osx && \
+		mv i2pbrowser-osx-$(VERSION).zip $(PWD)/i2pbrowser-osx-$(VERSION).zip
+	cp i2pbrowser-osx-$(VERSION).zip $(PWD)/i2pbrowser-osx.zip
+	rm -rfv firefox.launcher/build
+
+zip-gnulinux: clean-build
+	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
+	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
+	cd firefox.launchers/build/ && \
+		zip i2pbrowser-gnulinux-$(VERSION).zip -r i2pbrowser-gnulinux && \
+		mv i2pbrowser-gnulinux-$(VERSION).zip $(PWD)/i2pbrowser-gnulinux-$(VERSION).zip
+	cp $(PWD)/i2pbrowser-gnulinux-$(VERSION).zip $(PWD)/i2pbrowser-gnulinux.zip
+	rm -rfv firefox.launcher/build
+
+zip: zip-gnulinux zip-osx zip-windows
 
 guide:
-	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md | tee README.md
+	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md | \
+		sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		tee README.md
+
+gothub:
+	go get -u github.com/itchio/gothub
+
+gothub-version: gothub-delete-version
+	$(GOTHUB_BIN) release \
+		--tag $(VERSION) \
+		--name firefox.profile.i2p.testing \
+		--description "Testing version $(VERSION) of the i2p browser profile for all platforms" \
+		--pre-release
+
+gothub-delete-version:
+	$(GOTHUB_BIN) release \
+		--tag $(VERSION) \
+		--name firefox.profile.i2p.testing; true
+
+gothub-upload-version-linux:
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "GNU/Linux Testing Profile Alias(tar.gz version)" \
+		--file i2pbrowser-gnulinux.tar.gz
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "GNU/Linux Testing Profile(tar.gz version)" \
+		--file i2pbrowser-gnulinux-$(VERSION).tar.gz
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "GNU/Linux Testing Profile Alias(zip version)" \
+		--file i2pbrowser-gnulinux.zip
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "GNU/Linux Testing Profile(zip version)" \
+		--file i2pbrowser-gnulinux-$(VERSION).zip
+
+gothub-upload-version-osx:
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "Mac OSX Testing Profile Alias" \
+		--file i2pbrowser-osx.zip
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "Mac OSX Testing Profile" \
+		--file i2pbrowser-osx-$(VERSION).zip
+
+gothub-upload-version-windows:
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "Windows Testing Profile Alias" \
+		--file i2pbrowser-windows.zip
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "Windows Testing Profile" \
+		--file i2pbrowser-windows-$(VERSION).zip
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "Windows .msi installer" \
+		--file i2pbrowser-firefox-$(VERSION)_x65.msi
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--name "Windows .msi installer" \
+		--file i2pbrowser-firefox-$(VERSION)_x86.msi
+
+gothub-upload-version: gothub-upload-version-windows gothub-upload-version-osx gothub-upload-version-linux
+
+gothub-current: gothub-delete-current
+	$(GOTHUB_BIN) release \
+		--tag current \
+		--name firefox.profile.i2p \
+		--description "Current version of the i2p browser profile for all platforms"
+
+gothub-delete-current:
+	$(GOTHUB_BIN) release \
+		--tag current \
+		--name firefox.profile.i2p; true
+
+gothub-upload-current-linux:
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "GNU/Linux Profile Alias(tar.gz version)" \
+		--file i2pbrowser-gnulinux.tar.gz
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "GNU/Linux Profile(tar.gz version)" \
+		--file i2pbrowser-gnulinux-current.tar.gz
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "GNU/Linux Profile Alias(zip version)" \
+		--file i2pbrowser-gnulinux.zip
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "GNU/Linux Profile(zip version)" \
+		--file i2pbrowser-gnulinux-current.zip
+
+gothub-upload-current-osx:
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "Mac OSX Profile Alias" \
+		--file i2pbrowser-osx.zip
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "Mac OSX Profile" \
+		--file i2pbrowser-osx-current.zip
+
+gothub-upload-current-windows:
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "Windows Profile Alias" \
+		--file i2pbrowser-windows.zip
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "Windows Profile" \
+		--file i2pbrowser-windows-current.zip
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "Windows .msi installer" \
+		--file i2pbrowser-firefox-current_x65.msi
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--name "Windows .msi installer" \
+		--file i2pbrowser-firefox-current_x86.msi
+
+gothub-upload-current: gothub-upload-current-windows gothub-upload-current-osx gothub-upload-current-linux
+
+release: gothub-release-version
+
+current-release: gothub-upload-current

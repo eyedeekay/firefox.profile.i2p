@@ -19,3 +19,9 @@ tar xvzf i2pbrowser-gnulinux.tar.gz
 cd i2pbrowser-gnulinux
 ./install.sh install
 ```
+
+Once you've run "./install.sh install" you can safely delete the profile folder
+if you wish. Alternatively, you could choose to run from the downloaded profile
+directory by running "./install.sh run" instead. This will always start in
+Private Browsing mode, and if you delete the download folder, you will need to
+re-download it to run the browser from the directory again.
