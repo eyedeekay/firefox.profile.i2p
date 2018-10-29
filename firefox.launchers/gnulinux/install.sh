@@ -14,6 +14,8 @@ TITLE="i2p Browser Profile Set-Up"
 
 ME=$(whoami)
 
+TOR=$(which torsocks)
+
 if [ "x$ME" = "xroot" ]; then
     USER_HOME="/home/$SUDO_USER"
 else
@@ -45,7 +47,10 @@ usage(){
 
 update(){
     mv "$DIR/firefox.profile.i2p/" "$DIR/.firefox.profile.i2p.bak/"
-    curl -L https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip --output i2pbrowser-profile-update.zip
+    if [ "x$TOR" != "x" ]; then
+        echo "$TOR detected, updates will be retrieved over Tor"
+    fi
+    $TOR curl -L https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip --output i2pbrowser-profile-update.zip
     sleep 1
     unzip i2pbrowser-profile-update.zip
     rm -rf "$DIR/.firefox.profile.i2p.bak/" i2pbrowser-profile-update.zip
