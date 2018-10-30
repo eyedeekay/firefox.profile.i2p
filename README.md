@@ -70,6 +70,16 @@ directory by running "./install.sh run" instead. This will always start in
 Private Browsing mode, and if you delete the download folder, you will need to
 re-download it to run the browser from the directory again.
 
+#### Screenshots
+
+  * **check.kovri.i2p:**
+
+![Figure D: check.kovri.i2p results](images/firefox.profile.i2p.png)
+
+  * **valve/fingerprintjs**
+
+![Figure E: Browser Fingerprint](images/firefox.profile.i2p.fingerprint.png)
+
 #### Footnotes
 
 ##### Differences from Tor Browser

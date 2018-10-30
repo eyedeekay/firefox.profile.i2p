@@ -73,12 +73,12 @@ uninstall(){
 run(){
     rm -rfv "$DIR/.firefox.profile.i2p"
     cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p"
-    firefox --no-remote --profile "$DIR/.firefox.profile.i2p" --private about:config
+    firefox --no-remote --profile "$DIR/.firefox.profile.i2p" --private about:blank $2
     rm -rfv "$DIR/.firefox.profile.i2p"
 }
 
 if [ "x$1" = "x" ]; then
     usage
 else
-    "$1"
+    "$1" $2
 fi

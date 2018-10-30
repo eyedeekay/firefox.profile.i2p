@@ -18,9 +18,6 @@ include config.mk
 
 all: guide windows linux zip
 
-help:
-	$(CREATE_DMG) --help
-
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg firefox.launchers/build
 
@@ -298,16 +295,16 @@ gothub-upload-current-windows:
 		--file i2pbrowser-firefox-$(VERSION)_x86.msi
 	$(GOTHUB_BIN) upload \
 		--tag current \
-		--label "Windows .msi installer" \
+		--label "Windows .msi installer x64 Alias" \
 		--name i2pbrowser-firefox_x64.msi \
 		--file i2pbrowser-firefox_x64.msi
 	$(GOTHUB_BIN) upload \
 		--tag current \
-		--label "Windows .msi installer" \
+		--label "Windows .msi installer x86 Alias" \
 		--name i2pbrowser-firefox_x86.msi \
 		--file i2pbrowser-firefox_x86.msi
 
-gothub-upload-current: gothub-upload-current-windows gothub-upload-current-osx gothub-upload-current-linux
+gothub-upload-current: gothub-upload-current-windows gothub-upload-current-osx gothub-upload-current-linux upload-update
 
 release: gothub-release-version
 
@@ -324,5 +321,4 @@ upload-update:
 		--replace \
 		--file i2pbrowser-profile-update.zip
 
-help:
-	$(GOTHUB_BIN) upload
+release-all: release current-release
