@@ -60,7 +60,7 @@ mslinks:
 recopy-linux:
 	rm -rf firefox.launchers/gnulinux/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/gnulinux/firefox.profile.i2p/
-	cp LINUX.md firefox.launchers/gnulinux/firefox.profile.i2p/README.md
+	cp LINUX.md firefox.launchers/gnulinux/README.md
 
 linux: recopy-linux
 	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
@@ -72,7 +72,7 @@ linux: recopy-linux
 recopy-windows:
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
-	cp WINDOWS.md firefox.launchers/windows/firefox.profile.i2p/README.md
+	cp WINDOWS.md firefox.launchers/windows/README.md
 
 windows: recopy-windows mslinks win64 win32
 
@@ -272,6 +272,14 @@ gothub-upload-current-osx:
 		--name i2pbrowser-osx-$(VERSION).zip \
 		--file i2pbrowser-osx-$(VERSION).zip
 
+sign-windows:
+	#i2pbrowser-windows.zip
+	#i2pbrowser-windows-$(VERSION).zip
+	#i2pbrowser-firefox-$(VERSION)_x64.msi
+	#i2pbrowser-firefox-$(VERSION)_x86.msi
+	#i2pbrowser-firefox_x64.msi
+	#i2pbrowser-firefox_x64.msi
+
 gothub-upload-current-windows:
 	$(GOTHUB_BIN) upload \
 		--tag current \
@@ -322,3 +330,4 @@ upload-update:
 		--file i2pbrowser-profile-update.zip
 
 release-all: release current-release
+
