@@ -144,7 +144,7 @@ zip-gnulinux: clean-build
 zip: zip-gnulinux zip-osx zip-windows
 
 guide:
-	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md | \
+	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md FINGER.md | \
 		sed "s|\.zip|-$(VERSION)\.zip|g" | \
 		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
 		tee README.md
