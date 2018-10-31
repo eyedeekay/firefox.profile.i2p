@@ -1,3 +1,4 @@
+
 **Pending a little experimentation, I think I can make this as easy as running**
 **an installer, as long as Firefox already exists on the base system.**
 

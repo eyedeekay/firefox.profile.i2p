@@ -11,7 +11,8 @@ user_pref("extensions.https_everywhere._observatory.popup_shown", true);
 user_pref("extensions.https_everywhere.toolbar_hint_shown", true);
 
 # NoScript Preferences:
-user_pref("capability.policy.maonoscript.javascript.enabled", "noAccess");
+# user_pref("capability.policy.maonoscript.javascript.enabled", "noAccess");
+user_pref("capability.policy.maonoscript.javascript.enabled", "allAccess");
 user_pref("capability.policy.maonoscript.sites", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");
 user_pref("noscript.default", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");
 user_pref("noscript.mandatory", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");

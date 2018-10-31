@@ -1,4 +1,14 @@
 
+#### Screenshots
+
+  * **check.kovri.i2p:**
+
+![Figure D: check.kovri.i2p results](images/firefox.profile.i2p.png)
+
+  * **valve/fingerprintjs**
+
+![Figure E: Browser Fingerprint](images/firefox.profile.i2p.fingerprint.png)
+
 #### Footnotes
 
 ##### Differences from Tor Browser
