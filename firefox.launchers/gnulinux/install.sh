@@ -15,6 +15,7 @@ TITLE="i2p Browser Profile Set-Up"
 ME=$(whoami)
 
 TOR=$(which torsocks)
+EEP=$(which eepget)
 
 if [ "x$ME" = "xroot" ]; then
     USER_HOME="/home/$SUDO_USER"
@@ -22,7 +23,15 @@ else
     USER_HOME="$HOME"
 fi
 
-UPDATE_URL=https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip
+if [ "x$EEP" = "x" ]; then
+    UPDATE_URL=https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip
+    DL_COMMAND="$TOR curl -L $UPDATE_URL --output i2pbrowser-profile-update.zip"
+else
+    UPDATE_URL="http://hxfygwhk7xrurl2q5ipz6bl3zouokcj32dkkwtf3y3xj5tol4dvq.b32.i2p/i2pbrowser-profile-update.zip"
+    DL_COMMAND="$EEP -o i2pbrowser-profile-update.zip $UPDATE_URL"
+fi
+
+
 
 USAGE="
 ####                                                                        ####
@@ -56,10 +65,12 @@ usage(){
 
 update(){
     mv "$DIR/firefox.profile.i2p/" "$DIR/.firefox.profile.i2p.bak/"
-    if [ "x$TOR" != "x" ]; then
+    if [ "x$EEP" != "x" ]; then
+        echo "$EEP detected, updates will be retrieved over i2p"
+    elif [ "x$TOR" != "x" ]; then
         echo "$TOR detected, updates will be retrieved over Tor"
     fi
-    $TOR curl -L "$UPDATE_URL" --output i2pbrowser-profile-update.zip
+    $DL_COMMAND
     sleep 1
     unzip i2pbrowser-profile-update.zip
     rm -rf "$DIR/.firefox.profile.i2p.bak/" i2pbrowser-profile-update.zip

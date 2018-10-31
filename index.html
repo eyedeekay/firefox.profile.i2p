@@ -1,0 +1,153 @@
+<h1>firefox.profile.i2p</h1>
+
+<p>The profile should be safe to use, and the Windows guide works if exectuted
+correctly on Windows 10. There is an easy, straightforward, and relatively
+foolproof way to automate the Windows installation process, but I can&rsquo;t test it
+until like, Wednesday.</p>
+
+<p><strong>DEFINITELY DON&rsquo;T USE ANYTHING PRODUCED BY THE MAKEFILE YET. I WILL BE</strong>
+<strong>TRYING OUT THE MSI TRICK ON WEDNESDAY.</strong></p>
+
+<h3>Manual Setup (Windows) <a href="WINDOWS.md">Standalone guide</a></h3>
+
+<ol>
+<li>Install Firefox ESR on your platform. <a href="https://www.mozilla.org/en-US/firefox/organizations/">It can be obtained here</a>
+ESR stands for Extended Support Release, and it&rsquo;s the most &ldquo;stable&rdquo; branch of
+Firefox. If you already have Firefox ESR, you can safely skip this step.</li>
+<li>Download the profile release bundle from here. It is a zip file, which
+contains the profile we will be using with Firefox for our i2p-based browsing.</li>
+<li>Right-click the i2pbrowser-profile-0.01.zip and unzip the the profile into your
+Documents/Downloads folder by selecting &ldquo;Extract All.&rdquo; You should be
+extracting this directly into your &ldquo;Downloads&rdquo; Folder, where the zipped file
+will create it&rsquo;s own subfolder automatically.</li>
+</ol>
+
+
+<p><img src="images/extractall.png" alt="Figure A: Extract All" /></p>
+
+<ol>
+<li><p>Go to your desktop, right click, and select &ldquo;Create Shortcut.&rdquo; Where it
+says &ldquo;Type the location of the item:,&rdquo; Copy and paste the following line</p>
+
+<pre><code>  "C:\Program Files (x86)/Mozilla Firefox/firefox.exe" -no-remote -profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
+</code></pre></li>
+</ol>
+
+
+<p>Before:
+<img src="images/shortcut.png" alt="Figure B: Create Shortcut" /></p>
+
+<p>After:
+<img src="images/shortcut.png" alt="Figure C: Create Shortcut" /></p>
+
+<ol>
+<li>Click &ldquo;Done&rdquo; and double-click your new shortcut. Type i2p-projekt.i2p into
+the address bar to test your i2p connectivity.</li>
+</ol>
+
+
+<h3>Manual Setup (OSX) <a href="MACOSX.md">Standalone guide</a></h3>
+
+<ol>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+
+<h3>Manual Setup (Various Linuxes) <a href="LINUX.md">Standalone guide</a> (Debian-Derived distros see Footnote #2)</h3>
+
+<p><em>NOTE: I&rsquo;m probably going to add an apparmor profile to this setup for optional</em>
+<em>installation.</em></p>
+
+<ol>
+<li>Install Firefox-ESR via the method preferred by your Linux distribution.</li>
+<li>Download the i2pbrowser-gnulinux-0.01.zip from here. If you prefer, an identical
+i2pbrowser-gnulinux-0.01.tar.gz is also available.</li>
+<li>Extract it.</li>
+<li>Run ./install.sh install from within the extracted folder. Alternatively,
+run ./install.sh run to run entirely from within the current directory.</li>
+</ol>
+
+
+<p>If you want to just copy-paste some commands into your terminal, you could:</p>
+
+<p><code>sh
+curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.01.tar.gz --output i2pbrowser-gnulinux-0.01.tar.gz
+tar xvzf i2pbrowser-gnulinux-0.01.tar.gz
+cd i2pbrowser-gnulinux
+./install.sh install
+</code></p>
+
+<p>Once you&rsquo;ve run &ldquo;./install.sh install&rdquo; you can safely delete the profile folder
+if you wish. Alternatively, you could choose to run from the downloaded profile
+directory by running &ldquo;./install.sh run&rdquo; or &ldquo;./install.sh private&rdquo; instead. This
+will always start in Private Browsing mode, and if you delete the download
+folder, you will need to re-download it to run the browser from the directory
+again.</p>
+
+<p>Here&rsquo;s some more information about how to use the install script:</p>
+
+<p><code>sh
+usage:
+    ./install.sh install     # install the profile and browser launcher
+    ./install.sh uninstall   # remove the profile and browser launcher
+    ./install.sh alias       # configure a .bash_alias to launch the browser
+    ./install.sh usage       # show this usage message
+    ./install.sh update      # update the profile
+    ./install.sh run         # run from this directory without installing
+        firefox --no-remote --profile "$DIR/.firefox.profile.i2p.default" about:blank $1
+    ./install.sh private     # run in private mode from this directory without installing
+        firefox --no-remote --profile "$DIR/.firefox.profile.i2p.private" --private about:blank $1
+    ./install.sh debug       # run with debugger from this directory without installing
+        firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
+</code></p>
+
+<h4>Screenshots</h4>
+
+<ul>
+<li><strong>check.kovri.i2p:</strong></li>
+</ul>
+
+
+<p><img src="images/firefox.profile.i2p.png" alt="Figure D: check.kovri.i2p results" /></p>
+
+<ul>
+<li><strong>valve/fingerprintjs</strong></li>
+</ul>
+
+
+<p><img src="images/firefox.profile.i2p.fingerprint.png" alt="Figure E: Browser Fingerprint" /></p>
+
+<h4>Footnotes</h4>
+
+<h5>Differences from Tor Browser</h5>
+
+<p>TL:DR There is no security slider, and to compensate for this issue, the Browser
+is configured to enable fewer features by default.</p>
+
+<p>This browser takes cues from the Tor Browser, which is also a reasonable choice
+for an i2p browser, but it has some absolutely critical differences from the Tor
+Browser which will probably not come into play, but which you should be aware
+of. First, there is no Torbutton, which means that this browser lacks the coarse
+global controls of sensitive browser features that the Torbutton provides to the
+Tor Browser Bundle. In order to deal with this issue the default NoScript
+configuration is more restrictive.</p>
+
+<h5>Debian/Ubuntu users</h5>
+
+<p>If you are using Debian or Ubuntu, or probably any other up-to-date apt-based
+Linux distribution, there&rsquo;s another option which may you may prefer. In order to
+do this, one must add the Whonix apt package repository to your package sources,
+and install their tb-starter package from their stretch-testing repository.
+Don&rsquo;t worry, I&rsquo;ll take you through it step-by-step.</p>
+
+<p>Or, you can just run these commands, now that you know what they do:</p>
+
+<p><code>sh
+sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
+echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
+sudo apt-get update
+sudo apt-get install tb-starter
+</code></p>
