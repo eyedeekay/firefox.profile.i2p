@@ -16,7 +16,7 @@ TITLE="i2p Browser Profile Set-Up"
 ME=$(whoami)
 
 TOR=$(which torsocks)
-#EEP=$(which eepget)
+EEP=$(which eepget)
 
 if [ "x$ME" = "xroot" ]; then
     USER_HOME="/home/$SUDO_USER"
