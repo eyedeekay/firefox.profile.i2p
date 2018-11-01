@@ -55,8 +55,8 @@ run:
 	gtk-launch $(HOME)/.local/share/applications/i2pbrowser-firefox.desktop
 
 mslinks:
-	./mslink.sh --lnk-target 'firefox.exe -no-remote -profile %APPDATA%\Mozilla\Firefox\Profiles\firefox.profile.i2p' -o firefox.launchers/windows/i2pbrowser.lnk
-	./mslink.sh --lnk-target 'firefox.exe -no-remote -profile %APPDATA%\Mozilla\Firefox\Profiles\firefox.profile.i2p -private-window about:blank' -o firefox.launchers/windows/i2pbrowser-private.lnk
+	./mslink.sh --lnk-target '"C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -no-remote -profile %LOCALAPPDATA%\I2PBrowser-Profile\firefox.profile.i2p' -o firefox.launchers/windows/i2pbrowser.lnk
+	./mslink.sh --lnk-target '"C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -no-remote -profile %LOCALAPPDATA%\I2PBrowser-Profile\firefox.profile.i2p -private-window about:blank' -o firefox.launchers/windows/i2pbrowser-private.lnk
 
 recopy-linux:
 	rm -rf firefox.launchers/gnulinux/firefox.profile.i2p/

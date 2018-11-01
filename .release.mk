@@ -143,13 +143,13 @@ gothub-upload-current-windows:
 		--file i2pbrowser-windows-$(VERSION).zip
 	$(GOTHUB_BIN) upload \
 		--tag current \
-		--label "Windows .msi installer" \
+		--label "Windows .msi installer x64" \
 		--name i2pbrowser-firefox-$(VERSION)_x64.msi \
 		--replace \
 		--file i2pbrowser-firefox-$(VERSION)_x64.msi
 	$(GOTHUB_BIN) upload \
 		--tag current \
-		--label "Windows .msi installer" \
+		--label "Windows .msi installer x86" \
 		--name i2pbrowser-firefox-$(VERSION)_x86.msi \
 		--replace \
 		--file i2pbrowser-firefox-$(VERSION)_x86.msi
@@ -176,6 +176,8 @@ current-release: gothub-upload-current
 
 bare-profile:
 	zip i2pbrowser-profile-update.zip -r firefox.profile.i2p
+	sha256sum i2pbrowser-profile-update.zip
+	#md5sum i2pbrowser-profile-update.zip
 
 upload-update:
 	$(GOTHUB_BIN) upload \
