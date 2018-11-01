@@ -12,7 +12,7 @@ GOTHUB_BIN=$(GOPATH)/bin/gothub
 VERSION=0.01
 
 echo:
-	@echo "USAGE for this makefile here."
+	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
 
 include config.mk
 include .release.mk
@@ -54,10 +54,6 @@ reinstall: remove install
 run:
 	gtk-launch $(HOME)/.local/share/applications/i2pbrowser-firefox.desktop
 
-mslinks:
-	./mslink.sh --lnk-target '"C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -no-remote -profile %LOCALAPPDATA%\I2PBrowser-Profile\firefox.profile.i2p' -o firefox.launchers/windows/i2pbrowser.lnk
-	./mslink.sh --lnk-target '"C:\Program Files (x86)\Mozilla Firefox\firefox.exe" -no-remote -profile %LOCALAPPDATA%\I2PBrowser-Profile\firefox.profile.i2p -private-window about:blank' -o firefox.launchers/windows/i2pbrowser-private.lnk
-
 recopy-linux:
 	rm -rf firefox.launchers/gnulinux/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/gnulinux/firefox.profile.i2p/
@@ -75,7 +71,7 @@ recopy-windows:
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
 	cp WINDOWS.md firefox.launchers/windows/README.md
 
-windows: recopy-windows mslinks win64 win32
+windows: recopy-windows win64 win32
 
 win64:
 	$(CREATE_MSI) \
@@ -86,8 +82,8 @@ win64:
 		-m eyedeekay \
 		-a x64 \
 		-u ${MS_UUID} \
-		-e ${PWD}/firefox.launchers/windows/i2pbrowser.lnk \
-		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.lnk \
+		-e ${PWD}/firefox.launchers/windows/i2pbrowser.bat \
+		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.bat \
 		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
 		-l
 	cp ${PWD}/i2pbrowser-firefox-$(VERSION)_x64.msi ${PWD}/i2pbrowser-firefox_x64.msi
@@ -105,8 +101,8 @@ win32:
 		-m eyedeekay \
 		-a x86 \
 		-u ${MS_UUID} \
-		-e ${PWD}/firefox.launchers/windows/i2pbrowser.lnk \
-		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.lnk \
+		-e ${PWD}/firefox.launchers/windows/i2pbrowser.bat \
+		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.bat \
 		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
 		-l
 	cp ${PWD}/i2pbrowser-firefox-$(VERSION)_x86.msi ${PWD}/i2pbrowser-firefox_x86.msi
