@@ -8,6 +8,7 @@
 #                                                                              #
 ####                                                                        ####
 
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 TITLE="i2p Browser Profile Set-Up"
@@ -15,7 +16,7 @@ TITLE="i2p Browser Profile Set-Up"
 ME=$(whoami)
 
 TOR=$(which torsocks)
-EEP=$(which eepget)
+#EEP=$(which eepget)
 
 if [ "x$ME" = "xroot" ]; then
     USER_HOME="/home/$SUDO_USER"
@@ -26,9 +27,16 @@ fi
 if [ "x$EEP" = "x" ]; then
     UPDATE_URL=https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip
     DL_COMMAND="$TOR curl -L $UPDATE_URL --output i2pbrowser-profile-update.zip"
+    DL_COMMAND_SUM="$TOR curl -L $UPDATE_URL.sha256sum --output i2pbrowser-profile-update.zip.sha256sum"
+    DL_COMMAND_SIG="$TOR curl -L $UPDATE_URL.sha256sum.asc --output i2pbrowser-profile-update.zip.sha256sum.asc"
 else
-    UPDATE_URL="http://hxfygwhk7xrurl2q5ipz6bl3zouokcj32dkkwtf3y3xj5tol4dvq.b32.i2p/i2pbrowser-profile-update.zip"
+    if [ "x$EEP_UPDATE_PATH" = "x" ]; then
+        EEP_UPDATE_PATH="hxfygwhk7xrurl2q5ipz6bl3zouokcj32dkkwtf3y3xj5tol4dvq.b32.i2p"
+    fi
+    UPDATE_URL="http://$EEP_UPDATE_PATH/i2pbrowser-profile-update.zip"
     DL_COMMAND="$EEP -o i2pbrowser-profile-update.zip $UPDATE_URL"
+    DL_COMMAND_SUM="$EEP -o i2pbrowser-profile-update.zip.sha256sum $UPDATE_URL.sha256sum"
+    DL_COMMAND_SIG="$EEP -o i2pbrowser-profile-update.zip.sha256sum.asc $UPDATE_URL.sha256sum.asc"
 fi
 
 
@@ -71,7 +79,11 @@ update(){
         echo "$TOR detected, updates will be retrieved over Tor"
     fi
     $DL_COMMAND
+    $DL_COMMAND_SUM
+    $DL_COMMAND_SIG
     sleep 1
+    sha256sum -c i2pbrowser-profile-update.zip.sha256sum
+    gpg --keyid-format long --verify i2pbrowser-profile-update.zip.sha256sum.asc i2pbrowser-profile-update.zip.sha256sum
     unzip i2pbrowser-profile-update.zip
     rm -rf "$DIR/.firefox.profile.i2p.bak/" i2pbrowser-profile-update.zip
 }

@@ -71,41 +71,19 @@ recopy-windows:
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
 	cp WINDOWS.md firefox.launchers/windows/README.md
 
-windows: recopy-windows win64 win32
-
-win64:
+windows: recopy-windows
 	$(CREATE_MSI) \
 		${PWD}/firefox.launchers/windows \
-		${PWD}/i2pbrowser-firefox-$(VERSION)_x64.msi \
+		${PWD}/i2pbrowser-firefox-$(VERSION).msi \
 		-n 'I2PBrowser-Profile' \
 		-v $(VERSION) \
 		-m eyedeekay \
-		-a x64 \
 		-u ${MS_UUID} \
 		-e ${PWD}/firefox.launchers/windows/i2pbrowser.bat \
 		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.bat \
 		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
 		-l
-	cp ${PWD}/i2pbrowser-firefox-$(VERSION)_x64.msi ${PWD}/i2pbrowser-firefox_x64.msi
-
-win64-check:
-	msiinfo tables ${PWD}/i2pbrowser-firefox_x64.msi
-	msiinfo streams ${PWD}/i2pbrowser-firefox_x64.msi
-
-win32:
-	$(CREATE_MSI) \
-		${PWD}/firefox.launchers/windows \
-		${PWD}/i2pbrowser-firefox-$(VERSION)_x86.msi \
-		-n 'I2PBrowser-Profile' \
-		-v $(VERSION) \
-		-m eyedeekay \
-		-a x86 \
-		-u ${MS_UUID} \
-		-e ${PWD}/firefox.launchers/windows/i2pbrowser.bat \
-		-e ${PWD}/firefox.launchers/windows/i2pbrowser-private.bat \
-		-i ${PWD}/firefox.launchers/windows/ui2pbrowser_icon.ico \
-		-l
-	cp ${PWD}/i2pbrowser-firefox-$(VERSION)_x86.msi ${PWD}/i2pbrowser-firefox_x86.msi
+	cp ${PWD}/i2pbrowser-firefox-$(VERSION).msi ${PWD}/i2pbrowser-firefox.msi
 
 zip-bareprofile: clean-build
 	zip i2pbrowser-profile-$(VERSION).zip -r firefox.profile.i2p
