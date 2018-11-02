@@ -7,7 +7,12 @@
 !define VERSIONBUILD 1
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
+var FFINSTEXE
 
+!define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\firefox.exe"
+!define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\firefox.exe"
+
+!define RAM_NEEDED_FOR_64BIT 1887436800
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
@@ -64,13 +69,21 @@ Section
     createDirectory $INSTDIR
     SetOutPath $INSTDIR
     File firefox.launchers/windows/ui2pbrowser_icon.ico
+    Call ShouldInstall64Bit
+    ${If} $0 == 1
+        StrCpy $FFINSTEXE ${FFINSTEXE32}
+    ${Else}
+        StrCpy $FFINSTEXE ${FFINSTEXE64}
+    ${EndIf}
 
-    # Install the launcher scripts
+    # Install the launcher scripts: This will need to be it's own section, since
+    # now I think we just need to let the user select if the user is using a non
+    # default Firefox path.
     FileOpen $0 "$INSTDIR\i2pbrowser.bat" w
     FileWrite $0 "@echo off"
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$PROGRAMFILES\Mozilla Firefox\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
+    FileWrite $0 'start "" "$FFINSTEXE" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileWrite $0 pause
@@ -82,7 +95,7 @@ Section
     FileWrite $0 "@echo off"
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$PROGRAMFILES\Mozilla Firefox\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
+    FileWrite $0 'start "" "$FFINSTEXE" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileWrite $0 pause
