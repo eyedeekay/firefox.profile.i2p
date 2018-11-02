@@ -15,7 +15,7 @@ LicenseData "LICENSE"
 # This will be in the installer/uninstaller's title bar
 Name "${COMPANYNAME} - ${APPNAME}"
 Icon "firefox.launchers/windows/ui2pbrowser_icon.ico"
-OutFile "install-i2pbrowser.exe"
+OutFile "install-i2pbrowser-${VERSIONMAJOR}.${VERSIONMINOR}${VERSIONBUILD}.exe"
 
 # For removing Start Menu shortcut in Windows 7
 RequestExecutionLevel user
@@ -40,17 +40,19 @@ Section
     FileClose $0
 
     # Install the profile
-    SetOutPath $INSTDIR/firefox.profile.i2p
+    SetOutPath "$INSTDIR\firefox.profile.i2p"
     File firefox.launchers/windows/firefox.profile.i2p/user.js
     File firefox.launchers/windows/firefox.profile.i2p/bookmarks.html
 
     # Install the extensions
-    SetOutPath $INSTDIR/firefox.profile.i2p/extensions
+    SetOutPath "$INSTDIR\firefox.profile.i2p\extensions"
     File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
     File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
 
-    CreateShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\i2pbrowser.bat"
-    CreateShortCut "$SMPROGRAMS\Private Browsing-${APPNAME}.lnk" "$INSTDIR\i2pbrowser-private.bat"
+    CreateShortCut "$SMPROGRAMS\${APPNAME}.lnk" "cmd /c $INSTDIR\i2pbrowser.bat"
+    CreateShortCut "$SMPROGRAMS\Private Browsing-${APPNAME}.lnk" "cmd /c $INSTDIR\i2pbrowser-private.bat"
+    # CreateShortCut "$DESKTOP\${APPNAME}.lnk" "cmd /c $INSTDIR\i2pbrowser.bat"
+    # CreateShortCut "$DESKTOP\Private Browsing-${APPNAME}.lnk" "cmd /c $INSTDIR\i2pbrowser-private.bat"
 
     # create the uninstaller
     WriteUninstaller "$INSTDIR\uninstall-i2pbrowser.exe"
@@ -79,9 +81,11 @@ Section "uninstall"
     Delete $INSTDIR/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
 
     # second, remove the link from the start menu
-    Delete "$SMPROGRAMS\${APPNAME}.lnk"
+    Delete "$SMPROGRAMS\Uninstall-${APPNAME}.lnk"
     Delete "$SMPROGRAMS\Private Browsing-${APPNAME}.lnk"
     Delete "$SMPROGRAMS\Uninstall-${APPNAME}.lnk"
+    Delete "$DESKTOP\${APPNAME}.lnk"
+    Delete "$DESKTOP\Private Browsing-${APPNAME}.lnk"
 
 # uninstaller section end
 SectionEnd

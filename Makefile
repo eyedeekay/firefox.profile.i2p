@@ -20,7 +20,7 @@ include .release.mk
 all: guide windows linux zip
 
 clean:
-	rm -frv *.zip *.msi *.tar.gz *.dmg firefox.launchers/build
+	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
 
 clean-build:
 	rm -rfv firefox.launchers/build
@@ -73,6 +73,7 @@ recopy-windows:
 
 windows:
 	makensis i2pbrowser-installer.nsi
+	cp install-i2pbrowser-$(VERSION).exe install-i2pbrowser.exe
 
 wxs-windows: wix
 	make -s wxs-docker
