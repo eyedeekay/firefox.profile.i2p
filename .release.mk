@@ -88,7 +88,7 @@ gothub-upload-current-osx:
 gothub-upload-current-windows:
 	$(GOTHUB_BIN) upload \
 		--tag current \
-		--label "Windows Profile Alias" \
+		--label "Windows Profile Zip" \
 		--name i2pbrowser-windows.zip \
 		--replace \
 		--file i2pbrowser-windows-$(VERSION).zip

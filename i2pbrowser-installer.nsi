@@ -45,7 +45,7 @@ Section
     FileWrite $0 "@echo off"
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$PROGRAMFILES\Mozilla Firefox\firefox.exe" -no-remote -private -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
+    FileWrite $0 'start "" "$PROGRAMFILES\Mozilla Firefox\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileWrite $0 pause
