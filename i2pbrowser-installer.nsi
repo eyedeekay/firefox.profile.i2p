@@ -69,16 +69,16 @@ Section "uninstall"
     Delete "$INSTDIR\uninstall.exe"
 
     # Uninstall the launcher scripts
-    Delete $INSTDIR/i2pbrowser.bat
-    Delete $INSTDIR/i2pbrowser-private.bat
+    Delete $INSTDIR\i2pbrowser.bat
+    Delete $INSTDIR\i2pbrowser-private.bat
 
     # Uninstall the profile
-    Delete $INSTDIR/firefox.profile.i2p/user.js
-    Delete $INSTDIR/firefox.profile.i2p/bookmarks.html
+    Delete $INSTDIR\firefox.profile.i2p/user.js
+    Delete $INSTDIR\firefox.profile.i2p/bookmarks.html
 
     # Uninstall the extensions
-    Delete $INSTDIR/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
-    Delete $INSTDIR/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
+    Delete $INSTDIR\firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
+    Delete $INSTDIR\firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
 
     # second, remove the link from the start menu
     Delete "$SMPROGRAMS\Uninstall-${APPNAME}.lnk"
