@@ -1,40 +1,22 @@
 # firefox.profile.i2p
 
-The profile should be safe to use, and the Windows guide works if exectuted
-correctly on Windows 10. There is an easy, straightforward, and relatively
-foolproof way to automate the Windows installation process, but I can't test it
-until like, Wednesday.
+Much of this is ready for interested parties to test, but it's still just being
+tested and the rough edges are still being figured out. Use at your own risk.
 
-**DEFINITELY DON'T USE ANYTHING PRODUCED BY THE MAKEFILE YET. I WILL BE**
-**TRYING OUT THE MSI TRICK ON WEDNESDAY.**
+### Automatic Setup (Recommended, Windows) [Standalone guide](WINDOWS.md)
 
-### Manual Setup (Windows) [Standalone guide](WINDOWS.md)
+  0. Install the Firefox web browser. You can download it from
+    [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/).
+  1. Download the i2p Firefox profile installer, install-i2pbrowser.exe, from
+    [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/install-i2pbrowser.exe)
+    and run it.
+  2. To start Firefox with the i2p Browsing profile, click the shortcut to
+    "I2PBrowser-Launcher" or "Private Browsing-I2PBrowser-Launcher" from your
+    Start Menu or your Desktop.
 
-  0. Install Firefox ESR on your platform. [It can be obtained here](https://www.mozilla.org/en-US/firefox/organizations/)
-  ESR stands for Extended Support Release, and it's the most "stable" branch of
-  Firefox. If you already have Firefox ESR, you can safely skip this step.
-  1. Download the profile release bundle from here. It is a zip file, which
-  contains the profile we will be using with Firefox for our i2p-based browsing.
-  2. Right-click the i2pbrowser-profile-0.01.zip and unzip the the profile into your
-  Documents/Downloads folder by selecting "Extract All." You should be
-  extracting this directly into your "Downloads" Folder, where the zipped file
-  will create it's own subfolder automatically.
+### Run-From-Zip (Alternative, Windows)
 
-![Figure A: Extract All](images/extractall.png)
-
-  3. Go to your desktop, right click, and select "Create Shortcut." Where it
-  says "Type the location of the item:," Copy and paste the following line
-
-        "C:\Program Files (x86)/Mozilla Firefox/firefox.exe" -no-remote -profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
-
-Before:
-![Figure B: Create Shortcut](images/shortcut.png)
-
-After:
-![Figure C: Create Shortcut](images/shortcut.png)
-
-  4. Click "Done" and double-click your new shortcut. Type i2p-projekt.i2p into
-  the address bar to test your i2p connectivity.
+**WIP**
 
 ### Manual Setup (OSX) [Standalone guide](MACOSX.md)
 

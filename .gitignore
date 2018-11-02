@@ -6,3 +6,4 @@ firefox.launchers/build/
 *.tar.gz
 *.dmg
 *.exe
+*.sha256sum
