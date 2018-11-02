@@ -31,7 +31,7 @@ if [ "x$EEP" = "x" ]; then
     DL_COMMAND_SIG="$TOR curl -L $UPDATE_URL.sha256sum.asc --output i2pbrowser-profile-update.zip.sha256sum.asc"
 else
     if [ "x$EEP_UPDATE_PATH" = "x" ]; then
-        EEP_UPDATE_PATH="hxfygwhk7xrurl2q5ipz6bl3zouokcj32dkkwtf3y3xj5tol4dvq.b32.i2p"
+        EEP_UPDATE_PATH="ihcrgsnj2vh5zb7lvatwko3nwm3kiltcy7n3yu7zitgijrbl6rhq.b32.i2p"
     fi
     UPDATE_URL="http://$EEP_UPDATE_PATH/i2pbrowser-profile-update.zip"
     DL_COMMAND="$EEP -o i2pbrowser-profile-update.zip $UPDATE_URL"

@@ -1,0 +1,35 @@
+FROM ubuntu:16.04
+RUN apt-get update && apt-get dist-upgrade -y
+RUN apt-get install -y \
+    ca-certificates \
+    gcab \
+    gir1.2-libmsi* \
+    libmsi* \
+    libgcab* \
+    libqxp* \
+    make \
+    msitools \
+    wget \
+    python-dev \
+    python-pip \
+    python-gi \
+    python-gobject \
+    gir1.2-glib-2.0 \
+    gir1.2-libmsi0 \
+    gir1.2-libgcab-1.0
+RUN wget https://github.com/sk1project/wixpy/releases/download/v0.1/python-wix.py-0.1_ubuntu_16.04_amd64.deb -O python-wix.py-0.1.deb
+RUN apt-get install -y ./python-wix.py-0.1.deb
+RUN pip install --upgrade pip
+#RUN pip install --upgrade cabarchive wix.py cffi \
+#    https://github.com/mindcollapse/libmsi-python/archive/master.zip \
+#    https://github.com/sk1project/wixpy/archive/master.zip
+RUN pip install --upgrade cabarchive wix.py cffi
+RUN pip install --upgrade https://github.com/sk1project/wixpy/archive/master.zip
+RUN adduser --home /home/profbuild --disabled-password --gecos 'profbuild,,,,' profbuild
+COPY . /home/profbuild/working
+RUN chown -R profbuild:profbuild /home/profbuild/working
+USER profbuild
+WORKDIR /home/profbuild/working
+RUN make wix && wix.py --xml_only ./wixpy.json
+CMD cat *.wxs
+

@@ -1,7 +1,8 @@
-2018/10/31 05:39:05 SAM Bridge connection established.
-2018/10/31 05:39:05 Destination keys generated, tunnel name: i2pbrowser-updates
-2018/10/31 05:39:05 Serving ./www on HTTP port: 8100
-	 and on hxfygwhk7xrurl2q5ipz6bl3zouokcj32dkkwtf3y3xj5tol4dvq.b32.i2p
-2018/10/31 05:39:25 SAM stream session established.
-2018/10/31 05:39:25 Starting Listener.
-2018/10/31 05:39:25 SAM Listener created, hxfygwhk7xrurl2q5ipz6bl3zouokcj32dkkwtf3y3xj5tol4dvq.b32.i2p
+2018/11/01 03:45:51 Found Labels: []
+2018/11/01 03:45:51 SAM Bridge connection established.
+2018/11/01 03:45:51 Destination keys generated, tunnel name: eephttpd
+2018/11/01 03:45:51 Serving ./www on HTTP port: 7880	 and on 
+ihcrgsnj2vh5zb7lvatwko3nwm3kiltcy7n3yu7zitgijrbl6rhq.b32.i2p
+2018/11/01 03:46:11 SAM stream session established.
+2018/11/01 03:46:11 Starting Listener.
+2018/11/01 03:46:11 SAM Listener created, ihcrgsnj2vh5zb7lvatwko3nwm3kiltcy7n3yu7zitgijrbl6rhq.b32.i2p

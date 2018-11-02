@@ -5,3 +5,4 @@ firefox.launchers/build/
 *.msi
 *.tar.gz
 *.dmg
+*.exe

@@ -133,16 +133,23 @@ gothub-upload-current-windows:
 		--file i2pbrowser-windows.zip
 	$(GOTHUB_BIN) upload \
 		--tag current \
-		--label "Windows .msi installer" \
-		--name i2pbrowser-firefox-$(VERSION).msi \
+		--label "Windows Installer" \
+		--name install-i2pbrowser.exe \
 		--replace \
-		--file i2pbrowser-firefox-$(VERSION).msi
-	$(GOTHUB_BIN) upload \
-		--tag current \
-		--label "Windows .msi installer Alias" \
-		--name i2pbrowser-firefox.msi \
-		--replace \
-		--file i2pbrowser-firefox.msi
+		--file install-i2pbrowser.exe
+
+#	$(GOTHUB_BIN) upload \
+#		--tag current \
+#		--label "Windows .msi installer" \
+#		--name i2pbrowser-firefox-$(VERSION).msi \
+#		--replace \
+#		--file i2pbrowser-firefox-$(VERSION).msi
+#	$(GOTHUB_BIN) upload \
+#		--tag current \
+#		--label "Windows .msi installer Alias" \
+#		--name i2pbrowser-firefox.msi \
+#		--replace \
+#		--file i2pbrowser-firefox.msi
 
 gothub-upload-current: gothub-upload-current-windows gothub-upload-current-osx gothub-upload-current-linux upload-update
 
