@@ -71,9 +71,13 @@ Section
     File firefox.launchers/windows/ui2pbrowser_icon.ico
     Call ShouldInstall64Bit
     ${If} $0 == 1
-        StrCpy $FFINSTEXE ${FFINSTEXE32}
+        IfFileExists "${FFINSTEXE32}" 0 +2
+            StrCpy $FFINSTEXE "${FFINSTEXE32}"
+            StrCpy $FFINSTEXE "NOTFOUND"
     ${Else}
-        StrCpy $FFINSTEXE ${FFINSTEXE64}
+        IfFileExists "${FFINSTEXE32}" 0 +2
+            StrCpy $FFINSTEXE "${FFINSTEXE64}"
+            StrCpy $FFINSTEXE "NOTFOUND"
     ${EndIf}
 
     # Install the launcher scripts: This will need to be it's own section, since
