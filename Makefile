@@ -172,3 +172,6 @@ guide:
 		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
 		tee README.md
 
+license:
+	cat LICENSE LICENSE.tor HTTPS-Everywhere.txt NoScript.txt | tee LICENSE.txt
+	sed -i 's|$$|\r|g' LICENSE.txt

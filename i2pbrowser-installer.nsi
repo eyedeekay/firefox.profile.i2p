@@ -9,8 +9,8 @@
 # It is possible to use "mailto:" links in here to open the email client
 var FFINSTEXE
 
-!define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\firefox.exe"
-!define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\firefox.exe"
+!define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
+!define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
 !define RAM_NEEDED_FOR_64BIT 1887436800
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
@@ -27,6 +27,16 @@ RequestExecutionLevel admin
 
 !include LogicLib.nsh
 !include x64.nsh
+
+PageEx license
+    licensetext "MIT License"
+    licensedata "LICENSE.txt"
+PageExEnd
+PageEx directory
+    dirtext "Select the location of your Firefox installation."
+    dirvar $FFINSTEXE
+PageExEnd
+Page instfiles
 
 ; Returns 1 in $0 if we should install the 64-bit build, or 0 if not.
 ; The requirements for selecting the 64-bit build to install are:
@@ -62,23 +72,26 @@ Function ShouldInstall64Bit
     StrCpy $0 1
 FunctionEnd
 
+Function .onInit
+    Call ShouldInstall64Bit
+    ${If} $0 == 1
+        IfFileExists "${FFINSTEXE32}/firefox.exe" 0 +2
+            StrCpy $FFINSTEXE "${FFINSTEXE32}"
+            StrCpy $FFINSTEXE "NOTFOUND"
+    ${Else}
+        IfFileExists "${FFINSTEXE32}/firefox.exe" 0 +2
+            StrCpy $FFINSTEXE "${FFINSTEXE64}"
+            StrCpy $FFINSTEXE "NOTFOUND"
+    ${EndIf}
+FunctionEnd
+
 # start default section
-Section
+Section Install
 
     # set the installation directory as the destination for the following actions
     createDirectory $INSTDIR
     SetOutPath $INSTDIR
     File firefox.launchers/windows/ui2pbrowser_icon.ico
-    Call ShouldInstall64Bit
-    ${If} $0 == 1
-        IfFileExists "${FFINSTEXE32}" 0 +2
-            StrCpy $FFINSTEXE "${FFINSTEXE32}"
-            StrCpy $FFINSTEXE "NOTFOUND"
-    ${Else}
-        IfFileExists "${FFINSTEXE32}" 0 +2
-            StrCpy $FFINSTEXE "${FFINSTEXE64}"
-            StrCpy $FFINSTEXE "NOTFOUND"
-    ${EndIf}
 
     # Install the launcher scripts: This will need to be it's own section, since
     # now I think we just need to let the user select if the user is using a non
@@ -87,7 +100,7 @@ Section
     FileWrite $0 "@echo off"
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$FFINSTEXE" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
+    FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileWrite $0 pause
@@ -99,7 +112,7 @@ Section
     FileWrite $0 "@echo off"
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$FFINSTEXE" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
+    FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileWrite $0 pause
