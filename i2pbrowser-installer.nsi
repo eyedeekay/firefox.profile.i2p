@@ -75,9 +75,13 @@ FunctionEnd
 Function .onInit
     Call ShouldInstall64Bit
     ${If} $0 == 1
-        StrCpy $FFINSTEXE "${FFINSTEXE32}"
+        ${If} ${FileExists} "${FFINSTEXE64}/firefox.exe"
+            StrCpy $FFINSTEXE "${FFINSTEXE64}"
+        ${EndIf}
     ${Else}
-        StrCpy $FFINSTEXE "${FFINSTEXE64}"
+        ${If} ${FileExists} "${FFINSTEXE32}/firefox.exe"
+            StrCpy $FFINSTEXE "${FFINSTEXE32}"
+        ${EndIf}
     ${EndIf}
 FunctionEnd
 
