@@ -173,5 +173,5 @@ guide:
 		tee README.md
 
 license:
-	cat LICENSE LICENSE.tor HTTPS-Everywhere.txt NoScript.txt | tee LICENSE.txt
+	cat LICENSE.index LICENSE MPL2.txt LICENSE.tor HTTPS-Everywhere.txt NoScript.txt | tee LICENSE.txt
 	sed -i 's|$$|\r|g' LICENSE.txt
