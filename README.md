@@ -16,7 +16,14 @@ tested and the rough edges are still being figured out. Use at your own risk.
 
 ### Run-From-Zip (Alternative, Windows)
 
-**WIP**
+  0. Install the Firefox web browser. You can download it from
+    [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/). The
+    browser *must* be installed in a default location selected by the Firefox
+    installer for this to work.
+  1. Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.01.zip, from
+    [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.01.zip)
+  2. To start Firefox with the i2p Browsing profile, double-click the
+    i2pbrower.bat script.
 
 ### Manual Setup (OSX) [Standalone guide](MACOSX.md)
 
