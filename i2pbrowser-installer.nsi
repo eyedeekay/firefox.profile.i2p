@@ -12,7 +12,8 @@ var FFINSTEXE
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
-!define RAM_NEEDED_FOR_64BIT 1887436800
+!define RAM_NEEDED_FOR_64BIT 0x80000000
+
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
