@@ -17,7 +17,7 @@ echo:
 include config.mk
 include .release.mk
 
-all: guide windows linux zip
+all: lic guide windows linux zip
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build

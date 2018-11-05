@@ -16,18 +16,21 @@ var FFINSTEXE
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 
-!include "MUI2.nsh"
 
-!insertmacro MUI_PAGE_WELCOME
-!define MUI_LICENSEPAGE_CHECKBOX
-!insertmacro MUI_PAGE_LICENSE   "LICENSE.txt"
-!define MUI_LICENSEPAGE_CHECKBOX
-!insertmacro MUI_PAGE_LICENSE   license/MPL2.txt
-!insertmacro MUI_PAGE_INSTFILES
-!insertmacro MUI_PAGE_FINISH
+;
+; left here in case we should need to display multiple licenses after all.
+;
+;!include "MUI2.nsh"
+;!insertmacro MUI_PAGE_WELCOME
+;!define MUI_LICENSEPAGE_CHECKBOX
+;!insertmacro MUI_PAGE_LICENSE   "LICENSE.txt"
+;!define MUI_LICENSEPAGE_CHECKBOX
+;!insertmacro MUI_PAGE_LICENSE   license/MPL2.txt
+;!insertmacro MUI_PAGE_INSTFILES
+;!insertmacro MUI_PAGE_FINISH
 
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
-LicenseData "LICENSE"
+LicenseData "LICENSE.txt"
 # This will be in the installer/uninstaller's title bar
 Name "${COMPANYNAME} - ${APPNAME}"
 Icon "firefox.launchers/windows/ui2pbrowser_icon.ico"
@@ -71,7 +74,6 @@ Section Install
     createDirectory $INSTDIR
     SetOutPath $INSTDIR
     File firefox.launchers/windows/ui2pbrowser_icon.ico
-    File LICENSE.txt
 
     # Install the launcher scripts: This will need to be it's own section, since
     # now I think we just need to let the user select if the user is using a non
@@ -99,6 +101,15 @@ Section Install
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileClose $0
+
+    # Copy the licenses
+    createDirectory $INSTDIR/license
+    SetOutPath $INSTDIR/license
+    File LICENSE.txt
+    File license/HTTPS-Everywhere.txt
+    File license/LICENSE.tor
+    File license/MPL2.txt
+    File license/NoScript.txt
 
     # Install the profile
     createDirectory "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
@@ -134,6 +145,11 @@ Section "uninstall"
     Delete $INSTDIR\i2pbrowser.bat
     Delete $INSTDIR\i2pbrowser-private.bat
     Delete $INSTDIR\ui2pbrowser_icon.ico
+    Delete $INSTDIR\LICENSE.txt
+    Delete $INSTDIR\license/HTTPS-Everywhere.txt
+    Delete $INSTDIR\license/LICENSE.tor
+    Delete $INSTDIR\license/MPL2.txt
+    Delete $INSTDIR\license/NoScript.txt
 
     # Uninstall the profile
     Delete $LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\user.js
