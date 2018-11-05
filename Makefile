@@ -140,6 +140,7 @@ zip-bareprofile: clean-build
 zip-windows: clean-build
 	mkdir -p firefox.launchers/build/i2pbrowser-windows
 	cp -rfv firefox.launchers/windows/  firefox.launchers/build/i2pbrowser-windows/i2pbrowser-windows/
+	cp LICENSE_ALL firefox.launchers/windows/
 	cd firefox.launchers/build/ && \
 		zip i2pbrowser-windows-$(VERSION).zip -r i2pbrowser-windows && \
 		mv i2pbrowser-windows-$(VERSION).zip $(PWD)/i2pbrowser-windows-$(VERSION).zip
@@ -149,6 +150,7 @@ zip-windows: clean-build
 zip-osx: clean-build
 	mkdir -p firefox.launchers/build/i2pbrowser-osx
 	cp -rfv firefox.launchers/osx/  firefox.launchers/build/i2pbrowser-osx/i2pbrowser-osx/
+	cp LICENSE_ALL firefox.launchers/windows/
 	cd firefox.launchers/build/ && \
 		zip i2pbrowser-osx-$(VERSION).zip -r i2pbrowser-osx && \
 		mv i2pbrowser-osx-$(VERSION).zip $(PWD)/i2pbrowser-osx-$(VERSION).zip
@@ -158,6 +160,7 @@ zip-osx: clean-build
 zip-gnulinux: clean-build
 	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
 	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
+	cp LICENSE_ALL firefox.launchers/windows/
 	cd firefox.launchers/build/ && \
 		zip i2pbrowser-gnulinux-$(VERSION).zip -r i2pbrowser-gnulinux && \
 		mv i2pbrowser-gnulinux-$(VERSION).zip $(PWD)/i2pbrowser-gnulinux-$(VERSION).zip
@@ -172,6 +175,6 @@ guide:
 		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
 		tee README.md
 
-license:
-	cat LICENSE.index LICENSE MPL2.txt LICENSE.tor HTTPS-Everywhere.txt NoScript.txt | tee LICENSE.txt
-	sed -i 's|$$|\r|g' LICENSE.txt
+lic:
+	cat license/LICENSE.index LICENSE license/MPL2.txt license/LICENSE.tor license/HTTPS-Everywhere.txt license/NoScript.txt | tee LICENSE_ALL
+	sed 's|$$|\r|g' LICENSE_ALL | tee LICENSE.txt

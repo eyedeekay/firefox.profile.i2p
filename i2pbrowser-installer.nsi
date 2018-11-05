@@ -16,6 +16,16 @@ var FFINSTEXE
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 
+!include "MUI2.nsh"
+
+!insertmacro MUI_PAGE_WELCOME
+!define MUI_LICENSEPAGE_CHECKBOX
+!insertmacro MUI_PAGE_LICENSE   "LICENSE.txt"
+!define MUI_LICENSEPAGE_CHECKBOX
+!insertmacro MUI_PAGE_LICENSE   license/MPL2.txt
+!insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
+
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
 LicenseData "LICENSE"
 # This will be in the installer/uninstaller's title bar
@@ -61,6 +71,7 @@ Section Install
     createDirectory $INSTDIR
     SetOutPath $INSTDIR
     File firefox.launchers/windows/ui2pbrowser_icon.ico
+    File LICENSE.txt
 
     # Install the launcher scripts: This will need to be it's own section, since
     # now I think we just need to let the user select if the user is using a non
