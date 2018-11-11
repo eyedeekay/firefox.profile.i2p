@@ -85,7 +85,7 @@ Section Install
     FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 pause
+    FileWrite $0 exit
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileClose $0
@@ -97,7 +97,7 @@ Section Install
     FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    FileWrite $0 pause
+    FileWrite $0 exit
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileClose $0
