@@ -178,3 +178,13 @@ guide:
 lic:
 	cat license/LICENSE.index LICENSE license/MPL2.txt license/LICENSE.tor license/HTTPS-Everywhere.txt license/NoScript.txt | tee LICENSE_ALL
 	sed 's|$$|\r|g' LICENSE_ALL | tee LICENSE.txt
+
+inetc-plugin:
+	/usr/bin/wget -c https://nsis.sourceforge.io/mediawiki/images/c/c9/Inetc.zip
+	mkdir -p inetc
+	cd inetc && unzip ../Inetc.zip
+
+install-plugin:
+	cp -v inetc/Plugins/amd64-unicode/INetC.dll /usr/share/nsis/Plugins/amd64-unicode/
+	cp -v inetc/Plugins/x86-ansi/INetC.dll /usr/share/nsis/Plugins/x86-ansi/
+	cp -v inetc/Plugins/x86-unicode/INetC.dll /usr/share/nsis/Plugins/x86-unicode/

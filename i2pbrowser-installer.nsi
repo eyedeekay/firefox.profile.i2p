@@ -5,10 +5,9 @@
 !define VERSIONMAJOR 0
 !define VERSIONMINOR 0
 !define VERSIONBUILD 1
-# These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
-# It is possible to use "mailto:" links in here to open the email client
 var FFINSTEXE
 
+!define FFINSTEXE "NOT_SET"
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
@@ -36,7 +35,6 @@ Name "${COMPANYNAME} - ${APPNAME}"
 Icon "firefox.launchers/windows/ui2pbrowser_icon.ico"
 OutFile "install-i2pbrowser-${VERSIONMAJOR}.${VERSIONMINOR}${VERSIONBUILD}.exe"
 
-# For removing Start Menu shortcut in Windows 7
 RequestExecutionLevel admin
 
 !include LogicLib.nsh
@@ -49,6 +47,7 @@ PageExEnd
 PageEx directory
     dirtext "Select the location of your Firefox installation."
     dirvar $FFINSTEXE
+    pagecallbacks firefoxDetect
 PageExEnd
 Page instfiles
 
@@ -65,6 +64,12 @@ Function .onInit
             StrCpy $FFINSTEXE "${FFINSTEXE32}"
         ${EndIf}
     ${EndIf}
+FunctionEnd
+
+Function firefoxDetect
+${If} ${FileExists} "${FFINSTEXE}/firefox.exe"
+    abort
+${EndIf}
 FunctionEnd
 
 # start default section
