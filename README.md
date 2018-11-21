@@ -5,8 +5,8 @@ tested and the rough edges are still being figured out. Use at your own risk.
 
 For now, the testing release page is here: [Github Releases](https://github.com/eyedeekay/firefox.profile.i2p/releases/tag/current)
 where the Windows installer has been made available. The "current" release will
-always track the newest working version. Sometime in early 2019, this will be
-integrated with the i2p installer on Windows.
+always track the newest working version. Numbered releases are the latest
+version that I'm testing.
 
 ## What it is
 
@@ -33,8 +33,8 @@ Everywhere.
     [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/). The
     browser *must* be installed in a default location selected by the Firefox
     installer for this to work.
-  1. Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.01.zip, from
-    [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.01.zip)
+  1. Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.02a.zip, from
+    [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.02a.zip)
   2. To start Firefox with the i2p Browsing profile, double-click the
     i2pbrower.bat script.
 
@@ -51,8 +51,8 @@ Everywhere.
 *installation.*
 
   0. Install Firefox-ESR via the method preferred by your Linux distribution.
-  1. Download the i2pbrowser-gnulinux-0.01.zip from here. If you prefer, an identical
-  i2pbrowser-gnulinux-0.01.tar.gz is also available.
+  1. Download the i2pbrowser-gnulinux-0.02a.zip from here. If you prefer, an identical
+  i2pbrowser-gnulinux-0.02a.tar.gz is also available.
   2. Extract it.
   3. Run ./install.sh install from within the extracted folder. Alternatively,
   run ./install.sh run to run entirely from within the current directory.
@@ -60,8 +60,8 @@ Everywhere.
 If you want to just copy-paste some commands into your terminal, you could:
 
 ```sh
-curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.01.tar.gz --output i2pbrowser-gnulinux-0.01.tar.gz
-tar xvzf i2pbrowser-gnulinux-0.01.tar.gz
+curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.02a.tar.gz --output i2pbrowser-gnulinux-0.02a.tar.gz
+tar xvzf i2pbrowser-gnulinux-0.02a.tar.gz
 cd i2pbrowser-gnulinux
 ./install.sh install
 ```

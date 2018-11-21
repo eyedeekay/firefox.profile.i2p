@@ -6,15 +6,29 @@
 !define VERSIONMINOR 0
 !define VERSIONBUILD 1
 var FFINSTEXE
+var I2PINSTEXE
 
 !define FFINSTEXE
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
+!define I2PINSTEXE
+!define I2PINSTEXE32 "$PROGRAMFILES32\i2p\"
+!define I2PINSTEXE64 "$PROGRAMFILES64\i2p\"
+
 !define RAM_NEEDED_FOR_64BIT 0x80000000
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 
+!include "MUI2.nsh"
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "Start a shortcut"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+!insertmacro MUI_PAGE_FINISH
+
+Function LaunchLink
+  ExecShell "" "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
+FunctionEnd
 
 ;
 ; left here in case we should need to display multiple licenses after all.
@@ -47,9 +61,14 @@ PageExEnd
 PageEx directory
     dirtext "Select the location of your Firefox installation."
     dirvar $FFINSTEXE
-    PageCallbacks firefoxDetect firefoxDetect firefoxDetect
+    PageCallbacks firefoxDetect
 PageExEnd
 Page instfiles
+;PageEx directory
+    ;dirtext "Select the location of your i2p installation."
+    ;dirvar $I2PINSTEXE
+    ;PageCallbacks routerDetect
+;PageExEnd
 
 !include i2pbrowser-mozcompat.nsi
 
@@ -61,13 +80,25 @@ Function .onInit
         ${EndIf}
     ${Else}
         ${If} ${FileExists} "${FFINSTEXE32}/firefox.exe"
-            StrCpy $FFINSTEXE "${FFINSTEXE32}"
+            StrCpy $I2PINSTEXE "${FFINSTEXE32}"
         ${EndIf}
+    ${EndIf}
+    ${If} ${FileExists} "${I2PINSTEXE32}/i2p.exe"
+        StrCpy $I2PINSTEXE "${I2PINSTEXE64}"
+    ${EndIf}
+    ${If} ${FileExists} "${I2PINSTEXE64}/i2p.exe"
+        StrCpy $I2PINSTEXE "${I2PINSTEXE64}"
     ${EndIf}
 FunctionEnd
 
 Function firefoxDetect
 ${If} ${FileExists} "$FFINSTEXE/firefox.exe"
+    Abort
+${EndIf}
+FunctionEnd
+
+Function routerDetect
+${If} ${FileExists} "${I2PINSTEXE}/i2p.exe"
     Abort
 ${EndIf}
 FunctionEnd
@@ -151,10 +182,10 @@ Section "uninstall"
     Delete $INSTDIR\i2pbrowser-private.bat
     Delete $INSTDIR\ui2pbrowser_icon.ico
     Delete $INSTDIR\LICENSE.txt
-    Delete $INSTDIR\license/HTTPS-Everywhere.txt
-    Delete $INSTDIR\license/LICENSE.tor
-    Delete $INSTDIR\license/MPL2.txt
-    Delete $INSTDIR\license/NoScript.txt
+    Delete $INSTDIR\license\HTTPS-Everywhere.txt
+    Delete $INSTDIR\license\LICENSE.tor
+    Delete $INSTDIR\license\MPL2.txt
+    Delete $INSTDIR\license\NoScript.txt
 
     # Uninstall the profile
     Delete $LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\user.js
@@ -165,8 +196,8 @@ Section "uninstall"
     Delete "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\https-everywhere-eff@eff.org.xpi"
 
     # Remove shortcuts and folders
-    Delete "$SMPROGRAMS\Uninstall-${APPNAME}.lnk"
-    Delete "$SMPROGRAMS\Private Browsing-${APPNAME}.lnk"
+    Delete "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
+    Delete "$SMPROGRAMS\${APPNAME}\Private Browsing-${APPNAME}.lnk"
     Delete "$SMPROGRAMS\Uninstall-${APPNAME}.lnk"
     Delete "$DESKTOP\${APPNAME}.lnk"
     Delete "$DESKTOP\Private Browsing-${APPNAME}.lnk"

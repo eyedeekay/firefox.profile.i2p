@@ -52,7 +52,7 @@ gothub-upload-version-windows:
 #		--replace \
 #		--file i2pbrowser-firefox-$(VERSION).msi
 
-gothub-upload-version: gothub-upload-version-windows gothub-upload-version-osx gothub-upload-version-linux
+gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux
 
 gothub-current: gothub-delete-current
 	$(GOTHUB_BIN) release \

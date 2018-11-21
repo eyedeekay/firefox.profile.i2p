@@ -9,7 +9,7 @@ GOPATH=$(shell pwd)/.go
 
 GOTHUB_BIN=$(GOPATH)/bin/gothub
 
-VERSION=0.01
+VERSION=0.02a
 
 echo:
 	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
@@ -73,6 +73,7 @@ recopy-windows:
 
 windows:
 	makensis i2pbrowser-installer.nsi
+	mv install-i2pbrowser-0.01.exe install-i2pbrowser-$(VERSION).exe
 	cp install-i2pbrowser-$(VERSION).exe install-i2pbrowser.exe
 
 wxs-windows: wix
