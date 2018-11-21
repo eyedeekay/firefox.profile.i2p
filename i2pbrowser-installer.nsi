@@ -7,7 +7,7 @@
 !define VERSIONBUILD 1
 var FFINSTEXE
 
-!define FFINSTEXE "NOT_SET"
+!define FFINSTEXE
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
@@ -47,7 +47,7 @@ PageExEnd
 PageEx directory
     dirtext "Select the location of your Firefox installation."
     dirvar $FFINSTEXE
-    pagecallbacks firefoxDetect
+    PageCallbacks firefoxDetect firefoxDetect firefoxDetect
 PageExEnd
 Page instfiles
 
@@ -67,8 +67,8 @@ Function .onInit
 FunctionEnd
 
 Function firefoxDetect
-${If} ${FileExists} "${FFINSTEXE}/firefox.exe"
-    abort
+${If} ${FileExists} "$FFINSTEXE/firefox.exe"
+    Abort
 ${EndIf}
 FunctionEnd
 
