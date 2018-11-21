@@ -1,48 +1,46 @@
 <h1>firefox.profile.i2p</h1>
 
-<p>The profile should be safe to use, and the Windows guide works if exectuted
-correctly on Windows 10. There is an easy, straightforward, and relatively
-foolproof way to automate the Windows installation process, but I can&rsquo;t test it
-until like, Wednesday.</p>
+<p>Much of this is ready for interested parties to test, but it&rsquo;s still just being
+tested and the rough edges are still being figured out. Use at your own risk.</p>
 
-<p><strong>DEFINITELY DON&rsquo;T USE ANYTHING PRODUCED BY THE MAKEFILE YET. I WILL BE</strong>
-<strong>TRYING OUT THE MSI TRICK ON WEDNESDAY.</strong></p>
+<p>For now, the testing release page is here: <a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/tag/current">Github Releases</a>
+where the Windows installer has been made available. The &ldquo;current&rdquo; release will
+always track the newest working version. Sometime in early 2019, this will be
+integrated with the i2p installer on Windows.</p>
 
-<h3>Manual Setup (Windows) <a href="WINDOWS.md">Standalone guide</a></h3>
+<h2>What it is</h2>
+
+<p>This is a profile for Firefox, pre-configured to use i2p, with an accompanying
+launcher for easy use. It also comes pre-configured to disable certain features
+that may weaken the anonymity that i2p provides, and with NoScript and HTTPS
+Everywhere.</p>
+
+<h3>Automatic Setup (Recommended, Windows) <a href="WINDOWS.md">Standalone guide</a></h3>
 
 <ol>
-<li>Install Firefox ESR on your platform. <a href="https://www.mozilla.org/en-US/firefox/organizations/">It can be obtained here</a>
-ESR stands for Extended Support Release, and it&rsquo;s the most &ldquo;stable&rdquo; branch of
-Firefox. If you already have Firefox ESR, you can safely skip this step.</li>
-<li>Download the profile release bundle from here. It is a zip file, which
-contains the profile we will be using with Firefox for our i2p-based browsing.</li>
-<li>Right-click the i2pbrowser-profile-0.01.zip and unzip the the profile into your
-Documents/Downloads folder by selecting &ldquo;Extract All.&rdquo; You should be
-extracting this directly into your &ldquo;Downloads&rdquo; Folder, where the zipped file
-will create it&rsquo;s own subfolder automatically.</li>
+<li>Install the Firefox web browser. You can download it from
+<a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla&rsquo;s web site</a>.</li>
+<li>Download the i2p Firefox profile installer, install-i2pbrowser.exe, from
+<a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/install-i2pbrowser.exe">This releases page</a>
+and run it. If Firefox was not detected in the default location, then you
+will be offered a menu to select it in a custom location.</li>
+<li>To start Firefox with the i2p Browsing profile, click the shortcut to
+&ldquo;I2PBrowser-Launcher&rdquo; or &ldquo;Private Browsing-I2PBrowser-Launcher&rdquo; from your
+Start Menu or your Desktop.</li>
 </ol>
 
 
-<p><img src="images/extractall.png" alt="Figure A: Extract All" /></p>
+<h3>Run-From-Zip (Alternative, Windows)</h3>
 
 <ol>
-<li><p>Go to your desktop, right click, and select &ldquo;Create Shortcut.&rdquo; Where it
-says &ldquo;Type the location of the item:,&rdquo; Copy and paste the following line</p>
-
-<pre><code>  "C:\Program Files (x86)/Mozilla Firefox/firefox.exe" -no-remote -profile %CSIDL_DEFAULT_DOWNLOADS%/firefox.profile.i2p
-</code></pre></li>
-</ol>
-
-
-<p>Before:
-<img src="images/shortcut.png" alt="Figure B: Create Shortcut" /></p>
-
-<p>After:
-<img src="images/shortcut.png" alt="Figure C: Create Shortcut" /></p>
-
-<ol>
-<li>Click &ldquo;Done&rdquo; and double-click your new shortcut. Type i2p-projekt.i2p into
-the address bar to test your i2p connectivity.</li>
+<li>Install the Firefox web browser. You can download it from
+<a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla&rsquo;s web site</a>. The
+browser <em>must</em> be installed in a default location selected by the Firefox
+installer for this to work.</li>
+<li>Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.01.zip, from
+<a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.01.zip">This releases page</a></li>
+<li>To start Firefox with the i2p Browsing profile, double-click the
+i2pbrower.bat script.</li>
 </ol>
 
 
@@ -151,3 +149,11 @@ echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.lis
 sudo apt-get update
 sudo apt-get install tb-starter
 </code></p>
+
+<h1>Browser Security Testing:</h1>
+
+<ul>
+<li><p><strong>master:</strong> 3dpwhxxcp47t7h6pnejm5hw7ymv56ywee3zdhct2sbctubsb3yra.b32.i2p</p></li>
+<li><p><strong>fingerprinter:</strong> qsagwif55g5gxsnka6r5ewuna6gokme2nv64s4zofl4hhuuqnd4q.b32.i2p</p></li>
+</ul>
+
