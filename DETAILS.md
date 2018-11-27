@@ -49,6 +49,9 @@ plugins are completely disabled instead of Click-To-Play.
 
 These are the modified settings used for NoScript:
 
+        # In order to disable all scripts by default, uncomment the following line...
+        # user_pref("capability.policy.maonoscript.javascript.enabled", "noAccess");
+        # and comment out the following line
         user_pref("capability.policy.maonoscript.javascript.enabled", "allAccess");
         user_pref("capability.policy.maonoscript.sites", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");
         user_pref("noscript.default", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");
@@ -81,7 +84,7 @@ These are the modified settings used for NoScript:
         user_pref("noscript.forbidMedia", true);
         user_pref("noscript.allowWhitelistUpdates", false);
         user_pref("noscript.fixLinks", false);
-        // Now handled by plugins.click_to_play
+        // Now handled by plugins.click_to_play //Not in this one.
         user_pref("noscript.forbidFlash", true);
         user_pref("noscript.forbidSilverlight", true);
         user_pref("noscript.forbidJava", true);
@@ -107,9 +110,14 @@ Tor in the most obvious way, uMatrix presents an interesting possibility.
 
 ## user.js
 
-Beyond the plugins
+Beyond the plugins, the user.js(which is the file that contains the individual
+about:config settings) enables several security enhancements and disables
+several privacy risks.
 
 ### Enable Uplift benefits
+
+From the Tor Browser's "Uplift" effort we enable privacy.resistFingerprint and
+privacy.firstparty.isolate.
 
         user_pref("privacy.resistFingerprinting", true);
         user_pref("privacy.firstparty.isolate", true);
@@ -117,6 +125,12 @@ Beyond the plugins
         // Use i2p http proxy for all connections and set homepage to safe local form.
 
 ### Set i2p proxy, disable access to local services(Including Admin Panel)
+
+Obviously, we set the proxy. In this case, we use the http proxy for all ports
+*and* set share proxy settings. Also set the homepage to about:blank and
+disallow access to any unproxied hosts, including the localhost. This is because
+someone could potentially attempt to load a resource from a service running on
+your computer to via an eepsite in order to weaken your anonymity.
 
         // DON'T allow access to the admin panel from the profile we browse i2p with.
         user_pref("network.proxy.no_proxies_on", 0);
@@ -133,6 +147,8 @@ Beyond the plugins
         user_pref("browser.startup.homepage", "about:blank");
 
 ### Section Three: Various sources, mostly Tor Browser discussions, Mozilla Wiki, and privacytools.io
+
+
 
         // Privacy-harden and disable irrelevant features.
         user_pref("app.normandy.api_url", "");
@@ -178,7 +194,7 @@ Beyond the plugins
         user_pref("browser.startup.homepage_override.mstone", "ignore");
         user_pref("browser.startup.page", 0);
         user_pref("browser.toolbarbuttons.introduced.pocket-button", true);
-        //user_pref("browser.urlbar.speculativeConnect.enabled", false);
+        user_pref("browser.urlbar.speculativeConnect.enabled", false);
         user_pref("browser.urlbar.trimURLs", false);
         user_pref("datareporting.healthreport.uploadEnabled", false);
         user_pref("datareporting.policy.dataSubmissionEnabled", false);
