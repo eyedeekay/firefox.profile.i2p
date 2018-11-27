@@ -1,3 +1,8 @@
+
+;;
+;; TODO: Examine licensing for this function.
+;;https://nsis.sourceforge.io/StrRep
+
 !define StrRep "!insertmacro StrRep"
 !macro StrRep output string old new
     Push `${string}`

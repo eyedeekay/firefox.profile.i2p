@@ -96,8 +96,6 @@ Function routerDetect
     ${EndIf}
 FunctionEnd
 
-!define SHORTCUT "$SMPROGRAMS\\${APPNAME}\\${APPNAME}.lnk"
-
 # start default section
 Section Install
 
@@ -134,8 +132,8 @@ Section Install
     FileClose $0
 
     # Copy the licenses
-    createDirectory $INSTDIR/license
-    SetOutPath $INSTDIR/license
+    createDirectory $INSTDIR\license
+    SetOutPath $INSTDIR\license
     File LICENSE.txt
     File license/HTTPS-Everywhere.txt
     File license/LICENSE.tor
@@ -161,21 +159,26 @@ Section Install
     CreateShortCut "$DESKTOP\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
     CreateShortCut "$DESKTOP\Private Browsing-${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser-private.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
 
-    ${StrRep} '$SHORTCUT' "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" '\' '\\'
+    ${StrRep} $SHORTCUT "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" '\' '\\'
+
+    !define SHORTCUTPATH $SHORTCUT
+
+    SetShellVarContext current
+    !define I2PAPPDATA "$APPDATA\I2P\"
+
+    SetOutPath "${I2PAPPDATA}"
 
     ;# Point the browser config setting
-    FileOpen $0 "$I2PINSTEXE\clients.config" a
+    FileOpen $0 "${I2PAPPDATA}\clients.config" a
+    FileSeek $0 0 END
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
-    ;FileWriteByte $0
-    FileWrite $0 browser=$\"$SHORTCUT$\"
-    ;FileWriteByte $0
+    FileWrite $0 "browser=$\"${SHORTCUTPATH}$\""
     FileWriteByte $0 "13"
     FileWriteByte $0 "10"
     FileClose $0
-    ;FileWrite
-    ;
 
+    SetOutPath "$INSTDIR"
     # create the uninstaller
     WriteUninstaller "$INSTDIR\uninstall-i2pbrowser.exe"
 

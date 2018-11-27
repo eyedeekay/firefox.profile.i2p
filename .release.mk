@@ -35,7 +35,7 @@ gothub-upload-version-osx:
 gothub-upload-version-windows:
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
-		--label "Windows Testing Profile Alias" \
+		--label "Windows Profile Zip" \
 		--name i2pbrowser-windows.zip \
 		--file i2pbrowser-windows-$(VERSION).zip
 	$(GOTHUB_BIN) upload \
