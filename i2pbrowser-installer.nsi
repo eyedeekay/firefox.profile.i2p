@@ -7,6 +7,7 @@
 !define VERSIONBUILD 1
 var FFINSTEXE
 var I2PINSTEXE
+var SHORTCUT
 
 !define FFINSTEXE
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
@@ -19,16 +20,6 @@ var I2PINSTEXE
 !define RAM_NEEDED_FOR_64BIT 0x80000000
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
-
-!include "MUI2.nsh"
-!define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_TEXT "Start a shortcut"
-!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
-!insertmacro MUI_PAGE_FINISH
-
-Function LaunchLink
-  ExecShell "" "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
-FunctionEnd
 
 ;
 ; left here in case we should need to display multiple licenses after all.
@@ -53,6 +44,7 @@ RequestExecutionLevel admin
 
 !include LogicLib.nsh
 !include x64.nsh
+!include i2pbrowser-strrep.nsh
 
 PageEx license
     licensetext "MIT License"
@@ -63,12 +55,13 @@ PageEx directory
     dirvar $FFINSTEXE
     PageCallbacks firefoxDetect
 PageExEnd
-Page instfiles
 ;PageEx directory
     ;dirtext "Select the location of your i2p installation."
     ;dirvar $I2PINSTEXE
     ;PageCallbacks routerDetect
 ;PageExEnd
+Page instfiles
+
 
 !include i2pbrowser-mozcompat.nsi
 
@@ -92,16 +85,18 @@ Function .onInit
 FunctionEnd
 
 Function firefoxDetect
-${If} ${FileExists} "$FFINSTEXE/firefox.exe"
-    Abort
-${EndIf}
+    ${If} ${FileExists} "$FFINSTEXE/firefox.exe"
+        Abort
+    ${EndIf}
 FunctionEnd
 
 Function routerDetect
-${If} ${FileExists} "${I2PINSTEXE}/i2p.exe"
-    Abort
-${EndIf}
+    ${If} ${FileExists} "${I2PINSTEXE}/i2p.exe"
+        Abort
+    ${EndIf}
 FunctionEnd
+
+!define SHORTCUT "$SMPROGRAMS\\${APPNAME}\\${APPNAME}.lnk"
 
 # start default section
 Section Install
@@ -166,6 +161,21 @@ Section Install
     CreateShortCut "$DESKTOP\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
     CreateShortCut "$DESKTOP\Private Browsing-${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser-private.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
 
+    ${StrRep} '$SHORTCUT' "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" '\' '\\'
+
+    ;# Point the browser config setting
+    FileOpen $0 "$I2PINSTEXE\clients.config" a
+    FileWriteByte $0 "13"
+    FileWriteByte $0 "10"
+    ;FileWriteByte $0
+    FileWrite $0 browser=$\"$SHORTCUT$\"
+    ;FileWriteByte $0
+    FileWriteByte $0 "13"
+    FileWriteByte $0 "10"
+    FileClose $0
+    ;FileWrite
+    ;
+
     # create the uninstaller
     WriteUninstaller "$INSTDIR\uninstall-i2pbrowser.exe"
 
@@ -213,3 +223,13 @@ Section "uninstall"
     # uninstaller section end
 
 SectionEnd
+
+!include "MUI2.nsh"
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "Launch the i2p browser?"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+!insertmacro MUI_PAGE_FINISH
+
+Function LaunchLink
+  ExecShell "" "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
+FunctionEnd

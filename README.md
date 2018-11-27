@@ -15,6 +15,8 @@ launcher for easy use. It also comes pre-configured to disable certain features
 that may weaken the anonymity that i2p provides, and with NoScript and HTTPS
 Everywhere.
 
+For more information, see: [DETAILS.md](DETAILS.md)
+
 ### Automatic Setup (Recommended, Windows) [Standalone guide](WINDOWS.md)
 
   0. Install the Firefox web browser. You can download it from

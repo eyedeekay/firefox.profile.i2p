@@ -14,3 +14,5 @@ This is a profile for Firefox, pre-configured to use i2p, with an accompanying
 launcher for easy use. It also comes pre-configured to disable certain features
 that may weaken the anonymity that i2p provides, and with NoScript and HTTPS
 Everywhere.
+
+For more information, see: [DETAILS.md](DETAILS.md)
