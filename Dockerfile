@@ -1,4 +1,6 @@
-FROM eyedeekay/eephttpd
-COPY . /opt/eephttpd/www
-USER eephttpd
-CMD eephttpd -f /usr/src/eephttpd/etc/eephttpd/eephttpd.conf \ -i -n i2pbrowser-updates -s /opt/eephttpd/ -sh=sam-host -sp=7656 -r
+FROM eyedeekay/tbb-docker
+COPY bookmarks.html \
+    /home/anon/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/bookmarks.html
+COPY user.js \
+    /home/anon/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/user.js
+CMD /home/anon/tor-browser_en-US/Browser/start-tor-browser

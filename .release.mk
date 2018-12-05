@@ -149,7 +149,7 @@ page: guide
 	markdown README.md > index.html
 
 update-service:
-	docker build -t eyedeekay/i2pbrowser-site .
+	docker build -f Dockerfile.updatesite -t eyedeekay/i2pbrowser-site .
 
 update-service-volume:
 	docker run -i -t -d --name "i2pbrowser-volume" \
