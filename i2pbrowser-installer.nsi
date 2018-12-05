@@ -53,11 +53,11 @@ PageEx directory
     dirvar $FFINSTEXE
     PageCallbacks firefoxDetect
 PageExEnd
-;PageEx directory
-    ;dirtext "Select the location of your i2p installation."
-    ;dirvar $I2PINSTEXE
-    ;PageCallbacks routerDetect
-;PageExEnd
+PageEx directory
+    dirtext "Select the location of your i2p installation."
+    dirvar $I2PINSTEXE
+    PageCallbacks routerDetect
+PageExEnd
 Page instfiles
 
 
@@ -95,7 +95,7 @@ Function firefoxDetect
 FunctionEnd
 
 Function routerDetect
-    ${If} ${FileExists} "${I2PINSTEXE}/i2p.exe"
+    ${If} ${FileExists} "$I2PINSTEXE/i2p.exe"
         Abort
     ${EndIf}
 FunctionEnd
