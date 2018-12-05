@@ -18,11 +18,13 @@ gothub-upload-version-linux:
 		--tag $(VERSION) \
 		--label "GNU/Linux Testing Profile(tar.gz version)" \
 		--name i2pbrowser-gnulinux.tar.gz \
+		--replace \
 		--file i2pbrowser-gnulinux-$(VERSION).tar.gz
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
 		--label "GNU/Linux Testing Profile(zip version)" \
 		--name i2pbrowser-gnulinux.zip \
+		--replace \
 		--file i2pbrowser-gnulinux-$(VERSION).zip
 
 gothub-upload-version-osx:
@@ -30,6 +32,7 @@ gothub-upload-version-osx:
 		--tag $(VERSION) \
 		--name i2pbrowser-osx \
 		--label "Mac OSX Testing Profile" \
+		--replace \
 		--file i2pbrowser-osx-$(VERSION).zip
 
 gothub-upload-version-windows:
@@ -37,6 +40,7 @@ gothub-upload-version-windows:
 		--tag $(VERSION) \
 		--label "Windows Profile Zip" \
 		--name i2pbrowser-windows.zip \
+		--replace \
 		--file i2pbrowser-windows-$(VERSION).zip
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
@@ -47,7 +51,7 @@ gothub-upload-version-windows:
 
 #	$(GOTHUB_BIN) upload \
 #		--tag $(VERSION) \
-#		--label "Windows .msi installer Alias" \
+#		--label "Windows .msi installer" \
 #		--name i2pbrowser-firefox.msi \
 #		--replace \
 #		--file i2pbrowser-firefox-$(VERSION).msi
@@ -101,12 +105,12 @@ gothub-upload-current-windows:
 
 #	$(GOTHUB_BIN) upload \
 #		--tag current \
-#		--label "Windows .msi installer Alias" \
+#		--label "Windows .msi installer" \
 #		--name i2pbrowser-firefox.msi \
 #		--replace \
 #		--file i2pbrowser-firefox-$(VERSION).msi
 
-gothub-upload-current: gothub-upload-current-windows gothub-upload-current-osx gothub-upload-current-linux upload-update
+gothub-upload-current: gothub-current gothub-upload-current-windows gothub-upload-current-linux upload-update
 
 gothub-release-version: gothub-version gothub-upload-version
 

@@ -28,8 +28,6 @@ InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
 ;!insertmacro MUI_PAGE_WELCOME
 ;!define MUI_LICENSEPAGE_CHECKBOX
 ;!insertmacro MUI_PAGE_LICENSE   "LICENSE.txt"
-;!define MUI_LICENSEPAGE_CHECKBOX
-;!insertmacro MUI_PAGE_LICENSE   license/MPL2.txt
 ;!insertmacro MUI_PAGE_INSTFILES
 ;!insertmacro MUI_PAGE_FINISH
 
@@ -71,9 +69,15 @@ Function .onInit
         ${If} ${FileExists} "${FFINSTEXE64}/firefox.exe"
             StrCpy $FFINSTEXE "${FFINSTEXE64}"
         ${EndIf}
+        ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
+            StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
+        ${EndIf}
     ${Else}
         ${If} ${FileExists} "${FFINSTEXE32}/firefox.exe"
-            StrCpy $I2PINSTEXE "${FFINSTEXE32}"
+            StrCpy $FFINSTEXE "${FFINSTEXE32}"
+        ${EndIf}
+        ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
+            StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
         ${EndIf}
     ${EndIf}
     ${If} ${FileExists} "${I2PINSTEXE32}/i2p.exe"

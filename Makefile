@@ -9,7 +9,7 @@ GOPATH=$(shell pwd)/.go
 
 GOTHUB_BIN=$(GOPATH)/bin/gothub
 
-VERSION=0.02a
+VERSION=0.03a
 
 echo:
 	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
