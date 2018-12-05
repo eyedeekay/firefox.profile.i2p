@@ -7,8 +7,7 @@ from the Docker Hub and have i2p installed on the host, you may simply:
 
 ```sh
 docker run --rm -i -t -d \
-	-e DISPLAY=$(DISPLAY) \
-	-e BROWSER_VERSION="$(BROWSER_VERSION)" \
+	-e DISPLAY=:0 \
 	--net host \
 	--name i2p-browser \
 	--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
