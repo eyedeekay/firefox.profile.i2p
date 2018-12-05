@@ -8,3 +8,4 @@ firefox.launchers/build/
 *.dmg
 *.exe
 *.sha256sum
+test

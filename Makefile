@@ -71,7 +71,7 @@ recopy-windows:
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
 	cp WINDOWS.md firefox.launchers/windows/README.md
 
-windows:
+windows: recopy-windows
 	makensis i2pbrowser-installer.nsi
 	mv install-i2pbrowser-0.01.exe install-i2pbrowser-$(VERSION).exe
 	cp install-i2pbrowser-$(VERSION).exe install-i2pbrowser.exe

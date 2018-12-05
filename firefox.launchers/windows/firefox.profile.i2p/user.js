@@ -11,7 +11,9 @@ user_pref("extensions.https_everywhere._observatory.popup_shown", true);
 user_pref("extensions.https_everywhere.toolbar_hint_shown", true);
 
 # NoScript Preferences:
+# In order to disable all scripts by default, uncomment the following line...
 # user_pref("capability.policy.maonoscript.javascript.enabled", "noAccess");
+# and comment out the following line
 user_pref("capability.policy.maonoscript.javascript.enabled", "allAccess");
 user_pref("capability.policy.maonoscript.sites", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");
 user_pref("noscript.default", "[System+Principal] about: about:tbupdate about:tor chrome: resource: blob: mediasource: moz-extension: moz-safe-about: about:neterror about:certerror about:feeds about:tabcrashed about:cache");
@@ -44,7 +46,7 @@ user_pref("noscript.untrusted", "");
 user_pref("noscript.forbidMedia", true);
 user_pref("noscript.allowWhitelistUpdates", false);
 user_pref("noscript.fixLinks", false);
-// Now handled by plugins.click_to_play
+// Now handled by plugins.click_to_play // Not in this one.
 user_pref("noscript.forbidFlash", true);
 user_pref("noscript.forbidSilverlight", true);
 user_pref("noscript.forbidJava", true);
@@ -73,7 +75,7 @@ user_pref("extensions.https_everywhere._observatory.use_custom_proxy", true);
 user_pref("extensions.https_everywhere._observatory.proxy_host", "127.0.0.1");
 user_pref("extensions.https_everywhere._observatory.proxy_port", 4444);
 
-//user_pref("extensions.torbutton.use_nontor_proxy", true);
+user_pref("extensions.torbutton.use_nontor_proxy", true);
 
 //For socket conversion: in the future, I'll need to make TBB communicate with
 //i2p over a unix socket. Fortunately, this is how you do that. It will be
@@ -150,7 +152,7 @@ user_pref("browser.shell.checkDefaultBrowser", false);
 user_pref("browser.startup.homepage_override.mstone", "ignore");
 user_pref("browser.startup.page", 0);
 user_pref("browser.toolbarbuttons.introduced.pocket-button", true);
-//user_pref("browser.urlbar.speculativeConnect.enabled", false);
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
 user_pref("browser.urlbar.trimURLs", false);
 user_pref("datareporting.healthreport.uploadEnabled", false);
 user_pref("datareporting.policy.dataSubmissionEnabled", false);
