@@ -46,6 +46,7 @@ For more information, see: [DETAILS.md](DETAILS.md)
   1.
   2.
   3.
+
 ### Docker Setup (Linux, probably OSX and possibly Windows?)
 
 This image uses an entirely un-official upstream image of the Tor Browser Bundle

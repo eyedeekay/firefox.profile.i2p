@@ -1,4 +1,4 @@
-FROM eyedeekay/tbb-docker
+FROM eyedeekay/tbb-docker:torbrowser
 COPY bookmarks.html \
     /home/anon/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/bookmarks.html
 COPY user.js \
