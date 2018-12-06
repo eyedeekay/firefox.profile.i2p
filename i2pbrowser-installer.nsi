@@ -1,10 +1,8 @@
-!define APPNAME "I2PBrowser-Launcher"
-!define COMPANYNAME "I2P"
-!define DESCRIPTION "This launches Firefox with a browser profile pre-configured to use i2p"
+!include nsis_strings/i2pbrowser-en_US.nsi
 # These three must be integers
 !define VERSIONMAJOR 0
-!define VERSIONMINOR 0
-!define VERSIONBUILD 1
+!define VERSIONMINOR 3
+!define VERSIONBUILD a
 var FFINSTEXE
 var I2PINSTEXE
 var SHORTCUT
@@ -45,17 +43,17 @@ RequestExecutionLevel admin
 !include i2pbrowser-strrep.nsh
 
 PageEx license
-    licensetext "MIT License"
+    licensetext "${LICENSE_TITLE}"
     licensedata "LICENSE.txt"
 PageExEnd
 PageEx directory
-    dirtext "Select the location of your Firefox installation."
+    dirtext "${FIREFOX_MESSAGE}"
     dirvar $FFINSTEXE
     PageCallbacks firefoxDetect
 PageExEnd
 Page instfiles
 PageEx directory
-    dirtext "Select the location of your i2p installation."
+    dirtext "${I2P_MESSAGE}"
     dirvar $I2PINSTEXE
     PageCallbacks routerDetect
 PageExEnd
@@ -72,12 +70,18 @@ Function .onInit
         ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
             StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
         ${EndIf}
+        ${If} ${FileExists} "$PROFILE/Desktop/Tor Browser/Browser/firefox.exe"
+            StrCpy $FFINSTEXE "$PROFILE/Desktop/Tor Browser/Browser/"
+        ${EndIf}
     ${Else}
         ${If} ${FileExists} "${FFINSTEXE32}/firefox.exe"
             StrCpy $FFINSTEXE "${FFINSTEXE32}"
         ${EndIf}
         ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
             StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
+        ${EndIf}
+        ${If} ${FileExists} "$PROFILE/Desktop/Tor Browser/Browser/firefox.exe"
+            StrCpy $FFINSTEXE "$PROFILE/Desktop/Tor Browser/Browser/"
         ${EndIf}
     ${EndIf}
     ${If} ${FileExists} "${I2PINSTEXE32}/i2p.exe"
@@ -90,13 +94,13 @@ FunctionEnd
 
 Function firefoxDetect
     ${If} ${FileExists} "$FFINSTEXE/firefox.exe"
-        Abort
+        Abort directory
     ${EndIf}
 FunctionEnd
 
 Function routerDetect
     ${If} ${FileExists} "$I2PINSTEXE/i2p.exe"
-        Abort
+        Abort directory
     ${EndIf}
 FunctionEnd
 
@@ -233,7 +237,7 @@ SectionEnd
 
 !include "MUI2.nsh"
 !define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_TEXT "Launch the i2p browser?"
+!define MUI_FINISHPAGE_RUN_TEXT "${LAUNCH_TEXT}"
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
 !insertmacro MUI_PAGE_FINISH
 

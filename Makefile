@@ -73,7 +73,6 @@ recopy-windows:
 
 windows: recopy-windows
 	makensis i2pbrowser-installer.nsi
-	mv install-i2pbrowser-0.01.exe install-i2pbrowser-$(VERSION).exe
 	cp install-i2pbrowser-$(VERSION).exe install-i2pbrowser.exe
 
 wxs-windows: wix
