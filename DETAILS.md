@@ -4,7 +4,11 @@
 
 This doesn't, and for now, it can't, protect against fingerprinting by Screen
 Size. If you need to protect against this kind of fingerprinting, then you
-should manually modify a Tor Browser Bundle to use i2p.
+should manually modify a Tor Browser Bundle to use i2p. Eventually this
+installer will more thoroughly integrate with an existing Tor Browser
+installation, but it will *never touch files belonging to a user's installed*
+*Tor Browser except to copy them completely where absolutely necessary.* The
+whole point is to separate contextual identities.
 
 ## Relentless self-criticism
 
@@ -130,7 +134,7 @@ Obviously, we set the proxy. In this case, we use the http proxy for all ports
 *and* set share proxy settings. Also set the homepage to about:blank and
 disallow access to any unproxied hosts, including the localhost. This is because
 someone could potentially attempt to load a resource from a service running on
-your computer to via an eepsite in order to weaken your anonymity.
+your computer via an eepsite in order to weaken your anonymity.
 
         // DON'T allow access to the admin panel from the profile we browse i2p with.
         user_pref("network.proxy.no_proxies_on", 0);
