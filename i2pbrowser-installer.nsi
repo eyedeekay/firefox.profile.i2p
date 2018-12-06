@@ -1,8 +1,6 @@
 !include nsis_strings/i2pbrowser-en_US.nsi
-# These three must be integers
-!define VERSIONMAJOR 0
-!define VERSIONMINOR 3
-!define VERSIONBUILD a
+!include i2pbrowser-version.nsi
+
 var FFINSTEXE
 var I2PINSTEXE
 var SHORTCUT
@@ -18,16 +16,6 @@ var SHORTCUT
 !define RAM_NEEDED_FOR_64BIT 0x80000000
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
-
-;
-; left here in case we should need to display multiple licenses after all.
-;
-;!include "MUI2.nsh"
-;!insertmacro MUI_PAGE_WELCOME
-;!define MUI_LICENSEPAGE_CHECKBOX
-;!insertmacro MUI_PAGE_LICENSE   "LICENSE.txt"
-;!insertmacro MUI_PAGE_INSTFILES
-;!insertmacro MUI_PAGE_FINISH
 
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
 LicenseData "LICENSE.txt"

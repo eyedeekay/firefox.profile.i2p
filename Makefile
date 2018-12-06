@@ -9,10 +9,19 @@ GOPATH=$(shell pwd)/.go
 
 GOTHUB_BIN=$(GOPATH)/bin/gothub
 
-VERSION=0.03a
+
+VERSIONMAJOR=0
+VERSIONMINOR=03
+VERSIONBUILD=b
+VERSION=$(VERSIONMAJOR).$(VERSIONMINOR)$(VERSIONBUILD)
 
 echo:
 	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
+
+version:
+	@echo "!define VERSIONMAJOR $(VERSIONMAJOR)" > i2pbrowser-version.nsi
+	@echo "!define VERSIONMINOR $(VERSIONMINOR)" >> i2pbrowser-version.nsi
+	@echo "!define VERSIONBUILD $(VERSIONBUILD)" >> i2pbrowser-version.nsi
 
 include config.mk
 include .release.mk
@@ -66,7 +75,7 @@ linux: recopy-linux
 	cp i2pbrowser-gnulinux-$(VERSION).tar.gz i2pbrowser-gnulinux.tar.gz
 	rm -rfv firefox.launchers/build
 
-recopy-windows:
+recopy-windows: version
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
 	cp WINDOWS.md firefox.launchers/windows/README.md
