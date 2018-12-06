@@ -53,16 +53,12 @@ PageEx directory
     dirvar $FFINSTEXE
     PageCallbacks firefoxDetect
 PageExEnd
+Page instfiles
 PageEx directory
     dirtext "Select the location of your i2p installation."
     dirvar $I2PINSTEXE
     PageCallbacks routerDetect
 PageExEnd
-PageEx directory
-    dirtext "Select the location to install the i2p browser profile."
-    dirvar $INSTDIR
-PageExEnd
-Page instfiles
 
 
 !include i2pbrowser-mozcompat.nsi

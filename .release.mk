@@ -168,4 +168,15 @@ update-service-run: update-service-volume update-service-copies
 		--volumes-from "i2pbrowser-volume" \
 		eyedeekay/i2pbrowser-site
 
-docker: update-service update-service-run
+docker-update-service: update-service update-service-run
+
+docker-browser:
+	docker build -f Dockerfile -t eyedeekay/firefox.profile.i2p .
+
+docker:
+	docker run -i -t -d \
+		-e DISPLAY=:0 \
+		--network host \
+		--name i2p-browser \
+		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+		eyedeekay/firefox.profile.i2p
