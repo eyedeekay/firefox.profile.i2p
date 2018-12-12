@@ -7,7 +7,7 @@ var I2PINSTEXE
 var SHORTCUT
 
 !define FFINSTEXE
-!define TBINST
+;!define TBINST
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
@@ -112,9 +112,9 @@ Section Install
     SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
     File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
     File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
-    ${If} "${TBINST}" == "true"
-        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\torbutton@torproject.org.xpi"
-        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\tor-launcher@torproject.org.xpi"
+    ${If} "$TBINST" == "true"
+        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\torbutton@torproject.org.xpi"
+        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\tor-launcher@torproject.org.xpi"
     ${EndIf}
 
     SetOutPath "$INSTDIR"
