@@ -2,13 +2,21 @@
 
 ## Differences from Tor Browser Bundle
 
-This doesn't, and for now, it can't, protect against fingerprinting by Screen
-Size. If you need to protect against this kind of fingerprinting, then you
-should manually modify a Tor Browser Bundle to use i2p. Eventually this
-installer will more thoroughly integrate with an existing Tor Browser
-installation, but it will *never touch files belonging to a user's installed*
-*Tor Browser except to copy them completely where absolutely necessary.* The
-whole point is to separate contextual identities.
+When using Vanilla firefox, many of Tor Browser's fingerprinting mitigations
+will have partial functionality. Screen-size fingerprinting, for instance. If
+you need to protect against this kind of fingerprinting, then you
+should modify a Tor Browser Bundle to use i2p.
+
+## Use of Tor Browser Bundle
+
+The testing version of the Windows installer integrates with the Tor Browser
+Bundle if it's presently installed on the computer. If not, it defaults to using
+Firefox with the modified profile instead. This enables more complete
+protection than regular Firefox.
+
+However, it will *never touch files belonging to a user's installed Tor Browser*
+*except to copy them completely, and only where absolutely necessary.* The whole
+point is to separate contextual identities.
 
 ## Relentless self-criticism
 

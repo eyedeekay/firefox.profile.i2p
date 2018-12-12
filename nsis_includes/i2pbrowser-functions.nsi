@@ -49,5 +49,5 @@ Function routerDetect
 FunctionEnd
 
 Function LaunchLink
-  ExecShell "" "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
+    ExecShell "" "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
 FunctionEnd

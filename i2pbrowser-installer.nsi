@@ -7,7 +7,7 @@ var I2PINSTEXE
 var SHORTCUT
 
 !define FFINSTEXE
-!define TBINST "false"
+!define TBINST
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
@@ -28,16 +28,18 @@ OutFile "install-i2pbrowser-${VERSIONMAJOR}.${VERSIONMINOR}${VERSIONBUILD}.exe"
 
 RequestExecutionLevel admin
 
+!include "MUI2.nsh"
 !include LogicLib.nsh
 !include x64.nsh
+
 !include nsis_includes/i2pbrowser-strrep.nsh
 !include nsis_includes/i2pbrowser-mozcompat.nsi
 !include nsis_includes/i2pbrowser-functions.nsi
-!include "MUI2.nsh"
+
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "${LAUNCH_TEXT}"
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
-!insertmacro MUI_PAGE_FINISH
+
 
 PageEx license
     licensetext "${LICENSE_TITLE}"
@@ -189,3 +191,5 @@ Section "uninstall"
     # uninstaller section end
 
 SectionEnd
+
+!insertmacro MUI_PAGE_FINISH
