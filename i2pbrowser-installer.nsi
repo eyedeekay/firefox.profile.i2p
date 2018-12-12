@@ -30,7 +30,14 @@ RequestExecutionLevel admin
 
 !include LogicLib.nsh
 !include x64.nsh
-!include i2pbrowser-strrep.nsh
+!include nsis_includes/i2pbrowser-strrep.nsh
+!include nsis_includes/i2pbrowser-mozcompat.nsi
+!include nsis_includes/i2pbrowser-functions.nsi
+!include "MUI2.nsh"
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "${LAUNCH_TEXT}"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+!insertmacro MUI_PAGE_FINISH
 
 PageEx license
     licensetext "${LICENSE_TITLE}"
@@ -47,58 +54,6 @@ PageEx directory
     dirvar $I2PINSTEXE
     PageCallbacks routerDetect
 PageExEnd
-
-
-!include i2pbrowser-mozcompat.nsi
-
-Function .onInit
-    Call ShouldInstall64Bit
-    ${If} $0 == 1
-        ${If} ${FileExists} "${FFINSTEXE64}/firefox.exe"
-            StrCpy $FFINSTEXE "${FFINSTEXE64}"
-            StrCpy $TBINST "false"
-        ${EndIf}
-        ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
-            StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
-            StrCpy $TBINST "true"
-        ${EndIf}
-        ${If} ${FileExists} "$PROFILE/Desktop/Tor Browser/Browser/firefox.exe"
-            StrCpy $FFINSTEXE "$PROFILE/Desktop/Tor Browser/Browser/"
-            StrCpy $TBINST "true"
-        ${EndIf}
-    ${Else}
-        ${If} ${FileExists} "${FFINSTEXE32}/firefox.exe"
-            StrCpy $FFINSTEXE "${FFINSTEXE32}"
-            StrCpy $TBINST "false"
-        ${EndIf}
-        ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
-            StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
-            StrCpy $TBINST "true"
-        ${EndIf}
-        ${If} ${FileExists} "$PROFILE/Desktop/Tor Browser/Browser/firefox.exe"
-            StrCpy $FFINSTEXE "$PROFILE/Desktop/Tor Browser/Browser/"
-            StrCpy $TBINST "true"
-        ${EndIf}
-    ${EndIf}
-    ${If} ${FileExists} "${I2PINSTEXE32}/i2p.exe"
-        StrCpy $I2PINSTEXE "${I2PINSTEXE64}"
-    ${EndIf}
-    ${If} ${FileExists} "${I2PINSTEXE64}/i2p.exe"
-        StrCpy $I2PINSTEXE "${I2PINSTEXE64}"
-    ${EndIf}
-FunctionEnd
-
-Function firefoxDetect
-    ${If} ${FileExists} "$FFINSTEXE/firefox.exe"
-        Abort directory
-    ${EndIf}
-FunctionEnd
-
-Function routerDetect
-    ${If} ${FileExists} "$I2PINSTEXE/i2p.exe"
-        Abort directory
-    ${EndIf}
-FunctionEnd
 
 # start default section
 Section Install
@@ -234,13 +189,3 @@ Section "uninstall"
     # uninstaller section end
 
 SectionEnd
-
-!include "MUI2.nsh"
-!define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_TEXT "${LAUNCH_TEXT}"
-!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
-!insertmacro MUI_PAGE_FINISH
-
-Function LaunchLink
-  ExecShell "" "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk"
-FunctionEnd

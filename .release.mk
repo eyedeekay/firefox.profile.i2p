@@ -135,7 +135,7 @@ page: guide
 	markdown README.md > index.html
 
 update-service:
-	docker build -f Dockerfile.updatesite -t eyedeekay/i2pbrowser-site .
+	docker build -f Dockerfiles/Dockerfile.updatesite -t eyedeekay/i2pbrowser-site .
 
 update-service-volume:
 	docker run -i -t -d --name "i2pbrowser-volume" \
@@ -157,13 +157,13 @@ update-service-run: update-service-volume update-service-copies
 docker-update-service: update-service update-service-run
 
 docker-browser:
-	docker build -f Dockerfile -t eyedeekay/firefox.profile.i2p .
+	docker build -f Dockerfiles/Dockerfile -t eyedeekay/firefox.profile.i2p .
 
 docker-firefox:
-	docker build -f Dockerfile.firefox -t eyedeekay/firefox.profile.i2p.firefox .
+	docker build -f Dockerfiles/Dockerfile.firefox -t eyedeekay/firefox.profile.i2p.firefox .
 
 docker-whonix:
-	docker build -f Dockerfile.whonix -t eyedeekay/i2pbrowser-whonix .
+	docker build -f Dockerfiles/Dockerfile.whonix -t eyedeekay/i2pbrowser-whonix .
 
 docker:
 	xhost +"local:docker@"
@@ -172,7 +172,7 @@ docker:
 		--network host \
 		--name i2p-browser \
 		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
-		eyedeekay/firefox.profile.i2p #/home/anon/tor-browser_en-US/Browser/start-tor-browser --help
+		eyedeekay/firefox.profile.i2p
 
 firefox:
 	xhost +"local:docker@"
@@ -192,4 +192,3 @@ whonix:
 		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
 		--volume i2pbrowser-whonix:/home/user/ \
 		eyedeekay/i2pbrowser-whonix
-
