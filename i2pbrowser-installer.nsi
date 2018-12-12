@@ -2,10 +2,12 @@
 !include i2pbrowser-version.nsi
 
 var FFINSTEXE
+var TBINST
 var I2PINSTEXE
 var SHORTCUT
 
 !define FFINSTEXE
+!define TBINST "false"
 !define FFINSTEXE32 "$PROGRAMFILES32\Mozilla Firefox\"
 !define FFINSTEXE64 "$PROGRAMFILES64\Mozilla Firefox\"
 
@@ -54,22 +56,28 @@ Function .onInit
     ${If} $0 == 1
         ${If} ${FileExists} "${FFINSTEXE64}/firefox.exe"
             StrCpy $FFINSTEXE "${FFINSTEXE64}"
+            StrCpy $TBINST "false"
         ${EndIf}
         ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
             StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
+            StrCpy $TBINST "true"
         ${EndIf}
         ${If} ${FileExists} "$PROFILE/Desktop/Tor Browser/Browser/firefox.exe"
             StrCpy $FFINSTEXE "$PROFILE/Desktop/Tor Browser/Browser/"
+            StrCpy $TBINST "true"
         ${EndIf}
     ${Else}
         ${If} ${FileExists} "${FFINSTEXE32}/firefox.exe"
             StrCpy $FFINSTEXE "${FFINSTEXE32}"
+            StrCpy $TBINST "false"
         ${EndIf}
         ${If} ${FileExists} "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/firefox.exe"
             StrCpy $FFINSTEXE "$PROFILE/OneDrive/Desktop/Tor Browser/Browser/"
+            StrCpy $TBINST "true"
         ${EndIf}
         ${If} ${FileExists} "$PROFILE/Desktop/Tor Browser/Browser/firefox.exe"
             StrCpy $FFINSTEXE "$PROFILE/Desktop/Tor Browser/Browser/"
+            StrCpy $TBINST "true"
         ${EndIf}
     ${EndIf}
     ${If} ${FileExists} "${I2PINSTEXE32}/i2p.exe"
@@ -147,6 +155,10 @@ Section Install
     SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
     File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
     File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
+    ${If} "${TBINST}" == "true"
+        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\torbutton@torproject.org.xpi"
+        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\tor-launcher@torproject.org.xpi"
+    ${EndIf}
 
     SetOutPath "$INSTDIR"
     createDirectory "$SMPROGRAMS\${APPNAME}"

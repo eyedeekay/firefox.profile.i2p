@@ -24,6 +24,8 @@ For more information, see: [DETAILS.md](DETAILS.md)
 
   0. Install the Firefox web browser. You can download it from
     [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/).
+    *Alternatively, if you're using the latest testing version of the profile,*
+    *it will use a Tor Browser if one is found in a default location.*
   1. Download the i2p Firefox profile installer, install-i2pbrowser.exe, from
     [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/install-i2pbrowser.exe)
     and run it. If Firefox was not detected in the default location, then you
@@ -37,9 +39,9 @@ For more information, see: [DETAILS.md](DETAILS.md)
   0. Install the Firefox web browser. You can download it from
     [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/). The
     browser *must* be installed in a default location selected by the Firefox
-    installer for this to work.
-  1. Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.03b.zip, from
-    [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.03b.zip)
+    installer for this to work. This version does work with Tor Browser yet.
+  1. Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.03c.zip, from
+    [This releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.03c.zip)
   2. To start Firefox with the i2p Browsing profile, double-click the
     i2pbrower.bat script.
 
@@ -77,8 +79,8 @@ In order to examine or build the upstream package locally, see:
 *installation.*
 
   0. Install Firefox-ESR via the method preferred by your Linux distribution.
-  1. Download the i2pbrowser-gnulinux-0.03b.zip from here. If you prefer, an identical
-  i2pbrowser-gnulinux-0.03b.tar.gz is also available.
+  1. Download the i2pbrowser-gnulinux-0.03c.zip from here. If you prefer, an identical
+  i2pbrowser-gnulinux-0.03c.tar.gz is also available.
   2. Extract it.
   3. Run ./install.sh install from within the extracted folder. Alternatively,
   run ./install.sh run to run entirely from within the current directory.
@@ -86,8 +88,8 @@ In order to examine or build the upstream package locally, see:
 If you want to just copy-paste some commands into your terminal, you could:
 
 ```sh
-curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.03b.tar.gz --output i2pbrowser-gnulinux-0.03b.tar.gz
-tar xvzf i2pbrowser-gnulinux-0.03b.tar.gz
+curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.03c.tar.gz --output i2pbrowser-gnulinux-0.03c.tar.gz
+tar xvzf i2pbrowser-gnulinux-0.03c.tar.gz
 cd i2pbrowser-gnulinux
 ./install.sh install
 ```
@@ -221,4 +223,5 @@ Browser Security Testing:
   * **master:** 3dpwhxxcp47t7h6pnejm5hw7ymv56ywee3zdhct2sbctubsb3yra.b32.i2p
 
   * **fingerprinter:** qsagwif55g5gxsnka6r5ewuna6gokme2nv64s4zofl4hhuuqnd4q.b32.i2p
+
 

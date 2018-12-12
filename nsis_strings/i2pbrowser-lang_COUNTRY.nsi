@@ -1,0 +1,7 @@
+!define APPNAME "I2PBrowser-Launcher"
+!define COMPANYNAME "I2P"
+!define DESCRIPTION "This launches Firefox with a browser profile pre-configured to use i2p"
+!define FIREFOX_MESSAGE "Select the location of your Firefox installation."
+!define I2P_MESSAGE "Select the location of your i2p installation. If it says C:\Program Filex(x86)\i2p\ then you can safely just click Next."
+!define LAUNCH_TEXT "Launch the i2p browser?"
+!define LICENSE_TITLE "MIT License"

@@ -1,0 +1,7 @@
+FROM debian:sid
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+RUN apt-get install -y firefox-esr
+COPY firefox.launchers/gnulinux /home/user/firefox.profile
+WORKDIR /home/user/firefox.profile
+CMD ./install.sh run

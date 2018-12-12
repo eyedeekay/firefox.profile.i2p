@@ -9,3 +9,5 @@ firefox.launchers/build/
 *.exe
 *.sha256sum
 test
+README.md.asc
+

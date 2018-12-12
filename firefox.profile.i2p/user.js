@@ -76,6 +76,10 @@ user_pref("extensions.https_everywhere._observatory.proxy_host", "127.0.0.1");
 user_pref("extensions.https_everywhere._observatory.proxy_port", 4444);
 
 user_pref("extensions.torbutton.use_nontor_proxy", true);
+user_pref("extensions.torlauncher.start_tor", false);
+user_pref("extensions.torlauncher.prompt_at_startup", false);
+//user_pref("", false);
+
 
 //For socket conversion: in the future, I'll need to make TBB communicate with
 //i2p over a unix socket. Fortunately, this is how you do that. It will be

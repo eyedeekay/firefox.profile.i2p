@@ -49,13 +49,6 @@ gothub-upload-version-windows:
 		--replace \
 		--file install-i2pbrowser-$(VERSION).exe
 
-#	$(GOTHUB_BIN) upload \
-#		--tag $(VERSION) \
-#		--label "Windows .msi installer" \
-#		--name i2pbrowser-firefox.msi \
-#		--replace \
-#		--file i2pbrowser-firefox-$(VERSION).msi
-
 gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux
 
 gothub-current: gothub-delete-current
@@ -102,13 +95,6 @@ gothub-upload-current-windows:
 		--name install-i2pbrowser.exe \
 		--replace \
 		--file install-i2pbrowser-$(VERSION).exe
-
-#	$(GOTHUB_BIN) upload \
-#		--tag current \
-#		--label "Windows .msi installer" \
-#		--name i2pbrowser-firefox.msi \
-#		--replace \
-#		--file i2pbrowser-firefox-$(VERSION).msi
 
 gothub-upload-current: gothub-current gothub-upload-current-windows gothub-upload-current-linux upload-update
 
@@ -173,10 +159,37 @@ docker-update-service: update-service update-service-run
 docker-browser:
 	docker build -f Dockerfile -t eyedeekay/firefox.profile.i2p .
 
+docker-firefox:
+	docker build -f Dockerfile.firefox -t eyedeekay/firefox.profile.i2p.firefox .
+
+docker-whonix:
+	docker build -f Dockerfile.whonix -t eyedeekay/i2pbrowser-whonix .
+
 docker:
-	docker run -i -t -d \
+	xhost +"local:docker@"
+	docker run -i -t --rm \
 		-e DISPLAY=:0 \
 		--network host \
 		--name i2p-browser \
 		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
-		eyedeekay/firefox.profile.i2p
+		eyedeekay/firefox.profile.i2p #/home/anon/tor-browser_en-US/Browser/start-tor-browser --help
+
+firefox:
+	xhost +"local:docker@"
+	docker run -i -t --rm \
+		-e DISPLAY=:0 \
+		--network host \
+		--name i2p-browser-firefox \
+		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+		eyedeekay/firefox.profile.i2p.firefox
+
+whonix:
+	xhost +"local:docker@"
+	docker run -i -t --rm \
+		-e DISPLAY=:0 \
+		--network host \
+		--name i2p-browser-whonix \
+		--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+		--volume i2pbrowser-whonix:/home/user/ \
+		eyedeekay/i2pbrowser-whonix
+

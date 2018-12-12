@@ -1,0 +1,12 @@
+FROM eyedeekay/whonix:unstable
+ENV TOR_SKIP_LAUNCH=1
+ENV TOR_SKIP_CONTROLPORTTEST=1
+ENV TOR_HIDE_BROWSER_LOGO=1
+ENV TOR_HIDE_UPDATE_CHECK_UI=1
+ENV TOR_NO_DISPLAY_NETWORK_SETTINGS=1
+USER root
+RUN apt-get update && apt-get dist-upgrade -y
+RUN apt-get install -y tb-starter tb-updater
+USER user
+WORKDIR /home/user
+CMD update-i2pbrowser --devbuildpassthrough && i2pbrowser
