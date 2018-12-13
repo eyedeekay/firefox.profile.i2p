@@ -197,3 +197,22 @@ install-plugin:
 	cp -v inetc/Plugins/amd64-unicode/INetC.dll /usr/share/nsis/Plugins/amd64-unicode/
 	cp -v inetc/Plugins/x86-ansi/INetC.dll /usr/share/nsis/Plugins/x86-ansi/
 	cp -v inetc/Plugins/x86-unicode/INetC.dll /usr/share/nsis/Plugins/x86-unicode/
+
+debwhonix:
+	cd whonix-helper && fakeroot-ng checkinstall --default \
+		--install=no \
+		--fstrans=yes \
+		--maintainer=eyedeekay@safe-mail.net \
+		--pkgname="i2pbrowser-whonix-helper" \
+		--pkgversion="$(VERSION)" \
+		--requires=tb-starter \
+		--arch all \
+		--pkglicense=gpl \
+		--pkggroup=net \
+		--pkgsource=./ \
+		--pkgaltsource="https://github.com/eyedeekay/firefox.profile.i2p" \
+		--deldoc=yes \
+		--deldesc=yes \
+		--delspec=yes \
+		--backup=no \
+		--pakdir=../ make install

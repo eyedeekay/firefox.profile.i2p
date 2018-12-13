@@ -8,6 +8,7 @@ firefox.launchers/build/
 *.dmg
 *.exe
 *.sha256sum
+*.deb
 test
 README.md.asc
 
