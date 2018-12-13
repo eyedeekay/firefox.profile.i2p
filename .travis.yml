@@ -1,3 +1,9 @@
 
 os:
     - osx
+
+addons:
+  homebrew:
+    packages:
+    - create-dmg
+    update: true

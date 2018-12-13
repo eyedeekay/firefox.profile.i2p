@@ -54,7 +54,7 @@ For more information, see: [DETAILS.md](DETAILS.md)
   2.
   3.
 
-### Docker Setup (Linux, probably OSX and possibly Windows?)
+### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX and possibly Windows?)
 
 Linux and Mac OSX users can run the browser within a Docker container. This
 image uses an entirely un-official upstream image of the Tor Browser Bundle
@@ -136,7 +136,7 @@ Here's some more information about how to use the install script:
 
 ![Figure E: Browser Fingerprint](images/firefox.profile.i2p.fingerprint.png)
 
-#### Footnotes
+#### Footnotes [Download these notes](NOTES.md)
 
 ##### Differences from Tor Browser
 
@@ -151,8 +151,7 @@ of. First, there is no Torbutton, which means that this browser lacks the coarse
 global controls of sensitive browser features that the Torbutton provides to the
 Tor Browser Bundle. In order to deal with this issue the default NoScript
 configuration is more restrictive.
-
-##### Debian/Ubuntu users
+##### Debian/Ubuntu users can use Whonix stretch-testng i2p browser launcher
 
 If you are using Debian or Ubuntu, or probably any other up-to-date apt-based
 Linux distribution, there's another option which may you may prefer. In order to
