@@ -49,7 +49,15 @@ gothub-upload-version-windows:
 		--replace \
 		--file install-i2pbrowser-$(VERSION).exe
 
-gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux
+upload-version-deb:
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
+		--name i2pbrowser-whonix-helper_$(VERSION)-1_all.deb \
+		--replace \
+		--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
+
+gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux upload-version-deb
 
 gothub-current: gothub-delete-current
 	$(GOTHUB_BIN) release \
@@ -96,7 +104,7 @@ gothub-upload-current-windows:
 		--replace \
 		--file install-i2pbrowser-$(VERSION).exe
 
-gothub-upload-current: gothub-current gothub-upload-current-windows gothub-upload-current-linux upload-update
+gothub-upload-current: gothub-current gothub-upload-current-windows gothub-upload-current-linux upload-update upload-deb
 
 gothub-release-version: gothub-version gothub-upload-version
 
@@ -128,6 +136,14 @@ upload-update: bare-profile
 		--name i2pbrowser-profile-update.zip.sha256sum.asc \
 		--replace \
 		--file i2pbrowser-profile-update.zip.sha256sum.asc
+
+upload-deb:
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
+		--name i2pbrowser-whonix-helper_$(VERSION)-1_all.deb \
+		--replace \
+		--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
 
 release-all: release current-release
 

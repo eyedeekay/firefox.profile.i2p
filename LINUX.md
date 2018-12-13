@@ -20,6 +20,13 @@ To launch a Tor Browser configured with this profile from the terminal.
 In order to examine or build the upstream package locally, see:
 [eyedeekay/tbb-docker](https://github.com/eyedeekay/tbb-docker).
 
+If you have trouble connecting the Dockerized application to the X server, you
+may need to authorize the Docker user to access the X server.
+
+```sh
+xhost +"local:docker@"
+```
+
 ### Manual Setup (Various Linuxes) [Standalone guide](LINUX.md) (Debian-Derived distros see Footnote #2)
 
 *NOTE: I'm probably going to add an apparmor profile to this setup for optional*
