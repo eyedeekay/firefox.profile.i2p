@@ -26,7 +26,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows linux zip debwhonix
+all: lic guide windows osx linux zip debwhonix
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
@@ -74,6 +74,14 @@ linux: recopy-linux
 	cd firefox.launchers/build/i2pbrowser-gnulinux/ && tar cvzf ../../../i2pbrowser-gnulinux-$(VERSION).tar.gz .
 	cp i2pbrowser-gnulinux-$(VERSION).tar.gz i2pbrowser-gnulinux.tar.gz
 	rm -rfv firefox.launchers/build
+
+recopy-osx:
+	rm -rf firefox.launchers/osx/firefox.profile.i2p/
+	cp -rv firefox.profile.i2p firefox.launchers/osx/firefox.profile.i2p/
+	cp -rv firefox.launchers/gnulinux/install.sh firefox.launchers/osx/helper.sh
+	cp MACOSX.md firefox.launchers/osx/README.md
+
+osx: recopy-osx
 
 recopy-windows: version
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
@@ -148,8 +156,8 @@ zip-bareprofile: clean-build
 
 zip-windows: clean-build
 	mkdir -p firefox.launchers/build/i2pbrowser-windows
-	cp -rfv firefox.launchers/windows/  firefox.launchers/build/i2pbrowser-windows/i2pbrowser-windows/
 	cp LICENSE_ALL firefox.launchers/windows/
+	cp -rfv firefox.launchers/windows/  firefox.launchers/build/i2pbrowser-windows/i2pbrowser-windows/
 	cd firefox.launchers/build/ && \
 		zip i2pbrowser-windows-$(VERSION).zip -r i2pbrowser-windows && \
 		mv i2pbrowser-windows-$(VERSION).zip $(PWD)/i2pbrowser-windows-$(VERSION).zip
@@ -158,8 +166,8 @@ zip-windows: clean-build
 
 zip-osx: clean-build
 	mkdir -p firefox.launchers/build/i2pbrowser-osx
+	cp LICENSE_ALL firefox.launchers/osx/
 	cp -rfv firefox.launchers/osx/  firefox.launchers/build/i2pbrowser-osx/i2pbrowser-osx/
-	cp LICENSE_ALL firefox.launchers/windows/
 	cd firefox.launchers/build/ && \
 		zip i2pbrowser-osx-$(VERSION).zip -r i2pbrowser-osx && \
 		mv i2pbrowser-osx-$(VERSION).zip $(PWD)/i2pbrowser-osx-$(VERSION).zip
@@ -168,8 +176,8 @@ zip-osx: clean-build
 
 zip-gnulinux: clean-build
 	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
+	cp LICENSE_ALL firefox.launchers/gnulinux/
 	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
-	cp LICENSE_ALL firefox.launchers/windows/
 	cd firefox.launchers/build/ && \
 		zip i2pbrowser-gnulinux-$(VERSION).zip -r i2pbrowser-gnulinux && \
 		mv i2pbrowser-gnulinux-$(VERSION).zip $(PWD)/i2pbrowser-gnulinux-$(VERSION).zip

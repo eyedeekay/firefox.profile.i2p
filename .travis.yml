@@ -6,4 +6,14 @@ addons:
   homebrew:
     packages:
     - create-dmg
-    update: true
+
+script:
+    create-dmg \
+        --volname "I2P Browser" \
+        --window-pos 200 120 \
+        --window-size 800 400 \
+        --hide-extension "I2PBrowser.sh" \
+        --hide-extension "I2PBrowser-Private.sh" \
+        --app-drop-link 600 185 \
+        "I2PBrowser-Launcher.dmg" \
+        "firefox.launchers/osx"

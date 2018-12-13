@@ -151,6 +151,7 @@ of. First, there is no Torbutton, which means that this browser lacks the coarse
 global controls of sensitive browser features that the Torbutton provides to the
 Tor Browser Bundle. In order to deal with this issue the default NoScript
 configuration is more restrictive.
+
 ##### Debian/Ubuntu users can use Whonix stretch-testng i2p browser launcher
 
 If you are using Debian or Ubuntu, or probably any other up-to-date apt-based
