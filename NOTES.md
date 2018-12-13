@@ -92,29 +92,19 @@ Finally, you need to add the following lines to the bottom of
 /etc/i2pbrowser.d/31\_i2p\_default.conf.
 
 ```sh
-
-TOR_HIDE_UPDATE_CHECK_UI=1
-
-TOR_NO_DISPLAY_NETWORK_SETTINGS=1
-
-TOR_HIDE_BROWSER_LOGO=1
-
-TOR_SKIP_LAUNCH=1
-
-TOR_SKIP_CONTROLPORTTEST=1
+        TOR_HIDE_UPDATE_CHECK_UI=1
+        TOR_NO_DISPLAY_NETWORK_SETTINGS=1
+        TOR_HIDE_BROWSER_LOGO=1
+        TOR_SKIP_LAUNCH=1
+        TOR_SKIP_CONTROLPORTTEST=1
 ```
 
 Or, you can just run these commands, now that you know what they do:
 
 ```sh
-
-sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
-
-echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
-
-sudo apt-get update
-
-sudo apt-get install tb-starter
-
-update-i2pbrowser
+        sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
+        echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
+        sudo apt-get update
+        sudo apt-get install tb-starter
+        update-i2pbrowser
 ```
