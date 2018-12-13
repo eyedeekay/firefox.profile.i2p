@@ -17,4 +17,4 @@ install:
         --hide-extension "I2PBrowser-Private.sh" \
         --app-drop-link 600 185 \
         "I2PBrowser-Launcher.dmg" \
-        .
+        "./I2P Browser"
