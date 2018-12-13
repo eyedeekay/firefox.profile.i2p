@@ -9,7 +9,7 @@ addons:
 
 install:
     - brew install create-dmg
-    - cd firefox.launchers/osx && create-dmg \
+    - cp -r firefox.launchers/osx "I2P Browser" && create-dmg \
         --volname "I2P Browser" \
         --window-pos 200 120 \
         --window-size 800 400 \
