@@ -26,7 +26,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows linux zip
+all: lic guide windows linux zip debwhonix
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build

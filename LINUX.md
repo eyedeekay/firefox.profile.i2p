@@ -58,17 +58,15 @@ again.
 
 Here's some more information about how to use the install script:
 
-```sh
-usage:
-    ./install.sh install     # install the profile and browser launcher
-    ./install.sh uninstall   # remove the profile and browser launcher
-    ./install.sh alias       # configure a .bash_alias to launch the browser
-    ./install.sh usage       # show this usage message
-    ./install.sh update      # update the profile
-    ./install.sh run         # run from this directory without installing
-        firefox --no-remote --profile "$DIR/.firefox.profile.i2p.default" about:blank $1
-    ./install.sh private     # run in private mode from this directory without installing
-        firefox --no-remote --profile "$DIR/.firefox.profile.i2p.private" --private about:blank $1
-    ./install.sh debug       # run with debugger from this directory without installing
-        firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
-```
+        usage:
+            ./install.sh install     # install the profile and browser launcher
+            ./install.sh uninstall   # remove the profile and browser launcher
+            ./install.sh alias       # configure a .bash_alias to launch the browser
+            ./install.sh usage       # show this usage message
+            ./install.sh update      # update the profile
+            ./install.sh run         # run from this directory without installing
+                firefox --no-remote --profile "$DIR/.firefox.profile.i2p.default" about:blank $1
+            ./install.sh private     # run in private mode from this directory without installing
+                firefox --no-remote --profile "$DIR/.firefox.profile.i2p.private" --private about:blank $1
+            ./install.sh debug       # run with debugger from this directory without installing
+                firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1

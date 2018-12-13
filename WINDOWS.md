@@ -4,8 +4,7 @@
   0. Install the Firefox web browser. You can download it from
     [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/).
     *Alternatively, if you're using the latest testing version of the profile,*
-    *it will use a Tor Browser if one is found in a default location.*
-    Alternatively, this setup can also work with a Tor Browser Bundle, which you
+    *it will use a Tor Browser if one is found in a default location,* which you
     can get from the [Tor Browser Bundle download page](https://www.torproject.org/projects/torbrowser.html.en).
     This may provide additional security.
   1. Download the i2p Firefox profile installer, install-i2pbrowser.exe, from

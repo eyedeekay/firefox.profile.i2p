@@ -96,11 +96,19 @@ These are the modified settings used for NoScript:
         user_pref("noscript.forbidMedia", true);
         user_pref("noscript.allowWhitelistUpdates", false);
         user_pref("noscript.fixLinks", false);
+
+These settings differ from the Tor Browser Bundle, but were left in their
+original position in the file because it makes diffing things nicer.
+
         // Now handled by plugins.click_to_play //Not in this one.
         user_pref("noscript.forbidFlash", true);
         user_pref("noscript.forbidSilverlight", true);
         user_pref("noscript.forbidJava", true);
         user_pref("noscript.forbidPlugins", true);
+
+
+Now another section identical to the corresponding Tor Browser section.
+
         // Usability tweaks
         user_pref("noscript.showPermanent", false);
         user_pref("noscript.showTempAllowPage", true);
@@ -158,16 +166,34 @@ your computer via an eepsite in order to weaken your anonymity.
         user_pref("network.proxy.share_proxy_settings", true);
         user_pref("browser.startup.homepage", "about:blank");
 
+In Tor Browser mode, it's also necessary to enable the use of a non-Tor proxy,
+disable the launching of the Tor Browser's included Tor proxy, and disable the
+prompt to configure the Tor Network at the launch of the Tor Browser.
+
+        user_pref("extensions.torbutton.use_nontor_proxy", true);
+        user_pref("extensions.torlauncher.start_tor", false);
+        user_pref("extensions.torlauncher.prompt_at_startup", false);
+
 ### Section Three: Various sources, mostly Tor Browser discussions, Mozilla Wiki, and privacytools.io
 
-
+This section by and large has to do with disabling features that phone home to
+services that are not available in i2p and which may be privacy-harmful because
+they phone home to other services or open side-channels to cache identifying
+data on the user's disk.
 
         // Privacy-harden and disable irrelevant features.
         user_pref("app.normandy.api_url", "");
         user_pref("app.normandy.enabled", false);
+
+The user can update Firefox or TBB on their official profiles, there's no place
+to update from in i2p except for people using the in-i2p Debian mirror maybe.
+
         user_pref("app.update.auto", false);
         user_pref("app.update.enabled", false);
         user_pref("beacon.enabled", false);
+
+Various caching and fingerprintable features, will expand soon, it's late.
+
         user_pref("browser.aboutHomeSnippets.updateUrl", "");
         user_pref("browser.cache.disk_cache_ssl", false);
         user_pref("browser.cache.disk.enable", false);
@@ -176,6 +202,12 @@ your computer via an eepsite in order to weaken your anonymity.
         user_pref("browser.display.use_document_fonts", 0);
         user_pref("browser.fixup.alternate.enabled", false);
         user_pref("browser.formfill.enable", false);
+
+One of these services which doesn't work in i2p and speaks to a privacy-hostile
+service is Safe Browsing which atempts to identify malware. Use caution, in this
+case your browser is more able to provide privacy, but less able to provide
+protection.
+
         user_pref("browser.library.activity-stream.enabled", false);
         user_pref("browser.newtabpage.activity-stream.disableSnippets", true);
         user_pref("browser.newtabpage.activity-stream.enabled", false);
