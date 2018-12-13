@@ -66,7 +66,8 @@ i2pbrower.bat script.</li>
 
 <h3>Docker Setup (Linux, probably OSX and possibly Windows?)</h3>
 
-<p>This image uses an entirely un-official upstream image of the Tor Browser Bundle
+<p>Linux and Mac OSX users can run the browser within a Docker container. This
+image uses an entirely un-official upstream image of the Tor Browser Bundle
 from Dockerhub, also authored by me. Should you wish to build it yourself,
 instructions can be found below. However, if you wish to run the i2p Browser
 from the Docker Hub and have i2p installed on the host, you may simply:</p>
@@ -84,6 +85,13 @@ docker run --rm -i -t -d \
 
 <p>In order to examine or build the upstream package locally, see:
 <a href="https://github.com/eyedeekay/tbb-docker">eyedeekay/tbb-docker</a>.</p>
+
+<p>If you have trouble connecting the Dockerized application to the X server, you
+may need to authorize the Docker user to access the X server.</p>
+
+<p><code>sh
+xhost +"local:docker@"
+</code></p>
 
 <h3>Manual Setup (Various Linuxes) <a href="LINUX.md">Standalone guide</a> (Debian-Derived distros see Footnote #2)</h3>
 
@@ -233,9 +241,17 @@ update-i2pbrowser --devbuildpassthrough
 
 <p><code>sh
 TOR_HIDE_UPDATE_CHECK_UI=1
+</code>
+<code>sh
 TOR_NO_DISPLAY_NETWORK_SETTINGS=1
+</code>
+<code>sh
 TOR_HIDE_BROWSER_LOGO=1
+</code>
+<code>sh
 TOR_SKIP_LAUNCH=1
+</code>
+<code>sh
 TOR_SKIP_CONTROLPORTTEST=1
 </code></p>
 
@@ -243,9 +259,17 @@ TOR_SKIP_CONTROLPORTTEST=1
 
 <p><code>sh
 sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
+</code>
+<code>sh
 echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
+</code>
+<code>sh
 sudo apt-get update
+</code>
+<code>sh
 sudo apt-get install tb-starter
+</code>
+<code>sh
 update-i2pbrowser
 </code></p>
 
