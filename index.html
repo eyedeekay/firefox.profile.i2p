@@ -6,7 +6,10 @@ tested and the rough edges are still being figured out. Use at your own risk.</p
 <p>For now, the testing release page is here: <a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/tag/current">Github Releases</a>
 where the Windows installer has been made available. The &ldquo;current&rdquo; release will
 always track the newest working version. Numbered releases are the latest
-version that I&rsquo;m testing.</p>
+version that I&rsquo;m testing. There&rsquo;s not really a coherent rationale to the
+version numbers yet. I move them when I add a feature to make sure I know what
+to uninstall. Roughly, that corresponds to a &ldquo;Feature.&rdquo; That is the only purpose
+they serve for the moment.</p>
 
 <h2>What it is</h2>
 
@@ -21,7 +24,12 @@ Everywhere.</p>
 
 <ol>
 <li>Install the Firefox web browser. You can download it from
-<a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla&rsquo;s web site</a>.</li>
+<a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla&rsquo;s web site</a>.
+<em>Alternatively, if you&rsquo;re using the latest testing version of the profile,</em>
+<em>it will use a Tor Browser if one is found in a default location.</em>
+Alternatively, this setup can also work with a Tor Browser Bundle, which you
+can get from the <a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle download page</a>.
+This may provide additional security.</li>
 <li>Download the i2p Firefox profile installer, install-i2pbrowser.exe, from
 <a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/install-i2pbrowser.exe">This releases page</a>
 and run it. If Firefox was not detected in the default location, then you
@@ -38,9 +46,9 @@ Start Menu or your Desktop.</li>
 <li>Install the Firefox web browser. You can download it from
 <a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla&rsquo;s web site</a>. The
 browser <em>must</em> be installed in a default location selected by the Firefox
-installer for this to work.</li>
-<li>Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.02a.zip, from
-<a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.02a.zip">This releases page</a></li>
+installer for this to work. This version does work with Tor Browser yet.</li>
+<li>Download the i2p Firefox profile zip bundle, i2pbrowser-windows-0.04.zip, from
+<a href="https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.04.zip">This releases page</a></li>
 <li>To start Firefox with the i2p Browsing profile, double-click the
 i2pbrower.bat script.</li>
 </ol>
@@ -56,6 +64,27 @@ i2pbrower.bat script.</li>
 </ol>
 
 
+<h3>Docker Setup (Linux, probably OSX and possibly Windows?)</h3>
+
+<p>This image uses an entirely un-official upstream image of the Tor Browser Bundle
+from Dockerhub, also authored by me. Should you wish to build it yourself,
+instructions can be found below. However, if you wish to run the i2p Browser
+from the Docker Hub and have i2p installed on the host, you may simply:</p>
+
+<p><code>sh
+docker run --rm -i -t -d \
+    -e DISPLAY=:0 \
+    --net host \
+    --name i2p-browser \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+    eyedeekay/firefox.profile.i2p
+</code></p>
+
+<p>To launch a Tor Browser configured with this profile from the terminal.</p>
+
+<p>In order to examine or build the upstream package locally, see:
+<a href="https://github.com/eyedeekay/tbb-docker">eyedeekay/tbb-docker</a>.</p>
+
 <h3>Manual Setup (Various Linuxes) <a href="LINUX.md">Standalone guide</a> (Debian-Derived distros see Footnote #2)</h3>
 
 <p><em>NOTE: I&rsquo;m probably going to add an apparmor profile to this setup for optional</em>
@@ -63,8 +92,8 @@ i2pbrower.bat script.</li>
 
 <ol>
 <li>Install Firefox-ESR via the method preferred by your Linux distribution.</li>
-<li>Download the i2pbrowser-gnulinux-0.02a.zip from here. If you prefer, an identical
-i2pbrowser-gnulinux-0.02a.tar.gz is also available.</li>
+<li>Download the i2pbrowser-gnulinux-0.04.zip from here. If you prefer, an identical
+i2pbrowser-gnulinux-0.04.tar.gz is also available.</li>
 <li>Extract it.</li>
 <li>Run ./install.sh install from within the extracted folder. Alternatively,
 run ./install.sh run to run entirely from within the current directory.</li>
@@ -74,8 +103,8 @@ run ./install.sh run to run entirely from within the current directory.</li>
 <p>If you want to just copy-paste some commands into your terminal, you could:</p>
 
 <p><code>sh
-curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.02a.tar.gz --output i2pbrowser-gnulinux-0.02a.tar.gz
-tar xvzf i2pbrowser-gnulinux-0.02a.tar.gz
+curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.04.tar.gz --output i2pbrowser-gnulinux-0.04.tar.gz
+tar xvzf i2pbrowser-gnulinux-0.04.tar.gz
 cd i2pbrowser-gnulinux
 ./install.sh install
 </code></p>
@@ -125,7 +154,8 @@ usage:
 <h5>Differences from Tor Browser</h5>
 
 <p>TL:DR There is no security slider, and to compensate for this issue, the Browser
-is configured to enable fewer features by default.</p>
+is configured to enable fewer features by default. It also can&rsquo;t do stuff like
+notify you about your browser window size.</p>
 
 <p>This browser takes cues from the Tor Browser, which is also a reasonable choice
 for an i2p browser, but it has some absolutely critical differences from the Tor
@@ -143,6 +173,72 @@ do this, one must add the Whonix apt package repository to your package sources,
 and install their tb-starter package from their stretch-testing repository.
 Don&rsquo;t worry, I&rsquo;ll take you through it step-by-step.</p>
 
+<p><strong>This guide is intended for users who are aware of the implications of using</strong>
+<strong>third-party repositories on their Debian-based Linux PC&rsquo;s.</strong> In particular,
+Whonix is designed to pro-actively prevent certain kinds of attacks from
+affecting the user, and their packages sometimes overwrite things like hosts
+files and such with versions suitable for the Whonix threat model. While I
+currently use the following packages successfully on both Debian and Ubuntu
+Linux at this time, I cannot guarantee that they will work for everyone&rsquo;s
+specific configuration.</p>
+
+<p>First, you&rsquo;ll need to obtain and install the Whonix package signing keys. This
+will allow you to be sure that you are obtaining the correct package from the
+repository automatically.</p>
+
+<p><code>sh
+sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
+</code></p>
+
+<p>Next, you need to tell apt, the package manager, where to look for the packages
+in question. The i2p browser is still in stretch-testers, so that is the version
+we will be using. &lsquo;main&rsquo; means that the profile is Free Software per the Debian
+Free Software Guidelines.</p>
+
+<p><code>sh
+echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
+</code></p>
+
+<p>Now, you must tell apt to update it&rsquo;s list of available packages so it becomes
+aware of the Tor Browser packages.</p>
+
+<p><code>sh
+sudo apt-get update
+</code></p>
+
+<p>Finally, install tb-starter and tb-updater.</p>
+
+<p><code>sh
+sudo apt-get install tb-starter
+</code></p>
+
+<p>The last step is to run update-i2pbrowser. This will pre-configure the i2p
+browser on your system.</p>
+
+<p><code>sh
+update-i2pbrowser
+</code></p>
+
+<p>If for some reason, update-i2pbrowser doesn&rsquo;t work(Usually this is in the
+absence of Tor on the system) you may run</p>
+
+<p><code>sh
+update-i2pbrowser --devbuildpassthrough
+</code></p>
+
+<p>instead.</p>
+
+<p>Finally, you need to add the following lines to the bottom of
+/etc/i2pbrowser.d/31_i2p_default.conf.</p>
+
+<p><code>sh
+TOR_HIDE_UPDATE_CHECK_UI=1
+TOR_NO_DISPLAY_NETWORK_SETTINGS=1
+TOR_HIDE_BROWSER_LOGO=1
+TOR_SKIP_LAUNCH=1
+TOR_SKIP_CONTROLPORTTEST=1
+</code></p>
+
 <p>Or, you can just run these commands, now that you know what they do:</p>
 
 <p><code>sh
@@ -150,6 +246,7 @@ sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://i
 echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
 sudo apt-get update
 sudo apt-get install tb-starter
+update-i2pbrowser
 </code></p>
 
 <h1>Browser Security Testing:</h1>
