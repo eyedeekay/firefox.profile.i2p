@@ -207,7 +207,7 @@ debwhonix:
 		--pkgversion="$(VERSION)" \
 		--requires=tb-starter \
 		--arch all \
-		--pkglicense=gpl \
+		--pkglicense=mit \
 		--pkggroup=net \
 		--pkgsource=./ \
 		--pkgaltsource="https://github.com/eyedeekay/firefox.profile.i2p" \
