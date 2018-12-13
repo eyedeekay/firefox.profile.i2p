@@ -1,7 +1,8 @@
 
 ### Docker Setup (Linux, probably OSX and possibly Windows?)
 
-This image uses an entirely un-official upstream image of the Tor Browser Bundle
+Linux and Mac OSX users can run the browser within a Docker container. This
+image uses an entirely un-official upstream image of the Tor Browser Bundle
 from Dockerhub, also authored by me. Should you wish to build it yourself,
 instructions can be found below. However, if you wish to run the i2p Browser
 from the Docker Hub and have i2p installed on the host, you may simply:
@@ -19,6 +20,13 @@ To launch a Tor Browser configured with this profile from the terminal.
 
 In order to examine or build the upstream package locally, see:
 [eyedeekay/tbb-docker](https://github.com/eyedeekay/tbb-docker).
+
+If you have trouble connecting the Dockerized application to the X server, you
+may need to authorize the Docker user to access the X server.
+
+```sh
+xhost +"local:docker@"
+```
 
 ### Manual Setup (Various Linuxes) [Standalone guide](LINUX.md) (Debian-Derived distros see Footnote #2)
 

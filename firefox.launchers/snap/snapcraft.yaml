@@ -1,0 +1,14 @@
+name: i2pbrowser
+version: '0.04'
+summary: I2P Browser Launcher
+description: |
+  This snap contains a script which automatically configures and launches a
+  Firefox browser.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+parts:
+  my-part:
+    # See 'snapcraft plugins'
+    plugin: nil
