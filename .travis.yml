@@ -7,7 +7,7 @@ addons:
     packages:
     - create-dmg
 
-script:
+install:
     create-dmg \
         --volname "I2P Browser" \
         --window-pos 200 120 \
