@@ -15,7 +15,6 @@ install:
         "I2PBrowser.dmg" \
         "I2PBrowser/"
     - create-dmg \
-        --volname "I2PBrowser" \
         --volicon "assets\i2pbrowser-icon.icns" \
         --background "assets/ui2pbrowser_logo.png" \
         --window-pos 200 120 \
@@ -27,3 +26,4 @@ install:
         --hdiutil-verbose \
         "I2PBrowser.dmg" \
         "I2PBrowser/"
+
