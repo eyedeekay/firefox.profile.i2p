@@ -43,7 +43,7 @@ sudo apt-get update
 Finally, install tb-starter and tb-updater.
 
 ```sh
-sudo apt-get install tb-starter
+sudo apt-get install tb-starter tb-updater
 ```
 
 The last step is to run update-i2pbrowser. This will pre-configure the i2p
@@ -76,5 +76,5 @@ Or, you can just run these commands, now that you know what they do:
         sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
         echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
         sudo apt-get update
-        sudo apt-get install tb-starter
+        sudo apt-get install tb-starter tb-updater
         update-i2pbrowser

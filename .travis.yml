@@ -9,8 +9,12 @@ addons:
 
 install:
     - brew install create-dmg
-    - cp -r firefox.launchers/osx "I2P Browser" && create-dmg \
+    - cp -rv assets firefox.launchers/assets
+    - cp -rv firefox.launchers/osx "I2P Browser"
+    - create-dmg \
         --volname "I2P Browser" \
+        --volicon "assets\i2pbrowser-icon.icns" \
+        --background "assets/ui2pbrowser_logo.png" \
         --window-pos 200 120 \
         --window-size 800 400 \
         --hide-extension "I2PBrowser.sh" \

@@ -17,6 +17,10 @@ and it contains the lines:
         TOR_SKIP_LAUNCH=1
         TOR_SKIP_CONTROLPORTTEST=1
 
+Besides that, it acts as a metapackage for installing the Whonix Tor Browser
+management packages tb-starter, tb-updater, and open-link-confirmation as well
+as their dependencies.
+
 It should only change if the way Whonix packages it's Tor Browser Launcher
 scripts changes considerably. Building and installing it with Checkinstall just
 once will likely be sufficient for the foreseeable future. Your updates will

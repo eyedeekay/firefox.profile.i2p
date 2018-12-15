@@ -213,7 +213,7 @@ debwhonix:
 		--maintainer=eyedeekay@safe-mail.net \
 		--pkgname="i2pbrowser-whonix-helper" \
 		--pkgversion="$(VERSION)" \
-		--requires=tb-starter \
+		--requires=tb-starter,tb-updater,open-link-confirmation,pv \
 		--arch all \
 		--pkglicense=mit \
 		--pkggroup=net \
