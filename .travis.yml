@@ -17,6 +17,7 @@ install:
         --background "assets/ui2pbrowser_logo.png" \
         --window-pos 200 120 \
         --window-size 800 400 \
+        --icon-size 128 \
         --hide-extension "I2PBrowser.sh" \
         --hide-extension "I2PBrowser-Private.sh" \
         --app-drop-link 600 185 \
