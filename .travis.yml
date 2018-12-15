@@ -12,6 +12,9 @@ install:
     - cp -rv assets firefox.launchers/assets
     - cp -rv firefox.launchers/osx "I2PBrowser"
     - create-dmg \
+        "I2PBrowser.dmg" \
+        "I2PBrowser/"
+    - create-dmg \
         --volname "I2PBrowser" \
         --volicon "assets\i2pbrowser-icon.icns" \
         --background "assets/ui2pbrowser_logo.png" \
@@ -21,5 +24,6 @@ install:
         --hide-extension "I2PBrowser.sh" \
         --hide-extension "I2PBrowser-Private.sh" \
         --app-drop-link 600 185 \
+        --hdiutil-verbose \
         "I2PBrowser.dmg" \
         "I2PBrowser/"
