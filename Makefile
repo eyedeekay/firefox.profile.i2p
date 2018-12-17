@@ -79,9 +79,24 @@ recopy-osx:
 	rm -rf firefox.launchers/osx/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/osx/firefox.profile.i2p/
 	cp -rv firefox.launchers/gnulinux/install.sh firefox.launchers/osx/helper.sh
+	cp -rv assets firefox.launchers/assets
 	cp MACOSX.md firefox.launchers/osx/README.md
 
 osx: recopy-osx
+	cp -rv firefox.launchers/osx "I2PBrowser"
+	create-dmg "I2PBrowser.dmg" \
+        --volname "I2PBrowser" \
+        --volicon "I2PBrowser/assets/i2pbrowser-icon.icns" \
+        --background "I2PBrowser/assets/ui2pbrowser_logo.png" \
+        --window-pos 200 120 \
+        --window-size 800 400 \
+        --icon-size 128 \
+        --hide-extension "I2PBrowser.sh" \
+        --hide-extension "I2PBrowser-Private.sh" \
+        --app-drop-link 600 185 \
+        --hdiutil-verbose \
+        "I2PBrowser/"
+	rm -rf "I2PBrowser"
 
 recopy-windows: version
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
