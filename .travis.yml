@@ -7,7 +7,7 @@ addons:
     packages:
     - create-dmg
 
-install:
+script:
     - brew install create-dmg
     - make osx
 
