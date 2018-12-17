@@ -14,7 +14,8 @@ install:
     - create-dmg \
         "I2PBrowser.dmg" \
         "I2PBrowser/"
-    - create-dmg \
+    - create-dmg "I2PBrowser.dmg" \
+        --volname "I2PBrowser" \
         --volicon "I2PBrowser/assets/i2pbrowser-icon.icns" \
         --background "I2PBrowser/assets/ui2pbrowser_logo.png" \
         --window-pos 200 120 \
@@ -24,6 +25,5 @@ install:
         --hide-extension "I2PBrowser-Private.sh" \
         --app-drop-link 600 185 \
         --hdiutil-verbose \
-        "I2PBrowser.dmg" \
         "I2PBrowser/"
 
