@@ -20,6 +20,6 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 parts:
   i2pbrowser:
     # See 'snapcraft plugins'
-    source: gnulinux
+    source: firefox.launcher/snap/gnulinux
     plugin: make
     stage-packages: [ firefox ]
