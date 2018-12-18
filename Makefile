@@ -26,7 +26,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows osx linux zip debwhonix
+all: lic guide windows osx snap linux zip debwhonix
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
@@ -35,11 +35,11 @@ clean-build:
 	rm -rfv firefox.launchers/build
 
 install: setup profile
-	install -m755 firefox.launchers/i2pbrowser-firefox.desktop \
+	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
 		/usr/share/applications/i2pbrowser-firefox.desktop
 
 install-user: setup profile
-	install -m755 firefox.launchers/i2pbrowser-firefox.desktop \
+	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
 		$(HOME)/.local/share/applications/i2pbrowser-firefox.desktop
 
 profile:
@@ -74,6 +74,14 @@ linux: recopy-linux
 	cd firefox.launchers/build/i2pbrowser-gnulinux/ && tar cvzf ../../../i2pbrowser-gnulinux-$(VERSION).tar.gz .
 	cp i2pbrowser-gnulinux-$(VERSION).tar.gz i2pbrowser-gnulinux.tar.gz
 	rm -rfv firefox.launchers/build
+
+recopy-snap:
+	rm -rf firefox.launchers/snap/gnulinux
+	cp -v snapcraft.yaml firefox.launchers/snap/snapcraft.yaml
+	cp -rv firefox.launchers/gnulinux/ firefox.launchers/snap/gnulinux
+
+snap: recopy-snap
+	docker build -f Dockerfiles/Dockerfile.snap -t eyedeekay/firefox.profile.i2p.snap .
 
 recopy-osx:
 	rm -rf firefox.launchers/osx/firefox.profile.i2p/

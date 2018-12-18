@@ -92,12 +92,14 @@ install(){
     if [ ! -d "$USER_HOME/.mozilla/firefox/firefox.profile.i2p" ]; then
         mkdir -pv "$USER_HOME/.mozilla/firefox/"
         if [ -d /usr/lib/firefox.profile.i2p/ ]; then
+            rm -rfv "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -rv "/usr/lib/firefox.profile.i2p" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -v "/usr/lib/firefox.profile.i2p/i2pbrowser-firefox.desktop" \
                 "$USER_HOME/.local/share/applications/i2pbrowser-firefox.desktop"
             cp -v "/usr/lib/firefox.profile.i2p/i2pbrowser-firefox-private.desktop" \
                 "$USER_HOME/.local/share/applications/i2pbrowser-firefox-private.desktop"
         else
+            rm -rfv "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -rv "$DIR/" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -v "$DIR/i2pbrowser-firefox.desktop" \
                 "$USER_HOME/.local/share/applications/i2pbrowser-firefox.desktop"
