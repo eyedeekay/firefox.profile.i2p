@@ -1,5 +1,8 @@
 # firefox.profile.i2p
 
+[![Snap Status](https://build.snapcraft.io/badge/eyedeekay/firefox.profile.i2p.svg)](https://build.snapcraft.io/user/eyedeekay/firefox.profile.i2p)
+[![Travis-CI .dmg Status](https://travis-ci.com/eyedeekay/firefox.profile.i2p.svg?branch=master)](https://travis-ci.com/eyedeekay/firefox.profile.i2p)
+
 Much of this is ready for interested parties to test, but it's still just being
 tested and the rough edges are still being figured out. Use at your own risk.
 
@@ -47,12 +50,18 @@ For more information, see: [DETAILS.md](DETAILS.md)
   2. To start Firefox with the i2p Browsing profile, double-click the
     i2pbrower.bat script.
 
-### Manual Setup (OSX) [Standalone guide](MACOSX.md)
+### Automatic Setup (OSX) [Standalone guide](MACOSX.md)
 
-  0.
-  1.
-  2.
-  3.
+**Entirely Untested.** I've managed to build .dmg files that contain the scripts
+annd the profile. They *should* work, but until I get a Mac, I won't know for
+sure. To generate one on a Mac, install create-dmg from brew and run
+
+        make osx
+
+  0. Install the Firefox Web Browser from [Mozilla's web site](https://www.mozilla.org/en-US/firefox/new/).
+    This version doesn't integrate with a Tor Browser Bundle yet.
+  1. Install the .dmg file you generated with make.
+  2. Launch the I2PBrowser.sh script.
 
 ### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX and possibly Windows?)
 
@@ -63,7 +72,7 @@ instructions can be found below. However, if you wish to run the i2p Browser
 from the Docker Hub and have i2p installed on the host, you may simply:
 
 ```sh
-docker run --rm -i -t -d \
+docker run --rm -i -t \
 	-e DISPLAY=:0 \
 	--net host \
 	--name i2p-browser \
@@ -196,7 +205,7 @@ sudo apt-get update
 Finally, install tb-starter and tb-updater.
 
 ```sh
-sudo apt-get install tb-starter
+sudo apt-get install tb-starter tb-updater
 ```
 
 The last step is to run update-i2pbrowser. This will pre-configure the i2p
@@ -229,7 +238,7 @@ Or, you can just run these commands, now that you know what they do:
         sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
         echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
         sudo apt-get update
-        sudo apt-get install tb-starter
+        sudo apt-get install tb-starter tb-updater
         update-i2pbrowser
 
 Browser Security Testing:

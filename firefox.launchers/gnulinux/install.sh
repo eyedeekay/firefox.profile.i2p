@@ -8,9 +8,9 @@
 #                                                                              #
 ####                                                                        ####
 
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-
+if [ "$DIR" = "" ]; then
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+fi
 TITLE="i2p Browser Profile Set-Up"
 
 ME=$(whoami)
@@ -91,6 +91,7 @@ update(){
 install(){
     if [ ! -d "$USER_HOME/.mozilla/firefox/firefox.profile.i2p" ]; then
         mkdir -pv "$USER_HOME/.mozilla/firefox/"
+        echo "Installing to $USER_HOME"
         if [ -d /usr/lib/firefox.profile.i2p/ ]; then
             cp -rv "/usr/lib/firefox.profile.i2p" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -v "/usr/lib/firefox.profile.i2p/i2pbrowser-firefox.desktop" \
@@ -113,6 +114,8 @@ uninstall(){
 }
 
 debug(){
+    echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
+    DIR="$USER_HOME"
     rm -rfv "$DIR/.firefox.profile.i2p.debug"
     cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.debug"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
@@ -120,6 +123,8 @@ debug(){
 }
 
 private(){
+    echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
+    DIR="$USER_HOME"
     rm -rfv "$DIR/.firefox.profile.i2p.private"
     cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.private"
     firefox --no-remote --profile "$DIR/.firefox.profile.i2p.private" --private about:blank $1
@@ -127,6 +132,8 @@ private(){
 }
 
 run(){
+    echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
+    DIR="$USER_HOME"
     if [ ! -d "$DIR/.firefox.profile.i2p.default" ]; then
         cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.default"
     fi

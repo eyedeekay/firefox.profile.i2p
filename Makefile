@@ -26,7 +26,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows osx snap linux zip debwhonix
+all: lic guide windows snap linux zip debwhonix
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
@@ -34,13 +34,8 @@ clean:
 clean-build:
 	rm -rfv firefox.launchers/build
 
-install: setup profile
-	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
-		/usr/share/applications/i2pbrowser-firefox.desktop
-
-install-user: setup profile
-	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
-		$(HOME)/.local/share/applications/i2pbrowser-firefox.desktop
+install: recopy-linux
+	cd firefox.launchers/gnulinux && make install
 
 profile:
 	cp -rv firefox.profile.i2p/* $(HOME)/.mozilla/firefox/firefox.profile.i2p
@@ -50,13 +45,10 @@ uninstall: remove
 remove:
 	rm -fr $(HOME)/.mozilla/firefox/firefox.profile.i2p
 
-setup: $(HOME)/.mozilla/firefox/firefox.profile.i2p $(HOME)/.local/share/applications/
+setup: $(HOME)/.mozilla/firefox/firefox.profile.i2p
 
 $(HOME)/.mozilla/firefox/firefox.profile.i2p:
 	mkdir -p $(HOME)/.mozilla/firefox/firefox.profile.i2p
-
-$(HOME)/.local/share/applications/menu-xdg:
-	mkdir -p $(HOME)/.local/share/applications/menu-xdg
 
 reinstall: remove install
 
@@ -78,6 +70,7 @@ linux: recopy-linux
 recopy-snap:
 	rm -rf firefox.launchers/snap/gnulinux
 	cp -v snapcraft.yaml firefox.launchers/snap/snapcraft.yaml
+	sed -i 's|firefox.launchers/snap/gnulinux|gnulinux|g' firefox.launchers/snap/snapcraft.yaml
 	cp -rv firefox.launchers/gnulinux/ firefox.launchers/snap/gnulinux
 
 snap: recopy-snap

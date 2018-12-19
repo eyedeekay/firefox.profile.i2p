@@ -148,7 +148,52 @@ upload-deb:
 release-all: release current-release
 
 page: guide
-	markdown README.md > index.html
+	@echo '<!DOCTYPE html>' | tee index.html
+	@echo '<html lang="en">' | tee -a index.html
+	@echo '<head>' | tee -a index.html
+	@echo '<meta charset="utf-8" />' | tee -a index.html
+	@echo '<title>firefox.profile.i2p</title>' | tee -a index.html
+	@echo '<link rel="stylesheet" href="assets/style.css" />' | tee -a index.html
+	@echo '</head>' | tee -a index.html
+	@echo '<body>' | tee -a index.html
+	@echo '<div id="intro">' | tee -a index.html
+	cat HEADER.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '<div id="windows">' | tee -a index.html
+	cat WINDOWS.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '<div id="osx">' | tee -a index.html
+	cat MACOSX.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '<div id="linux">' | tee -a index.html
+	cat LINUX.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '<div id="notes">' | tee -a index.html
+	cat NOTES.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '<div id="whonix">' | tee -a index.html
+	cat WHONIX.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '<div id="finger">' | tee -a index.html
+	cat FINGER.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		markdown | tee -a index.html
+	@echo '</div>' | tee -a index.html
+	@echo '</body>' | tee -a index.html
+	@echo '</html>' | tee -a index.html
+	tidy -i -w 80 -m index.html
 
 update-service:
 	docker build -f Dockerfiles/Dockerfile.updatesite -t eyedeekay/i2pbrowser-site .

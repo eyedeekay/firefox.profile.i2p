@@ -8,7 +8,7 @@ instructions can be found below. However, if you wish to run the i2p Browser
 from the Docker Hub and have i2p installed on the host, you may simply:
 
 ```sh
-docker run --rm -i -t -d \
+docker run --rm -i -t \
 	-e DISPLAY=:0 \
 	--net host \
 	--name i2p-browser \

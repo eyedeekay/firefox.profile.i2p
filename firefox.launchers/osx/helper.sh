@@ -89,12 +89,22 @@ update(){
 }
 
 install(){
-    mkdir -pv "$USER_HOME/.mozilla/firefox/"
-    cp -rv "$DIR/firefox.profile.i2p" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
-    cp -v i2pbrowser-firefox.desktop \
-		"$USER_HOME/.local/share/applications/i2pbrowser-firefox.desktop"
-    cp -v i2pbrowser-firefox-private.desktop \
-		"$USER_HOME/.local/share/applications/i2pbrowser-firefox-private.desktop"
+    if [ ! -d "$USER_HOME/.mozilla/firefox/firefox.profile.i2p" ]; then
+        mkdir -pv "$USER_HOME/.mozilla/firefox/"
+        if [ -d /usr/lib/firefox.profile.i2p/ ]; then
+            cp -rv "/usr/lib/firefox.profile.i2p" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
+            cp -v "/usr/lib/firefox.profile.i2p/i2pbrowser-firefox.desktop" \
+                "$USER_HOME/.local/share/applications/i2pbrowser-firefox.desktop"
+            cp -v "/usr/lib/firefox.profile.i2p/i2pbrowser-firefox-private.desktop" \
+                "$USER_HOME/.local/share/applications/i2pbrowser-firefox-private.desktop"
+        else
+            cp -rv "$DIR/" "$USER_HOME/.mozilla/firefox/firefox.profile.i2p"
+            cp -v "$DIR/i2pbrowser-firefox.desktop" \
+                "$USER_HOME/.local/share/applications/i2pbrowser-firefox.desktop"
+            cp -v "$DIR/i2pbrowser-firefox-private.desktop" \
+                "$USER_HOME/.local/share/applications/i2pbrowser-firefox-private.desktop"
+        fi
+    fi
 }
 
 uninstall(){

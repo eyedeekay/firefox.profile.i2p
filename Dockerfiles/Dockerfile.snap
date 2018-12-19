@@ -7,6 +7,5 @@ RUN adduser --home /home/snap --disabled-password --gecos 'snap,snap,snap,snap,s
 COPY . /home/snap/snap
 WORKDIR /home/snap/snap
 RUN chown snap:snap -R /home/snap/snap
-#RUN sed -i 's|firefox.launchers/snap/gnulinux|gnulinux|g' /home/snap/snap/snapcraft.yaml
 RUN snapcraft
 CMD bash -i

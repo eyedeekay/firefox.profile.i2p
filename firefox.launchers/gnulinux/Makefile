@@ -6,6 +6,7 @@ username=$(shell who am i | awk '{print $$1}')
 
 install:
 	cp -rv . /usr/lib/firefox.profile.i2p/
+	chmod -R ugoa+r /usr/lib/firefox.profile.i2p/
 	install -m755 I2PBrowser.sh /usr/bin/
 	install -m755 I2PBrowser-Private.sh /usr/bin/
 	install -m755 i2pbrowser-firefox.desktop \
