@@ -26,7 +26,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows snap linux zip debwhonix debfirefox
+all: lic guide windows linux zip debwhonix debfirefox
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
@@ -75,11 +75,11 @@ recopy-snap:
 
 snap: recopy-snap
 	docker build -f Dockerfiles/Dockerfile.snap -t eyedeekay/firefox.profile.i2p.snap .
-	docker run -i -t --name snapbuild eyedeekay/firefox.profile.i2p.snap &
-	sleep 2
 	make copy-snap
 
 copy-snap:
+	docker run -i -t --name snapbuild eyedeekay/firefox.profile.i2p.snap &
+	sleep 5
 	docker cp snapbuild:/home/snap/snap/i2pbrowser_$(VERSION)_amd64.snap i2pbrowser_$(VERSION)_ammd64.snap
 	docker rm -f snapbuild
 
@@ -267,5 +267,5 @@ debfirefox:
 		--deldesc=yes \
 		--delspec=yes \
 		--backup=no \
-		--pakdir=../../ make debian-install
+		--pakdir=../../ make install-debian
 

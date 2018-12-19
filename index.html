@@ -99,27 +99,23 @@
       page</a>.
       </li>
       <li>Double-click the newly downloaded .deb file and install it.</li>
-      <li>
-        <p>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox
-        with the i2p browsing profile.</p>
-        <pre><code>  wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
-  sudo apt-get install ./i2pbrowser-helper_all.deb
-</code></pre>
-      </li>
+      <li>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox with
+      the i2p browsing profile.</li>
     </ol>
+    <p><code>sh wget -c
+    https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
+    sudo apt-get install ./i2pbrowser-helper_all.deb</code></p>
     <h3>Building a .deb with Checkinstall</h3>
     <ol>
       <li>Install git, make, and checkinstall</li>
       <li>Clone this repository and change to the newly created directory</li>
       <li>run ‘make debfirefox’</li>
-      <li>
-        <p>Install the generated package.</p>
-        <p>sudo apt-get install git make checkinstall git clone
-        https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
-        firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo
-        apt-get install ./i2pbrowser-helper_all.deb</p>
-      </li>
+      <li>Install the generated package.</li>
     </ol>
+    <p><code>sh sudo apt-get install git make checkinstall git clone
+    https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
+    firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo apt-get
+    install ./i2pbrowser-helper_all.deb</code></p>
     <h3>Docker Setup <a href="LINUX.md">Standalone guide</a> (Linux, probably
     OSX and possibly Windows?)</h3>
     <p>Linux and Mac OSX users can run the browser within a Docker container.
