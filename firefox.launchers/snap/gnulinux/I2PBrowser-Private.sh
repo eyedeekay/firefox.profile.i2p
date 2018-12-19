@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-DIR=$(who am i | awk '{print $1}')/.i2pbrowser/
+export DIR=/home/$(who am i | awk '{print $1}')/.mozilla/firefox/firefox.profile.i2p
 
-"$DIR/install.sh" install
-"$DIR/install.sh" private
+"/usr/lib/firefox.profile.i2p/install.sh" install
+"/usr/lib/firefox.profile.i2p/install.sh" private

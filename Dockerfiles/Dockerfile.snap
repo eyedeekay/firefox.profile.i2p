@@ -8,4 +8,4 @@ COPY . /home/snap/snap
 WORKDIR /home/snap/snap
 RUN chown snap:snap -R /home/snap/snap
 RUN snapcraft
-CMD bash -i
+CMD tail -f snapcraft.yaml

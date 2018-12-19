@@ -4,7 +4,6 @@
   <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
   <meta charset="utf-8">
   <title>firefox.profile.i2p</title>
-  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <div id="intro">
@@ -65,9 +64,9 @@
       Firefox installer for this to work. This version does work with Tor
       Browser yet.
       </li>
-      <li>Download the i2p Firefox profile zip bundle,
-      i2pbrowser-windows-0.04.zip, from <a href=
-      "https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows-0.04.zip">
+      <li>Download the i2p Firefox profile zip bundle, i2pbrowser-windows.zip,
+      from <a href=
+      "https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-windows.zip">
         This releases page</a>
       </li>
       <li>To start Firefox with the i2p Browsing profile, double-click the
@@ -92,6 +91,35 @@
     </ol>
   </div>
   <div id="linux">
+    <h3>Automatic Setup <a href="LINUX.md">Standalone guide</a> (Debian,
+    Ubuntu, apt-based with Firefox-ESR)</h3>
+    <ol>
+      <li>Download the i2pbrowser-helper .deb package from the <a href=
+      "https://github.com/eyedeekay/firefox.profile.i2p/releases">releases
+      page</a>.
+      </li>
+      <li>Double-click the newly downloaded .deb file and install it.</li>
+      <li>
+        <p>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox
+        with the i2p browsing profile.</p>
+        <pre><code>  wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
+  sudo apt-get install ./i2pbrowser-helper_all.deb
+</code></pre>
+      </li>
+    </ol>
+    <h3>Building a .deb with Checkinstall</h3>
+    <ol>
+      <li>Install git, make, and checkinstall</li>
+      <li>Clone this repository and change to the newly created directory</li>
+      <li>run ‘make debfirefox’</li>
+      <li>
+        <p>Install the generated package.</p>
+        <p>sudo apt-get install git make checkinstall git clone
+        https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
+        firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo
+        apt-get install ./i2pbrowser-helper_all.deb</p>
+      </li>
+    </ol>
     <h3>Docker Setup <a href="LINUX.md">Standalone guide</a> (Linux, probably
     OSX and possibly Windows?)</h3>
     <p>Linux and Mac OSX users can run the browser within a Docker container.
@@ -118,8 +146,8 @@
     <ol>
       <li>Install Firefox-ESR via the method preferred by your Linux
       distribution.</li>
-      <li>Download the i2pbrowser-gnulinux-0.04.zip from here. If you prefer,
-      an identical i2pbrowser-gnulinux-0.04.tar.gz is also available.</li>
+      <li>Download the i2pbrowser-gnulinux.zip from here. If you prefer, an
+      identical i2pbrowser-gnulinux.tar.gz is also available.</li>
       <li>Extract it.</li>
       <li>Run ./install.sh install from within the extracted folder.
       Alternatively, run ./install.sh run to run entirely from within the
@@ -128,10 +156,9 @@
     <p>If you want to just copy-paste some commands into your terminal, you
     could:</p>
     <p><code>sh curl
-    https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux-0.04.tar.gz
-    --output i2pbrowser-gnulinux-0.04.tar.gz tar xvzf
-    i2pbrowser-gnulinux-0.04.tar.gz cd i2pbrowser-gnulinux ./install.sh
-    install</code></p>
+    https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz
+    --output i2pbrowser-gnulinux.tar.gz tar xvzf i2pbrowser-gnulinux.tar.gz cd
+    i2pbrowser-gnulinux ./install.sh install</code></p>
     <p>Once you’ve run “./install.sh install” you can safely delete the profile
     folder if you wish. Alternatively, you could choose to run from the
     downloaded profile directory by running “./install.sh run” or “./install.sh

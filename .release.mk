@@ -26,6 +26,12 @@ gothub-upload-version-linux:
 		--name i2pbrowser-gnulinux.zip \
 		--replace \
 		--file i2pbrowser-gnulinux-$(VERSION).zip
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--label "GNU/Linux snap" \
+		--name i2pbrowser_ammd64.snap \
+		--replace \
+		--file i2pbrowser_$(VERSION)_ammd64.snap
 
 gothub-upload-version-osx:
 	$(GOTHUB_BIN) upload \
@@ -53,9 +59,15 @@ upload-version-deb:
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
 		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
-		--name i2pbrowser-whonix-helper_$(VERSION)-1_all.deb \
+		--name i2pbrowser-whonix-helper_all.deb \
 		--replace \
 		--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
+	$(GOTHUB_BIN) upload \
+		--tag $(VERSION) \
+		--label ".deb package containing firefox-esr configuration" \
+		--name i2pbrowser-helper_all.deb \
+		--replace \
+		--file i2pbrowser-helper_$(VERSION)-1_all.deb
 
 gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux upload-version-deb
 
@@ -82,12 +94,19 @@ gothub-upload-current-linux:
 		--name i2pbrowser-gnulinux.zip \
 		--replace \
 		--file i2pbrowser-gnulinux-$(VERSION).zip
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--label "GNU/Linux snap" \
+		--name i2pbrowser_ammd64.snap \
+		--replace \
+		--file i2pbrowser_$(VERSION)_ammd64.snap
 
 gothub-upload-current-osx:
 	$(GOTHUB_BIN) upload \
 		--tag current \
 		--label "Mac OSX Profile Alias" \
 		--name i2pbrowser-osx.zip \
+		--replace \
 		--file i2pbrowser-osx-$(VERSION).zip
 
 gothub-upload-current-windows:
@@ -141,9 +160,15 @@ upload-deb:
 	$(GOTHUB_BIN) upload \
 		--tag current \
 		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
-		--name i2pbrowser-whonix-helper_$(VERSION)-1_all.deb \
+		--name i2pbrowser-whonix-helper_all.deb \
 		--replace \
 		--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
+	$(GOTHUB_BIN) upload \
+		--tag current \
+		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
+		--name i2pbrowser-helper_all.deb \
+		--replace \
+		--file i2pbrowser-helper_$(VERSION)-1_all.debs
 
 release-all: release current-release
 
@@ -153,43 +178,29 @@ page: guide
 	@echo '<head>' | tee -a index.html
 	@echo '<meta charset="utf-8" />' | tee -a index.html
 	@echo '<title>firefox.profile.i2p</title>' | tee -a index.html
-	@echo '<link rel="stylesheet" href="assets/style.css" />' | tee -a index.html
+	#@echo '<link rel="stylesheet" href="assets/style.css" />' | tee -a index.html
 	@echo '</head>' | tee -a index.html
 	@echo '<body>' | tee -a index.html
 	@echo '<div id="intro">' | tee -a index.html
-	cat HEADER.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown HEADER.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '<div id="windows">' | tee -a index.html
-	cat WINDOWS.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown WINDOWS.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '<div id="osx">' | tee -a index.html
-	cat MACOSX.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown MACOSX.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '<div id="linux">' | tee -a index.html
-	cat LINUX.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown LINUX.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '<div id="notes">' | tee -a index.html
-	cat NOTES.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown NOTES.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '<div id="whonix">' | tee -a index.html
-	cat WHONIX.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown WHONIX.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '<div id="finger">' | tee -a index.html
-	cat FINGER.md | sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		markdown | tee -a index.html
+	markdown FINGER.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '</body>' | tee -a index.html
 	@echo '</html>' | tee -a index.html

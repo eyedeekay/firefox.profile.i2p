@@ -26,7 +26,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows snap linux zip debwhonix
+all: lic guide windows snap linux zip debwhonix debfirefox
 
 clean:
 	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
@@ -75,6 +75,13 @@ recopy-snap:
 
 snap: recopy-snap
 	docker build -f Dockerfiles/Dockerfile.snap -t eyedeekay/firefox.profile.i2p.snap .
+	docker run -i -t --name snapbuild eyedeekay/firefox.profile.i2p.snap &
+	sleep 2
+	make copy-snap
+
+copy-snap:
+	docker cp snapbuild:/home/snap/snap/i2pbrowser_$(VERSION)_amd64.snap i2pbrowser_$(VERSION)_ammd64.snap
+	docker rm -f snapbuild
 
 recopy-osx:
 	rm -rf firefox.launchers/osx/firefox.profile.i2p/
@@ -203,10 +210,12 @@ zip-gnulinux: clean-build
 zip: zip-gnulinux zip-osx zip-windows
 
 guide:
-	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md WHONIX.md FINGER.md | \
-		sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		tee README.md
+	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md WHONIX.md FINGER.md | tee README.md
+		# \
+		#sed "s|\.zip|-$(VERSION)\.zip|g" | \
+		#sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
+		#sed "s|_all.deb|_$(VERSION)-1_all.deb|g" | \
+		#tee README.md
 
 lic:
 	cat license/LICENSE.index LICENSE license/MPL2.txt license/LICENSE.tor license/HTTPS-Everywhere.txt license/NoScript.txt | tee LICENSE_ALL
@@ -258,4 +267,5 @@ debfirefox:
 		--deldesc=yes \
 		--delspec=yes \
 		--backup=no \
-		--pakdir=../../ make install
+		--pakdir=../../ make debian-install
+
