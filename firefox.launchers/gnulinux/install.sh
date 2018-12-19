@@ -72,6 +72,10 @@ usage(){
 }
 
 update(){
+    echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
+    INSTALL_DIR="$DIR"
+    echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
+    DIR="$USER_HOME"
     mv "$DIR/firefox.profile.i2p/" "$DIR/.firefox.profile.i2p.bak/"
     if [ "x$EEP" != "x" ]; then
         echo "$EEP detected, updates will be retrieved over i2p"
@@ -114,6 +118,8 @@ uninstall(){
 }
 
 debug(){
+    echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
+    INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$USER_HOME"
     rm -rfv "$DIR/.firefox.profile.i2p.debug"
@@ -123,6 +129,8 @@ debug(){
 }
 
 private(){
+    echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
+    INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$USER_HOME"
     rm -rfv "$DIR/.firefox.profile.i2p.private"
@@ -132,10 +140,12 @@ private(){
 }
 
 run(){
+    echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
+    INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$USER_HOME"
     if [ ! -d "$DIR/.firefox.profile.i2p.default" ]; then
-        cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.default"
+        cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.default"
     fi
     firefox --no-remote --profile "$DIR/.firefox.profile.i2p.default" about:blank $1
 }

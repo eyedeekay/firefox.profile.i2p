@@ -240,3 +240,22 @@ debwhonix:
 		--delspec=yes \
 		--backup=no \
 		--pakdir=../ make install
+
+debfirefox:
+	cd firefox.launchers/gnulinux && fakeroot-ng checkinstall --default \
+		--install=no \
+		--fstrans=yes \
+		--maintainer=eyedeekay@safe-mail.net \
+		--pkgname="i2pbrowser-helper" \
+		--pkgversion="$(VERSION)" \
+		--requires=firefox-esr,webext-noscript,webext-https-everywhere \
+		--arch all \
+		--pkglicense=mit \
+		--pkggroup=net \
+		--pkgsource=./ \
+		--pkgaltsource="https://github.com/eyedeekay/firefox.profile.i2p" \
+		--deldoc=yes \
+		--deldesc=yes \
+		--delspec=yes \
+		--backup=no \
+		--pakdir=../ make install

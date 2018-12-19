@@ -1,6 +1,8 @@
 inetc/
 .go/
 firefox.launchers/gnulinux/.firefox.profile.i2p.default
+firefox.launchers/gnulinux/doc-pak
+firefox.launchers/gnulinux/description-pak
 firefox.launchers/build/
 *.zip
 *.msi
