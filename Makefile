@@ -258,4 +258,4 @@ debfirefox:
 		--deldesc=yes \
 		--delspec=yes \
 		--backup=no \
-		--pakdir=../ make install
+		--pakdir=../../ make install
