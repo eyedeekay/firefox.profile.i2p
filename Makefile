@@ -35,7 +35,8 @@ clean-build:
 	rm -rfv firefox.launchers/build
 
 install:
-	cp -rv ./firefox.profile.i2p /usr/lib/firefox.profile.i2p/
+	mkdir -p /usr/lib/firefox.profile.i2p/
+	cp -rv ./firefox.profile.i2p /usr/lib/firefox.profile.i2p/firefox.profile.i2p
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
 	install -m755 ./firefox.launchers/gnulinux/install.sh /usr/lib/firefox.profile.i2p/install.sh
