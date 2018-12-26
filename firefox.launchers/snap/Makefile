@@ -5,6 +5,7 @@ username=$(shell who am i | awk '{print $$1}')
 	#@echo /home/$(username)
 
 install:
+	mkdir -p /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
 	cp -rv ./gnulinux /usr/lib/firefox.profile.i2p/
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
