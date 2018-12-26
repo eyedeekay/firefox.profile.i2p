@@ -1,6 +1,12 @@
 
 ### Automatic Setup [Standalone guide](LINUX.md) (Debian, Ubuntu, apt-based with Firefox-ESR)
 
+A pre-built deb(for now, crudely generated with checkinstall) is able to
+configure an i2p browser on Debian-based distributions as long as they
+package Firefox, NoScript, and HTTPS-Everywhere. This deb simply configures
+system-firefox with alternate defaults and configures launchers to use them
+with.
+
   0. Download the i2pbrowser-helper .deb package from the [releases page](https://github.com/eyedeekay/firefox.profile.i2p/releases).
   1. Double-click the newly downloaded .deb file and install it.
   2. Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox with the
@@ -12,6 +18,9 @@ sudo apt-get install ./i2pbrowser-helper_all.deb
 ```
 
 ### Building a .deb with Checkinstall
+
+If you don't want to trust the deb I generated, then it's also very simple to
+generate your own from this source code.
 
   1. Install git, make, and checkinstall
   2. Clone this repository and change to the newly created directory

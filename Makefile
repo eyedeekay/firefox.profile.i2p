@@ -29,13 +29,36 @@ include .release.mk
 all: lic guide windows linux zip debwhonix debfirefox
 
 clean:
-	rm -frv *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
+	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
 
 clean-build:
 	rm -rfv firefox.launchers/build
 
-install: recopy-linux
-	cd firefox.launchers/gnulinux && make install
+install: recopy-linux recopy-snap
+	cp -rv ./firefox.profile.i2p /usr/lib/firefox.profile.i2p/
+	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m755 ./firefox.launchers/gnulinux/install.sh /usr/lib/firefox.profile.i2p/install.sh
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser.sh /usr/bin/
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser-Private.sh /usr/bin/
+	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
+		/usr/share/applications/i2pbrowser-firefox.desktop
+	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
+		/usr/share/applications/i2pbrowser-firefox-private.desktop
+
+install-debian: recopy-linux
+	mkdir -p /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	cp -v ./firefox.profile.i2p/user.js /usr/lib/firefox.profile.i2p/firefox.profile.i2p
+	cp -v ./firefox.profile.i2p/bookmarks.html /usr/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m755 ./firefox.launchers/gnulinux/install.sh /usr/lib/firefox.profile.i2p/install.sh
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser.sh /usr/bin/
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser-Private.sh /usr/bin/
+	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
+		/usr/share/applications/i2pbrowser-firefox.desktop
+	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
+		/usr/share/applications/i2pbrowser-firefox-private.desktop
 
 profile:
 	cp -rv firefox.profile.i2p/* $(HOME)/.mozilla/firefox/firefox.profile.i2p
@@ -80,7 +103,7 @@ snap: recopy-snap
 copy-snap:
 	docker run -i -t --name snapbuild eyedeekay/firefox.profile.i2p.snap &
 	sleep 5
-	docker cp snapbuild:/home/snap/snap/i2pbrowser_$(VERSION)_amd64.snap i2pbrowser_$(VERSION)_ammd64.snap
+	docker cp snapbuild:/home/snap/snap/i2pbrowser_$(VERSION)_amd64.snap i2pbrowser_$(VERSION)_amd64.snap
 	docker rm -f snapbuild
 
 recopy-osx:

@@ -10,7 +10,9 @@ firefox.launchers/build/
 *.dmg
 *.exe
 *.sha256sum
+*.sha256sum.asc
 *.deb
+*.snap
 test
 README.md.asc
 
