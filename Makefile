@@ -60,6 +60,10 @@ install-debian: recopy-linux
 	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		/usr/share/applications/i2pbrowser-firefox-private.desktop
 
+fix-perms:
+	chmod a+rx ./firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx ./firefox.profile.i2p/firefox.profile.i2p/extensions
+
 profile:
 	cp -rv firefox.profile.i2p/* $(HOME)/.mozilla/firefox/firefox.profile.i2p
 
