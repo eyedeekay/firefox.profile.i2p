@@ -100,8 +100,10 @@ linux: recopy-linux
 recopy-snap:
 	rm -rf firefox.launchers/snap/gnulinux
 	cp -v snapcraft.yaml firefox.launchers/snap/snapcraft.yaml
-	sed -i 's|firefox.launchers/snap/gnulinux|gnulinux|g' firefox.launchers/snap/snapcraft.yaml
 	cp -rv firefox.launchers/gnulinux/ firefox.launchers/snap/gnulinux
+	cp firefox.launchers/gnulinux/I2PBrowser.sh firefox.launchers/snap/gnulinux/I2PBrowser.sh
+	cp firefox.launchers/gnulinux/I2PBrowser-Private.sh firefox.launchers/snap/gnulinux/I2PBrowser-Private.sh
+	cp firefox.launchers/gnulinux/install.sh firefox.launchers/snap/gnulinux/install.sh
 
 snap: recopy-snap
 	docker build -f Dockerfiles/Dockerfile.snap -t eyedeekay/firefox.profile.i2p.snap .

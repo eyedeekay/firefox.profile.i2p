@@ -8,7 +8,6 @@ install:
 	cp -rv . /usr/lib/firefox.profile.i2p/
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	install -m755 ./firefox.launchers/gnulinux/install.sh /usr/lib/firefox.profile.i2p/install.sh
 	install -m755 I2PBrowser.sh /usr/bin/
 	install -m755 I2PBrowser-Private.sh /usr/bin/
 	install -m755 i2pbrowser-firefox.desktop \
@@ -17,12 +16,11 @@ install:
 		/usr/share/applications/i2pbrowser-firefox-private.desktop
 
 install-debian:
-	cp -v ./user.js /usr/lib/firefox.profile.i2p/
-	cp -v ./bookmarks.html /usr/lib/firefox.profile.i2p/
 	mkdir -p /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
 	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	install -m755 install.sh /usr/lib/firefox.profile.i2p/install.sh
+	cp -v ./firefox.profile.i2p/user.js /usr/lib/firefox.profile.i2p/firefox.profile.i2p
+	cp -v ./firefox.profile.i2p/bookmarks.html /usr/lib/firefox.profile.i2p/firefox.profile.i2p
 	install -m755 I2PBrowser.sh /usr/bin/
 	install -m755 I2PBrowser-Private.sh /usr/bin/
 	install -m755 i2pbrowser-firefox.desktop \
