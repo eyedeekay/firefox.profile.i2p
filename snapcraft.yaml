@@ -8,6 +8,7 @@ description: |
 
 apps:
     i2pbrowser:
+        command: I2PBrowser.sh
         desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
         desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
 
