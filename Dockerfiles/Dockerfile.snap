@@ -5,5 +5,5 @@ RUN adduser --home /home/snap --disabled-password --gecos 'snap,snap,snap,snap,s
 COPY . /home/snap/snap
 WORKDIR /home/snap/snap
 RUN chown snap:snap -R /home/snap/snap
-RUN snapcraft --debug
+RUN snapcraft
 CMD tail -f snapcraft.yaml
