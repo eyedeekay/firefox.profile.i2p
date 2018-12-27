@@ -19,6 +19,11 @@ parts:
   i2pbrowser:
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
-    prime: [firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop,firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop]
-    make-parameters: [recopy-snap]
+    prime: [firefox.launchers,firefox.profile.i2p]
+    prime:
+      - firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+      - firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
+      - firefox.launchers/snap
+      - firefox.profile.i2p
+    make-parameters: [recopy-linux,recopy-snap]
     stage-packages: [ firefox ]
