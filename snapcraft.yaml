@@ -29,5 +29,4 @@ parts:
       - firefox.launchers/snap
       - firefox.profile.i2p
     make-parameters: [recopy-linux,recopy-snap]
-    install: "make install"
     stage-packages: [ firefox ]
