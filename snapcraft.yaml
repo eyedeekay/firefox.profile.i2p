@@ -20,10 +20,11 @@ parts:
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
     stage: [firefox.launchers,firefox.profile.i2p]
-    install:
+    prime:
       - firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
       - firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
       - firefox.launchers/snap
       - firefox.profile.i2p
     make-parameters: [recopy-linux,recopy-snap]
+    install: "make install"
     stage-packages: [ firefox ]
