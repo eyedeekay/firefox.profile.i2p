@@ -30,3 +30,6 @@ install-debian:
 		/usr/share/applications/i2pbrowser-firefox.desktop
 	install -m755 ./gnulinux/i2pbrowser-firefox-private.desktop \
 		/usr/share/applications/i2pbrowser-firefox-private.desktop
+
+recopy-snap:
+	echo ""
