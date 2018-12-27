@@ -10,7 +10,7 @@ apps:
     i2pbrowser:
         command:
             I2PBrowser.sh
-    i2pbrowser-Private:
+    i2pbrowser-private:
         command:
             I2PBrowser-Private.sh
 
@@ -23,3 +23,10 @@ parts:
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
     stage-packages: [ firefox ]
+    desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+  i2pbrowser-private:
+    # See 'snapcraft plugins'
+    source: https://github.com/eyedeekay/firefox.profile.i2p.git
+    plugin: make
+    stage-packages: [ firefox ]
+    desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
