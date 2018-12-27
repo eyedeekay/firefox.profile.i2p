@@ -15,6 +15,10 @@ VERSIONMINOR=04
 VERSIONBUILD=
 VERSION=$(VERSIONMAJOR).$(VERSIONMINOR)$(VERSIONBUILD)
 
+prefix ?= /usr
+bindir ?= $(prefix)/bin
+DESTDIR ?= /
+
 echo:
 	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
 
@@ -35,31 +39,31 @@ clean-build:
 	rm -rfv firefox.launchers/build
 
 install:
-	mkdir -p /usr/lib/firefox.profile.i2p/
-	cp -rv ./firefox.profile.i2p /usr/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	install -m755 ./firefox.launchers/gnulinux/install.sh /usr/lib/firefox.profile.i2p/install.sh
-	install -m755 ./firefox.launchers/gnulinux/I2PBrowser.sh /usr/bin/
-	install -m755 ./firefox.launchers/gnulinux/I2PBrowser-Private.sh /usr/bin/
+	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/
+	cp -rv ./firefox.profile.i2p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m755 ./firefox.launchers/gnulinux/install.sh $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser.sh $(DESTDIR)$(bindir)
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser-Private.sh $(DESTDIR)$(bindir)
 	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
-		/usr/share/applications/i2pbrowser-firefox.desktop
+		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox.desktop
 	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
-		/usr/share/applications/i2pbrowser-firefox-private.desktop
+		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
 install-debian:
-	mkdir -p /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	cp -v ./firefox.profile.i2p/user.js /usr/lib/firefox.profile.i2p/firefox.profile.i2p
-	cp -v ./firefox.profile.i2p/bookmarks.html /usr/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx /usr/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	install -m755 ./firefox.launchers/gnulinux/install.sh /usr/lib/firefox.profile.i2p/install.sh
-	install -m755 ./firefox.launchers/gnulinux/I2PBrowser.sh /usr/bin/
-	install -m755 ./firefox.launchers/gnulinux/I2PBrowser-Private.sh /usr/bin/
+	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	cp -v ./firefox.profile.i2p/user.js $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	cp -v ./firefox.profile.i2p/bookmarks.html $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m755 ./firefox.launchers/gnulinux/install.sh $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser.sh $(DESTDIR)$(bindir)
+	install -m755 ./firefox.launchers/gnulinux/I2PBrowser-Private.sh $(DESTDIR)$(bindir)
 	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
-		/usr/share/applications/i2pbrowser-firefox.desktop
+		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox.desktop
 	install -m755 ./firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
-		/usr/share/applications/i2pbrowser-firefox-private.desktop
+		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) ./firefox.launchers/*/firefox.profile.i2p/
