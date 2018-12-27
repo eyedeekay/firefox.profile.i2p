@@ -98,7 +98,8 @@ linux: recopy-linux
 	rm -rfv firefox.launchers/build
 
 recopy-snap:
-	rm -rf firefox.launchers/snap/gnulinux
+	ls
+	rm -rfv firefox.launchers/snap/gnulinux
 	cp -v snapcraft.yaml firefox.launchers/snap/snapcraft.yaml
 	cp -rv firefox.launchers/gnulinux/ firefox.launchers/snap/gnulinux
 	cp firefox.launchers/gnulinux/I2PBrowser.sh firefox.launchers/snap/gnulinux/I2PBrowser.sh
