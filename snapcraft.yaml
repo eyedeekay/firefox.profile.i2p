@@ -23,7 +23,7 @@ parts:
     #stage:
       #- firefox.launchers
       #- firefox.profile.i2p
-    #prime:
-      #- firefox.launchers
-      #- firefox.profile.i2p
+    prime:
+      - firefox.launchers
+      - firefox.profile.i2p
     stage-packages: [ firefox ]
