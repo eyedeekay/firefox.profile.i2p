@@ -28,5 +28,4 @@ parts:
       - firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
       - firefox.launchers/snap
       - firefox.profile.i2p
-    make-parameters: [recopy-linux,recopy-snap]
     stage-packages: [ firefox ]
