@@ -22,11 +22,11 @@ parts:
     # See 'snapcraft plugins'
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
-    stage-packages: [ firefox ]
     desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+    stage-packages: [ firefox ]
   i2pbrowser-private:
     # See 'snapcraft plugins'
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
-    stage-packages: [ firefox ]
     desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
+    stage-packages: [ firefox ]
