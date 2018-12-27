@@ -1,7 +1,7 @@
 name: i2pbrowser
 version: '0.04'
 summary: I2P Browser Launcher
-base: core18
+base: core
 description: |
   This snap contains a script which automatically configures and launches a
   Firefox browser configured for i2p.
@@ -10,23 +10,23 @@ apps:
     i2pbrowser:
         command:
             I2PBrowser.sh
+        desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
     i2pbrowser-private:
         command:
             I2PBrowser-Private.sh
+        desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   i2pbrowser:
-    # See 'snapcraft plugins'
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
-    desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+    make-parameters: [ "recopy-snap" , "install" ]
     stage-packages: [ firefox ]
   i2pbrowser-private:
-    # See 'snapcraft plugins'
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     plugin: make
-    desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
+    make-parameters: [ "recopy-snap" , "install" ]
     stage-packages: [ firefox ]
