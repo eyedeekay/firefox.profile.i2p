@@ -93,6 +93,12 @@
   <div id="linux">
     <h3>Automatic Setup <a href="LINUX.md">Standalone guide</a> (Debian,
     Ubuntu, apt-based with Firefox-ESR)</h3>
+    <p>A pre-built deb(for now, crudely generated with checkinstall) is able to
+    configure an i2p browser on Debian-based distributions as long as they
+    package Firefox, NoScript, and HTTPS-Everywhere. This deb simply configures
+    system-firefox with alternate defaults and configures launchers to use them
+    with. Note that in this configuration, Firefox will also have the system
+    plugins installed in Debian.</p>
     <ol>
       <li>Download the i2pbrowser-helper .deb package from the <a href=
       "https://github.com/eyedeekay/firefox.profile.i2p/releases">releases
@@ -106,6 +112,8 @@
     https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
     sudo apt-get install ./i2pbrowser-helper_all.deb</code></p>
     <h3>Building a .deb with Checkinstall</h3>
+    <p>If you don’t want to trust the deb I generated, then it’s also very
+    simple to generate your own from this source code.</p>
     <ol>
       <li>Install git, make, and checkinstall</li>
       <li>Clone this repository and change to the newly created directory</li>
@@ -116,6 +124,10 @@
     https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
     firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo apt-get
     install ./i2pbrowser-helper_all.deb</code></p>
+    <h3>Snap Setup <a href="LINUX.md">Standalone guide</a>
+    (Cross-Distribution)</h3>
+    <p>Snapcraft is telling me it’s not my fault that it’s broken. Probably
+    more here soon. The one in the releases might work.</p>
     <h3>Docker Setup <a href="LINUX.md">Standalone guide</a> (Linux, probably
     OSX and possibly Windows?)</h3>
     <p>Linux and Mac OSX users can run the browser within a Docker container.
