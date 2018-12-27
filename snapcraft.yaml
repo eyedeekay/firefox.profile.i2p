@@ -8,12 +8,7 @@ description: |
 
 apps:
     i2pbrowser:
-        command:
-            I2PBrowser.sh
         desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
-    i2pbrowser-private:
-        command:
-            I2PBrowser-Private.sh
         desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
 
 grade: devel # must be 'stable' to release into candidate/stable channels
@@ -25,12 +20,5 @@ parts:
     plugin: make
     stage: [firefox.launchers/snap/gnulinux]
     prime: [firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop]
-    make-parameters: [ "recopy-snap" , "install" ]
-    stage-packages: [ firefox ]
-  i2pbrowser-private:
-    source: https://github.com/eyedeekay/firefox.profile.i2p.git
-    plugin: make
-    stage: [firefox.launchers/snap/gnulinux]
-    prime: [firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop]
     make-parameters: [ "recopy-snap" , "install" ]
     stage-packages: [ firefox ]
