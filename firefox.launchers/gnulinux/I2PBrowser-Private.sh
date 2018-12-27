@@ -1,6 +1,12 @@
 #! /usr/bin/env bash
 
-export DIR=/home/$(who am i | awk '{print $1}')/.mozilla/firefox/firefox.profile.i2p
+if [ ! -z "$SUDO_USER" ]; then
+    BR_USER=$SUDO_USER
+else
+    BR_USER=$USER
+fi
 
-"/usr/lib/firefox.profile.i2p/install.sh" install
-"/usr/lib/firefox.profile.i2p/install.sh" private
+export DIR="/home/$BR_USER/.mozilla/firefox/firefox.profile.i2p"
+
+"$SNAP/usr/lib/firefox.profile.i2p/install.sh" install
+"$SNAP/usr/lib/firefox.profile.i2p/install.sh" run
