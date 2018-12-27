@@ -18,7 +18,6 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 parts:
   i2pbrowser:
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
-    source-subdir: "."
     plugin: make
     prime: [firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop,firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop]
     make-parameters: [recopy-snap]
