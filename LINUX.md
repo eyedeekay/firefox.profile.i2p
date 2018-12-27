@@ -36,6 +36,11 @@ i2pbrowser-helper_all.deb
 sudo apt-get install ./i2pbrowser-helper_all.deb
 ```
 
+### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
+
+Snapcraft is telling me it's not my fault that it's broken. Probably more here
+soon. The one in the releases might work.
+
 ### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX and possibly Windows?)
 
 Linux and Mac OSX users can run the browser within a Docker container. This
