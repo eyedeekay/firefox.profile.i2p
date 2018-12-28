@@ -10,9 +10,9 @@ apps:
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-  #i2pbrowser-private:
-    #command: usr/bin/I2PBrowser-Private.sh
-    #desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
+  i2pbrowser-private:
+    command: usr/bin/I2PBrowser-Private.sh
+    desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
