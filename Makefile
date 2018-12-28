@@ -102,7 +102,7 @@ linux: recopy-linux
 	rm -rfv firefox.launchers/build
 
 sedc:
-	sed -i "s|$(shell grep version snapcraft.yaml)|version: '$(VERSIONMAJOR).$(VERSIONMINOR).$(VERSIONBUILD)'|g" snapcraft.yaml
+	sed -i "s|$(shell grep version snapcraft.yaml)|version: '$(VERSION)'|g" snapcraft.yaml
 
 recopy-snap: sedc
 	ls

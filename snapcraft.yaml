@@ -1,5 +1,5 @@
 name: i2pbrowser
-version: '0.04.a'
+version: '0.04a'
 summary: I2P Browser Launcher
 base: core18
 description: |
@@ -9,8 +9,10 @@ description: |
 apps:
     i2pbrowser:
         command: I2PBrowser.sh
-        #desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
-        #desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
+        desktop: /snap/i2pbrowser/current/usr/share/applications/i2pbrowser-firefox.desktop
+    #i2pbrowser-private:
+        #command: I2PBrowser-Private.sh
+        #desktop: /snap/i2pbrowser/current/usr/share/applications/i2pbrowser-firefox-private.desktop
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
@@ -21,9 +23,9 @@ parts:
     source-subdir: "."
     plugin: make
     #stage:
-      #- firefox.launchers
-      #- firefox.profile.i2p
+      #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+      #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
     #prime:
-      #- firefox.launchers
-      #- firefox.profile.i2p
+      #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+      #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
     stage-packages: [ firefox ]
