@@ -23,9 +23,9 @@ parts:
     source-subdir: "."
     plugin: make
     stage:
-      - firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+      - /usr/share/applications/i2pbrowser-firefox.desktop
       #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
     prime:
-      - firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+      - /usr/share/applications/i2pbrowser-firefox.desktop
       #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
     stage-packages: [ firefox ]
