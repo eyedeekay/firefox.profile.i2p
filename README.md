@@ -133,6 +133,9 @@ snap install --edge i2pbrowser --devmode
 /snap/bin/i2pbrowser
 ```
 
+It's not likely that integrating a snap with Tor Browser will be possible unless
+Tor Browser becomes available as a snap, which seems unlikely.
+
 ### Make Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 
   1. Install the firefox-esr browser from your distribution or from Mozilla's
