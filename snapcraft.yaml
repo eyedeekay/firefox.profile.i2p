@@ -7,6 +7,7 @@ description: |
   Firefox browser configured for i2p.
 
 apps:
+
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
@@ -38,7 +39,7 @@ parts:
       #- usr/bin/I2PBrowser-Private.sh
       #- usr/share/applications/i2pbrowser-firefox.desktop
       #- usr/share/applications//i2pbrowser-firefox-private.desktop
-    stage-packages: [ firefox, libgtkextra-dev, libpng-dev ]
+    stage-packages: [ firefox, libgtkextra-dev, libpng-tools ]
 
 
 
