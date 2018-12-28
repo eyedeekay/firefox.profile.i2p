@@ -38,7 +38,7 @@ parts:
       #- usr/bin/I2PBrowser-Private.sh
       #- usr/share/applications/i2pbrowser-firefox.desktop
       #- usr/share/applications//i2pbrowser-firefox-private.desktop
-    stage-packages: [ firefox ]
+    stage-packages: [ firefox, libpng12-0 ]
 
 
 
