@@ -9,10 +9,10 @@ description: |
 apps:
   i2pbrowser:
     command: I2PBrowser.sh
-    desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+    desktop: i2pbrowser-firefox.desktop
   #i2pbrowser-private:
     #command: I2PBrowser-Private.sh
-    #desktop: /usr/share/applications/i2pbrowser-firefox-private.desktop
+    #desktop: i2pbrowser-firefox-private.desktop
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
