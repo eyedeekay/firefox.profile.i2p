@@ -17,7 +17,7 @@ VERSION=$(VERSIONMAJOR).$(VERSIONMINOR)$(VERSIONBUILD)
 
 prefix ?= /usr
 bindir ?= $(prefix)/bin
-DESTDIR ?= /
+#DESTDIR ?= /
 
 echo:
 	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
