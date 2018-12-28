@@ -51,6 +51,9 @@ install:
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
+snapfix:
+	ln -sf usr/lib/libpng.so.0 usr/lib/x86_64-linux-gnu/libpng.so.0
+
 install-debian:
 	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
 	cp -v firefox.profile.i2p/user.js $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
