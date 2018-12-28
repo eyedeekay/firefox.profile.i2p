@@ -40,6 +40,8 @@ parts:
       #- usr/share/applications/i2pbrowser-firefox.desktop
       #- usr/share/applications//i2pbrowser-firefox-private.desktop
     stage-packages: [ firefox, libgtkextra-dev, libpng-tools ]
+    install:
+      - ln -sf usr/lib/libpng.so.0 usr/lib/x86_64-linux-gnu/libpng.so.0
 
 
 
