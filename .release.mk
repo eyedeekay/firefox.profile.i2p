@@ -29,9 +29,9 @@ gothub-upload-version-linux:
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
 		--label "GNU/Linux snap" \
-		--name i2pbrowser_ammd64.snap \
+		--name i2pbrowser_amd64.snap \
 		--replace \
-		--file i2pbrowser_$(VERSION)_ammd64.snap
+		--file i2pbrowser_$(VERSION)_amd64.snap
 
 gothub-upload-version-osx:
 	$(GOTHUB_BIN) upload \
