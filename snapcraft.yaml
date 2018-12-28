@@ -9,7 +9,7 @@ description: |
 apps:
   i2pbrowser:
     command: I2PBrowser.sh
-    desktop: /usr/share/applications/i2pbrowser-firefox.desktop
+    desktop: firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
   #i2pbrowser-private:
     #command: I2PBrowser-Private.sh
     #desktop: /usr/share/applications/i2pbrowser-firefox-private.desktop
@@ -25,7 +25,7 @@ parts:
     #stage:
       #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
       #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
-    #prime:
-      #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
+    prime:
+      - firefox.launchers/snap/gnulinux/i2pbrowser-firefox.desktop
       #- firefox.launchers/snap/gnulinux/i2pbrowser-firefox-private.desktop
     stage-packages: [ firefox ]
