@@ -24,18 +24,18 @@ parts:
     plugin: make
     stage:
       - usr/lib/firefox.profile.i2p/firefox.profile.i2p
-      - usr/lib/firefox.profile.i2p/install.sh
-      - usr/bin/I2PBrowser.sh
-      - usr/bin/I2PBrowser-Private.sh
-      - usr/share/applications/i2pbrowser-firefox.desktop
-      - usr/share/applications/i2pbrowser-firefox-private.desktop
+      #- usr/lib/firefox.profile.i2p/install.sh
+      #- usr/bin/I2PBrowser.sh
+      #- usr/bin/I2PBrowser-Private.sh
+      #- usr/share/applications/i2pbrowser-firefox.desktop
+      #- usr/share/applications/i2pbrowser-firefox-private.desktop
     prime:
       - usr/lib/firefox.profile.i2p/firefox.profile.i2p
-      - usr/lib/firefox.profile.i2p/install.sh
-      - usr/bin/I2PBrowser.sh
-      - usr/bin/I2PBrowser-Private.sh
-      - usr/share/applications/i2pbrowser-firefox.desktop
-      - usr/share/applications//i2pbrowser-firefox-private.desktop
+      #- usr/lib/firefox.profile.i2p/install.sh
+      #- usr/bin/I2PBrowser.sh
+      #- usr/bin/I2PBrowser-Private.sh
+      #- usr/share/applications/i2pbrowser-firefox.desktop
+      #- usr/share/applications//i2pbrowser-firefox-private.desktop
     stage-packages: [ firefox ]
 
 
