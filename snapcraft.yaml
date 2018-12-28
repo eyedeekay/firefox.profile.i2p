@@ -23,7 +23,7 @@ parts:
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     source-subdir: "."
     plugin: make
-    make-parameters: [ install, snapfix ]
+    make-parameters: [ "DESTDIR=$SNAPCRAFT_PART_INSTALL", install, snapfix ]
     stage:
       - usr
       #- usr/lib/firefox.profile.i2p/firefox.profile.i2p
