@@ -26,6 +26,27 @@
     coherent rationale to the version numbers yet. I move them when I add a
     feature to make sure I know what to uninstall. Roughly, that corresponds to
     a “Feature.” That is the only purpose they serve for the moment.</p>
+    <h2>Coarse Changelog/Roadmap</h2>
+    <ul>
+      <li>Current == 0.4</li>
+      <li>0.x Intitial configuration,</li>
+      <li>0.01x Wrapper-launcher for Windows/Firefox, Whonix browser for Debian
+      Derivs</li>
+      <li>0.02x Improved Reliability</li>
+      <li>0.03x Reddit to-do list, i2prouter integration, Tor Browser Bundle
+      integration for Windows</li>
+      <li>0.04x Additional packaging, snap, dmg, deb metapackage</li>
+      <li>0.05x (Planned) Tor Browser Bundle integration for OSX,
+      torbrowser-launcher integration for Linux</li>
+      <li>0.06x (Planned) Finalize packaging, User-readiness, automate
+      fingerprint measurements, automate hostile testing.</li>
+      <li>0.07x (Planned) Control Plugin, additional plugin evaluation(Font
+      fingerprint mitigations? Perhaps an “Expert Bundle” with uMatrix?)</li>
+      <li>0.08x (Planned) Android port, build-from-source</li>
+      <li>0.09x (Planned) Selenium-based browser tests, Update services</li>
+      <li>0.10x (Planned) No known bugs. Best-case scenario for current i2p
+      browsers using Firefox or TBB.</li>
+    </ul>
     <h2>What it is</h2>
     <p>This is a profile for Firefox, pre-configured to use i2p, with an
     accompanying launcher for easy use. It also comes pre-configured to disable
@@ -126,10 +147,31 @@
     install ./i2pbrowser-helper_all.deb</code></p>
     <h3>Snap Setup <a href="LINUX.md">Standalone guide</a>
     (Cross-Distribution)</h3>
-    <p>Snapcraft is telling me it’s not my fault that it’s broken. Probably
-    more here soon. The one in the releases might work.</p>
+    <p>The latest snap can be installed in dev mode, but it doesn’t create
+    desktop shortcuts yet so I haven’t promoted it to snap stable.</p>
+    <ol>
+      <li>Open a terminal and run: ‘snap install –edge i2pbrowser
+      –devmode’</li>
+      <li>Run /snap/bin/i2pbrowser</li>
+    </ol>
+    <p><code>sh snap install --edge i2pbrowser --devmode
+    /snap/bin/i2pbrowser</code></p>
+    <h3>Make Setup <a href="LINUX.md">Standalone guide</a>
+    (Cross-Distribution)</h3>
+    <ol>
+      <li>Install the firefox-esr browser from your distribution or from
+      Mozilla’s web site. Be sure to place it into your PATH as firefox, for
+      example, /usr/bin/firefox.</li>
+      <li>Download the GNU/Linux zip bundle from the releases page and unpack
+      it.</li>
+      <li>Run the following make targets:</li>
+    </ol>
+    <p><code>sh make recopy-linux sudo make install</code></p>
+    <ol>
+      <li>run ‘I2PBrowser.sh’</li>
+    </ol>
     <h3>Docker Setup <a href="LINUX.md">Standalone guide</a> (Linux, probably
-    OSX and possibly Windows?)</h3>
+    OSX, Windows?)</h3>
     <p>Linux and Mac OSX users can run the browser within a Docker container.
     This image uses an entirely un-official upstream image of the Tor Browser
     Bundle from Dockerhub, also authored by me. Should you wish to build it

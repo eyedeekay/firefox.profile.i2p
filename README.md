@@ -14,6 +14,26 @@ version numbers yet. I move them when I add a feature to make sure I know what
 to uninstall. Roughly, that corresponds to a "Feature." That is the only purpose
 they serve for the moment.
 
+## Coarse Changelog/Roadmap
+
+  - Current == 0.4
+  - 0.x Intitial configuration,
+  - 0.01x Wrapper-launcher for Windows/Firefox, Whonix browser for Debian Derivs
+  - 0.02x Improved Reliability
+  - 0.03x Reddit to-do list, i2prouter integration, Tor Browser Bundle
+    integration for Windows
+  - 0.04x Additional packaging, snap, dmg, deb metapackage
+  - 0.05x (Planned) Tor Browser Bundle integration for OSX, torbrowser-launcher
+    integration for Linux
+  - 0.06x (Planned) Finalize packaging, User-readiness, automate fingerprint
+    measurements, automate hostile testing.
+  - 0.07x (Planned) Control Plugin, additional plugin evaluation(Font fingerprint
+    mitigations? Perhaps an "Expert Bundle" with uMatrix?)
+  - 0.08x (Planned) Android port, build-from-source
+  - 0.09x (Planned) Selenium-based browser tests, Update services
+  - 0.10x (Planned) No known bugs. Best-case scenario for current i2p browsers
+    using Firefox or TBB.
+
 ## What it is
 
 This is a profile for Firefox, pre-configured to use i2p, with an accompanying
@@ -102,10 +122,35 @@ sudo apt-get install ./i2pbrowser-helper_all.deb
 
 ### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 
-Snapcraft is telling me it's not my fault that it's broken. Probably more here
-soon. The one in the releases might work.
+The latest snap can be installed in dev mode, but it doesn't create desktop
+shortcuts yet so I haven't promoted it to snap stable.
 
-### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX and possibly Windows?)
+  1. Open a terminal and run: 'snap install --edge i2pbrowser --devmode'
+  2. Run /snap/bin/i2pbrowser
+
+```sh
+snap install --edge i2pbrowser --devmode
+/snap/bin/i2pbrowser
+```
+
+### Make Setup [Standalone guide](LINUX.md) (Cross-Distribution)
+
+  1. Install the firefox-esr browser from your distribution or from Mozilla's
+    web site. Be sure to place it into your PATH as firefox, for example,
+    /usr/bin/firefox.
+  2. Download the GNU/Linux zip bundle from the releases page and unpack it.
+  3. Run the following make targets:
+
+```sh
+make recopy-linux
+sudo make install
+```
+
+  4. run 'I2PBrowser.sh'
+
+
+
+### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX, Windows?)
 
 Linux and Mac OSX users can run the browser within a Docker container. This
 image uses an entirely un-official upstream image of the Tor Browser Bundle

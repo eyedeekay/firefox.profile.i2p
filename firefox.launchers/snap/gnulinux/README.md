@@ -36,7 +36,37 @@ i2pbrowser-helper_all.deb
 sudo apt-get install ./i2pbrowser-helper_all.deb
 ```
 
-### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX and possibly Windows?)
+### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
+
+The latest snap can be installed in dev mode, but it doesn't create desktop
+shortcuts yet so I haven't promoted it to snap stable.
+
+  1. Open a terminal and run: 'snap install --edge i2pbrowser --devmode'
+  2. Run /snap/bin/i2pbrowser
+
+```sh
+snap install --edge i2pbrowser --devmode
+/snap/bin/i2pbrowser
+```
+
+### Make Setup [Standalone guide](LINUX.md) (Cross-Distribution)
+
+  1. Install the firefox-esr browser from your distribution or from Mozilla's
+    web site. Be sure to place it into your PATH as firefox, for example,
+    /usr/bin/firefox.
+  2. Download the GNU/Linux zip bundle from the releases page and unpack it.
+  3. Run the following make targets:
+
+```sh
+make recopy-linux
+sudo make install
+```
+
+  4. run 'I2PBrowser.sh'
+
+
+
+### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX, Windows?)
 
 Linux and Mac OSX users can run the browser within a Docker container. This
 image uses an entirely un-official upstream image of the Tor Browser Bundle

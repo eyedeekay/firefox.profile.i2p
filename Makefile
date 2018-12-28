@@ -12,7 +12,7 @@ GOTHUB_BIN=$(GOPATH)/bin/gothub
 
 VERSIONMAJOR=0
 VERSIONMINOR=04
-VERSIONBUILD=
+VERSIONBUILD=a
 VERSION=$(VERSIONMAJOR).$(VERSIONMINOR)$(VERSIONBUILD)
 
 prefix ?= /usr
@@ -101,8 +101,12 @@ linux: recopy-linux
 	cp i2pbrowser-gnulinux-$(VERSION).tar.gz i2pbrowser-gnulinux.tar.gz
 	rm -rfv firefox.launchers/build
 
-recopy-snap:
+sedc:
+	sed -i "s|$(shell grep version snapcraft.yaml)|version: '$(VERSIONMAJOR).$(VERSIONMINOR).$(VERSIONBUILD)'|g" snapcraft.yaml
+
+recopy-snap: sedc
 	ls
+	cp snapcraft.yaml firefox.launchers/snap
 	rm -rfv firefox.launchers/snap/gnulinux
 	cp -rv firefox.launchers/gnulinux/ firefox.launchers/snap/gnulinux
 	cp firefox.launchers/gnulinux/I2PBrowser.sh firefox.launchers/snap/gnulinux/I2PBrowser.sh
@@ -114,8 +118,8 @@ snap: recopy-snap
 	make copy-snap
 
 copy-snap:
-	docker run -i -t --name snapbuild eyedeekay/firefox.profile.i2p.snap &
-	sleep 5
+	docker run -i -t -d --name snapbuild eyedeekay/firefox.profile.i2p.snap
+	sleep 15
 	docker cp snapbuild:/home/snap/snap/i2pbrowser_$(VERSION)_amd64.snap i2pbrowser_$(VERSION)_amd64.snap
 	docker rm -f snapbuild
 
@@ -188,11 +192,6 @@ zip: zip-gnulinux zip-osx zip-windows
 
 guide:
 	cat HEADER.md WINDOWS.md MACOSX.md LINUX.md NOTES.md WHONIX.md FINGER.md | tee README.md
-		# \
-		#sed "s|\.zip|-$(VERSION)\.zip|g" | \
-		#sed "s|\.tar.gz|-$(VERSION)\.tar\.gz|g" | \
-		#sed "s|_all.deb|_$(VERSION)-1_all.deb|g" | \
-		#tee README.md
 
 lic:
 	cat license/LICENSE.index LICENSE license/MPL2.txt license/LICENSE.tor license/HTTPS-Everywhere.txt license/NoScript.txt | tee LICENSE_ALL
@@ -244,5 +243,5 @@ debfirefox:
 		--deldesc=yes \
 		--delspec=yes \
 		--backup=no \
-		--pakdir=./ make install-debian
+		make install-debian
 
