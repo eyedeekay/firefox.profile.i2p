@@ -8,7 +8,7 @@ description: |
 
 apps:
   i2pbrowser:
-    command: desktop-launch $SNAP/i2pbrowser
+    command: desktop-launch $SNAP/usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
     plugs:
       - network
@@ -24,7 +24,7 @@ apps:
     #environment:
       #DISPLAY: 0
   private:
-    command: desktop-launch $SNAP/i2pbrowser.private
+    command: desktop-launch $SNAP/usr/bin/I2PBrowser-Private.sh
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
     plugs:
       - network
