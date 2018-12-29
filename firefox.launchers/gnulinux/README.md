@@ -38,19 +38,24 @@ sudo apt-get install ./i2pbrowser-helper_all.deb
 
 ### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 
-The latest snap can be installed in dev mode, but it doesn't create desktop
-shortcuts yet so I haven't promoted it to snap stable.
+The latest snap can be installed from edge and has desktop shortcuts.
 
-  1. Open a terminal and run: 'snap install --edge i2pbrowser --devmode'
-  2. Run /snap/bin/i2pbrowser
+  1. Open a terminal and run: 'snap install --edge i2pbrowser'
+  2. Run the shortcut from your application menu or /snap/bin/i2pbrowser from a
+  terminal.
 
 ```sh
-snap install --edge i2pbrowser --devmode
+snap install --edge i2pbrowser
 /snap/bin/i2pbrowser
 ```
 
 It's not likely that integrating a snap with Tor Browser will be possible unless
-Tor Browser becomes available as a snap, which seems unlikely.
+Tor Browser becomes available as a snap, which seems unlikely. I can think of
+some things that *might* work but none are... perfectly clear to me.
+Auto-updating of the profile via the install script isn't possible in the snap,
+*but* snapcraft.io seems to get updates about ~9 minutes after this repository
+does. That means a s simple 'snapcraft refresh --edge i2pbrowser' will
+automatically update the profile for you.
 
 ### Make Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 

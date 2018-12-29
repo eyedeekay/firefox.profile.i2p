@@ -1,5 +1,5 @@
 name: i2pbrowser
-version: '0.04a'
+version: '0.04b'
 summary: I2P Browser Launcher
 base: core18
 description: |
@@ -10,33 +10,35 @@ apps:
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-  i2pbrowser-private:
+    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
+    #environment:
+      #DISPLAY: 0
+  private:
     command: usr/bin/I2PBrowser-Private.sh
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
+    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
+    #environment:
+      #DISPLAY: 0
 
 grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   i2pbrowser:
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     source-subdir: "."
     plugin: make
+    make-parameters:
+        - DESTDIR=$SNAPCRAFT_PART_INSTALL
+        - install
     stage:
-      - usr/lib/firefox.profile.i2p/firefox.profile.i2p
-      - usr/lib/firefox.profile.i2p/install.sh
-      - usr/bin/I2PBrowser.sh
-      - usr/bin/I2PBrowser-Private.sh
-      - usr/share/applications/i2pbrowser-firefox.desktop
-      - usr/share/applications/i2pbrowser-firefox-private.desktop
+      - .
     prime:
-      - usr/lib/firefox.profile.i2p/firefox.profile.i2p
-      - usr/lib/firefox.profile.i2p/install.sh
-      - usr/bin/I2PBrowser.sh
-      - usr/bin/I2PBrowser-Private.sh
-      - usr/share/applications/i2pbrowser-firefox.desktop
-      - usr/share/applications//i2pbrowser-firefox-private.desktop
-    stage-packages: [ firefox ]
-
-
+      - .
+    stage-packages:
+      - firefox
+      - libgtkextra-dev
+      - libpng-dev
+      - libgtk-3-dev
+      - libgdk-pixbuf2.0-dev
 

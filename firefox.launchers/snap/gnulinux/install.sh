@@ -13,13 +13,11 @@ if [ "$DIR" = "" ]; then
 fi
 TITLE="i2p Browser Profile Set-Up"
 
-ME=$(whoami)
-
 TOR=$(which torsocks)
 EEP=$(which eepget)
 
-if [ "x$ME" = "xroot" ]; then
-    USER_HOME="/home/$SUDO_USER"
+if [ "$USER" = "root" ]; then
+    exit "BROWSERS SHOULD NOT BE RUN AS ROOT!"
 else
     USER_HOME="$HOME"
 fi
@@ -123,7 +121,7 @@ debug(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$USER_HOME"
     rm -rfv "$DIR/.firefox.profile.i2p.debug"
-    cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.debug"
+    cp -rv "$INSTALL_DIR" "$DIR/.firefox.profile.i2p.debug"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
     rm -rfv "$DIR/.firefox.profile.i2p.debug"
 }
@@ -134,7 +132,7 @@ private(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$USER_HOME"
     rm -rfv "$DIR/.firefox.profile.i2p.private"
-    cp -rv "$DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.private"
+    cp -rv "$INSTALL_DIR" "$DIR/.firefox.profile.i2p.private"
     firefox --no-remote --profile "$DIR/.firefox.profile.i2p.private" --private about:blank $1
     rm -rfv "$DIR/.firefox.profile.i2p.private"
 }
@@ -145,7 +143,7 @@ run(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$USER_HOME"
     if [ ! -d "$DIR/.firefox.profile.i2p.default" ]; then
-        cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/.firefox.profile.i2p.default"
+        cp -rv "$INSTALL_DIR" "$DIR/.firefox.profile.i2p.default"
     fi
     firefox --no-remote --profile "$DIR/.firefox.profile.i2p.default" about:blank $1
 }
