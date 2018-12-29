@@ -6,8 +6,9 @@ addons:
   homebrew:
     packages:
     - create-dmg
+    - makensis
 
 script:
-    - brew install create-dmg
+    - brew install create-dmg makensis
     - make osx
 

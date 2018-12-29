@@ -10,7 +10,7 @@ apps:
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-  i2pbrowser-private:
+  private:
     command: usr/bin/I2PBrowser-Private.sh
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
 

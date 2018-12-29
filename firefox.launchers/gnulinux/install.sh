@@ -13,13 +13,11 @@ if [ "$DIR" = "" ]; then
 fi
 TITLE="i2p Browser Profile Set-Up"
 
-ME=$(whoami)
-
 TOR=$(which torsocks)
 EEP=$(which eepget)
 
-if [ "x$ME" = "xroot" ]; then
-    USER_HOME="/home/$SUDO_USER"
+if [ "$USER" = "root" ]; then
+    exit "BROWSERS SHOULD NOT BE RUN AS ROOT!"
 else
     USER_HOME="$HOME"
 fi
