@@ -10,13 +10,13 @@ apps:
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-    plugs: [network, home, x11, browser-support]
+    plugs: [network, home, x11, wayland, browser-support, pulseaudio, alsa]
     #environment:
       #DISPLAY: 0
   private:
     command: usr/bin/I2PBrowser-Private.sh
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
-    plugs: [network, home, x11, browser-support]
+    plugs: [network, home, x11, wayland, browser-support, pulseaudio, alsa]
     #environment:
       #DISPLAY: 0
 
