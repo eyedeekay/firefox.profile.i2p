@@ -35,4 +35,9 @@ parts:
       - .
     prime:
       - .
-    stage-packages: [ firefox, libgtkextra-dev, libpng-dev, libgdk-pixbuf2.0-dev ]
+    stage-packages:
+      - firefox
+      - libgtkextra-dev
+      - libpng-dev
+      - libgtk3-dev
+      - libgdk-pixbuf2.0-dev
