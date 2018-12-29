@@ -10,13 +10,13 @@ apps:
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-    plugs: [network, home, x11, wayland, browser-support, pulseaudio, alsa]
+    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
     #environment:
       #DISPLAY: 0
   private:
     command: usr/bin/I2PBrowser-Private.sh
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
-    plugs: [network, home, x11, wayland, browser-support, pulseaudio, alsa]
+    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
     #environment:
       #DISPLAY: 0
 
@@ -35,4 +35,4 @@ parts:
       - .
     prime:
       - .
-    stage-packages: [ firefox, libgtkextra-dev, libpng-dev ]
+    stage-packages: [ firefox, libgtkextra-dev, libpng-dev, libgdk-pixbuf2.0-dev ]
