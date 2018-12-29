@@ -26,7 +26,6 @@ parts:
     make-parameters:
         - DESTDIR=$SNAPCRAFT_PART_INSTALL
         - install
-        - snapfix
     stage:
       - .
       #- usr/lib/firefox.profile.i2p/firefox.profile.i2p
@@ -51,7 +50,6 @@ parts:
     #make-parameters:
         #- DESTDIR=$SNAPCRAFT_PART_INSTALL
         #- install
-        #- snapfix
     #stage:
       #- usr
       #- usr/lib/firefox.profile.i2p/firefox.profile.i2p
