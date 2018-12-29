@@ -7,7 +7,6 @@ description: |
   Firefox browser configured for i2p.
 
 apps:
-
   i2pbrowser:
     command: usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
@@ -16,7 +15,7 @@ apps:
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
 
 grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   i2pbrowser:
@@ -31,15 +30,3 @@ parts:
     prime:
       - .
     stage-packages: [ firefox, libgtkextra-dev, libpng-dev ]
-  #i2pbrowser-private:
-    #source: https://github.com/eyedeekay/firefox.profile.i2p.git
-    #source-subdir: "."
-    #plugin: make
-    #make-parameters:
-        #- DESTDIR=$SNAPCRAFT_PART_INSTALL
-        #- install
-    #stage:
-      #- .
-    #prime:
-      #- .
-    #stage-packages: [ firefox, libgtkextra-dev, libpng-dev ]
