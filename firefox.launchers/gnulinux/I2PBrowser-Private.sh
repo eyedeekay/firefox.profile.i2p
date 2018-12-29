@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-if "$USER" = "root"; then
+if [ "$USER" = "root" ]; then
     exit "Browsers should definitely not run as root!"
 fi
 
