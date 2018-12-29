@@ -28,7 +28,7 @@ parts:
         - install
         - snapfix
     stage:
-      - usr
+      - .
       #- usr/lib/firefox.profile.i2p/firefox.profile.i2p
       #- usr/lib/firefox.profile.i2p/install.sh
       #- usr/bin/I2PBrowser.sh
@@ -36,7 +36,7 @@ parts:
       #- usr/share/applications/i2pbrowser-firefox.desktop
       #- usr/share/applications/i2pbrowser-firefox-private.desktop
     prime:
-      - usr
+      - .
       #- usr/lib/firefox.profile.i2p/firefox.profile.i2p
       #- usr/lib/firefox.profile.i2p/install.sh
       #- usr/bin/I2PBrowser.sh
