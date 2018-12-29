@@ -8,15 +8,35 @@ description: |
 
 apps:
   i2pbrowser:
-    command: usr/bin/I2PBrowser.sh
+    command: desktop-launch $SNAP/i2pbrowser
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
+    plugs:
+      - network
+      - desktop
+      - desktop-legacy
+      - home
+      - x11
+      - wayland
+      - mir
+      - browser-support
+      - pulseaudio
+      - alsa
     #environment:
       #DISPLAY: 0
   private:
-    command: usr/bin/I2PBrowser-Private.sh
+    command: desktop-launch $SNAP/i2pbrowser.private
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
-    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
+    plugs:
+      - network
+      - desktop
+      - desktop-legacy
+      - home
+      - x11
+      - wayland
+      - mir
+      - browser-support
+      - pulseaudio
+      - alsa
     #environment:
       #DISPLAY: 0
 
