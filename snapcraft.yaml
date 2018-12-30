@@ -66,9 +66,9 @@ parts:
     source-subdir: "."
     plugin: make
     make-parameters:
-        - DESTDIR=$(SNAPCRAFT_PART_INSTALL)
-        - SNAP_USER_COMMON=$(SNAP_USER_COMMON)
-        - SNAP_USER_DATA=$(SNAP_USER_DATA)
+        - DESTDIR=$SNAPCRAFT_PART_INSTALL
+        - SNAP_USER_COMMON=$SNAP_USER_COMMON
+        - SNAP_USER_DATA=$SNAP_USER_DATA
         - install-extensions-syswide
         - install-snap-commondir
         - install
