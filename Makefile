@@ -65,7 +65,7 @@ install-debian:
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
-install-profile-syswide: sysuser
+install-profile-syswide: sysuser locked_sysuser
 	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
 	cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
 	#cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
@@ -80,7 +80,7 @@ sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
 
 locked_sysuser:
-	sed 's/^user_pref/lockPref/' firefox.profile.i2p/user.js > locked_sysuser.js
+	sed 's/^user_pref(\("[^"]\+"\),\s\+\([^)]\+\));$$/pref(\1, \2, locked);/' firefox.profile.i2p/user.js > locked_sysuser.js
 
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/
