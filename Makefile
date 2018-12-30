@@ -84,7 +84,7 @@ install-extensions-syswide: install-profile-syswide
 install-snap-commondir:
 	mkdir -p "$(SNAP_USER_COMMON)/.config"
 	mkdir -p "$(SNAP_USER_DATA)/.mozilla/firefox"
-	sudo -u $(SUDO_USER) firefox -screenshot test.jpg  https://developer.mozilla.com && killall firefox
+	firefox -screenshot test.jpg  https://developer.mozilla.com && killall firefox
 
 sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
