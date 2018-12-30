@@ -92,6 +92,7 @@ install(){
     if [ ! -d "$HOME/.mozilla/firefox/firefox.profile.i2p" ]; then
         echo "Installing to $HOME"
         if [ -d $SNAP/usr/lib/firefox.profile.i2p/ ]; then
+            rm -rfv "$HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -rv "$SNAP/usr/lib/firefox.profile.i2p" "$HOME/.mozilla/firefox/firefox.profile.i2p"
         else
             rm -rfv "$HOME/.mozilla/firefox/firefox.profile.i2p"
