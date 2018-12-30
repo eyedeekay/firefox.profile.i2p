@@ -67,8 +67,8 @@ install-debian:
 
 install-profile-syswide: sysuser
 	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
-	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
-	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+	cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
+	#cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
 
 install-extensions-syswide: install-profile-syswide
 	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
@@ -78,7 +78,9 @@ install-extensions-syswide: install-profile-syswide
 
 sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
-	#sed 's/^user_pref/lockPref/' firefox.profile.i2p/user.js > sysuser.js
+
+locked_sysuser:
+	sed 's/^user_pref/lockPref/' firefox.profile.i2p/user.js > locked_sysuser.js
 
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/
