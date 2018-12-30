@@ -8,7 +8,7 @@ export DIR="$HOME/.mozilla/firefox/firefox.profile.i2p"
 
 if [ ! -d "$HOME/.mozilla/firefox/" ]; then
     mkdir -p "$SNAP_USER_COMMON/.config"
-    firefox -screenshot test.jpg  https://developer.mozilla.com && killall firefox
+    firefox -screenshot test.jpg  https://developer.mozilla.com & sleep 10 && killall firefox
 fi
 
 PRENUM=$(/bin/grep '\[Profile' $HOME/.mozilla/firefox/profiles.ini | tail -n 1 | tr -d 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ[]')
