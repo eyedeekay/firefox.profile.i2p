@@ -30,7 +30,7 @@ version:
 include config.mk
 include .release.mk
 
-all: lic guide windows linux zip debwhonix debfirefox
+all: sysfiles lic guide windows linux zip debwhonix debfirefox
 
 clean:
 	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
@@ -68,7 +68,9 @@ install-debian:
 install-profile-syswide: sysuser locked_sysuser
 	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
 	cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
-	#cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+	cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+	cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/usr/lib/firefox/defaults/pref/channel-prefs.js
+	cp -v locked_sysuser.js $(DESTDIR)/$(prefix)/usr/lib/firefox/defaults/pref/vendor-gre.js
 
 install-extensions-syswide: install-profile-syswide
 	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
@@ -81,6 +83,8 @@ sysuser:
 
 locked_sysuser:
 	sed 's/^user_pref(\("[^"]\+"\),\s\+\([^)]\+\));$$/pref(\1, \2, locked);/' firefox.profile.i2p/user.js > locked_sysuser.js
+
+sysfiles: sysuser locked_sysuser
 
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/
@@ -262,3 +266,8 @@ debfirefox:
 		--backup=no \
 		make install-debian
 
+ext-noscript:
+	wget "https://www.mozilla.org/firefox/new/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=%7B73a6fe31-595d-460b-a920-fcc0f8843232%7D"
+
+ext-https:
+	wget "https://www.mozilla.org/firefox/new/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=https-everywhere%40eff.org"
