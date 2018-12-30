@@ -94,6 +94,7 @@ install(){
         if [ -d $SNAP/usr/lib/firefox.profile.i2p/ ]; then
             cp -rv "$SNAP/usr/lib/firefox.profile.i2p" "$HOME/.mozilla/firefox/firefox.profile.i2p"
         else
+            rm -rfv "$HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -rv "$DIR/" "$HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -v "$DIR/i2pbrowser-firefox.desktop" \
                 "$HOME/.local/share/applications/i2pbrowser-firefox.desktop"
@@ -119,7 +120,11 @@ debug(){
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
-    cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.debug"
+    mkdir -p "$DIR/../.firefox.profile.i2p.debug/extensions"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/*.xpi" "$DIR/../.firefox.profile.i2p.debug/extensions"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.debug/bookmarks.html"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.debug/user.js"
+    echo "firefox --jsconsole --devtools --no-remote --profile \"$DIR/../.firefox.profile.i2p.debug\" --private about:blank $1"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/../.firefox.profile.i2p.debug" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.debug"
 }
@@ -130,7 +135,10 @@ private(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
-    cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.private"
+    mkdir -p "$DIR/../.firefox.profile.i2p.private/extensions"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/*.xpi" "$DIR/../.firefox.profile.i2p.private/extensions"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.private/bookmarks.html"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.private/user.js"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.private" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
 }
@@ -140,9 +148,9 @@ run(){
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
-    if [ ! -d "$DIR/../.firefox.profile.i2p.default" ]; then
-        cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.default"
-    fi
+    mkdir -p "$DIR/../.firefox.profile.i2p.default/extensions"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/*.xpi" "$DIR/../.firefox.profile.i2p.default/extensions"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.default/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.default/user.js"
     echo "installed $INSTALL_DIR to $DIR/../.firefox.profile.i2p.default"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.default" about:blank $1
