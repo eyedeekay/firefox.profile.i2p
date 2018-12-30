@@ -65,13 +65,16 @@ install-debian:
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
-install-syswide: sysuser
-	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
-	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
-	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
+install-profile-syswide: sysuser
 	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
 	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
 	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+
+install-extensions-syswide: install-profile-syswide
+	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
 
 sysuser:
 	sed 's/^user_pref(\("[^"]\+"\),\s\+\([^)]\+\));$$/pref(\1, \2, locked);/' firefox.profile.i2p/user.js > sysuser.js
