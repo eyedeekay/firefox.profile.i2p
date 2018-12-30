@@ -121,7 +121,7 @@ debug(){
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
-    mkdir -p "$DIR/../.firefox.profile.i2p.debug/extensions"
+    mkdir -pv "$DIR/../.firefox.profile.i2p.debug/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/*.xpi" "$DIR/../.firefox.profile.i2p.debug/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.debug/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.debug/user.js"
@@ -136,7 +136,7 @@ private(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
-    mkdir -p "$DIR/../.firefox.profile.i2p.private/extensions"
+    mkdir -pv "$DIR/../.firefox.profile.i2p.private/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/*.xpi" "$DIR/../.firefox.profile.i2p.private/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.private/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.private/user.js"
@@ -149,7 +149,7 @@ run(){
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
-    mkdir -p "$DIR/../.firefox.profile.i2p.default/extensions"
+    mkdir -pv "$DIR/../.firefox.profile.i2p.default/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/*.xpi" "$DIR/../.firefox.profile.i2p.default/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.default/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.default/user.js"

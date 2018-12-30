@@ -33,7 +33,8 @@ include .release.mk
 all: sysfiles lic guide windows linux zip debwhonix debfirefox
 
 clean:
-	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build
+	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build \
+		firefox.launchers/gnulinux/doc-pak firefox.launchers/gnulinux/description-pak
 
 clean-build:
 	rm -rfv firefox.launchers/build
@@ -46,6 +47,7 @@ install:
 	install -m755 firefox.launchers/gnulinux/install.sh $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
 	install -m755 firefox.launchers/gnulinux/I2PBrowser.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/I2PBrowser-Private.sh $(DESTDIR)$(bindir)
+	install -m755 firefox.launchers/gnulinux/I2PBrowser-Debug.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox.desktop
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
@@ -60,9 +62,10 @@ install-debian:
 	install -m755 firefox.launchers/gnulinux/install.sh $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
 	install -m755 firefox.launchers/gnulinux/I2PBrowser.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/I2PBrowser-Private.sh $(DESTDIR)$(bindir)
-	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
+	install -m755 firefox.launchers/gnulinux/I2PBrowser-Debug.sh $(DESTDIR)$(bindir)
+	install -m644 firefox.launchers/gnulinux/i2pbrowser-firefox.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox.desktop
-	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
+	install -m644 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
 install-profile-syswide: sysuser locked_sysuser
@@ -75,8 +78,8 @@ install-extensions-syswide: install-profile-syswide
 	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
 
 install-snap-commondir:
-	mkdir -p $(SNAP_USER_COMMON)/.config
-	mkdir -p $(SNAP_USER_DATA)/.mozilla/firefox
+	mkdir -p "$(SNAP_USER_COMMON)/.config"
+	mkdir -p "$(SNAP_USER_DATA)/.mozilla/firefox"
 
 sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
@@ -142,7 +145,7 @@ recopy-osx:
 	rm -rf firefox.launchers/osx/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/osx/firefox.profile.i2p/
 	cp -rv firefox.launchers/gnulinux/install.sh firefox.launchers/osx/helper.sh
-	cp -rv assets firefox.launchers/assets
+	cp -rv assets firefox.launchers/osx/assets
 	cp MACOSX.md firefox.launchers/osx/README.md
 
 osx: recopy-osx
