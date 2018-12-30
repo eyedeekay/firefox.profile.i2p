@@ -82,9 +82,6 @@ install-extensions-syswide: install-profile-syswide
 	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
 
 install-snap-commondir:
-	mkdir -p "$(SNAP_USER_COMMON)/.config"
-	mkdir -p "$(SNAP_USER_DATA)/.mozilla/firefox"
-	firefox -screenshot test.jpg  https://developer.mozilla.com && killall firefox
 
 sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
