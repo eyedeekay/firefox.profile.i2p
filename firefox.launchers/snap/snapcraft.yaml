@@ -8,15 +8,35 @@ description: |
 
 apps:
   i2pbrowser:
-    command: usr/bin/I2PBrowser.sh
+    command: desktop-launch $SNAP/usr/bin/I2PBrowser.sh
     desktop: usr/share/applications/i2pbrowser-firefox.desktop
-    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
+    plugs:
+      - network
+      - desktop
+      - desktop-legacy
+      - home
+      - x11
+      - wayland
+      - mir
+      - browser-support
+      - pulseaudio
+      - alsa
     #environment:
       #DISPLAY: 0
   private:
-    command: usr/bin/I2PBrowser-Private.sh
+    command: desktop-launch $SNAP/usr/bin/I2PBrowser-Private.sh
     desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
-    plugs: [network, home, x11, wayland, mir, browser-support, pulseaudio, alsa]
+    plugs:
+      - network
+      - desktop
+      - desktop-legacy
+      - home
+      - x11
+      - wayland
+      - mir
+      - browser-support
+      - pulseaudio
+      - alsa
     #environment:
       #DISPLAY: 0
 
@@ -25,11 +45,13 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   i2pbrowser:
+    after: [desktop-gtk3]
     source: https://github.com/eyedeekay/firefox.profile.i2p.git
     source-subdir: "."
     plugin: make
     make-parameters:
         - DESTDIR=$SNAPCRAFT_PART_INSTALL
+        - install-extensions-syswide
         - install
     stage:
       - .
@@ -41,4 +63,5 @@ parts:
       - libpng-dev
       - libgtk-3-dev
       - libgdk-pixbuf2.0-dev
+
 
