@@ -176,6 +176,8 @@ prompt to configure the Tor Network at the launch of the Tor Browser.
 
 ### Section Three: Various sources, mostly Tor Browser discussions, Mozilla Wiki, and privacytools.io
 
+Also this awesomely useful resource: https://github.com/pyllyukko/user.js
+
 This section by and large has to do with disabling features that phone home to
 services that are not available in i2p and which may be privacy-harmful because
 they phone home to other services or open side-channels to cache identifying
