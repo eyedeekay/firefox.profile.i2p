@@ -41,7 +41,7 @@ apps:
       #DISPLAY: 0
   debug:
     command: desktop-launch $SNAP/usr/bin/I2PBrowser-Debug.sh
-    desktop: usr/share/applications/i2pbrowser-firefox-private.desktop
+    desktop: usr/share/applications/i2pbrowser-firefox-debug.desktop
     plugs:
       - network
       - desktop
