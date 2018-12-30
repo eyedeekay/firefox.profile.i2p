@@ -20,7 +20,7 @@ bindir ?= $(prefix)/bin
 #DESTDIR ?= /
 
 echo:
-	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH)"
+	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH) $(SUDO_USER)"
 
 version:
 	@echo "!define VERSIONMAJOR $(VERSIONMAJOR)" > i2pbrowser-version.nsi
@@ -84,7 +84,7 @@ install-extensions-syswide: install-profile-syswide
 install-snap-commondir:
 	mkdir -p "$(SNAP_USER_COMMON)/.config"
 	mkdir -p "$(SNAP_USER_DATA)/.mozilla/firefox"
-	firefox -screenshot test.jpg  https://developer.mozilla.com
+	sudo -u $(SUDO_USER) firefox -screenshot test.jpg  https://developer.mozilla.com && killall firefox
 
 sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
