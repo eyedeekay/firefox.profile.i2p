@@ -55,11 +55,11 @@ The installation will take place in $HOME
        ./install.sh usage       # show this usage message
        ./install.sh update      # update the profile from $UPDATE_URL
        ./install.sh run         # run from this directory without installing
-            firefox --no-remote --profile \"\$DIR/.firefox.profile.i2p.default\" about:blank \$1
+            firefox --no-remote --profile \"\$DIR/../.firefox.profile.i2p.default\" about:blank \$1
        ./install.sh private     # run in private mode from this directory without installing
-            firefox --no-remote --profile \"\$DIR/.firefox.profile.i2p.private\" --private about:blank \$1
+            firefox --no-remote --profile \"\$DIR/../.firefox.profile.i2p.private\" --private about:blank \$1
        ./install.sh debug       # run with debugger from this directory without installing
-            firefox --jsconsole --devtools --no-remote --profile \"\$DIR/.firefox.profile.i2p.debug\" --private about:blank \$1
+            firefox --jsconsole --devtools --no-remote --profile \"\$DIR/../.firefox.profile.i2p.debug\" --private about:blank \$1
 
 "
 
@@ -72,7 +72,7 @@ update(){
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
-    mv "$DIR/firefox.profile.i2p/" "$DIR/.firefox.profile.i2p.bak/"
+    mv "$DIR/firefox.profile.i2p/" "$DIR/../.firefox.profile.i2p.bak/"
     if [ "x$EEP" != "x" ]; then
         echo "$EEP detected, updates will be retrieved over i2p"
     elif [ "x$TOR" != "x" ]; then
@@ -85,69 +85,71 @@ update(){
     sha256sum -c i2pbrowser-profile-update.zip.sha256sum
     gpg --keyid-format long --verify i2pbrowser-profile-update.zip.sha256sum.asc i2pbrowser-profile-update.zip.sha256sum
     unzip i2pbrowser-profile-update.zip
-    rm -rf "$DIR/.firefox.profile.i2p.bak/" i2pbrowser-profile-update.zip
+    rm -rf "$DIR/../.firefox.profile.i2p.bak/" i2pbrowser-profile-update.zip
 }
 
 install(){
-    if [ ! -d "$HOME/$SNAP_REVISION/.mozilla/firefox/firefox.profile.i2p" ]; then
-        mkdir -pv "$HOME/$SNAP_REVISION/.mozilla/firefox/"
+    if [ ! -d "$HOME/.mozilla/firefox/firefox.profile.i2p" ]; then
+        mkdir -pv "$HOME/.mozilla/firefox/"
         echo "Installing to $HOME"
         if [ -d $SNAP/usr/lib/firefox.profile.i2p/ ]; then
-            cp -rv "$SNAP/usr/lib/firefox.profile.i2p" "$HOME/$SNAP_REVISION/.mozilla/firefox/firefox.profile.i2p"
-            cp -v "$SNAP/usr/lib/firefox.profile.i2p/i2pbrowser-firefox.desktop" \
-                "$HOME/$SNAP_REVISION/.local/share/applications/i2pbrowser-firefox.desktop"
-            cp -v "$SNAP/usr/lib/firefox.profile.i2p/i2pbrowser-firefox-private.desktop" \
-                "$HOME/$SNAP_REVISION/.local/share/applications/i2pbrowser-firefox-private.desktop"
+            cp -rv "$SNAP/usr/lib/firefox.profile.i2p" "$HOME/.mozilla/firefox/firefox.profile.i2p"
         else
-            cp -rv "$DIR/" "$HOME/$SNAP_REVISION/.mozilla/firefox/firefox.profile.i2p"
+            cp -rv "$DIR/" "$HOME/.mozilla/firefox/firefox.profile.i2p"
             cp -v "$DIR/i2pbrowser-firefox.desktop" \
-                "$HOME/$SNAP_REVISION/.local/share/applications/i2pbrowser-firefox.desktop"
+                "$HOME/.local/share/applications/i2pbrowser-firefox.desktop"
             cp -v "$DIR/i2pbrowser-firefox-private.desktop" \
-                "$HOME/$SNAP_REVISION/.local/share/applications/i2pbrowser-firefox-private.desktop"
+                "$HOME/.local/share/applications/i2pbrowser-firefox-private.desktop"
         fi
     fi
 }
 
 uninstall(){
-    rm -fv "$HOME/$SNAP_REVISION/.local/share/applications/i2pbrowser-firefox.desktop" \
-        "$HOME/$SNAP_REVISION/.local/share/applications/i2pbrowser-firefox-private.desktop"
+    echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
+    INSTALL_DIR="$DIR"
+    echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
+    DIR="$HOME"
+    rm -rfv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.default"
+    rm -fv "$HOME/.local/share/applications/i2pbrowser-firefox.desktop" \
+        "$HOME/.local/share/applications/i2pbrowser-firefox-private.desktop"
+
 }
 
 debug(){
     echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
-    DIR="$HOME/$SNAP_REVISION"
-    rm -rfv "$DIR/.firefox.profile.i2p.debug"
+    DIR="$HOME"
+    rm -rfv "$DIR/../.firefox.profile.i2p.debug"
     mkdir -pv "$DIR"
-    cp -rv "$INSTALL_DIR" "$DIR/.firefox.profile.i2p.debug"
-    firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
-    rm -rfv "$DIR/.firefox.profile.i2p.debug"
+    cp -rv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.debug"
+    firefox --jsconsole --devtools --no-remote --profile "$DIR/../.firefox.profile.i2p.debug" --private about:blank $1
+    rm -rfv "$DIR/../.firefox.profile.i2p.debug"
 }
 
 private(){
     echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
-    DIR="$HOME/$SNAP_REVISION"
-    rm -rfv "$DIR/.firefox.profile.i2p.private"
+    DIR="$HOME"
+    rm -rfv "$DIR/../.firefox.profile.i2p.private"
     mkdir -pv "$DIR"
-    cp -rv "$INSTALL_DIR" "$DIR/.firefox.profile.i2p.private"
-    firefox --no-remote --profile "$DIR/.firefox.profile.i2p.private" --private about:blank $1
-    rm -rfv "$DIR/.firefox.profile.i2p.private"
+    cp -rv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.private"
+    firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.private" --private about:blank $1
+    rm -rfv "$DIR/../.firefox.profile.i2p.private"
 }
 
 run(){
     echo "$DIR" | grep -v '/usr/lib/firefox.profile.i2p' && \
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
-    DIR="$HOME/$SNAP_REVISION"
-    if [ ! -d "$DIR/.firefox.profile.i2p.default" ]; then
+    DIR="$HOME"
+    if [ ! -d "$DIR/../.firefox.profile.i2p.default" ]; then
         mkdir -pv "$DIR"
-        cp -rv "$INSTALL_DIR" "$DIR/.firefox.profile.i2p.default"
+        cp -rv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.default"
     fi
-    echo "installed $INSTALL_DIR to $DIR/.firefox.profile.i2p.default"
-    firefox --no-remote --profile "$DIR/.firefox.profile.i2p.default" about:blank $1
+    echo "installed $INSTALL_DIR to $DIR/../.firefox.profile.i2p.default"
+    firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.default" about:blank $1
 }
 
 if [ "x$1" = "x" ]; then

@@ -66,7 +66,7 @@ install-debian:
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
 install-profile-syswide: sysuser locked_sysuser
-	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
+	cp -v locked_sysuser.js $(DESTDIR)/etc/firefox/syspref.js
 	#rm -fv $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
 	#cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/channel-prefs.js
 	#cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/vendor-gre.js
@@ -79,6 +79,7 @@ install-extensions-syswide: install-profile-syswide
 
 install-snap-commondir:
 	mkdir -p $(SNAP_USER_COMMON)/.config
+	mkdir -p $(SNAP_USER_DATA)/.mozilla/firefox
 
 sysuser:
 	sed 's/^user_pref/pref/' firefox.profile.i2p/user.js > sysuser.js
