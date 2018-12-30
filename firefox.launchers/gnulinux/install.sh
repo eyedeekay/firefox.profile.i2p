@@ -122,7 +122,7 @@ debug(){
     DIR="$HOME"
     rm -rfv "$DIR/../.firefox.profile.i2p.debug"
     mkdir -pv "$DIR"
-    cp -rv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.debug"
+    cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.debug"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/../.firefox.profile.i2p.debug" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.debug"
 }
@@ -134,7 +134,7 @@ private(){
     DIR="$HOME"
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
     mkdir -pv "$DIR"
-    cp -rv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.private"
+    cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.private"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.private" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
 }
@@ -146,7 +146,7 @@ run(){
     DIR="$HOME"
     if [ ! -d "$DIR/../.firefox.profile.i2p.default" ]; then
         mkdir -pv "$DIR"
-        cp -rv "$INSTALL_DIR" "$DIR/../.firefox.profile.i2p.default"
+        cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.default"
     fi
     echo "installed $INSTALL_DIR to $DIR/../.firefox.profile.i2p.default"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.default" about:blank $1
