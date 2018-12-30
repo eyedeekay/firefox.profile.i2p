@@ -52,6 +52,8 @@ install:
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox.desktop
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
+	install -m644 firefox.launchers/gnulinux/i2pbrowser-firefox-debug.desktop \
+		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-debug.desktop
 
 install-debian:
 	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
@@ -67,6 +69,8 @@ install-debian:
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox.desktop
 	install -m644 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
+	install -m644 firefox.launchers/gnulinux/i2pbrowser-firefox-debug.desktop \
+		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-debug.desktop
 
 install-profile-syswide: sysuser locked_sysuser
 	cp -v locked_sysuser.js $(DESTDIR)/etc/firefox/syspref.js
