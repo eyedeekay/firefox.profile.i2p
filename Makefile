@@ -77,7 +77,7 @@ install-extensions-syswide: install-profile-syswide
 	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
 
 sysuser:
-	sed 's/^user_pref(\("[^"]\+"\),\s\+\([^)]\+\));$$/pref(\1, \2, locked);/' firefox.profile.i2p/user.js > sysuser.js
+	sed 's/^user_pref/lockPref/' firefox.profile.i2p/user.js > sysuser.js
 
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/
