@@ -52,6 +52,7 @@ parts:
     make-parameters:
         - DESTDIR=$SNAPCRAFT_PART_INSTALL
         - install-extensions-syswide
+        - install-snap-commondir
         - install
     stage:
       - .
