@@ -65,6 +65,14 @@ install-debian:
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
+install-syswide:
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
+	cp -v firefox.profile.i2p/user.js $(DESTDIR)/etc/firefox/syspref.js
+	cp -v firefox.profile.i2p/user.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
+	cp -v firefox.profile.i2p/user.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/extensions

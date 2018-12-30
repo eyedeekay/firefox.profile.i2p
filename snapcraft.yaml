@@ -51,6 +51,7 @@ parts:
     plugin: make
     make-parameters:
         - DESTDIR=$SNAPCRAFT_PART_INSTALL
+        - install-syswide
         - install
     stage:
       - .
