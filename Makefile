@@ -67,15 +67,12 @@ install-debian:
 
 install-profile-syswide: sysuser locked_sysuser
 	cp -v locked_sysuser.js $(DESTDIR)/etc/firefox/syspref.js
-	#rm -fv $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
-	#cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/channel-prefs.js
-	#cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/vendor-gre.js
 
 install-extensions-syswide: install-profile-syswide
 	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
 	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
-	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
-	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
+	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
+	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
 
 install-snap-commondir:
 	mkdir -p $(SNAP_USER_COMMON)/.config
