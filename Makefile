@@ -65,13 +65,16 @@ install-debian:
 	install -m755 firefox.launchers/gnulinux/i2pbrowser-firefox-private.desktop \
 		$(DESTDIR)$(prefix)/share/applications/i2pbrowser-firefox-private.desktop
 
-install-syswide:
+install-syswide: sysuser
 	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
 	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
 	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
-	cp -v firefox.profile.i2p/user.js $(DESTDIR)/etc/firefox/syspref.js
-	cp -v firefox.profile.i2p/user.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
-	cp -v firefox.profile.i2p/user.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
+	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/syspref.js
+	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+
+sysuser:
+	sed 's/^user_pref(\("[^"]\+"\),\s\+\([^)]\+\));$$/pref(\1, \2, locked);/' firefox.profile.i2p/user.js > sysuser.js
 
 fix-perms:
 	chown $(SUDO_USER):$(SUDO_USER) firefox.launchers/*/firefox.profile.i2p/
