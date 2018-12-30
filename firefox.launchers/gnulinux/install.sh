@@ -126,6 +126,7 @@ debug(){
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.debug/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.debug/user.js"
     echo "firefox --jsconsole --devtools --no-remote --profile \"$DIR/../.firefox.profile.i2p.debug\" --private about:blank $1"
+    ls "$DIR/../.firefox.profile.i2p.debug"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/../.firefox.profile.i2p.debug" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.debug"
 }
