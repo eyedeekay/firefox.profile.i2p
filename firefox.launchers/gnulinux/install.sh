@@ -90,7 +90,6 @@ update(){
 
 install(){
     if [ ! -d "$HOME/.mozilla/firefox/firefox.profile.i2p" ]; then
-        mkdir -pv "$HOME/.mozilla/firefox/"
         echo "Installing to $HOME"
         if [ -d $SNAP/usr/lib/firefox.profile.i2p/ ]; then
             cp -rv "$SNAP/usr/lib/firefox.profile.i2p" "$HOME/.mozilla/firefox/firefox.profile.i2p"
@@ -120,8 +119,6 @@ debug(){
     INSTALL_DIR="$DIR"
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
-    rm -rfv "$DIR/../.firefox.profile.i2p.debug"
-    mkdir -pv "$DIR"
     cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.debug"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/../.firefox.profile.i2p.debug" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.debug"
@@ -133,7 +130,6 @@ private(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
-    mkdir -pv "$DIR"
     cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.private"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.private" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
@@ -145,9 +141,9 @@ run(){
     echo "$DIR" | grep '/usr/lib/firefox.profile.i2p' && \
     DIR="$HOME"
     if [ ! -d "$DIR/../.firefox.profile.i2p.default" ]; then
-        mkdir -pv "$DIR"
         cp -rv "$INSTALL_DIR/firefox.profile.i2p" "$DIR/../.firefox.profile.i2p.default"
     fi
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.default/user.js"
     echo "installed $INSTALL_DIR to $DIR/../.firefox.profile.i2p.default"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.default" about:blank $1
 }

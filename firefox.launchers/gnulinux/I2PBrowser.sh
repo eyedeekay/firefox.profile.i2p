@@ -6,6 +6,8 @@ fi
 
 export DIR="$HOME/.mozilla/firefox/firefox.profile.i2p"
 
+mkdir -pv "$HOME/.mozilla/firefox/"
+
 PRENUM=$(/bin/grep '\[Profile' $HOME/.mozilla/firefox/profiles.ini | tail -n 1 | tr -d 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ[]')
 NUM=$(($PRENUM + 1))
 
