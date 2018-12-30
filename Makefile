@@ -67,9 +67,9 @@ install-debian:
 
 install-profile-syswide: sysuser locked_sysuser
 	cp -v sysuser.js $(DESTDIR)/etc/firefox/syspref.js
-	rm -fv $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
-	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/channel-prefs.js
-	cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/vendor-gre.js
+	#rm -fv $(DESTDIR)/$(prefix)/lib/firefox/browser/defaults/preferences/vendor-firefox.js
+	#cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/channel-prefs.js
+	#cp -v sysuser.js $(DESTDIR)/$(prefix)/lib/firefox/defaults/pref/vendor-gre.js
 
 install-extensions-syswide: install-profile-syswide
 	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
