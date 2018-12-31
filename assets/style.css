@@ -3,11 +3,11 @@
 }
 
 .highlight {
-    display: block;
-    visibility: visible;
+    /*display: block;
+    visibility: visible;*/
 }
 
 .hidden {
-    display: none;
-    visibility: hidden;
+    /*display: none;
+    visibility: hidden;*/
 }
