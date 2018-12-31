@@ -8,6 +8,7 @@ firefox.launchers/test/
 *.zip
 *.msi
 *.tar.gz
+*.tar.bz2
 *.dmg
 *.exe
 *.sha256sum

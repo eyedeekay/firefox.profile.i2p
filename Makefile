@@ -33,7 +33,7 @@ include .release.mk
 all: sysfiles lic guide windows linux zip debwhonix debfirefox
 
 clean:
-	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe firefox.launchers/build \
+	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe *.tar.bz2 firefox.launchers/build \
 		firefox.launchers/gnulinux/doc-pak firefox.launchers/gnulinux/description-pak
 
 clean-build:
@@ -77,8 +77,8 @@ install-profile-syswide: sysuser locked_sysuser
 
 install-extensions-syswide: install-profile-syswide
 	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
-	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
-	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
+	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox-addons/extensions/
+	cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/browser/extensions/
 	#cp -v firefox.profile.i2p/extensions/*.xpi $(DESTDIR)/$(prefix)/lib/firefox/distribution/extensions/
 
 install-snap-commondir:
