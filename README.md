@@ -24,7 +24,8 @@ they serve for the moment.
     integration for Windows
   - 0.04x Additional packaging, snap, dmg, deb metapackage
   - 0.05x (Planned) Tor Browser Bundle integration for OSX, torbrowser-launcher
-    integration for Linux, Internationalization
+    integration for Linux, Internationalization, installer capable of self
+    updating.
   - 0.06x (Planned) Finalize packaging, User-readiness, automate fingerprint
     measurements, automate hostile testing.
   - 0.07x (Planned) Control Plugin, additional plugin evaluation(Font fingerprint
