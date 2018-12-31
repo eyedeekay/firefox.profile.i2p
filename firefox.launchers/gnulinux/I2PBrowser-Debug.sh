@@ -6,10 +6,5 @@ fi
 
 export DIR="$HOME/.mozilla/firefox/firefox.profile.i2p"
 
-if [ ! -d "$HOME/.mozilla/firefox/" ]; then
-    mkdir -p "$SNAP_USER_COMMON/.config"
-    firefox -screenshot test.jpg  https://developer.mozilla.com & sleep 10 && pkill firefox
-fi
-
 "$SNAP/usr/lib/firefox.profile.i2p/install.sh" install
 "$SNAP/usr/lib/firefox.profile.i2p/install.sh" debug

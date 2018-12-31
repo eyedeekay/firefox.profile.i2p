@@ -6,15 +6,10 @@ fi
 
 export DIR="$HOME/.mozilla/firefox/firefox.profile.i2p"
 
-if [ ! -d "$HOME/.mozilla/firefox/" ]; then
-    mkdir -p "$SNAP_USER_COMMON/.config"
-    firefox -screenshot test.jpg  https://developer.mozilla.com & sleep 10 && pkill firefox
-fi
-
 PRENUM=$(/bin/grep '\[Profile' $HOME/.mozilla/firefox/profiles.ini | tail -n 1 | tr -d 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ[]')
 NUM=$(($PRENUM + 1))
 
-echo "
+grep -v "I2PBrowser-Launcher" $HOME/.mozilla/firefox/profiles.ini && echo "
 [Profile$NUM]
 Name=I2PBrowser-Launcher
 IsRelative=1
