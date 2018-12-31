@@ -177,30 +177,29 @@ page: guide
 	@echo '<html lang="en">' | tee -a index.html
 	@echo '<head>' | tee -a index.html
 	@echo '<meta charset="utf-8" />' | tee -a index.html
-	@echo '<link rel = "stylesheet" type = "text/css" href = "assets/style.css"/>' | tee -a index.html
+	@echo '<link rel="stylesheet" type="text/css" href="assets/style.css"/>' | tee -a index.html
 	@echo '<title>firefox.profile.i2p</title>' | tee -a index.html
-	#@echo '<link rel="stylesheet" href="assets/style.css" />' | tee -a index.html
 	@echo '</head>' | tee -a index.html
 	@echo '<body>' | tee -a index.html
-	@echo '<div id="intro">' | tee -a index.html
+	@echo '<div id="intro" class="top">' | tee -a index.html
 	markdown HEADER.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="windows">' | tee -a index.html
+	@echo '<div id="windows" class="highlight">' | tee -a index.html
 	markdown WINDOWS.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="osx">' | tee -a index.html
+	@echo '<div id="osx" class="hidden">' | tee -a index.html
 	markdown MACOSX.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="linux">' | tee -a index.html
+	@echo '<div id="linux" class="hidden">' | tee -a index.html
 	markdown LINUX.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="notes">' | tee -a index.html
+	@echo '<div id="notes" class="hidden">' | tee -a index.html
 	markdown NOTES.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="whonix">' | tee -a index.html
+	@echo '<div id="whonix" class="hidden">' | tee -a index.html
 	markdown WHONIX.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="finger">' | tee -a index.html
+	@echo '<div id="finger" class="hidden">' | tee -a index.html
 	markdown FINGER.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
 	@echo '</body>' | tee -a index.html
