@@ -8,5 +8,6 @@ addons:
     - create-dmg
 
 script:
+    - brew install create-dmg
     - make osx
 
