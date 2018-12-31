@@ -33,7 +33,7 @@ include .release.mk
 all: sysfiles lic guide windows linux zip debwhonix debfirefox
 
 clean:
-	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe *.tar.bz2 firefox.launchers/build \
+	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe *.tar.bz2 *.deb firefox.launchers/build \
 		firefox.launchers/gnulinux/doc-pak firefox.launchers/gnulinux/description-pak
 
 clean-build:
