@@ -122,7 +122,7 @@ sudo apt-get install ./i2pbrowser-helper_all.deb
 
 ### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 
-The latest snap can be installed from edge and has desktop shortcuts.
+**UNSTABLE:** The latest snap can be installed from edge and has desktop shortcuts.
 
   1. Open a terminal and run: 'snap install --edge i2pbrowser'
   2. Run the shortcut from your application menu or /snap/bin/i2pbrowser from a

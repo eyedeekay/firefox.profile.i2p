@@ -99,7 +99,7 @@ pref("privacy.firstparty.isolate", true);
 // Use i2p http proxy for all connections and set homepage to safe local form.
 
 // DON'T allow access to the admin panel from the profile we browse i2p with.
-pref("network.proxy.no_proxies_on", 0);
+pref("network.proxy.no_proxies_on", "");
 pref("network.proxy.type", 1);
 pref("network.proxy.http", "127.0.0.1");
 pref("network.proxy.http_port", 4444);
@@ -110,6 +110,7 @@ pref("network.proxy.ftp_port", 4444);
 pref("network.proxy.socks", "127.0.0.1");
 pref("network.proxy.socks_port", 4444);
 pref("network.proxy.share_proxy_settings", true);
+pref("network.proxy.socks_remote_dns", true);
 pref("browser.startup.homepage", "about:blank");
 
 // Privacy-harden and disable irrelevant features.
