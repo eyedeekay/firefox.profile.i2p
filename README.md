@@ -5,6 +5,38 @@
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/i2pbrowser)
 
+## What it is
+
+This is a set of tools for major Desktop computing platforms(Windows, Mac OSX,
+and Linux) which automatically configures a Firefox browser for use with i2p. It
+attempts to minimize the amount of user interaction that is required to get the
+browser up and running correctly. It requires an i2p router and either a Firefox
+or Tor Browser to run.
+
+To the end of simplicity, it attempts to make use of standard, familiar
+installation procedures for each of these platforms. The Windows package is just
+a regular installer.exe/uninstaller.exe pair. You download either Firefox or the
+Tor Browser Bundle and install it first. Then you
+[download the installer from the github releases](https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/install-i2pbrowser.exe),
+and run it. It will place two items on the start menu and two shortcuts on the
+desktop, any of which will launch a browser pre-configured to use i2p.
+
+On OSX, the goal is to create a .dmg application image but I'm stalled here for
+the moment while I wait for more access to an OSX machine.
+
+On GNU/Linux it's more of a collection of tools for a variety of package
+managers. Ubuntu users will probably find the snap package most convenient.
+It just bundles Firefox and the scripts that make sure the configuration is
+correct together in their little snap package and runs it from inside the
+container. There are also a variety of other options for other platforms.
+
+What it configures is a profile for Firefox, pre-configured to use i2p, with an
+accompanying launcher for easy use. It also comes pre-configured to disable
+certain features that may weaken the anonymity that i2p provides, and with
+NoScript and HTTPS Everywhere.
+
+For more information, see: [DETAILS.md](DETAILS.md)
+
 Much of this is ready for interested parties to test, but it's still just being
 tested and the rough edges are still being figured out. Use at your own risk.
 
@@ -36,14 +68,6 @@ they serve for the moment.
   - 0.10x (Planned) No known bugs. Best-case scenario for current i2p browsers
     using Firefox or TBB.
 
-## What it is
-
-This is a profile for Firefox, pre-configured to use i2p, with an accompanying
-launcher for easy use. It also comes pre-configured to disable certain features
-that may weaken the anonymity that i2p provides, and with NoScript and HTTPS
-Everywhere.
-
-For more information, see: [DETAILS.md](DETAILS.md)
 
 ### Automatic Setup (Recommended, Windows) [Standalone guide](WINDOWS.md)
 
