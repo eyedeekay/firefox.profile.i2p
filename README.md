@@ -3,6 +3,8 @@
 [![Snap Status](https://build.snapcraft.io/badge/eyedeekay/firefox.profile.i2p.svg)](https://build.snapcraft.io/user/eyedeekay/firefox.profile.i2p)
 [![Travis-CI .dmg Status](https://travis-ci.com/eyedeekay/firefox.profile.i2p.svg?branch=master)](https://travis-ci.com/eyedeekay/firefox.profile.i2p)
 
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/i2pbrowser)
+
 Much of this is ready for interested parties to test, but it's still just being
 tested and the rough edges are still being figured out. Use at your own risk.
 
@@ -24,8 +26,7 @@ they serve for the moment.
     integration for Windows
   - 0.04x Additional packaging, snap, dmg, deb metapackage
   - 0.05x (Planned) Tor Browser Bundle integration for OSX, torbrowser-launcher
-    integration for Linux, Internationalization, installer capable of self
-    updating.
+    integration for Linux, Internationalization
   - 0.06x (Planned) Finalize packaging, User-readiness, automate fingerprint
     measurements, automate hostile testing.
   - 0.07x (Planned) Control Plugin, additional plugin evaluation(Font fingerprint
@@ -123,7 +124,8 @@ sudo apt-get install ./i2pbrowser-helper_all.deb
 
 ### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 
-**UNSTABLE:** The latest snap can be installed from edge and has desktop shortcuts.
+The latest snap can be installed from edge and has desktop shortcuts.
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/i2pbrowser)
 
   1. Open a terminal and run: 'snap install --edge i2pbrowser'
   2. Run the shortcut from your application menu or /snap/bin/i2pbrowser from a
