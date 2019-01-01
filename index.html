@@ -7,7 +7,7 @@
   <title>firefox.profile.i2p</title>
 </head>
 <body>
-  <div id="intro">
+  <div id="intro" class="top">
     <h1>firefox.profile.i2p</h1>
     <p><a href=
     "https://build.snapcraft.io/user/eyedeekay/firefox.profile.i2p"><img src=
@@ -16,6 +16,9 @@
     "https://travis-ci.com/eyedeekay/firefox.profile.i2p"><img src=
     "https://travis-ci.com/eyedeekay/firefox.profile.i2p.svg?branch=master"
     alt="Travis-CI .dmg Status"></a></p>
+    <p><a href="https://snapcraft.io/i2pbrowser"><img src=
+    "https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt=
+    "Get it from the Snap Store"></a></p>
     <p>Much of this is ready for interested parties to test, but it’s still
     just being tested and the rough edges are still being figured out. Use at
     your own risk.</p>
@@ -55,7 +58,7 @@
     NoScript and HTTPS Everywhere.</p>
     <p>For more information, see: <a href="DETAILS.md">DETAILS.md</a></p>
   </div>
-  <div id="windows">
+  <div id="windows" class="highlight">
     <h3>Automatic Setup (Recommended, Windows) <a href="WINDOWS.md">Standalone
     guide</a></h3>
     <ol>
@@ -95,7 +98,7 @@
       i2pbrower.bat script.</li>
     </ol>
   </div>
-  <div id="osx">
+  <div id="osx" class="hidden">
     <h3>Automatic Setup (OSX) <a href="MACOSX.md">Standalone guide</a></h3>
     <p><strong>Entirely Untested.</strong> I’ve managed to build .dmg files
     that contain the scripts annd the profile. They <em>should</em> work, but
@@ -112,7 +115,7 @@
       <li>Launch the I2PBrowser.sh script.</li>
     </ol>
   </div>
-  <div id="linux">
+  <div id="linux" class="hidden">
     <h3>Automatic Setup <a href="LINUX.md">Standalone guide</a> (Debian,
     Ubuntu, apt-based with Firefox-ESR)</h3>
     <p>A pre-built deb(for now, crudely generated with checkinstall) is able to
@@ -148,8 +151,10 @@
     install ./i2pbrowser-helper_all.deb</code></p>
     <h3>Snap Setup <a href="LINUX.md">Standalone guide</a>
     (Cross-Distribution)</h3>
-    <p>The latest snap can be installed from edge and has desktop
-    shortcuts.</p>
+    <p>The latest snap can be installed from edge and has desktop shortcuts.
+    <a href="https://snapcraft.io/i2pbrowser"><img src=
+    "https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt=
+    "Get it from the Snap Store"></a></p>
     <ol>
       <li>Open a terminal and run: ‘snap install –edge i2pbrowser’</li>
       <li>Run the shortcut from your application menu or /snap/bin/i2pbrowser
@@ -238,7 +243,7 @@
             firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
 </code></pre>
   </div>
-  <div id="notes">
+  <div id="notes" class="hidden">
     <h4>Screenshots</h4>
     <ul>
       <li><strong>check.kovri.i2p:</strong></li>
@@ -263,7 +268,7 @@
     the Torbutton provides to the Tor Browser Bundle. In order to deal with
     this issue the default NoScript configuration is more restrictive.</p>
   </div>
-  <div id="whonix">
+  <div id="whonix" class="hidden">
     <h5>Debian/Ubuntu users can use Whonix stretch-testng i2p browser
     launcher</h5>
     <p>If you are using Debian or Ubuntu, or probably any other up-to-date
@@ -322,7 +327,7 @@
     update-i2pbrowser
 </code></pre>
   </div>
-  <div id="finger">
+  <div id="finger" class="hidden">
     <h1>Browser Security Testing:</h1>
     <ul>
       <li>
