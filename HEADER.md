@@ -67,3 +67,7 @@ to uninstall.
   - 0.10x (Planned) No known bugs. Best-case scenario for current i2p browsers
     using Firefox or TBB.
 
+### Donate
+
+  XMR:43V6cTZrUfAb9JD6Dmn3vjdT9XxLbiE27D1kaoehb359ACaHs8191mR4RsJH7hGjRTiAoSwFQAVdsCBToXXPAqTMDdP2bZB
+  BTC:159M8MEUwhTzE9RXmcZxtigKaEjgfwRbHt
