@@ -1,4 +1,6 @@
 inetc/
+zipdll/
+unzip/
 .go/
 firefox.launchers/gnulinux/.firefox.profile.i2p.default
 firefox.launchers/gnulinux/doc-pak

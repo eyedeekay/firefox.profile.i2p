@@ -13,10 +13,9 @@ installed in Debian.
   2. Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox with the
   i2p browsing profile.
 
-```sh
-wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
-sudo apt-get install ./i2pbrowser-helper_all.deb
-```
+        #! /bin/sh
+        wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
+        sudo apt-get install ./i2pbrowser-helper_all.deb
 
 ### Building a .deb with Checkinstall
 
@@ -28,13 +27,12 @@ generate your own from this source code.
   3. run 'make debfirefox'
   4. Install the generated package.
 
-```sh
-sudo apt-get install git make checkinstall
-git clone https://github.com/eyedeekay/firefox.profile.i2p && cd firefox.profile.i2p
-make debfirefox
-i2pbrowser-helper_all.deb
-sudo apt-get install ./i2pbrowser-helper_all.deb
-```
+        # /bin/sh
+        sudo apt-get install git make checkinstall
+        git clone https://github.com/eyedeekay/firefox.profile.i2p && cd firefox.profile.i2p
+        make debfirefox
+        i2pbrowser-helper_all.deb
+        sudo apt-get install ./i2pbrowser-helper_all.deb
 
 ### Snap Setup [Standalone guide](LINUX.md) (Cross-Distribution)
 
@@ -45,10 +43,9 @@ The latest snap can be installed from edge and has desktop shortcuts.
   2. Run the shortcut from your application menu or /snap/bin/i2pbrowser from a
   terminal.
 
-```sh
-snap install --edge i2pbrowser
-/snap/bin/i2pbrowser
-```
+        #! /bin/sh
+        snap install --edge i2pbrowser
+        /snap/bin/i2pbrowser
 
 It's not likely that integrating a snap with Tor Browser will be possible unless
 Tor Browser becomes available as a snap, which seems unlikely. I can think of
@@ -66,14 +63,11 @@ automatically update the profile for you.
   2. Download the GNU/Linux zip bundle from the releases page and unpack it.
   3. Run the following make targets:
 
-```sh
-make recopy-linux
-sudo make install
-```
+        #! /bin/sh
+        make recopy-linux
+        sudo make install
 
   4. run 'I2PBrowser.sh'
-
-
 
 ### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX, Windows?)
 
@@ -83,14 +77,12 @@ from Dockerhub, also authored by me. Should you wish to build it yourself,
 instructions can be found below. However, if you wish to run the i2p Browser
 from the Docker Hub and have i2p installed on the host, you may simply:
 
-```sh
-docker run --rm -i -t \
-	-e DISPLAY=:0 \
-	--net host \
-	--name i2p-browser \
-	--volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
-    eyedeekay/firefox.profile.i2p
-```
+        docker run --rm -i -t \
+            -e DISPLAY=:0 \
+            --net host \
+            --name i2p-browser \
+            --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+            eyedeekay/firefox.profile.i2p
 
 To launch a Tor Browser configured with this profile from the terminal.
 
@@ -100,9 +92,7 @@ In order to examine or build the upstream package locally, see:
 If you have trouble connecting the Dockerized application to the X server, you
 may need to authorize the Docker user to access the X server.
 
-```sh
-xhost +"local:docker@"
-```
+        xhost +"local:docker@"
 
 ### Manual Setup (Various Linuxes) [Standalone guide](LINUX.md) (Debian-Derived distros see Footnote #2)
 
@@ -118,12 +108,11 @@ xhost +"local:docker@"
 
 If you want to just copy-paste some commands into your terminal, you could:
 
-```sh
-curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz --output i2pbrowser-gnulinux.tar.gz
-tar xvzf i2pbrowser-gnulinux.tar.gz
-cd i2pbrowser-gnulinux
-./install.sh install
-```
+        #! /bin/sh
+        curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz --output i2pbrowser-gnulinux.tar.gz
+        tar xvzf i2pbrowser-gnulinux.tar.gz
+        cd i2pbrowser-gnulinux
+        ./install.sh install
 
 Once you've run "./install.sh install" you can safely delete the profile folder
 if you wish. Alternatively, you could choose to run from the downloaded profile

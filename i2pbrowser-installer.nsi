@@ -15,6 +15,8 @@ var SHORTCUT
 !define I2PINSTEXE32 "$PROGRAMFILES32\i2p\"
 !define I2PINSTEXE64 "$PROGRAMFILES64\i2p\"
 
+!define UPDATE_URL "https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-profile-update.zip"
+
 !define RAM_NEEDED_FOR_64BIT 0x80000000
 
 InstallDir "$PROGRAMFILES\${COMPANYNAME}\${APPNAME}"
@@ -35,6 +37,7 @@ RequestExecutionLevel admin
 !include nsis_includes/i2pbrowser-strrep.nsh
 !include nsis_includes/i2pbrowser-mozcompat.nsi
 !include nsis_includes/i2pbrowser-functions.nsi
+;!include unzip/nsisunz/nsisunz_setup.nsi
 
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "${LAUNCH_TEXT}"
@@ -102,16 +105,26 @@ Section Install
     File license/NoScript.txt
 
     # Install the profile
-    createDirectory "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
-    SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
-    File firefox.launchers/windows/firefox.profile.i2p/user.js
-    File firefox.launchers/windows/firefox.profile.i2p/bookmarks.html
+    ${If} ${FileExists} "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\user.js"
+        ${If} ${FileExists} "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p.bak\user.js"
+            rmDir "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p.bak"
+        ${EndIf}
+        Rename "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p.bak"
+        SetOutPath "$LOCALAPPDATA\${APPNAME}\"
+        inetc::get ${UPDATE_URL} "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip"
+        ZipDLL::extractall "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
+    ${Else}
+        createDirectory "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
+        SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
+        File firefox.launchers/windows/firefox.profile.i2p/user.js
+        File firefox.launchers/windows/firefox.profile.i2p/bookmarks.html
+        # Install the extensions
+        createDirectory "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
+        SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
+        File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
+        File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
+    ${EndIf}
 
-    # Install the extensions
-    createDirectory "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
-    SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
-    File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
-    File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
     ${If} "$TBINST" == "true"
         CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\torbutton@torproject.org.xpi"
         CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\tor-launcher@torproject.org.xpi"
@@ -134,14 +147,16 @@ Section Install
     SetOutPath "${I2PAPPDATA}"
 
     ;# Point the browser config setting
-    FileOpen $0 "${I2PAPPDATA}\clients.config" a
-    FileSeek $0 0 END
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileWrite $0 "browser=$\"${SHORTCUTPATH}$\""
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileClose $0
+    ${If} ${FileExists} "${I2PAPPDATA}\clients.config"
+        FileOpen $0 "${I2PAPPDATA}\clients.config" a
+        FileSeek $0 0 END
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileWrite $0 "browser=$\"${SHORTCUTPATH}$\""
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileClose $0
+    ${EndIf}
 
     SetOutPath "$INSTDIR"
     # create the uninstaller

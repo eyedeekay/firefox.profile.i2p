@@ -222,10 +222,19 @@ inetc-plugin:
 	mkdir -p inetc
 	cd inetc && unzip ../Inetc.zip
 
+unzip-plugin:
+	/usr/bin/wget -c https://nsis.sourceforge.io/mediawiki/images/d/d9/ZipDLL.zip
+	mkdir -p unzip
+	cd unzip && unzip ../ZipDLL.zip
+
 install-plugin:
 	cp -v inetc/Plugins/amd64-unicode/INetC.dll /usr/share/nsis/Plugins/amd64-unicode/
 	cp -v inetc/Plugins/x86-ansi/INetC.dll /usr/share/nsis/Plugins/x86-ansi/
 	cp -v inetc/Plugins/x86-unicode/INetC.dll /usr/share/nsis/Plugins/x86-unicode/
+	cp -v unzip/*.dll /usr/share/nsis/Plugins/amd64-unicode/
+	cp -v unzip/*.dll /usr/share/nsis/Plugins/x86-ansi/
+	cp -v unzip/*.dll /usr/share/nsis/Plugins/x86-unicode/
+	cp -v unzip/*.nsh /usr/share/nsis/Include/
 
 debwhonix:
 	cd whonix-helper && fakeroot-ng checkinstall --default \
