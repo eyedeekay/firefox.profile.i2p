@@ -183,7 +183,7 @@ automatically update the profile for you.
         make recopy-linux
         sudo make install
 
-  4. run 'I2PBrowser.sh'
+When it's done, you can run 'I2PBrowser.sh' to start the i2p browser profile.
 
 ### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX, Windows?)
 
