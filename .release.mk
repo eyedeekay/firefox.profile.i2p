@@ -99,7 +99,7 @@ gothub-upload-current-linux:
 		--label "GNU/Linux snap" \
 		--name i2pbrowser_ammd64.snap \
 		--replace \
-		--file i2pbrowser_$(VERSION)_ammd64.snap
+		--file i2pbrowser_$(VERSION)_amd64.snap
 
 gothub-upload-current-osx:
 	$(GOTHUB_BIN) upload \
@@ -168,7 +168,7 @@ upload-deb:
 		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
 		--name i2pbrowser-helper_all.deb \
 		--replace \
-		--file i2pbrowser-helper_$(VERSION)-1_all.debs
+		--file i2pbrowser-helper_$(VERSION)-1_all.deb
 
 release-all: release current-release
 
@@ -184,24 +184,31 @@ page: guide
 	@echo '<div id="intro" class="top">' | tee -a index.html
 	markdown HEADER.md | tee -a index.html
 	@echo '</div>' | tee -a index.html
+	@echo '<h1 class="windows lowlight">Windows Setup</h1>' | tee -a index.html
 	@echo '<div id="windows" class="highlight">' | tee -a index.html
-	markdown WINDOWS.md | tee -a index.html
+	markdown WINDOWS.md | sed 's|<h3|<h3 class="windows"|g' | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="osx" class="hidden">' | tee -a index.html
-	markdown MACOSX.md | tee -a index.html
+	@echo '<h1 class="osx lowlight">OSX Setup</h1>' | tee -a index.html
+	@echo '<div id="osx" class="highlight">' | tee -a index.html
+	markdown MACOSX.md | sed 's|<h3|<h3 class="osx"|g' | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="linux" class="hidden">' | tee -a index.html
-	markdown LINUX.md | tee -a index.html
+	@echo '<h1 class="linux lowlight">Linux Setup</h1>' | tee -a index.html
+	@echo '<div id="linux" class="highlight">' | tee -a index.html
+	markdown LINUX.md | sed 's|<h3|<h3 class="linux"|g' | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="notes" class="hidden">' | tee -a index.html
-	markdown NOTES.md | tee -a index.html
+	@echo '<h1 class="notes lowlight">Notes/Appendix</h1>' | tee -a index.html
+	@echo '<div id="notes" class="highlight">' | tee -a index.html
+	markdown NOTES.md | sed 's|<h4|<h4 class="notes"|g' | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="whonix" class="hidden">' | tee -a index.html
-	markdown WHONIX.md | tee -a index.html
+	@echo '<h1 class="whonix lowlight">Whonix Setup(Advanced)</h1>' | tee -a index.html
+	@echo '<div id="whonix" class="highlight">' | tee -a index.html
+	markdown WHONIX.md | sed 's|<h5|<h5 class="whonix"|g' | tee -a index.html
 	@echo '</div>' | tee -a index.html
-	@echo '<div id="finger" class="hidden">' | tee -a index.html
-	markdown FINGER.md | tee -a index.html
+	@echo '<h1 class="finger lowlight">Browser Testing</h1>' | tee -a index.html
+	@echo '<div id="finger" class="highlight">' | tee -a index.html
+	markdown FINGER.md | sed 's|<h1|<h1 class="finger"|g' | tee -a index.html
 	@echo '</div>' | tee -a index.html
+	@echo '<script type="text/javascript" src="assets/script.js"></script>' | tee -a index.html
 	@echo '</body>' | tee -a index.html
 	@echo '</html>' | tee -a index.html
 	tidy -i -w 80 -m index.html
@@ -223,6 +230,7 @@ update-service-run: update-service-volume update-service-copies
 	docker run -i -t -d --name "i2pbrowser-updates" \
 		--network si \
 		--restart always \
+		-p 127.0.0.1:7880:7880 \
 		--volumes-from "i2pbrowser-volume" \
 		eyedeekay/i2pbrowser-site
 

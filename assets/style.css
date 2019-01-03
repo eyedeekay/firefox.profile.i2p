@@ -1,18 +1,61 @@
+body {
+    background: #5D5621;
+    border-color: #565C20;
+    color: #EBD53D;
+}
 .top {
-
+    background: #EBD53D;
+    border-color: #FFC945;
+    color: #4A3606;
+    width: 80%;
+    margin: 2%;
+    padding: 4%;
+    border: solid 4px;
 }
 
 .highlight {
-    /*display: block;
-    visibility: visible;*/
+    background: #E5D670;
+    border-color: #FFE745;
+    color: #4A4106;
+    display: block;
+    visibility: visible;
+    width: 80%;
+    margin: 2%;
+    padding: 4%;
+    border: solid 4px;
 }
 
 .lowlight {
-    /*display: block;
-    visibility: visible;*/
+    background: #D6E16E;
+    border-color: #EAFC44;
+    color: #565C20;
+    display: block;
+    visibility: visible;
+    width: 80%;
+    margin: 2%;
+    padding: 4%;
+    border: solid 4px;
 }
 
 .hidden {
-    /*display: none;
-    visibility: hidden;*/
+    display: none;
+    visibility: hidden;
+}
+
+.shown {
+    display: block;
+    visibility: visible;
+}
+
+img {
+    max-width: 80%;
+    margin: 2%;
+    border: solid 4px;
+}
+
+pre {
+    padding-left: 22px ;
+    text-indent: -22px ;
+    white-space: pre-wrap;
+    margin: 2%;
 }

@@ -30,7 +30,7 @@ It just bundles Firefox and the scripts that make sure the configuration is
 correct together in their little snap package and runs it from inside the
 container. There are also a variety of other options for other platforms.
 
-What it configures is a profile for Firefox, pre-configured to use i2p, with an
+What it configures is a profile for Firefox, set up to use i2p, with an
 accompanying launcher for easy use. It also comes pre-configured to disable
 certain features that may weaken the anonymity that i2p provides, and with
 NoScript and HTTPS Everywhere.
@@ -45,19 +45,18 @@ where the Windows installer has been made available. The "current" release will
 always track the newest working version. Numbered releases are the latest
 version that I'm testing. There's not really a coherent rationale to the
 version numbers yet. I move them when I add a feature to make sure I know what
-to uninstall. Roughly, that corresponds to a "Feature." That is the only purpose
-they serve for the moment.
+to uninstall.
 
 ## Coarse Changelog/Roadmap
 
-  - Current == 0.4
+  - Current == 0.05
   - 0.x Intitial configuration,
   - 0.01x Wrapper-launcher for Windows/Firefox, Whonix browser for Debian Derivs
   - 0.02x Improved Reliability
   - 0.03x Reddit to-do list, i2prouter integration, Tor Browser Bundle
     integration for Windows
   - 0.04x Additional packaging, snap, dmg, deb metapackage
-  - 0.05x (Planned) Tor Browser Bundle integration for OSX, torbrowser-launcher
+  - 0.05x Tor Browser Bundle integration for OSX, torbrowser-launcher
     integration for Linux, Internationalization
   - 0.06x (Planned) Finalize packaging, User-readiness, automate fingerprint
     measurements, automate hostile testing.

@@ -41,10 +41,10 @@
     correct together in their little snap package and runs it from inside the
     container. There are also a variety of other options for other
     platforms.</p>
-    <p>What it configures is a profile for Firefox, pre-configured to use i2p,
-    with an accompanying launcher for easy use. It also comes pre-configured to
-    disable certain features that may weaken the anonymity that i2p provides,
-    and with NoScript and HTTPS Everywhere.</p>
+    <p>What it configures is a profile for Firefox, set up to use i2p, with an
+    accompanying launcher for easy use. It also comes pre-configured to disable
+    certain features that may weaken the anonymity that i2p provides, and with
+    NoScript and HTTPS Everywhere.</p>
     <p>For more information, see: <a href="DETAILS.md">DETAILS.md</a></p>
     <p>Much of this is ready for interested parties to test, but it’s still
     just being tested and the rough edges are still being figured out. Use at
@@ -55,11 +55,10 @@
     “current” release will always track the newest working version. Numbered
     releases are the latest version that I’m testing. There’s not really a
     coherent rationale to the version numbers yet. I move them when I add a
-    feature to make sure I know what to uninstall. Roughly, that corresponds to
-    a “Feature.” That is the only purpose they serve for the moment.</p>
+    feature to make sure I know what to uninstall.</p>
     <h2>Coarse Changelog/Roadmap</h2>
     <ul>
-      <li>Current == 0.4</li>
+      <li>Current == 0.05</li>
       <li>0.x Intitial configuration,</li>
       <li>0.01x Wrapper-launcher for Windows/Firefox, Whonix browser for Debian
       Derivs</li>
@@ -67,8 +66,8 @@
       <li>0.03x Reddit to-do list, i2prouter integration, Tor Browser Bundle
       integration for Windows</li>
       <li>0.04x Additional packaging, snap, dmg, deb metapackage</li>
-      <li>0.05x (Planned) Tor Browser Bundle integration for OSX,
-      torbrowser-launcher integration for Linux, Internationalization</li>
+      <li>0.05x Tor Browser Bundle integration for OSX, torbrowser-launcher
+      integration for Linux, Internationalization</li>
       <li>0.06x (Planned) Finalize packaging, User-readiness, automate
       fingerprint measurements, automate hostile testing.</li>
       <li>0.07x (Planned) Control Plugin, additional plugin evaluation(Font
@@ -79,9 +78,10 @@
       browsers using Firefox or TBB.</li>
     </ul>
   </div>
+  <h1 class="windows lowlight">Windows Setup</h1>
   <div id="windows" class="highlight">
-    <h3>Automatic Setup (Recommended, Windows) <a href="WINDOWS.md">Standalone
-    guide</a></h3>
+    <h3 class="windows">Automatic Setup (Recommended, Windows) <a href=
+    "WINDOWS.md">Standalone guide</a></h3>
     <ol>
       <li>Install the Firefox web browser. You can download it from <a href=
       "https://www.mozilla.org/en-US/firefox/new/">Mozilla’s web site</a>. <em>
@@ -102,7 +102,7 @@
       “I2PBrowser-Launcher” or “Private Browsing-I2PBrowser-Launcher” from your
       Start Menu or your Desktop.</li>
     </ol>
-    <h3>Run-From-Zip (Alternative, Windows)</h3>
+    <h3 class="windows">Run-From-Zip (Alternative, Windows)</h3>
     <ol>
       <li>Install the Firefox web browser. You can download it from <a href=
       "https://www.mozilla.org/en-US/firefox/new/">Mozilla’s web site</a>. The
@@ -119,8 +119,10 @@
       i2pbrower.bat script.</li>
     </ol>
   </div>
-  <div id="osx" class="hidden">
-    <h3>Automatic Setup (OSX) <a href="MACOSX.md">Standalone guide</a></h3>
+  <h1 class="osx lowlight">OSX Setup</h1>
+  <div id="osx" class="highlight">
+    <h3 class="osx">Automatic Setup (OSX) <a href="MACOSX.md">Standalone
+    guide</a></h3>
     <p><strong>Entirely Untested.</strong> I’ve managed to build .dmg files
     that contain the scripts annd the profile. They <em>should</em> work, but
     until I get a Mac, I won’t know for sure. To generate one on a Mac, install
@@ -136,9 +138,10 @@
       <li>Launch the I2PBrowser.sh script.</li>
     </ol>
   </div>
-  <div id="linux" class="hidden">
-    <h3>Automatic Setup <a href="LINUX.md">Standalone guide</a> (Debian,
-    Ubuntu, apt-based with Firefox-ESR)</h3>
+  <h1 class="linux lowlight">Linux Setup</h1>
+  <div id="linux" class="highlight">
+    <h3 class="linux">Automatic Setup <a href="LINUX.md">Standalone guide</a>
+    (Debian, Ubuntu, apt-based with Firefox-ESR)</h3>
     <p>A pre-built deb(for now, crudely generated with checkinstall) is able to
     configure an i2p browser on Debian-based distributions as long as they
     package Firefox, NoScript, and HTTPS-Everywhere. This deb simply configures
@@ -157,7 +160,7 @@
     <p><code>sh wget -c
     https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
     sudo apt-get install ./i2pbrowser-helper_all.deb</code></p>
-    <h3>Building a .deb with Checkinstall</h3>
+    <h3 class="linux">Building a .deb with Checkinstall</h3>
     <p>If you don’t want to trust the deb I generated, then it’s also very
     simple to generate your own from this source code.</p>
     <ol>
@@ -170,7 +173,7 @@
     https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
     firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo apt-get
     install ./i2pbrowser-helper_all.deb</code></p>
-    <h3>Snap Setup <a href="LINUX.md">Standalone guide</a>
+    <h3 class="linux">Snap Setup <a href="LINUX.md">Standalone guide</a>
     (Cross-Distribution)</h3>
     <p>The latest snap can be installed from edge and has desktop shortcuts.
     <a href="https://snapcraft.io/i2pbrowser"><img src=
@@ -190,7 +193,7 @@
     about ~9 minutes after this repository does. That means a s simple
     ‘snapcraft refresh –edge i2pbrowser’ will automatically update the profile
     for you.</p>
-    <h3>Make Setup <a href="LINUX.md">Standalone guide</a>
+    <h3 class="linux">Make Setup <a href="LINUX.md">Standalone guide</a>
     (Cross-Distribution)</h3>
     <ol>
       <li>Install the firefox-esr browser from your distribution or from
@@ -204,8 +207,8 @@
     <ol>
       <li>run ‘I2PBrowser.sh’</li>
     </ol>
-    <h3>Docker Setup <a href="LINUX.md">Standalone guide</a> (Linux, probably
-    OSX, Windows?)</h3>
+    <h3 class="linux">Docker Setup <a href="LINUX.md">Standalone guide</a>
+    (Linux, probably OSX, Windows?)</h3>
     <p>Linux and Mac OSX users can run the browser within a Docker container.
     This image uses an entirely un-official upstream image of the Tor Browser
     Bundle from Dockerhub, also authored by me. Should you wish to build it
@@ -223,8 +226,9 @@
     server, you may need to authorize the Docker user to access the X
     server.</p>
     <p><code>sh xhost +"local:docker@"</code></p>
-    <h3>Manual Setup (Various Linuxes) <a href="LINUX.md">Standalone guide</a>
-    (Debian-Derived distros see Footnote #2)</h3>
+    <h3 class="linux">Manual Setup (Various Linuxes) <a href=
+    "LINUX.md">Standalone guide</a> (Debian-Derived distros see Footnote
+    #2)</h3>
     <p><em>NOTE: I’m probably going to add an apparmor profile to this setup
     for optional</em> <em>installation.</em></p>
     <ol>
@@ -264,8 +268,9 @@
             firefox --jsconsole --devtools --no-remote --profile "$DIR/.firefox.profile.i2p.debug" --private about:blank $1
 </code></pre>
   </div>
-  <div id="notes" class="hidden">
-    <h4>Screenshots</h4>
+  <h1 class="notes lowlight">Notes/Appendix</h1>
+  <div id="notes" class="highlight">
+    <h4 class="notes">Screenshots</h4>
     <ul>
       <li><strong>check.kovri.i2p:</strong></li>
     </ul>
@@ -276,7 +281,8 @@
     </ul>
     <p><img src="images/firefox.profile.i2p.fingerprint.png" alt=
     "Figure E: Browser Fingerprint"></p>
-    <h4>Footnotes <a href="NOTES.md">Download these notes</a></h4>
+    <h4 class="notes">Footnotes <a href="NOTES.md">Download these
+    notes</a></h4>
     <h5>Differences from Tor Browser</h5>
     <p>TL:DR There is no security slider, and to compensate for this issue, the
     Browser is configured to enable fewer features by default. It also can’t do
@@ -289,9 +295,10 @@
     the Torbutton provides to the Tor Browser Bundle. In order to deal with
     this issue the default NoScript configuration is more restrictive.</p>
   </div>
-  <div id="whonix" class="hidden">
-    <h5>Debian/Ubuntu users can use Whonix stretch-testng i2p browser
-    launcher</h5>
+  <h1 class="whonix lowlight">Whonix Setup(Advanced)</h1>
+  <div id="whonix" class="highlight">
+    <h5 class="whonix">Debian/Ubuntu users can use Whonix stretch-testng i2p
+    browser launcher</h5>
     <p>If you are using Debian or Ubuntu, or probably any other up-to-date
     apt-based Linux distribution, there’s another option which may you may
     prefer. In order to do this, one must add the Whonix apt package repository
@@ -348,8 +355,9 @@
     update-i2pbrowser
 </code></pre>
   </div>
-  <div id="finger" class="hidden">
-    <h1>Browser Security Testing:</h1>
+  <h1 class="finger lowlight">Browser Testing</h1>
+  <div id="finger" class="highlight">
+    <h1 class="finger">Browser Security Testing:</h1>
     <ul>
       <li>
         <p><strong>master:</strong>
@@ -361,5 +369,6 @@
       </li>
     </ul>
   </div>
+  <script type="text/javascript" src="assets/script.js"></script>
 </body>
 </html>
