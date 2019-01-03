@@ -13,6 +13,7 @@ installed in Debian.
   2. Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox with the
   i2p browsing profile.
 
+        #! /bin/sh
         wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
         sudo apt-get install ./i2pbrowser-helper_all.deb
 
@@ -26,6 +27,7 @@ generate your own from this source code.
   3. run 'make debfirefox'
   4. Install the generated package.
 
+        # /bin/sh
         sudo apt-get install git make checkinstall
         git clone https://github.com/eyedeekay/firefox.profile.i2p && cd firefox.profile.i2p
         make debfirefox
@@ -41,6 +43,7 @@ The latest snap can be installed from edge and has desktop shortcuts.
   2. Run the shortcut from your application menu or /snap/bin/i2pbrowser from a
   terminal.
 
+        #! /bin/sh
         snap install --edge i2pbrowser
         /snap/bin/i2pbrowser
 
@@ -60,6 +63,7 @@ automatically update the profile for you.
   2. Download the GNU/Linux zip bundle from the releases page and unpack it.
   3. Run the following make targets:
 
+        #! /bin/sh
         make recopy-linux
         sudo make install
 
@@ -104,6 +108,7 @@ may need to authorize the Docker user to access the X server.
 
 If you want to just copy-paste some commands into your terminal, you could:
 
+        #! /bin/sh
         curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz --output i2pbrowser-gnulinux.tar.gz
         tar xvzf i2pbrowser-gnulinux.tar.gz
         cd i2pbrowser-gnulinux

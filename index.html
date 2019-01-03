@@ -163,7 +163,8 @@
       <li>
         <p>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox
         with the i2p browsing profile.</p>
-        <pre><code>  wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
+        <pre><code>  #! /bin/sh
+  wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
   sudo apt-get install ./i2pbrowser-helper_all.deb
 </code></pre>
       </li>
@@ -177,7 +178,7 @@
       <li>run ‘make debfirefox’</li>
       <li>
         <p>Install the generated package.</p>
-        <p>sudo apt-get install git make checkinstall git clone
+        <p># /bin/sh sudo apt-get install git make checkinstall git clone
         https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
         firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo
         apt-get install ./i2pbrowser-helper_all.deb</p>
@@ -194,7 +195,8 @@
       <li>
         <p>Run the shortcut from your application menu or /snap/bin/i2pbrowser
         from a terminal.</p>
-        <pre><code>  snap install --edge i2pbrowser
+        <pre><code>  #! /bin/sh
+  snap install --edge i2pbrowser
   /snap/bin/i2pbrowser
 </code></pre>
       </li>
@@ -217,7 +219,7 @@
       it.</li>
       <li>
         <p>Run the following make targets:</p>
-        <p>make recopy-linux sudo make install</p>
+        <p>#! /bin/sh make recopy-linux sudo make install</p>
       </li>
       <li>
         <p>run ‘I2PBrowser.sh’</p>
@@ -264,7 +266,8 @@
     </ol>
     <p>If you want to just copy-paste some commands into your terminal, you
     could:</p>
-    <pre><code>    curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz --output i2pbrowser-gnulinux.tar.gz
+    <pre><code>    #! /bin/sh
+    curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz --output i2pbrowser-gnulinux.tar.gz
     tar xvzf i2pbrowser-gnulinux.tar.gz
     cd i2pbrowser-gnulinux
     ./install.sh install
@@ -363,14 +366,16 @@
     <p>instead.</p>
     <p>Finally, you need to add the following lines to the bottom of
     /etc/i2pbrowser.d/31_i2p_default.conf.</p>
-    <pre><code>    TOR_HIDE_UPDATE_CHECK_UI=1
+    <pre><code>    # /etc/i2pbrowser.d/31_i2p_default.conf
+    TOR_HIDE_UPDATE_CHECK_UI=1
     TOR_NO_DISPLAY_NETWORK_SETTINGS=1
     TOR_HIDE_BROWSER_LOGO=1
     TOR_SKIP_LAUNCH=1
     TOR_SKIP_CONTROLPORTTEST=1
 </code></pre>
     <p>Or, you can just run these commands, now that you know what they do:</p>
-    <pre><code>    sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
+    <pre><code>    #! /bin/sh
+    sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-keys 916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA
     echo 'deb http://deb.whonix.org stretch-testers main' | tee /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to taste
     sudo apt-get update
     sudo apt-get install tb-starter tb-updater
