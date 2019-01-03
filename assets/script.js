@@ -63,6 +63,15 @@ function ShowWhonix() {
     element.onclick = ShowWhonix
 }
 
+function ShowFinger() {
+    var element = document.getElementById("finger")
+    if (element.classList.contains("hidden")) {
+        Show("finger")
+    }else{
+        Hide("finger")
+    }
+    element.onclick = ShowFinger
+}
 window.onload = function () {
     var OSName="windows";
     if (navigator.appVersion.indexOf("Win")!=-1) OSName="windows";
@@ -104,6 +113,6 @@ window.onload = function () {
     var fel = document.getElementsByClassName('finger');
     for (var i = 0, len = fel.length; i < len; i++) {
         fel[i].classList.add("shown")
-        fel[i].onclick = ShowWhonix
+        fel[i].onclick = ShowFinger
     }
 }
