@@ -123,11 +123,6 @@ Section Install
         File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
         File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
 
-        ${If} "$TBINST" == "true"
-            CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\torbutton@torproject.org.xpi"
-            CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\tor-launcher@torproject.org.xpi"
-        ${EndIf}
-
         SetOutPath "$INSTDIR"
         createDirectory "$SMPROGRAMS\${APPNAME}"
         CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
@@ -162,6 +157,10 @@ Section Install
 
         # create a shortcut to the uninstaller
         CreateShortCut "$SMPROGRAMS\${APPNAME}\Uninstall-${APPNAME}.lnk" "$INSTDIR\uninstall-i2pbrowser.exe"
+    ${EndIf}
+    ${If} "$TBINST" == "true"
+        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\torbutton@torproject.org.xpi"
+        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\tor-launcher@torproject.org.xpi"
     ${EndIf}
 SectionEnd
 
