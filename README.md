@@ -141,7 +141,8 @@ generate your own from this source code.
   1. Install git, make, and checkinstall
   2. Clone this repository and change to the newly created directory
   3. run 'make debfirefox'
-  4. Install the generated package.
+  4. Install the generated
+  package.
 
         # /bin/sh
         sudo apt-get install git make checkinstall
