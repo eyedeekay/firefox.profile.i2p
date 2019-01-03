@@ -101,4 +101,9 @@ window.onload = function () {
         hel[i].classList.add("shown")
         hel[i].onclick = ShowWhonix
     }
+    var fel = document.getElementsByClassName('finger');
+    for (var i = 0, len = fel.length; i < len; i++) {
+        fel[i].classList.add("shown")
+        fel[i].onclick = ShowWhonix
+    }
 }
