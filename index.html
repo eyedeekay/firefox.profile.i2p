@@ -78,9 +78,11 @@
       browsers using Firefox or TBB.</li>
     </ul>
     <h3>Donate</h3>
-    <p>
-    XMR:43V6cTZrUfAb9JD6Dmn3vjdT9XxLbiE27D1kaoehb359ACaHs8191mR4RsJH7hGjRTiAoSwFQAVdsCBToXXPAqTMDdP2bZB
-    BTC:159M8MEUwhTzE9RXmcZxtigKaEjgfwRbHt</p>
+    <ul>
+      <li>
+      XMR:43V6cTZrUfAb9JD6Dmn3vjdT9XxLbiE27D1kaoehb359ACaHs8191mR4RsJH7hGjRTiAoSwFQAVdsCBToXXPAqTMDdP2bZB</li>
+      <li>BTC:159M8MEUwhTzE9RXmcZxtigKaEjgfwRbHt</li>
+    </ul>
   </div>
   <h1 class="windows lowlight">Windows Setup</h1>
   <div id="windows" class="highlight">
@@ -158,12 +160,14 @@
       page</a>.
       </li>
       <li>Double-click the newly downloaded .deb file and install it.</li>
-      <li>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox with
-      the i2p browsing profile.</li>
+      <li>
+        <p>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox
+        with the i2p browsing profile.</p>
+        <pre><code>  wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
+  sudo apt-get install ./i2pbrowser-helper_all.deb
+</code></pre>
+      </li>
     </ol>
-    <p><code>sh wget -c
-    https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
-    sudo apt-get install ./i2pbrowser-helper_all.deb</code></p>
     <h3 class="linux">Building a .deb with Checkinstall</h3>
     <p>If you don’t want to trust the deb I generated, then it’s also very
     simple to generate your own from this source code.</p>
@@ -171,12 +175,14 @@
       <li>Install git, make, and checkinstall</li>
       <li>Clone this repository and change to the newly created directory</li>
       <li>run ‘make debfirefox’</li>
-      <li>Install the generated package.</li>
+      <li>
+        <p>Install the generated package.</p>
+        <p>sudo apt-get install git make checkinstall git clone
+        https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
+        firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo
+        apt-get install ./i2pbrowser-helper_all.deb</p>
+      </li>
     </ol>
-    <p><code>sh sudo apt-get install git make checkinstall git clone
-    https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd
-    firefox.profile.i2p make debfirefox i2pbrowser-helper_all.deb sudo apt-get
-    install ./i2pbrowser-helper_all.deb</code></p>
     <h3 class="linux">Snap Setup <a href="LINUX.md">Standalone guide</a>
     (Cross-Distribution)</h3>
     <p>The latest snap can be installed from edge and has desktop shortcuts.
@@ -185,10 +191,14 @@
     "Get it from the Snap Store"></a></p>
     <ol>
       <li>Open a terminal and run: ‘snap install –edge i2pbrowser’</li>
-      <li>Run the shortcut from your application menu or /snap/bin/i2pbrowser
-      from a terminal.</li>
+      <li>
+        <p>Run the shortcut from your application menu or /snap/bin/i2pbrowser
+        from a terminal.</p>
+        <pre><code>  snap install --edge i2pbrowser
+  /snap/bin/i2pbrowser
+</code></pre>
+      </li>
     </ol>
-    <p><code>sh snap install --edge i2pbrowser /snap/bin/i2pbrowser</code></p>
     <p>It’s not likely that integrating a snap with Tor Browser will be
     possible unless Tor Browser becomes available as a snap, which seems
     unlikely. I can think of some things that <em>might</em> work but none are…
@@ -205,11 +215,13 @@
       example, /usr/bin/firefox.</li>
       <li>Download the GNU/Linux zip bundle from the releases page and unpack
       it.</li>
-      <li>Run the following make targets:</li>
-    </ol>
-    <p><code>sh make recopy-linux sudo make install</code></p>
-    <ol>
-      <li>run ‘I2PBrowser.sh’</li>
+      <li>
+        <p>Run the following make targets:</p>
+        <p>make recopy-linux sudo make install</p>
+      </li>
+      <li>
+        <p>run ‘I2PBrowser.sh’</p>
+      </li>
     </ol>
     <h3 class="linux">Docker Setup <a href="LINUX.md">Standalone guide</a>
     (Linux, probably OSX, Windows?)</h3>
@@ -219,9 +231,13 @@
     yourself, instructions can be found below. However, if you wish to run the
     i2p Browser from the Docker Hub and have i2p installed on the host, you may
     simply:</p>
-    <p><code>sh docker run --rm -i -t \ -e DISPLAY=:0 \ --net host \ --name
-    i2p-browser \ --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
-    eyedeekay/firefox.profile.i2p</code></p>
+    <pre><code>    docker run --rm -i -t \
+        -e DISPLAY=:0 \
+        --net host \
+        --name i2p-browser \
+        --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+        eyedeekay/firefox.profile.i2p
+</code></pre>
     <p>To launch a Tor Browser configured with this profile from the
     terminal.</p>
     <p>In order to examine or build the upstream package locally, see: <a href=
@@ -229,7 +245,8 @@
     <p>If you have trouble connecting the Dockerized application to the X
     server, you may need to authorize the Docker user to access the X
     server.</p>
-    <p><code>sh xhost +"local:docker@"</code></p>
+    <pre><code>    xhost +"local:docker@"
+</code></pre>
     <h3 class="linux">Manual Setup (Various Linuxes) <a href=
     "LINUX.md">Standalone guide</a> (Debian-Derived distros see Footnote
     #2)</h3>
@@ -247,10 +264,11 @@
     </ol>
     <p>If you want to just copy-paste some commands into your terminal, you
     could:</p>
-    <p><code>sh curl
-    https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz
-    --output i2pbrowser-gnulinux.tar.gz tar xvzf i2pbrowser-gnulinux.tar.gz cd
-    i2pbrowser-gnulinux ./install.sh install</code></p>
+    <pre><code>    curl https://github.com/eyedeekay/firefox.profile.i2p/releases/download/current/i2pbrowser-gnulinux.tar.gz --output i2pbrowser-gnulinux.tar.gz
+    tar xvzf i2pbrowser-gnulinux.tar.gz
+    cd i2pbrowser-gnulinux
+    ./install.sh install
+</code></pre>
     <p>Once you’ve run “./install.sh install” you can safely delete the profile
     folder if you wish. Alternatively, you could choose to run from the
     downloaded profile directory by running “./install.sh run” or “./install.sh
