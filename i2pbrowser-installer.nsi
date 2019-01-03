@@ -37,7 +37,6 @@ RequestExecutionLevel admin
 !include nsis_includes/i2pbrowser-strrep.nsh
 !include nsis_includes/i2pbrowser-mozcompat.nsi
 !include nsis_includes/i2pbrowser-functions.nsi
-;!include unzip/nsisunz/nsisunz_setup.nsi
 
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "${LAUNCH_TEXT}"

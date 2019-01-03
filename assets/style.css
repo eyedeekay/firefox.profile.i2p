@@ -8,8 +8,8 @@ body {
     border-color: #FFC945;
     color: #4A3606;
     width: 80%;
-    margin: 2%;
-    padding: 4%;
+    margin: 2px;
+    padding: 4px;
     border: solid 4px;
 }
 
@@ -20,8 +20,8 @@ body {
     display: block;
     visibility: visible;
     width: 80%;
-    margin: 2%;
-    padding: 4%;
+    margin: 2px;
+    padding: 4px;
     border: solid 4px;
 }
 
@@ -32,8 +32,8 @@ body {
     display: block;
     visibility: visible;
     width: 80%;
-    margin: 2%;
-    padding: 4%;
+    margin: 2px;
+    padding: 4px;
     border: solid 4px;
 }
 
@@ -49,7 +49,7 @@ body {
 
 img {
     max-width: 80%;
-    margin: 2%;
+    margin: 2px;
     border: solid 4px;
 }
 
@@ -57,5 +57,5 @@ pre {
     padding-left: 22px ;
     text-indent: -22px ;
     white-space: pre-wrap;
-    margin: 2%;
+    margin: 2px;
 }
