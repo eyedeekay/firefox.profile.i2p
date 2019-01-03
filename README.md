@@ -47,6 +47,8 @@ version that I'm testing. There's not really a coherent rationale to the
 version numbers yet. I move them when I add a feature to make sure I know what
 to uninstall.
 
+  * [Source Code:](https://github.com/eyedeekay/firefox.profile.i2p)
+
 ## Coarse Changelog/Roadmap
 
   - Current == 0.05
