@@ -62,49 +62,6 @@ PageExEnd
 
 # start default section
 Section Install
-
-    # set the installation directory as the destination for the following actions
-    createDirectory $INSTDIR
-    SetOutPath $INSTDIR
-    File firefox.launchers/windows/ui2pbrowser_icon.ico
-
-    # Install the launcher scripts: This will need to be it's own section, since
-    # now I think we just need to let the user select if the user is using a non
-    # default Firefox path.
-    FileOpen $0 "$INSTDIR\i2pbrowser.bat" w
-    FileWrite $0 "@echo off"
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileWrite $0 exit
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileClose $0
-
-    FileOpen $0 "$INSTDIR\i2pbrowser-private.bat" w
-    FileWrite $0 "@echo off"
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileWrite $0 exit
-    FileWriteByte $0 "13"
-    FileWriteByte $0 "10"
-    FileClose $0
-
-    # Copy the licenses
-    createDirectory $INSTDIR\license
-    SetOutPath $INSTDIR\license
-    File LICENSE.txt
-    File license/HTTPS-Everywhere.txt
-    File license/LICENSE.tor
-    File license/MPL2.txt
-    File license/NoScript.txt
-
-    # Install the profile
     ${If} ${FileExists} "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\user.js"
         ${If} ${FileExists} "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p.bak\user.js"
             rmDir "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p.bak"
@@ -114,6 +71,48 @@ Section Install
         inetc::get ${UPDATE_URL} "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip"
         ZipDLL::extractall "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
     ${Else}
+        # set the installation directory as the destination for the following actions
+        createDirectory $INSTDIR
+        SetOutPath $INSTDIR
+        File firefox.launchers/windows/ui2pbrowser_icon.ico
+
+        # Install the launcher scripts: This will need to be it's own section, since
+        # now I think we just need to let the user select if the user is using a non
+        # default Firefox path.
+        FileOpen $0 "$INSTDIR\i2pbrowser.bat" w
+        FileWrite $0 "@echo off"
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"'
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileWrite $0 exit
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileClose $0
+
+        FileOpen $0 "$INSTDIR\i2pbrowser-private.bat" w
+        FileWrite $0 "@echo off"
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileWrite $0 'start "" "$FFINSTEXE\firefox.exe" -no-remote -profile "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" -private-window about:blank'
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileWrite $0 exit
+        FileWriteByte $0 "13"
+        FileWriteByte $0 "10"
+        FileClose $0
+
+        # Copy the licenses
+        createDirectory $INSTDIR\license
+        SetOutPath $INSTDIR\license
+        File LICENSE.txt
+        File license/HTTPS-Everywhere.txt
+        File license/LICENSE.tor
+        File license/MPL2.txt
+        File license/NoScript.txt
+
+        # Install the profile
         createDirectory "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
         SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
         File firefox.launchers/windows/firefox.profile.i2p/user.js
@@ -123,48 +122,47 @@ Section Install
         SetOutPath "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions"
         File "firefox.launchers/windows/firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
         File firefox.launchers/windows/firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi
+
+        ${If} "$TBINST" == "true"
+            CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\torbutton@torproject.org.xpi"
+            CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\tor-launcher@torproject.org.xpi"
+        ${EndIf}
+
+        SetOutPath "$INSTDIR"
+        createDirectory "$SMPROGRAMS\${APPNAME}"
+        CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
+        CreateShortCut "$SMPROGRAMS\${APPNAME}\Private Browsing-${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser-private.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
+        CreateShortCut "$DESKTOP\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
+        CreateShortCut "$DESKTOP\Private Browsing-${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser-private.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
+
+        ${StrRep} $SHORTCUT "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" '\' '\\'
+
+        !define SHORTCUTPATH $SHORTCUT
+
+        SetShellVarContext current
+        !define I2PAPPDATA "$APPDATA\I2P\"
+
+        SetOutPath "${I2PAPPDATA}"
+
+        ;# Point the browser config setting
+        ${If} ${FileExists} "${I2PAPPDATA}\clients.config"
+            FileOpen $0 "${I2PAPPDATA}\clients.config" a
+            FileSeek $0 0 END
+            FileWriteByte $0 "13"
+            FileWriteByte $0 "10"
+            FileWrite $0 "browser=$\"${SHORTCUTPATH}$\""
+            FileWriteByte $0 "13"
+            FileWriteByte $0 "10"
+            FileClose $0
+        ${EndIf}
+
+        SetOutPath "$INSTDIR"
+        # create the uninstaller
+        WriteUninstaller "$INSTDIR\uninstall-i2pbrowser.exe"
+
+        # create a shortcut to the uninstaller
+        CreateShortCut "$SMPROGRAMS\${APPNAME}\Uninstall-${APPNAME}.lnk" "$INSTDIR\uninstall-i2pbrowser.exe"
     ${EndIf}
-
-    ${If} "$TBINST" == "true"
-        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\torbutton@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\torbutton@torproject.org.xpi"
-        CopyFiles "$FFINSTEXE\TorBrowser\Data\Browser\profile.default\extensions\tor-launcher@torproject.org.xpi" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p\extensions\tor-launcher@torproject.org.xpi"
-    ${EndIf}
-
-    SetOutPath "$INSTDIR"
-    createDirectory "$SMPROGRAMS\${APPNAME}"
-    CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
-    CreateShortCut "$SMPROGRAMS\${APPNAME}\Private Browsing-${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser-private.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
-    CreateShortCut "$DESKTOP\${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
-    CreateShortCut "$DESKTOP\Private Browsing-${APPNAME}.lnk" "C:\Windows\system32\cmd.exe" "/c $\"$INSTDIR\i2pbrowser-private.bat$\"" "$INSTDIR\ui2pbrowser_icon.ico"
-
-    ${StrRep} $SHORTCUT "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" '\' '\\'
-
-    !define SHORTCUTPATH $SHORTCUT
-
-    SetShellVarContext current
-    !define I2PAPPDATA "$APPDATA\I2P\"
-
-    SetOutPath "${I2PAPPDATA}"
-
-    ;# Point the browser config setting
-    ${If} ${FileExists} "${I2PAPPDATA}\clients.config"
-        FileOpen $0 "${I2PAPPDATA}\clients.config" a
-        FileSeek $0 0 END
-        FileWriteByte $0 "13"
-        FileWriteByte $0 "10"
-        FileWrite $0 "browser=$\"${SHORTCUTPATH}$\""
-        FileWriteByte $0 "13"
-        FileWriteByte $0 "10"
-        FileClose $0
-    ${EndIf}
-
-    SetOutPath "$INSTDIR"
-    # create the uninstaller
-    WriteUninstaller "$INSTDIR\uninstall-i2pbrowser.exe"
-
-    # create a shortcut to the uninstaller
-    CreateShortCut "$SMPROGRAMS\${APPNAME}\Uninstall-${APPNAME}.lnk" "$INSTDIR\uninstall-i2pbrowser.exe"
-
 SectionEnd
 
 # uninstaller section start
