@@ -15,6 +15,7 @@ firefox.launchers/test/
 *.sha256sum.asc
 *.deb
 *.snap
+*.log
 test
 README.md.asc
 
