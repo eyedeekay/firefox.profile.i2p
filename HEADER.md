@@ -73,3 +73,4 @@ to uninstall.
 
   * XMR:43V6cTZrUfAb9JD6Dmn3vjdT9XxLbiE27D1kaoehb359ACaHs8191mR4RsJH7hGjRTiAoSwFQAVdsCBToXXPAqTMDdP2bZB
   * BTC:159M8MEUwhTzE9RXmcZxtigKaEjgfwRbHt
+  * (These are to me, not the i2p project)
