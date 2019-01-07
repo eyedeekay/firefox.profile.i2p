@@ -25,7 +25,8 @@ generate your own from this source code.
   1. Install git, make, and checkinstall
   2. Clone this repository and change to the newly created directory
   3. run 'make debfirefox'
-  4. Install the generated package.
+  4. Install the generated
+  package.
 
         # /bin/sh
         sudo apt-get install git make checkinstall
@@ -61,13 +62,14 @@ automatically update the profile for you.
     web site. Be sure to place it into your PATH as firefox, for example,
     /usr/bin/firefox.
   2. Download the GNU/Linux zip bundle from the releases page and unpack it.
-  3. Run the following make targets:
+  3. Run the following make
+  targets:
 
         #! /bin/sh
         make recopy-linux
         sudo make install
 
-  4. run 'I2PBrowser.sh'
+When it's done, you can run 'I2PBrowser.sh' to start the i2p browser profile.
 
 ### Docker Setup [Standalone guide](LINUX.md) (Linux, probably OSX, Windows?)
 

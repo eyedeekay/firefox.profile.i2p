@@ -55,7 +55,7 @@ gothub-upload-version-windows:
 		--replace \
 		--file install-i2pbrowser-$(VERSION).exe
 
-upload-version-deb:
+gothub-upload-version-deb:
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
 		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \

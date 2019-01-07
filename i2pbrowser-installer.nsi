@@ -68,7 +68,7 @@ Section Install
         Rename "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p.bak"
         SetOutPath "$LOCALAPPDATA\${APPNAME}\"
         inetc::get ${UPDATE_URL} "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip"
-        ZipDLL::extractall "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip" "$LOCALAPPDATA\${APPNAME}\firefox.profile.i2p"
+        ZipDLL::extractall "$LOCALAPPDATA\${APPNAME}\i2pbrowser-profile-update.zip" "$LOCALAPPDATA\${APPNAME}\"
     ${Else}
         # set the installation directory as the destination for the following actions
         createDirectory $INSTDIR
