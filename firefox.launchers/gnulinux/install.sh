@@ -125,6 +125,8 @@ debug(){
     cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/"*.xpi "$DIR/../.firefox.profile.i2p.debug/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.debug/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.debug/user.js"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/storage-sync.sqlite" "$DIR/../.firefox.profile.i2p.debug/storage-sync.sqlite"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/search.json.mozlz4" "$DIR/../.firefox.profile.i2p.debug/search.json.mozlz4"
     echo "firefox --jsconsole --devtools --no-remote --profile \"$DIR/../.firefox.profile.i2p.debug\" --private about:blank $1"
     ls "$DIR/../.firefox.profile.i2p.debug"
     firefox --jsconsole --devtools --no-remote --profile "$DIR/../.firefox.profile.i2p.debug" --private about:blank $1
@@ -141,6 +143,8 @@ private(){
     cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/"*.xpi "$DIR/../.firefox.profile.i2p.private/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.private/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.private/user.js"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/storage-sync.sqlite" "$DIR/../.firefox.profile.i2p.private/storage-sync.sqlite"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/search.json.mozlz4" "$DIR/../.firefox.profile.i2p.private/search.json.mozlz4"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.private" --private about:blank $1
     rm -rfv "$DIR/../.firefox.profile.i2p.private"
 }
@@ -154,6 +158,8 @@ run(){
     cp -v "$INSTALL_DIR/firefox.profile.i2p/extensions/"*.xpi "$DIR/../.firefox.profile.i2p.default/extensions"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/bookmarks.html" "$DIR/../.firefox.profile.i2p.default/bookmarks.html"
     cp -v "$INSTALL_DIR/firefox.profile.i2p/user.js" "$DIR/../.firefox.profile.i2p.default/user.js"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/storage-sync.sqlite" "$DIR/../.firefox.profile.i2p.default/storage-sync.sqlite"
+    cp -v "$INSTALL_DIR/firefox.profile.i2p/search.json.mozlz4" "$DIR/../.firefox.profile.i2p.default/search.json.mozlz4"
     echo "installed $INSTALL_DIR to $DIR/../.firefox.profile.i2p.default"
     firefox --no-remote --profile "$DIR/../.firefox.profile.i2p.default" about:blank $1
 }

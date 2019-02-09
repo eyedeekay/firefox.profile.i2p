@@ -69,6 +69,13 @@ to uninstall.
   - 0.10x (Planned) No known bugs. Best-case scenario for current i2p browsers
     using Firefox or TBB.
 
+### Donate
+
+  * XMR:43V6cTZrUfAb9JD6Dmn3vjdT9XxLbiE27D1kaoehb359ACaHs8191mR4RsJH7hGjRTiAoSwFQAVdsCBToXXPAqTMDdP2bZB
+  * BTC:159M8MEUwhTzE9RXmcZxtigKaEjgfwRbHt
+  * ETH:0x2c7F38c592938915C263a51b4AC078bf91F47C5D
+  * (These are to me, not the i2p project)
+
 ### Automatic Setup (Recommended, Windows) [Standalone guide](WINDOWS.md)
 
   0. Install the Firefox web browser. You can download it from

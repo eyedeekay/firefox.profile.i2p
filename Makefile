@@ -40,11 +40,26 @@ clean-build:
 	rm -rfv firefox.launchers/build
 
 install:
-	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/
-	cp -rv firefox.profile.i2p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	install -m755 firefox.launchers/gnulinux/install.sh $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
+	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/user.js \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/bookmarks.html \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/storage-sync.sqlite \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/search.json.mozlz4 \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/extensions/i2psetproxy.js@eyedeekay.github.io.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/extensions/privacybutton-0.1-an+fx.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m755 firefox.launchers/gnulinux/install.sh \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
 	install -m755 firefox.launchers/gnulinux/I2PBrowser.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/I2PBrowser-Private.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/I2PBrowser-Debug.sh $(DESTDIR)$(bindir)
@@ -57,11 +72,24 @@ install:
 
 install-debian:
 	mkdir -p $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	cp -v firefox.profile.i2p/user.js $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
-	cp -v firefox.profile.i2p/bookmarks.html $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
-	chmod a+rx $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
-	install -m755 firefox.launchers/gnulinux/install.sh $(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
+	install -m644 firefox.profile.i2p/user.js \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/bookmarks.html \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/storage-sync.sqlite \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/search.json.mozlz4 \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p
+	install -m644 firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/extensions/i2psetproxy.js@eyedeekay.github.io.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m644 firefox.profile.i2p/extensions/privacybutton-0.1-an+fx.xpi \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/firefox.profile.i2p/extensions
+	install -m755 firefox.launchers/gnulinux/install.sh \
+		$(DESTDIR)$(prefix)/lib/firefox.profile.i2p/install.sh
 	install -m755 firefox.launchers/gnulinux/I2PBrowser.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/I2PBrowser-Private.sh $(DESTDIR)$(bindir)
 	install -m755 firefox.launchers/gnulinux/I2PBrowser-Debug.sh $(DESTDIR)$(bindir)
@@ -74,6 +102,9 @@ install-debian:
 
 install-profile-syswide: sysuser locked_sysuser
 	cp -v locked_sysuser.js $(DESTDIR)/etc/firefox/syspref.js
+
+install-profile-syswide-debian: sysuser locked_sysuser
+	cp -v locked_sysuser.js $(DESTDIR)/etc/firefox-esr/firefox-esr.js
 
 install-extensions-syswide: install-profile-syswide
 	echo "If you are on Debian, please install by running apt-get install webext-noscript webext-https-everywhere!"
@@ -100,7 +131,8 @@ fix-perms:
 profile:
 	cp -rv firefox.profile.i2p/* $(HOME)/.mozilla/firefox/firefox.profile.i2p
 
-uninstall: remove
+uninstall:
+	rm -rf /usr/lib/firefox.profile.i2p
 
 remove:
 	rm -fr $(HOME)/.mozilla/firefox/firefox.profile.i2p
