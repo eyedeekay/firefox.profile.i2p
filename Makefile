@@ -12,7 +12,7 @@ GOTHUB_BIN=$(GOPATH)/bin/gothub
 
 VERSIONMAJOR=0
 VERSIONMINOR=05
-VERSIONBUILD=a
+VERSIONBUILD=b
 VERSION=$(VERSIONMAJOR).$(VERSIONMINOR)$(VERSIONBUILD)
 
 prefix ?= /usr
@@ -30,7 +30,7 @@ version:
 include config.mk
 include .release.mk
 
-all: page sysfiles lic guide windows linux zip debwhonix debfirefox
+all: page sysfiles lic guide windows linux zip debfirefox
 
 clean:
 	rm -frv *.snap *.zip *.msi *.tar.gz *.dmg *.exe *.tar.bz2 *.deb firefox.launchers/build \

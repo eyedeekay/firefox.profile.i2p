@@ -26,12 +26,12 @@ gothub-upload-version-linux:
 		--name i2pbrowser-gnulinux.zip \
 		--replace \
 		--file i2pbrowser-gnulinux-$(VERSION).zip
-	$(GOTHUB_BIN) upload \
-		--tag $(VERSION) \
-		--label "GNU/Linux snap" \
-		--name i2pbrowser_amd64.snap \
-		--replace \
-		--file i2pbrowser_$(VERSION)_amd64.snap
+#	$(GOTHUB_BIN) upload \
+#		--tag $(VERSION) \
+#		--label "GNU/Linux snap" \
+#		--name i2pbrowser_amd64.snap \
+#		--replace \
+#		--file i2pbrowser_$(VERSION)_amd64.snap
 
 gothub-upload-version-osx:
 	$(GOTHUB_BIN) upload \
@@ -56,12 +56,12 @@ gothub-upload-version-windows:
 		--file install-i2pbrowser-$(VERSION).exe
 
 gothub-upload-version-deb:
-	$(GOTHUB_BIN) upload \
-		--tag $(VERSION) \
-		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
-		--name i2pbrowser-whonix-helper_all.deb \
-		--replace \
-		--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
+	#$(GOTHUB_BIN) upload \
+		#--tag $(VERSION) \
+		#--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
+		#--name i2pbrowser-whonix-helper_all.deb \
+		#--replace \
+		#--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
 	$(GOTHUB_BIN) upload \
 		--tag $(VERSION) \
 		--label ".deb package containing firefox-esr configuration" \
@@ -69,7 +69,7 @@ gothub-upload-version-deb:
 		--replace \
 		--file i2pbrowser-helper_$(VERSION)-1_all.deb
 
-gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux upload-version-deb
+gothub-upload-version: gothub-upload-version-windows gothub-upload-version-linux gothub-upload-version-deb
 
 gothub-current: gothub-delete-current
 	$(GOTHUB_BIN) release \
@@ -94,12 +94,12 @@ gothub-upload-current-linux:
 		--name i2pbrowser-gnulinux.zip \
 		--replace \
 		--file i2pbrowser-gnulinux-$(VERSION).zip
-	$(GOTHUB_BIN) upload \
-		--tag current \
-		--label "GNU/Linux snap" \
-		--name i2pbrowser_ammd64.snap \
-		--replace \
-		--file i2pbrowser_$(VERSION)_amd64.snap
+#	$(GOTHUB_BIN) upload \
+#		--tag current \
+#		--label "GNU/Linux snap" \
+#		--name i2pbrowser_ammd64.snap \
+#		--replace \
+#		--file i2pbrowser_$(VERSION)_amd64.snap
 
 gothub-upload-current-osx:
 	$(GOTHUB_BIN) upload \
@@ -157,12 +157,12 @@ upload-update: bare-profile
 		--file i2pbrowser-profile-update.zip.sha256sum.asc
 
 upload-deb:
-	$(GOTHUB_BIN) upload \
-		--tag current \
-		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
-		--name i2pbrowser-whonix-helper_all.deb \
-		--replace \
-		--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
+	#$(GOTHUB_BIN) upload \
+		#--tag current \
+		#--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
+		#--name i2pbrowser-whonix-helper_all.deb \
+		#--replace \
+		#--file i2pbrowser-whonix-helper_$(VERSION)-1_all.deb
 	$(GOTHUB_BIN) upload \
 		--tag current \
 		--label ".deb package containing extra configuration for Whonix i2pbrowser on Debian" \
