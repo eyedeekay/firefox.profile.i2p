@@ -7,6 +7,12 @@
 
 ## What it is
 
+**Attention: ** If you're on Windows, this is probably *not* the browser you're
+looking for. [An official one is now available from the i2p website](https://geti2p.net/en/download/firefox).
+It is largely the same as this one, but supports multiple languages and has more
+focus on the needs of Windows users. This is still a reasonable choice for a
+Linux I2P Browser.
+
 This is a set of tools for major Desktop computing platforms(Windows, Mac OSX,
 and Linux) which automatically configures a Firefox browser for use with i2p. It
 attempts to minimize the amount of user interaction that is required to get the
