@@ -6,7 +6,7 @@ Whonix Tor Browser helper for Debian-based distributions:
 **This guide is intended for users who are aware of the implications of using**
 **third-party repositories on their Debian-based Linux PC's.** In particular,
 Whonix is designed to pro-actively prevent certain kinds of attacks from
-affecting the user, and their packages sometimes overwrite things like hosts
+affecting the user, and their packages sometimes overwrite things like /etc/hosts
 files and such with versions suitable for the Whonix threat model. While I
 currently use the following packages successfully on both Debian and Ubuntu
 Linux at this time, I cannot guarantee that they will work for everyone's
