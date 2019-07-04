@@ -31,7 +31,11 @@ HTTPSEverywhere: HTTPSEverywhere.url
 i2psetproxy:
 	curl `cat i2psetproxy.url` > "firefox.profile.i2p/extensions/i2psetproxy.js@eyedeekay.github.io.xpi"
 
-extensions: NoScript HTTPSEverywhere i2psetproxy
+search.json.mozlz4:
+	cat search.json.pre | aeson-pretty --compact > search.json
+	python3 ./mozlz4a.py search.json "firefox.profile.i2p/search.json.mozlz4"
+
+extensions: NoScript HTTPSEverywhere i2psetproxy search.json.mozlz4
 
 version:
 	@echo "!define VERSIONMAJOR $(VERSIONMAJOR)" > i2pbrowser-version.nsi
@@ -316,9 +320,3 @@ debfirefox: extensions
 		--delspec=yes \
 		--backup=no \
 		make install-debian
-
-ext-noscript:
-	wget "https://www.mozilla.org/firefox/new/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=%7B73a6fe31-595d-460b-a920-fcc0f8843232%7D"
-
-ext-https:
-	wget "https://www.mozilla.org/firefox/new/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=https-everywhere%40eff.org"

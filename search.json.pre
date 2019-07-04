@@ -1,0 +1,404 @@
+{
+    "engines": [
+        {
+            "_loadPath": "[distribution]/searchplugins/locale/en-US/google.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 1
+            },
+            "_shortName": "google",
+            "queryCharset": "UTF-8",
+            "_name": "Google",
+            "_iconURL": "data:image/x-icon;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zD9/f2W/f392P39/fn9/f35/f391/39/ZT+/v4uAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v7+Cf39/Zn///////////////////////////////////////////39/ZX///8IAAAAAAAAAAAAAAAA/v7+Cf39/cH/////+v35/7TZp/92ul3/WKs6/1iqOv9yuFn/rNWd//j79v///////f39v////wgAAAAAAAAAAP39/Zn/////7PXp/3G3WP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP+Or1j//vDo///////9/f2VAAAAAP///zD/////+vz5/3G3V/9TqDT/WKo6/6LQkf/U6cz/1urO/6rUm/+Zo0r/8IZB//adZ////v7///////7+/i79/f2Y/////4nWzf9Lqkj/Vqo4/9Xqzv///////////////////////ebY//SHRv/0hUL//NjD///////9/f2U/f392v////8sxPH/Ebzt/43RsP/////////////////////////////////4roL/9IVC//i1jf///////f391/39/fr/////Cr37/wW8+/+16/7/////////////////9IVC//SFQv/0hUL/9IVC//SFQv/3pnX///////39/fn9/f36/////wu++/8FvPv/tuz+//////////////////SFQv/0hUL/9IVC//SFQv/0hUL/96p7///////9/f35/f392/////81yfz/CrL5/2uk9v///////////////////////////////////////////////////////f392P39/Zn/////ks/7/zdS7P84Rur/0NT6///////////////////////9/f////////////////////////39/Zb+/v4y//////n5/v9WYu3/NUPq/ztJ6/+VnPT/z9L6/9HU+v+WnfT/Ul7t/+Hj/P////////////////////8wAAAAAP39/Z3/////6Or9/1hj7v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v9sdvD////////////9/f2YAAAAAAAAAAD///8K/f39w//////5+f7/paz2/11p7v88Suv/Okfq/1pm7v+iqfX/+fn+///////9/f3B/v7+CQAAAAAAAAAAAAAAAP///wr9/f2d///////////////////////////////////////////9/f2Z/v7+CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/jL9/f2Z/f392/39/fr9/f36/f392v39/Zj///8wAAAAAAAAAAAAAAAAAAAAAPAPAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAPAPAAAoAAAAIAAAAEAAAAABACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/g3+/v5X/f39mf39/cj9/f3q/f39+f39/fn9/f3q/f39yP39/Zn+/v5W////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/iT9/f2c/f399f/////////////////////////////////////////////////////9/f31/f39mv7+/iMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/gn9/f2K/f39+////////////////////////////////////////////////////////////////////////////f39+v39/Yf///8IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/v4k/f390v////////////////////////////////////////////////////////////////////////////////////////////////39/dD///8iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MP39/er//////////////////////////+r05v+v16H/gsBs/2WxSf9Wqjj/Vqk3/2OwRv99vWX/pdKV/97u2P////////////////////////////39/ej+/v4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/iT9/f3q/////////////////////+v15/+Pxnv/VKk2/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/36+Z//d7tf///////////////////////39/ej///8iAAAAAAAAAAAAAAAAAAAAAAAAAAD///8K/f390//////////////////////E4bn/XKw+/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1apN/+x0pv///////////////////////39/dD///8IAAAAAAAAAAAAAAAAAAAAAP39/Yv/////////////////////sdij/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/YKU1/8qOPv/5wZ////////////////////////39/YcAAAAAAAAAAAAAAAD+/v4l/f39+////////////////8Lgt/9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9utlT/n86N/7faqv+426v/pdKV/3u8ZP9UqDX/U6g0/3egN//jiUH/9IVC//SFQv/82MP//////////////////f39+v7+/iMAAAAAAAAAAP39/Z3////////////////q9Ob/W6w+/1OoNP9TqDT/U6g0/1OoNP9nskz/zOXC/////////////////////////////////+Dv2v+osWP/8YVC//SFQv/0hUL/9IVC//WQVP/++fb//////////////////f39mgAAAAD+/v4O/f399v///////////////4LHj/9TqDT/U6g0/1OoNP9TqDT/dblc//L58P/////////////////////////////////////////////8+v/3p3f/9IVC//SFQv/0hUL/9IVC//rIqf/////////////////9/f31////DP7+/ln////////////////f9v7/Cbz2/zOwhv9TqDT/U6g0/2KwRv/v9+z///////////////////////////////////////////////////////738//1kFT/9IVC//SFQv/0hUL/9plg///////////////////////+/v5W/f39nP///////////////4jf/f8FvPv/Bbz7/yG1s/9QqDz/vN2w//////////////////////////////////////////////////////////////////rHqP/0hUL/9IVC//SFQv/0hUL//vDn//////////////////39/Zn9/f3L////////////////R878/wW8+/8FvPv/Bbz7/y7C5P/7/fr//////////////////////////////////////////////////////////////////ere//SFQv/0hUL/9IVC//SFQv/718H//////////////////f39yP39/ez///////////////8cwvv/Bbz7/wW8+/8FvPv/WNL8///////////////////////////////////////0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//rIqv/////////////////9/f3q/f39+v///////////////we9+/8FvPv/Bbz7/wW8+/993P3///////////////////////////////////////SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/+cGf//////////////////39/fn9/f36////////////////B737/wW8+/8FvPv/Bbz7/33c/f//////////////////////////////////////9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/6xaX//////////////////f39+f39/e3///////////////8cwvv/Bbz7/wW8+/8FvPv/WdP8///////////////////////////////////////0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//vVv//////////////////9/f3q/f39y////////////////0bN/P8FvPv/Bbz7/wW8+/8hrvn/+/v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////39/cj9/f2c////////////////ht/9/wW8+/8FvPv/FZP1/zRJ6/+zuPf//////////////////////////////////////////////////////////////////////////////////////////////////////////////////f39mf7+/lr////////////////d9v7/B7n7/yB38f81Q+r/NUPq/0hV7P/u8P3////////////////////////////////////////////////////////////////////////////////////////////////////////////+/v5X////D/39/ff///////////////9tkPT/NUPq/zVD6v81Q+r/NUPq/2Fs7//y8v7////////////////////////////////////////////09f7//////////////////////////////////////////////////f399f7+/g0AAAAA/f39n////////////////+Tm/P89Suv/NUPq/zVD6v81Q+r/NUPq/1Bc7f/IzPn/////////////////////////////////x8v5/0xY7P+MlPP////////////////////////////////////////////9/f2cAAAAAAAAAAD+/v4n/f39/P///////////////7W69/81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v9ZZe7/k5v0/6609/+vtff/lJv0/1pm7v81Q+r/NUPq/zVD6v+GjvL//v7//////////////////////////////f39+/7+/iQAAAAAAAAAAAAAAAD9/f2N/////////////////////6Cn9f81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v+BivL////////////////////////////9/f2KAAAAAAAAAAAAAAAAAAAAAP7+/gv9/f3V/////////////////////7W69/8+S+v/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/P0zr/7q/+P///////////////////////f390v7+/gkAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/ib9/f3r/////////////////////+Xn/P94gfH/NkTq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NkTq/3Z/8f/l5/z///////////////////////39/er+/v4kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/jL9/f3r///////////////////////////k5vz/nqX1/2p08P9IVez/OEbq/zdF6v9GU+z/aHLv/5qh9f/i5Pz////////////////////////////9/f3q////MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/ib9/f3V/////////////////////////////////////////////////////////////////////////////////////////////////f390v7+/iQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wr9/f2N/f39/P///////////////////////////////////////////////////////////////////////////f39+/39/Yv+/v4JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/v4n/f39n/39/ff//////////////////////////////////////////////////////f399v39/Z3+/v4lAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v7+Dv7+/lr9/f2c/f39y/39/e39/f36/f39+v39/ez9/f3L/f39nP7+/ln+/v4OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/AA///AAD//AAAP/gAAB/wAAAP4AAAB8AAAAPAAAADgAAAAYAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABgAAAAcAAAAPAAAAD4AAAB/AAAA/4AAAf/AAAP/8AAP//wAP/",
+            "_urls": [
+                {
+                    "resultDomain": "www.google.com",
+                    "params": [],
+                    "rels": [],
+                    "type": "application/x-suggestions+json",
+                    "template": "https://www.google.com/complete/search?client=firefox&q={searchTerms}"
+                },
+                {
+                    "resultDomain": "www.google.com",
+                    "params": [
+                        {
+                            "value": "ubuntu",
+                            "name": "client"
+                        },
+                        {
+                            "value": "fs",
+                            "name": "channel"
+                        },
+                        {
+                            "value": "{searchTerms}",
+                            "name": "q"
+                        },
+                        {
+                            "value": "utf-8",
+                            "name": "ie"
+                        },
+                        {
+                            "value": "utf-8",
+                            "name": "oe"
+                        }
+                    ],
+                    "rels": [
+                        "searchform"
+                    ],
+                    "template": "https://www.google.com/search"
+                }
+            ],
+            "__searchForm": null,
+            "description": "Google Search"
+        },
+        {
+            "_loadPath": "[distribution]/searchplugins/locale/en-US/ddg.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 4
+            },
+            "_shortName": "ddg",
+            "queryCharset": "UTF-8",
+            "_name": "DuckDuckGo",
+            "_iconURL": "data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB8lBMVEUAAADkRQzjPwPjQQXkRQ3iPwTiQQXgPQPeQgrcOwPVNgDVNQDWOgbTMwDRMgDQMwDSMwDRNwTQLgDRJgDSJwDSLgDSNwTjOgDiOADjOQDkPADhQAXzs5v+/fv////0vKbiRQvgPQHpdUr85NzuknPdKgDcIwDnZzj2w7HqeU/gPQLsimb/+PftjWn97Obpb0LdJQDeLQDtjmvsi2jgSBDnbULgOQD/39HgLQDeMgDpeFLgSBH0v670uqbaJQD2qImWvP/G1Ob5+/3u//+fvvXyp47dMwDaLwD0u6v0v6/aNQDiXi/aKQD3qozU7/8gSY2vvtg0ZK/OqLDaKQHYKgLgWTfaNADZMgDZMADZLADzqpD7//+xwdz//9H/5Bn/7Bn//ADofADYMADYMQDZOgPXLgDiZDj//97/0AD3tQDvlgHZOgbXLATXMADWMgDfXjLVLQD///z+0AD/3Rn/yRnwnQDcVjbVMQDyv67wuKTSJwDRHQD+8O/tg3/iQQDwhAHnawHWMADvtKfyva7XQxHga0bQGQD2vbH/u8LXIQCmPQzja07XQxLliGn99fPkcVHvhnGZ5VguvUU5wktBwCcAgxzydVv/8/XmiGngdlL+ysi3+I8LtCE80V6P3YmX4sDleljSNQLzr6D7sKPXNQTSIwAEAbMrAAAAF3RSTlMARqSkRvPz80PTpKRG3fPe3hio9/eoGP50jNsAAAABYktHRB5yCiArAAAAyElEQVQYGQXBvUqCYRiA4fu2V9Tn+UQddI3aCpxaOoU6iU4gcqqpoYbALXBuCuoYmttamqJDiEoh4YP+MOi6BNCh+uYKEGiOVNCXXxA2XDVV/UyfKbRCXTLQWAxbP2vt8Ue/uYDvfim91615sb2um6rqtrr/NFb1cUf1Ybd06areU6lSlYpK79jzK1SyJOkfhOl8JGEcqV5zoKrTRqO6yUzIzNu46ijdM1VV9bhuUJ/nZURExLRzUiPQm3kKXHi4BAEGOmOi78A/L1QoU/VHoTsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMDEtMTlUMjA6MDE6MTEtMDU6MDAuET6cAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTAxLTE5VDIwOjAxOjExLTA1OjAwX0yGIAAAAABJRU5ErkJggg==",
+            "_urls": [
+                {
+                    "resultDomain": "duckduckgo.com",
+                    "params": [],
+                    "rels": [],
+                    "template": "https://duckduckgo.com/?q={searchTerms}&t=canonical"
+                },
+                {
+                    "resultDomain": "ac.duckduckgo.com",
+                    "params": [],
+                    "rels": [],
+                    "type": "application/x-suggestions+json",
+                    "template": "https://ac.duckduckgo.com/ac/?q={searchTerms}&type=list"
+                }
+            ],
+            "__searchForm": "https://duckduckgo.com",
+            "description": "Search DuckDuckGo"
+        },
+        {
+            "_loadPath": "[distribution]/searchplugins/locale/en-US/amazondotcom.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 3
+            },
+            "_shortName": "amazondotcom",
+            "queryCharset": "UTF-8",
+            "_name": "Amazon.com",
+            "_iconURL": "resource://search-plugins/images/amazon.ico",
+            "_urls": [
+                {
+                    "resultDomain": "www.amazon.com",
+                    "params": [
+                        {
+                            "value": "{searchTerms}",
+                            "name": "field-keywords"
+                        },
+                        {
+                            "value": "{inputEncoding}",
+                            "name": "ie"
+                        },
+                        {
+                            "value": "blended",
+                            "name": "mode"
+                        },
+                        {
+                            "value": "wwwcanoniccom-20",
+                            "name": "tag"
+                        },
+                        {
+                            "value": "Mozilla-search",
+                            "name": "sourceid"
+                        }
+                    ],
+                    "rels": [
+                        "searchform"
+                    ],
+                    "template": "https://www.amazon.com/exec/obidos/external-search/"
+                }
+            ],
+            "__searchForm": null,
+            "description": "Amazon.com Search"
+        },
+        {
+            "_loadPath": "jar:[app]/omni.ja!/bing.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 2
+            },
+            "_shortName": "bing",
+            "queryCharset": "UTF-8",
+            "_name": "Bing",
+            "_iconURL": "data:image/x-icon;base64,AAABAAIAICAAAAEACACoCAAAJgAAABAQAAABAAgAaAUAAM4IAAAoAAAAIAAAAEAAAAABAAgAAAAAAIAEAAAAAAAAAAAAAAABAAAAAAAAhIQMAI+PIwCXlzEAn59BAKioUwCurl8AtbVuAL6+fwDJyZMA0tKlANjYsgDe3r4A5eXMAOzs2QDy8uUA+fnzAP///wAAGi8AAC1QAAA/cAAAUZAAAGOwAAB2zwAAiPAAEZj/ADGm/wBRs/8AccH/AJHP/wCx3f8A0ev/AP///wAAAAAAACwvAABLUAAAaHAAAIaQAAClsAAAw88AAOHwABHv/wAx8f8AUfP/AHH1/wCR9/8Asfn/ANH7/wD///8AAAAAAAAvIQAAUDcAAHBMAACQYwAAsHkAAM+PAADwpgAR/7QAMf++AFH/yABx/9MAkf/cALH/5QDR//AA////AAAAAAAALw4AAFAYAABwIgAAkCwAALA2AADPQAAA8EoAEf9bADH/cQBR/4cAcf+dAJH/sgCx/8kA0f/fAP///wAAAAAAAi8AAARQAAAGcAAACJAAAAqwAAALzwAADvAAACD/EgA9/zEAW/9RAHn/cQCY/5EAtf+xANT/0QD///8AAAAAABQvAAAiUAAAMHAAAD2QAABMsAAAWc8AAGfwAAB4/xEAiv8xAJz/UQCu/3EAwP+RANL/sQDk/9EA////AAAAAAAmLwAAQFAAAFpwAAB0kAAAjrAAAKnPAADC8AAA0f8RANj/MQDe/1EA4/9xAOn/kQDv/7EA9v/RAP///wAAAAAALyYAAFBBAABwWwAAkHQAALCOAADPqQAA8MMAAP/SEQD/2DEA/91RAP/kcQD/6pEA//CxAP/20QD///8AAAAAAC8UAABQIgAAcDAAAJA+AACwTQAAz1sAAPBpAAD/eREA/4oxAP+dUQD/r3EA/8GRAP/SsQD/5dEA////AAAAAAAvAwAAUAQAAHAGAACQCQAAsAoAAM8MAADwDgAA/yASAP8+MQD/XFEA/3pxAP+XkQD/trEA/9TRAP///wAAAAAALwAOAFAAFwBwACEAkAArALAANgDPAEAA8ABJAP8RWgD/MXAA/1GGAP9xnAD/kbIA/7HIAP/R3wD///8AAAAAAC8AIABQADYAcABMAJAAYgCwAHgAzwCOAPAApAD/EbMA/zG+AP9RxwD/cdEA/5HcAP+x5QD/0fAA////AAAAAAAsAC8ASwBQAGkAcACHAJAApQCwAMQAzwDhAPAA8BH/APIx/wD0Uf8A9nH/APeR/wD5sf8A+9H/AP///wAAAAAAGwAvAC0AUAA/AHAAUgCQAGMAsAB2AM8AiADwAJkR/wCmMf8AtFH/AMJx/wDPkf8A3LH/AOvR/wD///8AAAAAAAgALwAOAFAAFQBwABsAkAAhALAAJgDPACwA8AA+Ef8AWDH/AHFR/wCMcf8AppH/AL+x/wDa0f8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBggCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAsQEA0HAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwkPEBAQEBALBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEMEBAQEBAQEBAPCQMAAAAAAAAAAAAAAAAAAAAAAAAAAQ0QEBAQEBAQEBAQDQgBAAAAAAAAAAAAAAAAAAAAAAABDRAQEBAQEBAQEBAQEA0GAQAAAAAAAAAAAAAAAAAAAAENEBAQDgcLEBAQEBAQEBALBAAAAAAAAAAAAAAAAAAAAQ0QEBANAQEHDRAQEBAQEBAOCAAAAAAAAAAAAAAAAAABDRAQEA4BAAACCA4QEBAQEBANAQAAAAAAAAAAAAAAAAENEBAQDgEAAAAABAsQEBAQEA0BAAAAAAAAAAAAAAAAAQ0QEBAOAQAAAAABBw4QEBAQDQEAAAAAAAAAAAAAAAABDRAQEA4BAAABBw0QEBAQEBANAQAAAAAAAAAAAAAAAAENEBAQDgEAAAcQEBAQEBAQEA0BAAAAAAAAAAAAAAAAAQ0QEBAOAQABCxAQEBAQEBANBwAAAAAAAAAAAAAAAAABDRAQEA4BAAQPEBAQEA0IBAEAAAAAAAAAAAAAAAAAAAENEBAQDgEACRAQDQkGAQAAAAAAAAAAAAAAAAAAAAAAAQ0QEBAOAQILCgYCAAAAAAAAAAAAAAAAAAAAAAAAAAABDRAQEA4BAQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAENEBAQDgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ0QEBAOAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRAQEA4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAENEBAQDgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ0QEBAOAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRAQEA0BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAENEA0IBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQcFAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAQAAAAIAAAAAEACAAAAAAAQAEAAAAAAAAAAAAAAAEAAAAAAACEhAAAjIwAAJKSFgCZmSgAqqpRALKyYgC+vnsAxsaKAM3NmQDU1KgA4ODBAOjozwDw8OEA+fnyAP///wD///8AAAAAAAAaLwAALVAAAD9wAABRkAAAY7AAAHbPAACI8AARmP8AMab/AFGz/wBxwf8Akc//ALHd/wDR6/8A////AAAAAAAALC8AAEtQAABocAAAhpAAAKWwAADDzwAA4fAAEe//ADHx/wBR8/8AcfX/AJH3/wCx+f8A0fv/AP///wAAAAAAAC8hAABQNwAAcEwAAJBjAACweQAAz48AAPCmABH/tAAx/74AUf/IAHH/0wCR/9wAsf/lANH/8AD///8AAAAAAAAvDgAAUBgAAHAiAACQLAAAsDYAAM9AAADwSgAR/1sAMf9xAFH/hwBx/50Akf+yALH/yQDR/98A////AAAAAAACLwAABFAAAAZwAAAIkAAACrAAAAvPAAAO8AAAIP8SAD3/MQBb/1EAef9xAJj/kQC1/7EA1P/RAP///wAAAAAAFC8AACJQAAAwcAAAPZAAAEywAABZzwAAZ/AAAHj/EQCK/zEAnP9RAK7/cQDA/5EA0v+xAOT/0QD///8AAAAAACYvAABAUAAAWnAAAHSQAACOsAAAqc8AAMLwAADR/xEA2P8xAN7/UQDj/3EA6f+RAO//sQD2/9EA////AAAAAAAvJgAAUEEAAHBbAACQdAAAsI4AAM+pAADwwwAA/9IRAP/YMQD/3VEA/+RxAP/qkQD/8LEA//bRAP///wAAAAAALxQAAFAiAABwMAAAkD4AALBNAADPWwAA8GkAAP95EQD/ijEA/51RAP+vcQD/wZEA/9KxAP/l0QD///8AAAAAAC8DAABQBAAAcAYAAJAJAACwCgAAzwwAAPAOAAD/IBIA/z4xAP9cUQD/enEA/5eRAP+2sQD/1NEA////AAAAAAAvAA4AUAAXAHAAIQCQACsAsAA2AM8AQADwAEkA/xFaAP8xcAD/UYYA/3GcAP+RsgD/scgA/9HfAP///wAAAAAALwAgAFAANgBwAEwAkABiALAAeADPAI4A8ACkAP8RswD/Mb4A/1HHAP9x0QD/kdwA/7HlAP/R8AD///8AAAAAACwALwBLAFAAaQBwAIcAkAClALAAxADPAOEA8ADwEf8A8jH/APRR/wD2cf8A95H/APmx/wD70f8A////AAAAAAAbAC8ALQBQAD8AcABSAJAAYwCwAHYAzwCIAPAAmRH/AKYx/wC0Uf8AwnH/AM+R/wDcsf8A69H/AP///wAAAAAACAAvAA4AUAAVAHAAGwCQACEAsAAmAM8ALADwAD4R/wBYMf8AcVH/AIxx/wCmkf8Av7H/ANrR/wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMAAAAAAAAAAAAAAAACBgwMBwIAAAAAAAAAAAAABg4ODg4MBgIAAAAAAAAAAAYODQoODg4KBAAAAAAAAAAGDgwDBQsODg4FAAAAAAAABg4MAgADCg4OBgAAAAAAAAYODAICCg4ODgYAAAAAAAAGDgwCBg4OCwcCAAAAAAAABg4MAwkIBAIAAAAAAAAAAAYODAICAAAAAAAAAAAAAAAGDgwCAAAAAAAAAAAAAAAABg4MAgAAAAAAAAAAAAAAAAYMCAEAAAAAAAAAAAAAAAACAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+            "_urls": [
+                {
+                    "resultDomain": "www.bing.com",
+                    "params": [
+                        {
+                            "value": "{searchTerms}",
+                            "name": "query"
+                        },
+                        {
+                            "value": "OSDJAS",
+                            "name": "form"
+                        },
+                        {
+                            "value": "{moz:locale}",
+                            "name": "language"
+                        }
+                    ],
+                    "rels": [],
+                    "type": "application/x-suggestions+json",
+                    "template": "https://www.bing.com/osjson.aspx"
+                },
+                {
+                    "resultDomain": "www.bing.com",
+                    "params": [
+                        {
+                            "value": "{searchTerms}",
+                            "name": "q"
+                        },
+                        {
+                            "value": "MOZI",
+                            "name": "pc"
+                        },
+                        {
+                            "value": "MOZCON",
+                            "purpose": "contextmenu",
+                            "name": "form"
+                        },
+                        {
+                            "value": "MOZSBR",
+                            "purpose": "searchbar",
+                            "name": "form"
+                        },
+                        {
+                            "value": "MOZSPG",
+                            "purpose": "homepage",
+                            "name": "form"
+                        },
+                        {
+                            "value": "MOZLBR",
+                            "purpose": "keyword",
+                            "name": "form"
+                        },
+                        {
+                            "value": "MOZTSB",
+                            "purpose": "newtab",
+                            "name": "form"
+                        }
+                    ],
+                    "rels": [
+                        "searchform"
+                    ],
+                    "template": "https://www.bing.com/search"
+                }
+            ],
+            "__searchForm": null,
+            "description": "Bing. Search by Microsoft."
+        },
+        {
+            "_loadPath": "jar:[app]/omni.ja!/ebay.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 5
+            },
+            "_shortName": "ebay",
+            "queryCharset": "UTF-8",
+            "_name": "eBay",
+            "_iconURL": "resource://search-plugins/images/ebay.ico",
+            "_urls": [
+                {
+                    "resultDomain": "ebay.com",
+                    "params": [
+                        {
+                            "value": "4",
+                            "name": "ff3"
+                        },
+                        {
+                            "value": "20004",
+                            "name": "toolid"
+                        },
+                        {
+                            "value": "5338192028",
+                            "name": "campid"
+                        },
+                        {
+                            "value": "",
+                            "name": "customid"
+                        },
+                        {
+                            "value": "https://www.ebay.com/sch/{searchTerms}",
+                            "name": "mpre"
+                        }
+                    ],
+                    "rels": [],
+                    "template": "https://rover.ebay.com/rover/1/711-53200-19255-0/1"
+                }
+            ],
+            "__searchForm": "https://www.ebay.com/",
+            "description": "eBay - Online auctions"
+        },
+        {
+            "_loadPath": "jar:[app]/omni.ja!/twitter.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 6
+            },
+            "_shortName": "twitter",
+            "queryCharset": "UTF-8",
+            "_name": "Twitter",
+            "_iconURL": "data:image/x-icon;base64,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",
+            "_urls": [
+                {
+                    "resultDomain": "twitter.com",
+                    "params": [
+                        {
+                            "value": "{searchTerms}",
+                            "name": "q"
+                        },
+                        {
+                            "value": "Firefox",
+                            "name": "partner"
+                        },
+                        {
+                            "value": "desktop-search",
+                            "name": "source"
+                        }
+                    ],
+                    "rels": [
+                        "searchform"
+                    ],
+                    "template": "https://twitter.com/search"
+                }
+            ],
+            "__searchForm": null,
+            "description": "Realtime Twitter Search"
+        },
+        {
+            "_loadPath": "jar:[app]/omni.ja!/wikipedia.xml",
+            "_metaData": {
+                "alias": null,
+                "hidden": true,
+                "order": 7
+            },
+            "_shortName": "wikipedia",
+            "queryCharset": "UTF-8",
+            "_name": "Wikipedia (en)",
+            "_iconURL": "resource://search-plugins/images/wikipedia.ico",
+            "_urls": [
+                {
+                    "resultDomain": "en.wikipedia.org",
+                    "params": [
+                        {
+                            "value": "opensearch",
+                            "name": "action"
+                        },
+                        {
+                            "value": "{searchTerms}",
+                            "name": "search"
+                        }
+                    ],
+                    "rels": [],
+                    "type": "application/x-suggestions+json",
+                    "template": "https://en.wikipedia.org/w/api.php"
+                },
+                {
+                    "resultDomain": "wikipedia.org",
+                    "params": [
+                        {
+                            "value": "{searchTerms}",
+                            "name": "search"
+                        },
+                        {
+                            "value": "Mozilla-search",
+                            "name": "sourceid"
+                        }
+                    ],
+                    "rels": [
+                        "searchform"
+                    ],
+                    "template": "https://en.wikipedia.org/wiki/Special:Search"
+                }
+            ],
+            "__searchForm": null,
+            "description": "Wikipedia, the Free Encyclopedia"
+        },
+        {
+            "_loadPath": "[http]legwork.i2p/yacy-legwork.xml",
+            "_metaData": {
+                "order": 8,
+                "loadPathHash": "DcRKmZ/nmr5NdySVIgzzEW4RmIMutrVdOvEr5ffpzxU="
+            },
+            "_shortName": "yacy-legwork",
+            "queryCharset": "UTF-8",
+            "_name": "YaCy 'legwork'",
+            "_iconURL": "data:image/x-icon;base64,AAABAAEAEBAAAAAAGABoAwAAFgAAACgAAAAQAAAAIAAAAAEAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////////Chiu+fBm+fRq+fRq+fRq+fRq+fRq8ehXMmk////////////////////////////++exjUqGfZsnjYsXbYsXbYsXbZsnjTp2W+fBr///////////////////////////+9exfs2r/69/L58+z58+z58+z59e/z59bChSn///////////////////////////+9fBnnz638+fX69O369e748un38Ob59O3Ll0fVrGz////////////////////////Jk0HJlUjXuYrWt4jVtYPr28T58+r59OzPn1fPnlX////////////////////////Rolu8eRXCiTPEjTvCijbNnlj169359e7Zs3vLlkf////////////////////////UqmrAgSLt3MP27eH1693169327+T59Ozo0rG/gB////////////////////////////+/gCDv4Mn48+v38Of59Oz58+v48+vr2b2+fRv///////////////////////////+9ehXr17n58+z48ejo0bDp07T48+zx49DBhCj///////////////////////////+/fhzjyJ/59Oz59OzQoVvNmU759Oz58+vKlUbXrnH////////////////////////LlkfUqmn59Oz48+vZtHzNm1D48+v59OzPoFjOnlX////////////////////////OnVPOnFL59e348+vq1rnEiC7u38j69vDXsHTIkT3////////////////////////UqWjIkD327+T58+3s2bzAgSLp07T79/Pmzqq+fBn///////////////////////////+/fx7v4Mr7+PTx5NDHkD3kyqP8+vjs2r+9exf///////////////////////////++fBjQoFnVq2zTp2bGjTjJk0LWrW7SpWC+exf////////////////////////////Nm1C6dQy7eBG8eBK9exe8ehS7dxC6dQzLlkj////////////AH///wB8x+sAf///AD/+PwA///8AP///AD///4A9PU+APoz/gB///4AdxvOAHoz/gB3368AfjU/AHT1PwB/+P",
+            "_urls": [
+                {
+                    "resultDomain": "legwork.i2p",
+                    "params": [],
+                    "rels": [],
+                    "template": "http://legwork.i2p/yacysearch.html?query={searchTerms}&startRecord={startIndex?}&maximumRecords={count?}&nav=all&resource=global"
+                },
+                {
+                    "resultDomain": "legwork.i2p",
+                    "params": [],
+                    "rels": [],
+                    "type": "application/rss+xml",
+                    "template": "http://legwork.i2p/yacysearch.rss?nav=&query={searchTerms}&startRecord={startIndex?}&maximumRecords={count?}&nav=all&resource=global"
+                },
+                {
+                    "resultDomain": "legwork.i2p",
+                    "params": [],
+                    "rels": [],
+                    "type": "application/atom+xml",
+                    "template": "http://legwork.i2p/yacysearch.atom?query={searchTerms}&startRecord={startIndex?}&maximumRecords={count?}&resource=global"
+                },
+                {
+                    "resultDomain": "legwork.i2p",
+                    "params": [],
+                    "rels": [],
+                    "type": "application/x-suggestions+json",
+                    "template": "http://legwork.i2p/suggest.json?query={searchTerms}"
+                },
+                {
+                    "resultDomain": "legwork.i2p",
+                    "params": [],
+                    "rels": [],
+                    "type": "application/x-suggestions+xml",
+                    "template": "http://legwork.i2p/suggest.xml?query={searchTerms}"
+                }
+            ],
+            "__searchForm": "http://legwork.i2p",
+            "description": "YaCy is an open-source GPL-licensed software that can be used for stand-alone search engine installations or as a client for a multi-user P2P-based web indexing cluster. This is the access to peer 'legwork'.",
+            "_readOnly": false
+        }
+    ],
+    "visibleDefaultEngines": [
+        "google",
+        "amazondotcom",
+        "bing",
+        "ddg",
+        "ebay",
+        "twitter",
+        "wikipedia"
+    ],
+    "locale": "en-US",
+    "appVersion": "65.0",
+    "buildID": "20190128144255",
+    "version": 1,
+    "metaData": {
+        "hash": "I0XvtXxTYQLVFE4J8c5dMIcS20EsDQJ/VzczKdqLHP4=",
+        "current": "YaCy 'legwork'"
+    }
+}
