@@ -22,6 +22,17 @@ bindir ?= $(prefix)/bin
 echo:
 	@echo "USAGE for this makefile here. $(WINDOWS_FIREFOX_PATH) $(SUDO_USER)"
 
+NoScript: NoScript.url
+	curl `cat NoScript.url` > "firefox.profile.i2p/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
+
+HTTPSEverywhere: HTTPSEverywhere.url
+	curl `cat HTTPSEverywhere.url` > "firefox.profile.i2p/extensions/https-everywhere-eff@eff.org.xpi"
+
+i2psetproxy:
+	curl `cat i2psetproxy.url` > "firefox.profile.i2p/extensions/i2psetproxy.js@eyedeekay.github.io.xpi"
+
+extensions: NoScript HTTPSEverywhere i2psetproxy
+
 version:
 	@echo "!define VERSIONMAJOR $(VERSIONMAJOR)" > i2pbrowser-version.nsi
 	@echo "!define VERSIONMINOR $(VERSIONMINOR)" >> i2pbrowser-version.nsi
