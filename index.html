@@ -12,16 +12,16 @@
     <p><a href=
     "https://build.snapcraft.io/user/eyedeekay/firefox.profile.i2p"><img src=
     "https://build.snapcraft.io/badge/eyedeekay/firefox.profile.i2p.svg" alt=
-    "Snap Status"></a> <a href=
+    "Snap Status" title=""></a> <a href=
     "https://travis-ci.com/eyedeekay/firefox.profile.i2p"><img src=
     "https://travis-ci.com/eyedeekay/firefox.profile.i2p.svg?branch=master"
-    alt="Travis-CI .dmg Status"></a></p>
+    alt="Travis-CI .dmg Status" title=""></a></p>
     <p><a href="https://snapcraft.io/i2pbrowser"><img src=
     "https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt=
-    "Get it from the Snap Store"></a></p>
+    "Get it from the Snap Store" title=""></a></p>
     <h2>What it is</h2>
-    <p><strong>Attention:</strong> If you’re on Windows, this is probably
-    <em>not</em> the browser you’re looking for. <a href=
+    <p><em>*Attention: *</em> If you're on Windows, this is probably
+    <em>not</em> the browser you're looking for. <a href=
     "https://geti2p.net/en/download/firefox">An official one is now available
     from the i2p website</a>. It is largely the same as this one, but supports
     multiple languages and has more focus on the needs of Windows users. This
@@ -39,9 +39,9 @@
     download the installer from the github releases</a>, and run it. It will
     place two items on the start menu and two shortcuts on the desktop, any of
     which will launch a browser pre-configured to use i2p.</p>
-    <p>On OSX, the goal is to create a .dmg application image but I’m stalled
+    <p>On OSX, the goal is to create a .dmg application image but I'm stalled
     here for the moment while I wait for more access to an OSX machine.</p>
-    <p>On GNU/Linux it’s more of a collection of tools for a variety of package
+    <p>On GNU/Linux it's more of a collection of tools for a variety of package
     managers. Ubuntu users will probably find the snap package most convenient.
     It just bundles Firefox and the scripts that make sure the configuration is
     correct together in their little snap package and runs it from inside the
@@ -52,14 +52,14 @@
     certain features that may weaken the anonymity that i2p provides, and with
     NoScript and HTTPS Everywhere.</p>
     <p>For more information, see: <a href="DETAILS.md">DETAILS.md</a></p>
-    <p>Much of this is ready for interested parties to test, but it’s still
+    <p>Much of this is ready for interested parties to test, but it's still
     just being tested and the rough edges are still being figured out. Use at
     your own risk.</p>
     <p>For now, the testing release page is here: <a href=
     "https://github.com/eyedeekay/firefox.profile.i2p/releases/tag/current">Github
     Releases</a> where the Windows installer has been made available. The
-    “current” release will always track the newest working version. Numbered
-    releases are the latest version that I’m testing. There’s not really a
+    "current" release will always track the newest working version. Numbered
+    releases are the latest version that I'm testing. There's not really a
     coherent rationale to the version numbers yet. I move them when I add a
     feature to make sure I know what to uninstall.</p>
     <ul>
@@ -83,7 +83,7 @@
       <li>0.06x (Planned) Finalize packaging, User-readiness, automate
       fingerprint measurements, automate hostile testing.</li>
       <li>0.07x (Planned) Control Plugin, additional plugin evaluation(Font
-      fingerprint mitigations? Perhaps an “Expert Bundle” with uMatrix?)</li>
+      fingerprint mitigations? Perhaps an "Expert Bundle" with uMatrix?)</li>
       <li>0.08x (Planned) Android port, build-from-source</li>
       <li>0.09x (Planned) Selenium-based browser tests, Update services</li>
       <li>0.10x (Planned) No known bugs. Best-case scenario for current i2p
@@ -104,8 +104,8 @@
     "WINDOWS.md">Standalone guide</a></h3>
     <ol>
       <li>Install the Firefox web browser. You can download it from <a href=
-      "https://www.mozilla.org/en-US/firefox/new/">Mozilla’s web site</a>. <em>
-        Alternatively, if you’re using the latest testing version of the
+      "https://www.mozilla.org/en-US/firefox/new/">Mozilla's web site</a>. <em>
+        Alternatively, if you're using the latest testing version of the
         profile,</em> <em>it will use a Tor Browser if one is found in a
         default location,</em> which you can get from the <a href=
         "https://www.torproject.org/projects/torbrowser.html.en">Tor Browser
@@ -119,13 +119,13 @@
         custom location.
       </li>
       <li>To start Firefox with the i2p Browsing profile, click the shortcut to
-      “I2PBrowser-Launcher” or “Private Browsing-I2PBrowser-Launcher” from your
+      "I2PBrowser-Launcher" or "Private Browsing-I2PBrowser-Launcher" from your
       Start Menu or your Desktop.</li>
     </ol>
     <h3 class="windows">Run-From-Zip (Alternative, Windows)</h3>
     <ol>
       <li>Install the Firefox web browser. You can download it from <a href=
-      "https://www.mozilla.org/en-US/firefox/new/">Mozilla’s web site</a>. The
+      "https://www.mozilla.org/en-US/firefox/new/">Mozilla's web site</a>. The
       browser <em>must</em> be installed in a default location selected by the
       Firefox installer for this to work. This version does work with Tor
       Browser yet.
@@ -143,16 +143,16 @@
   <div id="osx" class="highlight">
     <h3 class="osx">Automatic Setup (OSX) <a href="MACOSX.md">Standalone
     guide</a></h3>
-    <p><strong>Entirely Untested.</strong> I’ve managed to build .dmg files
+    <p><strong>Entirely Untested.</strong> I've managed to build .dmg files
     that contain the scripts annd the profile. They <em>should</em> work, but
-    until I get a Mac, I won’t know for sure. To generate one on a Mac, install
+    until I get a Mac, I won't know for sure. To generate one on a Mac, install
     create-dmg from brew and run</p>
     <pre><code>    make osx
 </code></pre>
     <ol>
       <li>Install the Firefox Web Browser from <a href=
-      "https://www.mozilla.org/en-US/firefox/new/">Mozilla’s web site</a>. This
-      version doesn’t integrate with a Tor Browser Bundle yet.
+      "https://www.mozilla.org/en-US/firefox/new/">Mozilla's web site</a>. This
+      version doesn't integrate with a Tor Browser Bundle yet.
       </li>
       <li>Install the .dmg file you generated with make.</li>
       <li>Launch the I2PBrowser.sh script.</li>
@@ -177,27 +177,27 @@
       <li>
         <p>Run I2PBrowser.sh and/or I2PBrowser-Private.sh to launch Firefox
         with the i2p browsing profile.</p>
-        <pre><code>  #! /bin/sh
-  wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
-  sudo apt-get install ./i2pbrowser-helper_all.deb
+        <pre><code>#! /bin/sh
+wget -c https://github.com/eyedeekay/firefox.profile.i2p/releases/download/0.04/i2pbrowser-helper_all.deb
+sudo apt-get install ./i2pbrowser-helper_all.deb
 </code></pre>
       </li>
     </ol>
     <h3 class="linux">Building a .deb with Checkinstall</h3>
-    <p>If you don’t want to trust the deb I generated, then it’s also very
+    <p>If you don't want to trust the deb I generated, then it's also very
     simple to generate your own from this source code.</p>
     <ol>
       <li>Install git, make, and checkinstall</li>
       <li>Clone this repository and change to the newly created directory</li>
-      <li>run ‘make debfirefox’</li>
+      <li>run 'make debfirefox'</li>
       <li>
         <p>Install the generated package.</p>
-        <pre><code>  # /bin/sh
-  sudo apt-get install git make checkinstall
-  git clone https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd firefox.profile.i2p
-  make debfirefox
-  i2pbrowser-helper_all.deb
-  sudo apt-get install ./i2pbrowser-helper_all.deb
+        <pre><code># /bin/sh
+sudo apt-get install git make checkinstall
+git clone https://github.com/eyedeekay/firefox.profile.i2p &amp;& cd firefox.profile.i2p
+make debfirefox
+i2pbrowser-helper_all.deb
+sudo apt-get install ./i2pbrowser-helper_all.deb
 </code></pre>
       </li>
     </ol>
@@ -206,43 +206,43 @@
     <p>The latest snap can be installed from edge and has desktop shortcuts.
     <a href="https://snapcraft.io/i2pbrowser"><img src=
     "https://snapcraft.io/static/images/badges/en/snap-store-black.svg" alt=
-    "Get it from the Snap Store"></a></p>
+    "Get it from the Snap Store" title=""></a></p>
     <ol>
-      <li>Open a terminal and run: ‘snap install –edge i2pbrowser’</li>
+      <li>Open a terminal and run: 'snap install --edge i2pbrowser'</li>
       <li>
         <p>Run the shortcut from your application menu or /snap/bin/i2pbrowser
         from a terminal.</p>
-        <pre><code>  #! /bin/sh
-  snap install --edge i2pbrowser
-  /snap/bin/i2pbrowser
+        <pre><code>#! /bin/sh
+snap install --edge i2pbrowser
+/snap/bin/i2pbrowser
 </code></pre>
       </li>
     </ol>
-    <p>It’s not likely that integrating a snap with Tor Browser will be
+    <p>It's not likely that integrating a snap with Tor Browser will be
     possible unless Tor Browser becomes available as a snap, which seems
-    unlikely. I can think of some things that <em>might</em> work but none are…
-    perfectly clear to me. Auto-updating of the profile via the install script
-    isn’t possible in the snap, <em>but</em> snapcraft.io seems to get updates
-    about ~9 minutes after this repository does. That means a s simple
-    ‘snapcraft refresh –edge i2pbrowser’ will automatically update the profile
+    unlikely. I can think of some things that <em>might</em> work but none
+    are... perfectly clear to me. Auto-updating of the profile via the install
+    script isn't possible in the snap, <em>but</em> snapcraft.io seems to get
+    updates about ~9 minutes after this repository does. That means a s simple
+    'snapcraft refresh --edge i2pbrowser' will automatically update the profile
     for you.</p>
     <h3 class="linux">Make Setup <a href="LINUX.md">Standalone guide</a>
     (Cross-Distribution)</h3>
     <ol>
       <li>Install the firefox-esr browser from your distribution or from
-      Mozilla’s web site. Be sure to place it into your PATH as firefox, for
+      Mozilla's web site. Be sure to place it into your PATH as firefox, for
       example, /usr/bin/firefox.</li>
       <li>Download the GNU/Linux zip bundle from the releases page and unpack
       it.</li>
       <li>
         <p>Run the following make targets:</p>
-        <pre><code>  #! /bin/sh
-  make recopy-linux
-  sudo make install
+        <pre><code>#! /bin/sh
+make recopy-linux
+sudo make install
 </code></pre>
       </li>
     </ol>
-    <p>When it’s done, you can run ‘I2PBrowser.sh’ to start the i2p browser
+    <p>When it's done, you can run 'I2PBrowser.sh' to start the i2p browser
     profile.</p>
     <h3 class="linux">Docker Setup <a href="LINUX.md">Standalone guide</a>
     (Linux, probably OSX, Windows?)</h3>
@@ -271,7 +271,7 @@
     <h3 class="linux">Manual Setup (Various Linuxes) <a href=
     "LINUX.md">Standalone guide</a> (Debian-Derived distros see Footnote
     #2)</h3>
-    <p><em>NOTE: I’m probably going to add an apparmor profile to this setup
+    <p><em>NOTE: I'm probably going to add an apparmor profile to this setup
     for optional</em> <em>installation.</em></p>
     <ol>
       <li>Install Firefox-ESR via the method preferred by your Linux
@@ -291,13 +291,13 @@
     cd i2pbrowser-gnulinux
     ./install.sh install
 </code></pre>
-    <p>Once you’ve run “./install.sh install” you can safely delete the profile
+    <p>Once you've run "./install.sh install" you can safely delete the profile
     folder if you wish. Alternatively, you could choose to run from the
-    downloaded profile directory by running “./install.sh run” or “./install.sh
-    private” instead. This will always start in Private Browsing mode, and if
+    downloaded profile directory by running "./install.sh run" or "./install.sh
+    private" instead. This will always start in Private Browsing mode, and if
     you delete the download folder, you will need to re-download it to run the
     browser from the directory again.</p>
-    <p>Here’s some more information about how to use the install script:</p>
+    <p>Here's some more information about how to use the install script:</p>
     <pre><code>    usage:
         ./install.sh install     # install the profile and browser launcher
         ./install.sh uninstall   # remove the profile and browser launcher
@@ -319,17 +319,17 @@
       <li><strong>check.kovri.i2p:</strong></li>
     </ul>
     <p><img src="images/firefox.profile.i2p.png" alt=
-    "Figure D: check.kovri.i2p results"></p>
+    "Figure D: check.kovri.i2p results" title=""></p>
     <ul>
       <li><strong>valve/fingerprintjs</strong></li>
     </ul>
     <p><img src="images/firefox.profile.i2p.fingerprint.png" alt=
-    "Figure E: Browser Fingerprint"></p>
+    "Figure E: Browser Fingerprint" title=""></p>
     <h4 class="notes">Footnotes <a href="NOTES.md">Download these
     notes</a></h4>
     <h5>Differences from Tor Browser</h5>
     <p>TL:DR There is no security slider, and to compensate for this issue, the
-    Browser is configured to enable fewer features by default. It also can’t do
+    Browser is configured to enable fewer features by default. It also can't do
     stuff like notify you about your browser window size.</p>
     <p>This browser takes cues from the Tor Browser, which is also a reasonable
     choice for an i2p browser, but it has some absolutely critical differences
@@ -344,21 +344,21 @@
     <h5 class="whonix">Debian/Ubuntu users can use Whonix stretch-testng i2p
     browser launcher</h5>
     <p>If you are using Debian or Ubuntu, or probably any other up-to-date
-    apt-based Linux distribution, there’s another option which may you may
+    apt-based Linux distribution, there's another option which may you may
     prefer. In order to do this, one must add the Whonix apt package repository
     to your package sources, and install their tb-starter package from their
-    stretch-testing repository. Don’t worry, I’ll take you through it
+    stretch-testing repository. Don't worry, I'll take you through it
     step-by-step.</p>
     <p><strong>This guide is intended for users who are aware of the
     implications of using</strong> <strong>third-party repositories on their
-    Debian-based Linux PC’s.</strong> In particular, Whonix is designed to
+    Debian-based Linux PC's.</strong> In particular, Whonix is designed to
     pro-actively prevent certain kinds of attacks from affecting the user, and
     their packages sometimes overwrite things like hosts files and such with
     versions suitable for the Whonix threat model. While I currently use the
     following packages successfully on both Debian and Ubuntu Linux at this
-    time, I cannot guarantee that they will work for everyone’s specific
+    time, I cannot guarantee that they will work for everyone's specific
     configuration.</p>
-    <p>First, you’ll need to obtain and install the Whonix package signing
+    <p>First, you'll need to obtain and install the Whonix package signing
     keys. This will allow you to be sure that you are obtaining the correct
     package from the repository automatically.</p>
     <p><code>sh sudo apt-key --keyring /etc/apt/trusted.gpg.d/whonix.gpg adv
@@ -366,12 +366,12 @@
     916B8D99C38EAF5E8ADC7A2A8D66066A2EEACCDA</code></p>
     <p>Next, you need to tell apt, the package manager, where to look for the
     packages in question. The i2p browser is still in stretch-testers, so that
-    is the version we will be using. ‘main’ means that the profile is Free
+    is the version we will be using. 'main' means that the profile is Free
     Software per the Debian Free Software Guidelines.</p>
     <p><code>sh echo 'deb http://deb.whonix.org stretch-testers main' | tee
     /etc/apt/sources.list.d/whonix-testing.list # apt-transport-* season to
     taste</code></p>
-    <p>Now, you must tell apt to update it’s list of available packages so it
+    <p>Now, you must tell apt to update it's list of available packages so it
     becomes aware of the Tor Browser packages.</p>
     <p><code>sh sudo apt-get update</code></p>
     <p>Finally, install tb-starter and tb-updater.</p>
@@ -379,7 +379,7 @@
     <p>The last step is to run update-i2pbrowser. This will pre-configure the
     i2p browser on your system.</p>
     <p><code>sh update-i2pbrowser</code></p>
-    <p>If for some reason, update-i2pbrowser doesn’t work(Usually this is in
+    <p>If for some reason, update-i2pbrowser doesn't work(Usually this is in
     the absence of Tor on the system) you may run</p>
     <p><code>sh update-i2pbrowser --devbuildpassthrough</code></p>
     <p>instead.</p>

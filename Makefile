@@ -158,12 +158,12 @@ reinstall: remove install
 run:
 	gtk-launch $(HOME)/.local/share/applications/i2pbrowser-firefox.desktop
 
-recopy-linux:
+recopy-linux: extensions
 	rm -rf firefox.launchers/gnulinux/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/gnulinux/firefox.profile.i2p/
 	cp LINUX.md firefox.launchers/gnulinux/README.md
 
-linux: recopy-linux
+linux: recopy-linux extensions
 	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
 	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
 	cd firefox.launchers/build/i2pbrowser-gnulinux/ && tar cvzf ../../../i2pbrowser-gnulinux-$(VERSION).tar.gz .
@@ -176,24 +176,24 @@ sedc:
 recopy-snap: sedc
 	ls
 
-snap: recopy-snap
+snap: recopy-snap extensions
 	docker build -f Dockerfiles/Dockerfile.snap -t eyedeekay/firefox.profile.i2p.snap .
 	make copy-snap
 
-copy-snap:
+copy-snap: extensions
 	docker run -i -t -d --name snapbuild eyedeekay/firefox.profile.i2p.snap
 	sleep 15
 	docker cp snapbuild:/home/snap/snap/i2pbrowser_$(VERSION)_amd64.snap i2pbrowser_$(VERSION)_amd64.snap
 	docker rm -f snapbuild
 
-recopy-osx:
+recopy-osx: extensions
 	rm -rf firefox.launchers/osx/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/osx/firefox.profile.i2p/
 	cp -rv firefox.launchers/gnulinux/install.sh firefox.launchers/osx/helper.sh
 	cp -rv assets firefox.launchers/osx/assets
 	cp MACOSX.md firefox.launchers/osx/README.md
 
-osx: recopy-osx
+osx: recopy-osx extensions
 	cp -rv firefox.launchers/osx "I2PBrowser"
 	create-dmg "I2PBrowser.dmg" \
         --volname "I2PBrowser" \
@@ -209,19 +209,19 @@ osx: recopy-osx
         "I2PBrowser/"
 	rm -rf "I2PBrowser"
 
-recopy-windows: version
+recopy-windows: version extensions
 	rm -rf firefox.launchers/windows/firefox.profile.i2p/
 	cp -rv firefox.profile.i2p firefox.launchers/windows/firefox.profile.i2p/
 	cp WINDOWS.md firefox.launchers/windows/README.md
 
-windows: recopy-windows
+windows: recopy-windows extensions
 	makensis i2pbrowser-installer.nsi
 	cp install-i2pbrowser-$(VERSION).exe install-i2pbrowser.exe
 
-zip-bareprofile: clean-build
+zip-bareprofile: clean-build extensions
 	zip i2pbrowser-profile-$(VERSION).zip -r firefox.profile.i2p
 
-zip-windows: clean-build
+zip-windows: clean-build extensions
 	mkdir -p firefox.launchers/build/i2pbrowser-windows
 	cp LICENSE_ALL firefox.launchers/windows/
 	cp -rfv firefox.launchers/windows/  firefox.launchers/build/i2pbrowser-windows/i2pbrowser-windows/
@@ -231,7 +231,7 @@ zip-windows: clean-build
 	cp i2pbrowser-windows-$(VERSION).zip $(PWD)/i2pbrowser-windows.zip
 	rm -rfv firefox.launcher/build
 
-zip-osx: clean-build
+zip-osx: clean-build extensions
 	mkdir -p firefox.launchers/build/i2pbrowser-osx
 	cp LICENSE_ALL firefox.launchers/osx/
 	cp -rfv firefox.launchers/osx/  firefox.launchers/build/i2pbrowser-osx/i2pbrowser-osx/
@@ -241,7 +241,7 @@ zip-osx: clean-build
 	cp i2pbrowser-osx-$(VERSION).zip $(PWD)/i2pbrowser-osx.zip
 	rm -rfv firefox.launcher/build
 
-zip-gnulinux: clean-build
+zip-gnulinux: clean-build extensions
 	mkdir -p firefox.launchers/build/i2pbrowser-gnulinux
 	cp LICENSE_ALL firefox.launchers/gnulinux/
 	cp -rfv firefox.launchers/gnulinux/  firefox.launchers/build/i2pbrowser-gnulinux/i2pbrowser-gnulinux/
@@ -279,7 +279,7 @@ install-plugin:
 	cp -v unzip/*.dll /usr/share/nsis/Plugins/x86-unicode/
 	cp -v unzip/*.nsh /usr/share/nsis/Include/
 
-debwhonix:
+debwhonix: extensions
 	cd whonix-helper && fakeroot-ng checkinstall --default \
 		--install=no \
 		--fstrans=yes \
@@ -298,7 +298,7 @@ debwhonix:
 		--backup=no \
 		--pakdir=../ make install
 
-debfirefox:
+debfirefox: extensions
 	fakeroot-ng checkinstall --default \
 		--install=no \
 		--fstrans=yes \
